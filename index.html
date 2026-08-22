@@ -12,7 +12,7 @@
       <div class="hero">
         <p class="eyebrow">DEDUCTION BOARD GAME PROTOTYPE</p>
         <h1>Clue Grid</h1>
-        <p class="lead">4×4の捜査カードから、動機・アリバイ・凶器を読み解いて真犯人を特定する推理ゲーム。</p>
+        <p class="lead">4×4の16枚から、動機・アリバイ・凶器・偽証を読み解いて真犯人を特定する推理ゲーム。</p>
       </div>
 
       <div class="panel setup-panel">
@@ -50,10 +50,10 @@
         <aside class="side-panel">
           <div class="panel">
             <h3>手番アクション</h3>
-            <p id="actionHelp" class="muted">カードを1枚選んで行動してください。</p>
+            <p id="actionHelp" class="muted">伏せカードを1枚選んで行動してください。</p>
             <div class="action-grid">
-              <button id="inspectBtn" class="secondary" disabled>自分だけ確認</button>
-              <button id="revealBtn" class="secondary" disabled>全員に公開</button>
+              <button id="inspectBtn" class="secondary" disabled>ポーンを置いて確認</button>
+              <button id="revealBtn" class="secondary" disabled>ポーンを動かさず公開</button>
               <button id="accuseBtn" class="danger">犯人確保</button>
             </div>
           </div>
@@ -98,15 +98,6 @@
     </div>
   </div>
 
-  <script src="assets/suspect-sheet-part1.js"></script>
-  <script src="assets/suspect-sheet-part2.js"></script>
-  <script src="assets/suspect-sheet-part3.js"></script>
-  <script src="assets/suspect-sheet-part4.js"></script>
-  <script src="assets/suspect-sheet-part5.js"></script>
-  <script src="assets/suspect-sheet-part6.js"></script>
   <script src="game.js"></script>
-  <script src="assets/suspect-ui.js"></script>
-  <script src="assets/clueverge-rules-v2.js"></script>
-  <script src="assets/evidence-ui.js"></script>
 </body>
 </html>

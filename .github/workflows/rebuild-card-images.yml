@@ -20,8 +20,8 @@ jobs:
           fetch-depth: 0
 
       - name: Rebuild WebP files from existing parts
-        shell: python
         run: |
+          python - <<'PY'
           from pathlib import Path
           import base64, re
 
@@ -42,6 +42,21 @@ jobs:
 
           rebuild('new-suspect-grid-part*.js', 'assets/suspects-final.webp')
           rebuild('new-evidence-grid-part*.js', 'assets/evidence-final.webp')
+          PY
+
+      - name: Verify WebP headers
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for p in [Path('assets/suspects-final.webp'), Path('assets/evidence-final.webp')]:
+              data = p.read_bytes()
+              if len(data) < 16 or data[:4] != b'RIFF' or data[8:12] != b'WEBP':
+                  raise RuntimeError(f'Invalid WebP: {p}')
+              declared = int.from_bytes(data[4:8], 'little') + 8
+              if declared != len(data):
+                  raise RuntimeError(f'Truncated WebP: {p} declared={declared} actual={len(data)}')
+              print(p, len(data), 'bytes OK')
+          PY
 
       - name: Commit rebuilt images
         run: |

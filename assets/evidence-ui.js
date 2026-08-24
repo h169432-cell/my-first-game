@@ -1,6 +1,6 @@
 (() => {
-  const spriteUrl='./evidence-art-sprite.webp?v=20260824-2326';
-  const twistUrl='./evidence-cards-sheet.webp?v=20260824-2326';
+  const spriteUrl='./assets/evidence-art-sprite.webp?v=20260824-2348';
+  const twistUrl='./assets/evidence-cards-sheet.webp?v=20260824-2348';
   const style=document.createElement('style');
   style.textContent=`
     .card.evidence-image-card{padding:0;overflow:hidden;background:#08090d;border-color:#806633}.card.evidence-image-card:hover{border-color:#d1ad59}

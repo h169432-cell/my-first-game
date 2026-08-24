@@ -1,0 +1,56 @@
+name: Rebuild card images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/rebuild-card-images.yml'
+      - 'assets/new-suspect-grid-part*.js'
+      - 'assets/new-evidence-grid-part*.js'
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Rebuild WebP files from existing parts
+        shell: python
+        run: |
+          from pathlib import Path
+          import base64, re
+
+          def rebuild(pattern, output):
+              files = sorted(Path('assets').glob(pattern))
+              if not files:
+                  raise RuntimeError(f'No files matched {pattern}')
+              parts = []
+              for path in files:
+                  text = path.read_text(encoding='utf-8')
+                  match = re.search(r"\.push\('([^']+)'\)", text)
+                  if not match:
+                      raise RuntimeError(f'Could not parse {path}')
+                  parts.append(match.group(1))
+              data = base64.b64decode(''.join(parts))
+              Path(output).write_bytes(data)
+              print(output, len(data), 'bytes')
+
+          rebuild('new-suspect-grid-part*.js', 'assets/suspects-final.webp')
+          rebuild('new-evidence-grid-part*.js', 'assets/evidence-final.webp')
+
+      - name: Commit rebuilt images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/suspects-final.webp assets/evidence-final.webp
+          if git diff --cached --quiet; then
+            echo "No image changes"
+          else
+            git commit -m "Rebuild card images as WebP assets"
+            git push
+          fi

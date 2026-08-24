@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Clue Grid</title>
-  <link rel="stylesheet" href="style.css?v=20260824-2359" />
+  <link rel="stylesheet" href="style.css?v=20260825-0033" />
 </head>
 <body>
   <main class="app">
@@ -16,7 +16,12 @@
       </div>
       <div class="panel setup-panel">
         <label for="playerCount">プレイヤー人数</label>
-        <select id="playerCount"><option value="1">1人</option><option value="2">2人</option><option value="3">3人</option><option value="4">4人</option></select>
+        <select id="playerCount">
+          <option value="1">1人</option>
+          <option value="2">2人</option>
+          <option value="3">3人</option>
+          <option value="4">4人</option>
+        </select>
         <button id="startGameBtn" class="primary">ゲーム開始</button>
         <button id="showRulesBtn" class="secondary">ルールを見る</button>
       </div>
@@ -42,7 +47,10 @@
           </div>
           <div class="panel">
             <h3>公開情報</h3>
-            <div class="legend"><span>👤 容疑者</span><span>🔥 動機</span><span>🛡️ アリバイ</span><span>🔪 凶器</span><span>🔎 手掛かり</span><span>🎭 偽証</span><span>↩️ どんでん返し</span></div>
+            <div class="legend">
+              <span>👤 容疑者</span><span>🔥 動機</span><span>🛡️ アリバイ</span><span>🔪 凶器</span>
+              <span>🔎 手掛かり</span><span>🎭 偽証</span><span>↩️ どんでん返し</span>
+            </div>
           </div>
           <div class="panel score-panel"><h3>勝利数</h3><div id="scores"></div></div>
         </aside>
@@ -65,17 +73,17 @@
     <div class="modal-card"><button id="closeModalBtn" class="icon-btn" aria-label="閉じる">×</button><div id="modalContent"></div></div>
   </div>
 
-  <script src="assets/new-suspect-grid-part1.js?v=20260824-2359"></script>
-  <script src="assets/new-suspect-grid-part2.js?v=20260824-2359"></script>
-  <script src="assets/new-suspect-grid-part3.js?v=20260824-2359"></script>
-  <script src="assets/new-suspect-grid-part4.js?v=20260824-2359"></script>
-  <script src="assets/new-evidence-grid-part1.js?v=20260824-2359"></script>
-  <script src="assets/new-evidence-grid-part2.js?v=20260824-2359"></script>
-  <script src="assets/new-evidence-grid-part3.js?v=20260824-2359"></script>
-  <script src="assets/new-evidence-grid-part4.js?v=20260824-2359"></script>
-  <script src="assets/card-image-runtime.js?v=20260824-2359"></script>
-  <script src="game.js?v=20260824-2359"></script>
-  <script src="assets/suspect-ui.js?v=20260824-2359"></script>
-  <script src="assets/evidence-ui.js?v=20260824-2359"></script>
+  <script src="assets/new-suspect-grid-part1.js?v=20260825-0033"></script>
+  <script src="assets/new-suspect-grid-part2.js?v=20260825-0033"></script>
+  <script src="assets/new-suspect-grid-part3.js?v=20260825-0033"></script>
+  <script src="assets/new-suspect-grid-part4.js?v=20260825-0033"></script>
+  <script src="assets/new-evidence-grid-part1.js?v=20260825-0033"></script>
+  <script src="assets/new-evidence-grid-part2.js?v=20260825-0033"></script>
+  <script src="assets/new-evidence-grid-part3.js?v=20260825-0033"></script>
+  <script src="assets/new-evidence-grid-part4.js?v=20260825-0033"></script>
+  <script src="assets/card-image-runtime.js?v=20260825-0033"></script>
+  <script src="game.js?v=20260825-0033"></script>
+  <script src="assets/suspect-ui.js?v=20260825-0033"></script>
+  <script src="assets/evidence-ui.js?v=20260825-0033"></script>
 </body>
 </html>

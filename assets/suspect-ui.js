@@ -1,5 +1,5 @@
 (() => {
-  const suspectGridUrl = './suspects-latest.webp?v=20260824-2326';
+  const suspectGridUrl = './assets/suspects-latest.webp?v=20260824-2348';
   const style = document.createElement('style');
   style.textContent = `
     .card.suspect-image-card{padding:0;overflow:hidden;background:#090b0f;border-color:#806633}

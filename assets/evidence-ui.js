@@ -9,7 +9,12 @@
   style.textContent = `
     .card.evidence-image-card{padding:0;overflow:hidden;background:#08090d;border-color:#806633}
     .card.evidence-image-card:hover{border-color:#d1ad59}
-    .evidence-art,.private-evidence-art{background-image:url("${evidenceGridUrl}");background-repeat:no-repeat;background-size:300% 200%}
+    .evidence-art,.private-evidence-art{
+      background-image:url("${evidenceGridUrl}");
+      background-repeat:no-repeat;
+      background-size:300% 200%;
+      background-color:#08090d;
+    }
     .evidence-art{position:absolute;inset:0}
     .ev-motive{background-position:0% 0%}
     .ev-clue{background-position:50% 0%}
@@ -19,7 +24,7 @@
     .ev-twist{background-position:100% 100%}
     .private-card.has-evidence-art{padding:14px;background:#111722;color:#f4f0e7;max-width:330px}
     .private-card.has-evidence-art>.icon{display:none}
-    .private-evidence-art{width:min(270px,100%);aspect-ratio:330/410;margin:0 auto 12px;border-radius:12px;border:1px solid #8e7446;box-shadow:0 8px 24px #0008}
+    .private-evidence-art{width:min(285px,100%);aspect-ratio:482/555;margin:0 auto 12px;border-radius:12px;border:1px solid #8e7446;box-shadow:0 8px 24px #0008}
   `;
   document.head.appendChild(style);
 

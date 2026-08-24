@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Clue Grid</title>
-  <link rel="stylesheet" href="style.css?v=20260824-2348" />
+  <link rel="stylesheet" href="style.css?v=20260824-2359" />
 </head>
 <body>
   <main class="app">
@@ -21,23 +21,61 @@
         <button id="showRulesBtn" class="secondary">ルールを見る</button>
       </div>
     </section>
+
     <section id="gameScreen" class="screen">
-      <header class="game-header"><div><p class="eyebrow">CASE FILE</p><h2>事件現場</h2></div><div class="status-box"><span id="roundLabel">Round 1</span><strong id="turnLabel">Player 1</strong></div></header>
+      <header class="game-header">
+        <div><p class="eyebrow">CASE FILE</p><h2>事件現場</h2></div>
+        <div class="status-box"><span id="roundLabel">Round 1</span><strong id="turnLabel">Player 1</strong></div>
+      </header>
       <div class="notice" id="notice"></div>
       <div class="layout">
         <section><div id="board" class="board" aria-label="4×4の捜査カード"></div></section>
         <aside class="side-panel">
-          <div class="panel"><h3>手番アクション</h3><p id="actionHelp" class="muted">伏せカードを1枚選んで行動してください。</p><div class="action-grid"><button id="inspectBtn" class="secondary" disabled>ポーンを置いて確認</button><button id="revealBtn" class="secondary" disabled>ポーンを動かさず公開</button><button id="accuseBtn" class="danger">犯人確保</button></div></div>
-          <div class="panel"><h3>公開情報</h3><div class="legend"><span>👤 容疑者</span><span>🔥 動機</span><span>🛡️ アリバイ</span><span>🔪 凶器</span><span>🔎 手掛かり</span><span>🎭 偽証</span><span>↩️ どんでん返し</span></div></div>
+          <div class="panel">
+            <h3>手番アクション</h3>
+            <p id="actionHelp" class="muted">伏せカードを1枚選んで行動してください。</p>
+            <div class="action-grid">
+              <button id="inspectBtn" class="secondary" disabled>ポーンを置いて確認</button>
+              <button id="revealBtn" class="secondary" disabled>ポーンを動かさず公開</button>
+              <button id="accuseBtn" class="danger">犯人確保</button>
+            </div>
+          </div>
+          <div class="panel">
+            <h3>公開情報</h3>
+            <div class="legend"><span>👤 容疑者</span><span>🔥 動機</span><span>🛡️ アリバイ</span><span>🔪 凶器</span><span>🔎 手掛かり</span><span>🎭 偽証</span><span>↩️ どんでん返し</span></div>
+          </div>
           <div class="panel score-panel"><h3>勝利数</h3><div id="scores"></div></div>
         </aside>
       </div>
     </section>
-    <section id="resultScreen" class="screen"><div class="panel result-panel"><p class="eyebrow">CASE CLOSED</p><h2 id="resultTitle">捜査結果</h2><p id="resultText" class="result-text"></p><div id="answerBreakdown" class="breakdown"></div><button id="nextRoundBtn" class="primary">次の事件へ</button><button id="backToTitleBtn" class="secondary">タイトルへ戻る</button></div></section>
+
+    <section id="resultScreen" class="screen">
+      <div class="panel result-panel">
+        <p class="eyebrow">CASE CLOSED</p>
+        <h2 id="resultTitle">捜査結果</h2>
+        <p id="resultText" class="result-text"></p>
+        <div id="answerBreakdown" class="breakdown"></div>
+        <button id="nextRoundBtn" class="primary">次の事件へ</button>
+        <button id="backToTitleBtn" class="secondary">タイトルへ戻る</button>
+      </div>
+    </section>
   </main>
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"><div class="modal-card"><button id="closeModalBtn" class="icon-btn" aria-label="閉じる">×</button><div id="modalContent"></div></div></div>
-  <script src="game.js?v=20260824-2348"></script>
-  <script src="assets/suspect-ui.js?v=20260824-2348"></script>
-  <script src="assets/evidence-ui.js?v=20260824-2348"></script>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card"><button id="closeModalBtn" class="icon-btn" aria-label="閉じる">×</button><div id="modalContent"></div></div>
+  </div>
+
+  <script src="assets/new-suspect-grid-part1.js?v=20260824-2359"></script>
+  <script src="assets/new-suspect-grid-part2.js?v=20260824-2359"></script>
+  <script src="assets/new-suspect-grid-part3.js?v=20260824-2359"></script>
+  <script src="assets/new-suspect-grid-part4.js?v=20260824-2359"></script>
+  <script src="assets/new-evidence-grid-part1.js?v=20260824-2359"></script>
+  <script src="assets/new-evidence-grid-part2.js?v=20260824-2359"></script>
+  <script src="assets/new-evidence-grid-part3.js?v=20260824-2359"></script>
+  <script src="assets/new-evidence-grid-part4.js?v=20260824-2359"></script>
+  <script src="assets/card-image-runtime.js?v=20260824-2359"></script>
+  <script src="game.js?v=20260824-2359"></script>
+  <script src="assets/suspect-ui.js?v=20260824-2359"></script>
+  <script src="assets/evidence-ui.js?v=20260824-2359"></script>
 </body>
 </html>

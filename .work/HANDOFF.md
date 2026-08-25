@@ -46,6 +46,9 @@ Independent retained source checks:
 - File Library only surfaced an older `クルーバージュ：闇の推理盤.png` with a fictional/female suspect 4, a six-suspect gothic sheet, and unrelated evidence assets.
 - Commit `382456d76f2e0dcb6e9bc4d89c76412944efa3e7` imported suspects 1,2,3,5,6,7 only; suspect 4 was already withheld.
 - Commit `3c53030ca7e6ee6be7b346990c10b14c593e1841` is not an independent artifact source; its workflow only crops the known corrupted `62d5515...` blob.
+- Historical Pages run `32730372651` for `41a8257...` was cancelled and has no Actions artifacts.
+- Historical Pages run `32745948889` for `923a718c...` was cancelled and has no Actions artifacts.
+- Public web search for the old GitHub Pages URL plus Oda Nobunaga / Clue Grid terms found no indexed archived copy containing the missing artwork.
 
 Recovery attempts already completed and NOT to repeat:
 1. Appended every possible final byte value 0-255 to the one-byte-short decoded WebP: zero decodable results.
@@ -56,14 +59,16 @@ Recovery attempts already completed and NOT to repeat:
 6. Do not use the retained suspect sheet or montage: both are Oda Nobutada.
 7. Do not treat commit `3c53030...` as a separate source; it depends on the already-corrupted `62d5515...` binary.
 8. Do not repeat the same File Library searches unless new uploads appear; no valid Oda Nobunaga source was present in the current library.
+9. Do not retry artifacts from Pages runs `32730372651` or `32745948889`; both are cancelled and artifact lists are empty.
+10. Do not repeat the same public web search terms for the historical Pages URL unless a new archive/source lead appears.
 
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
 3. Do NOT repeat generic repository searches already exhausted (`織田信長`, `Oda Nobunaga`, `suspect-4`) unless new files/commits have appeared.
-4. Do NOT repeat the final-byte brute force, part1-boundary Base64 insertion, commit `62d5515...` extraction, retained Oda Nobutada sheet/montage check, `3c53030...` artifact workflow inspection, or the current File Library searches.
-5. Continue only with a materially new source class that can contain the original Oda Nobunaga binary independently of the known corrupted Git blobs and current File Library. Candidate classes: an old deployment artifact containing a complete site snapshot, an old user attachment not indexed in current File Library results, or another independently retained original file.
+4. Do NOT repeat the final-byte brute force, part1-boundary Base64 insertion, commit `62d5515...` extraction, retained Oda Nobutada sheet/montage check, `3c53030...` artifact workflow inspection, current File Library searches, or Pages artifact checks for runs `32730372651` / `32745948889`.
+5. Continue only with a materially new independent source class that can contain the original Oda Nobunaga binary independently of the known corrupted Git blobs, current File Library, and the cancelled Pages runs already checked. Candidate classes: another historical successful deployment snapshot from a nearby commit that still used the Oda Nobunaga mapping, an old user attachment not indexed in current File Library results, or another independently retained original file.
 6. If a valid source is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
 7. Only after all 14 JPGs are verified, begin Phase 2: connect `assets/card-ui.js` with minimum changes.
 8. Validate direct-image rendering on board, private-card modal, and accusation selection.
@@ -72,7 +77,7 @@ Recovery attempts already completed and NOT to repeat:
 
 ## Next safe batch
 
-Source-resolution work only until the 14th image is verified. The next productive run must inspect a genuinely new independent source, not another representation of the known truncated WebP, the visible Oda Nobutada card, or the already-searched File Library results.
+Source-resolution work only until the 14th image is verified. The next productive run should inspect a nearby historical successful deployment whose site snapshot may have preserved the intended Oda Nobunaga image despite the two checked target runs being cancelled, or another genuinely independent retained source.
 
 If no such source is accessible, preserve the blocker and do not alter production or accept a substitute image.
 
@@ -82,6 +87,7 @@ If no such source is accessible, preserve the blocker and do not alter productio
 - Historical project code confirms the intended identity, but all known corresponding Git image binaries are corrupted.
 - Independently retained visible suspect assets are Oda Nobutada and therefore unusable.
 - Current File Library searches found no valid Oda Nobunaga suspect-4 candidate.
+- The two directly relevant historical Pages runs checked so far are cancelled and have no artifacts.
 - UI activation, `index.html` simplification, and legacy deletion remain blocked until the 14th image is verified.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
@@ -100,4 +106,6 @@ Diagnostic record: `.work/candidates/historical-suspect-grid-diagnostics.txt`
 Final-byte recovery test setup: `7acb05289a457f50f4652b9a270760d53bbd05c8`
 Boundary recovery test setup: `f1cae7120e67cd13072c8d07b1d58803bb96f105`
 Verified horizontal-alibi image commit: `b9b54bd`
-Latest progress update commit: `530a34ef77be6757696281c1c5c05a6d2764f550`
+Historical Pages run for mapping commit: `32730372651` (cancelled, no artifacts)
+Historical Pages run for alignment commit: `32745948889` (cancelled, no artifacts)
+Latest progress update commit: `4fc32595b6bc6d58a4935edeabf81d5293098be8`

@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-08-26 02:27 JST
+Last updated: 2026-08-26
 
 ## Current position
 
@@ -30,9 +30,8 @@ The known Oda Nobutada (`織田信忠`) candidate remains rejected and must not 
 
 Latest verification confirmed:
 - `main` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Available uploaded-file sources were re-searched for `織田信長`, `Oda Nobunaga`, and `suspect-4`.
-- The only relevant board screenshot found depicts the old fictional/female `容疑者4`, not the required Oda Nobunaga artwork.
-- No verified Oda Nobunaga image source was found.
+- Repository search for `織田信長`, `Oda Nobunaga`, and `suspect-4` returned no verified source.
+- No production UI switch or destructive cleanup was performed.
 
 ## Exact next start point
 
@@ -40,11 +39,8 @@ Latest verification confirmed:
 2. Inspect current `main` and confirm the 13 verified JPGs remain present.
 3. Resolve the exact correct Oda Nobunaga artwork intended for `assets/cards/suspect-4.jpg` from a verified source.
 4. Do not use the known Oda Nobutada candidate, the old fictional/female `容疑者4` screenshot, or any invented/substitute artwork.
-5. Searches already performed with no valid result:
-   - repository search for `織田信長`, `Oda Nobunaga`, `suspect-4`;
-   - File Library / current uploaded-file search for `織田信長`, `Oda Nobunaga`, `suspect-4`;
-   - latest re-search at 2026-08-26 02:27 JST, which only returned the old board screenshot with a non-Nobunaga `容疑者4`.
-6. When a valid source becomes available, verify the JPEG identity/integrity and commit it as `assets/cards/suspect-4.jpg`.
+5. Repository searches already performed with no valid result: `織田信長`, `Oda Nobunaga`, `suspect-4`.
+6. When a valid source becomes available, verify JPEG identity/integrity and commit it as `assets/cards/suspect-4.jpg`.
 7. Only when all 14 JPGs are verified, begin Phase 2 by connecting `assets/card-ui.js` to the existing UI with the minimum required changes.
 8. Validate direct-image rendering in board, private-card modal, and accusation selection before removing any legacy files.
 9. Remove legacy image systems and temporary migration tooling only after the direct-image replacement is confirmed working.
@@ -76,7 +72,7 @@ No Phase 2 or destructive cleanup should be performed while `suspect-4.jpg` is u
 
 ## Unresolved items
 
-- Correct Oda Nobunaga `suspect-4.jpg` source remains unavailable after repository and uploaded-file searches.
+- Correct Oda Nobunaga `suspect-4.jpg` source remains unavailable in the repository.
 - UI activation, `index.html` simplification, and legacy deletion are blocked until the 14th image is verified.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts and should be removed during later cleanup after they are no longer needed.
 
@@ -88,4 +84,4 @@ Invalid evidence upload attempt: `93bb784fc333216b37bbc8ff49c3bd887a577ea8`
 Recovery removal commit: `7f54aad7e63795cccd1b725a31a0bc9efbe7823b`
 Final safe-chunk workflow configuration commit: `7f66db256c522e8ad821c4298e8b0b94d9b2f33e`
 Verified horizontal-alibi image commit: `b9b54bd`
-Latest progress update commit: `53443ef7c3904fade38cdb87708ec67e0313030e`
+Latest progress update commit: `157c4bff94962266cbbed2502f8facab4b3deea5`

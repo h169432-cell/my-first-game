@@ -1,20 +1,20 @@
 # Handoff
 
-Last updated: 2026-08-25 22:27 JST
+Last updated: 2026-08-25 22:36 JST
 
 ## Current position
 
-Second continuation run completed. `assets/cards/` still has no final JPG binaries, so activation remains blocked. Safe source preparation progressed: `assets/card-ui.js` now contains the 14-path mapping, suspect names, alt text, direct `<img>` creation, preload support, and image-error fallback behavior. Legacy suspect/evidence UI dependencies were audited and remain connected only because the final JPGs are absent.
+Third continuation run completed. `assets/cards/` still has no final JPG binaries, so activation remains blocked. `assets/card-ui.js` now has the full direct-JPG rendering layer prepared for revealed board cards, private inspection, and accusation choices, including preload and image-error fallback. It is still intentionally not loaded by `index.html`, so the current live game continues using the legacy image path.
 
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Inspect current `main` for external changes.
-3. Check whether the 14 required JPGs now exist under `assets/cards/`.
-4. If present, validate file presence/non-zero size/JPEG identity and visually verify suspect 4 and horizontal alibi.
-5. Then integrate `assets/card-ui.js` into board reveal, private inspection, and accusation rendering while keeping text fallback.
-6. After direct-image rendering is verified, update `index.html` to remove split-image/runtime reconstruction scripts and old suspect/evidence UI modules.
-7. Only after that verification delete the obsolete image/runtime files and temporary cleanup workflows.
+3. Check whether all 14 required JPGs exist under `assets/cards/`.
+4. If present, validate file presence, non-zero size, and JPEG identity; visually verify suspect 4 and horizontal alibi.
+5. Load `assets/card-ui.js` after `game.js` and call `CardUI.installDirectCardUI()`; verify board/private/accusation rendering and failure fallback.
+6. Only after successful verification remove the eight split-image scripts, `card-image-runtime.js`, `suspect-ui.js`, and `evidence-ui.js` from `index.html`.
+7. Then remove obsolete image/runtime files and temporary cleanup workflows in a later safe checkpoint.
 8. Update `PROGRESS.md` and `HANDOFF.md` before ending.
 
 ## Required final artwork set
@@ -36,21 +36,22 @@ Second continuation run completed. `assets/cards/` still has no final JPG binari
 
 ## Migration findings preserved
 
-- `assets/suspect-ui.js` reconstructs/crops a suspect sheet with Canvas; final direct-JPG UI should replace it completely.
-- `assets/evidence-ui.js` depends on the evidence sheet and contains an embedded Base64 horizontal-alibi image; final direct-JPG UI should replace it completely.
-- `assets/clueverge-rules-v2.js` duplicates core deck/range logic already present in `game.js` and also contains legacy sprite UI code. Current `index.html` does not load it, so it can remain untouched until final cleanup.
-- Current `index.html` still loads eight split-image part scripts plus `card-image-runtime.js`, then `game.js`, `suspect-ui.js`, and `evidence-ui.js`.
+- `assets/suspect-ui.js` uses a reconstructed sheet plus Canvas cropping.
+- `assets/evidence-ui.js` uses a reconstructed sheet and embeds horizontal alibi artwork as Base64.
+- `assets/clueverge-rules-v2.js` duplicates core rule logic already present in `game.js` and also contains legacy artwork rendering; current `index.html` does not load it.
+- `assets/card-ui.js` now provides direct file mapping, alt text, preload, image failure fallback, board/private/accusation decorators, styling, and `installDirectCardUI()`.
+- The direct UI uses DOM observers rather than replacing `game.js` functions.
 
 ## Next safe batch
 
-If image assets are available: validate all 14, wire direct images into the three render surfaces, verify fallback, simplify `index.html`, then remove legacy files in a later verified checkpoint.
+If image assets are available: validate all 14 -> activate `card-ui.js` -> verify three render surfaces and fallback -> simplify `index.html`.
 
-If image assets remain unavailable: do not attempt Base64/WebP reconstruction. Limit further work to non-destructive audits/documentation; do not activate missing image URLs.
+If image assets remain unavailable: do not retry Base64/WebP reconstruction and do not disconnect the working legacy runtime.
 
 ## Unresolved items
 
-- Final card JPG binaries are still the blocking dependency for activation of the simplified runtime.
-- Visual identity checks for suspect 4 and horizontal alibi remain pending until those files exist.
+- Final card JPG binaries are still the blocking dependency.
+- Visual identity checks for suspect 4 and horizontal alibi remain pending.
 
 ## Recovery
 

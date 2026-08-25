@@ -24,22 +24,18 @@ jobs:
           set -euo pipefail
           mkdir -p assets/cards
 
-          rebuild_if_complete() {
+          verify_and_store() {
             output_name="$1"
-            stage_prefix="$2"
-            count="$3"
-            expected_size="$4"
-            expected_sha="$5"
-            parts=()
-            for i in $(seq 1 "$count"); do
-              p=".work/staging/${stage_prefix}.part${i}.b64"
+            expected_size="$2"
+            expected_sha="$3"
+            shift 3
+            parts=("$@")
+            for p in "${parts[@]}"; do
               if [ ! -f "$p" ]; then
                 echo "$output_name: staging incomplete; skipping"
                 return 0
               fi
-              parts+=("$p")
             done
-
             tmp="$(mktemp)"
             cat "${parts[@]}" | base64 --decode > "$tmp"
             actual_size="$(wc -c < "$tmp" | tr -d ' ')"
@@ -52,9 +48,20 @@ jobs:
             echo "$output_name: verified size=$actual_size sha256=$actual_sha"
           }
 
-          rebuild_if_complete 'alibi-vertical.jpg' 'alibi-vertical' 4 7154 '5e03cf0f4919414cdbc393a9f6afe3149f3e04527a64a300f7fb708c0333ae17'
-          rebuild_if_complete 'alibi-horizontal.jpg' 'alibi-horizontal' 10 20408 'fadb23b8d690f307a970b628424953d6904d4610c87fae52b9577cf3055a9749'
-          rebuild_if_complete 'twist.jpg' 'twist' 2 7145 '85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb'
+          verify_and_store 'alibi-vertical.jpg' 7154 '5e03cf0f4919414cdbc393a9f6afe3149f3e04527a64a300f7fb708c0333ae17' \
+            .work/staging/alibi-vertical.part1.b64 .work/staging/alibi-vertical.part2.b64 \
+            .work/staging/alibi-vertical.part3.b64 .work/staging/alibi-vertical.part4.b64
+
+          verify_and_store 'alibi-horizontal.jpg' 20408 'fadb23b8d690f307a970b628424953d6904d4610c87fae52b9577cf3055a9749' \
+            .work/staging/alibi-horizontal.part1a.b64 .work/staging/alibi-horizontal.part1b.b64 \
+            .work/staging/alibi-horizontal.part2.b64 .work/staging/alibi-horizontal.part3.b64 \
+            .work/staging/alibi-horizontal.part4.b64 .work/staging/alibi-horizontal.part5.b64 \
+            .work/staging/alibi-horizontal.part6.b64 .work/staging/alibi-horizontal.part7.b64 \
+            .work/staging/alibi-horizontal.part8.b64 .work/staging/alibi-horizontal.part9.b64 \
+            .work/staging/alibi-horizontal.part10.b64
+
+          verify_and_store 'twist.jpg' 7145 '85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb' \
+            .work/staging/twist.part1.b64 .work/staging/twist.part2.b64
 
       - name: Commit verified images
         shell: bash

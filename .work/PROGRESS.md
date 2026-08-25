@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-08-26 00:34 JST
+Last updated: 2026-08-26 01:19 JST
 Repository: `h169432-cell/my-first-game`
 Primary branch: `main`
 Backup branch: `backup-before-persistent-workflow-20260825`
@@ -16,39 +16,41 @@ Backup point: commit `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 - Confirmed the available candidate `suspect-4.jpg` is Oda Nobutada (`織田信忠`), not required Oda Nobunaga (`織田信長`), and intentionally rejected it.
 - Confirmed the available `alibi-horizontal.jpg` is the required left/right-arrow artwork.
 - Committed six verified suspect JPEGs: `suspect-1.jpg`, `suspect-2.jpg`, `suspect-3.jpg`, `suspect-5.jpg`, `suspect-6.jpg`, `suspect-7.jpg`.
-- Committed four verified evidence JPEGs: `motive.jpg`, `clue.jpg`, `weapon.jpg`, `false-testimony.jpg`.
+- Committed seven verified evidence JPEGs: `motive.jpg`, `clue.jpg`, `weapon.jpg`, `false-testimony.jpg`, `alibi-vertical.jpg`, `alibi-horizontal.jpg`, `twist.jpg`.
 
 ## Current repository state
 
 The final simplified card architecture is NOT yet active. `assets/card-ui.js` remains intentionally disconnected from `index.html` until all 14 required JPGs are present.
 
-`assets/cards/` contains ten verified JPGs: six suspects plus `motive.jpg`, `clue.jpg`, `weapon.jpg`, and `false-testimony.jpg`, along with the old `README.txt`.
+`assets/cards/` now contains 13 verified production JPGs plus the old `README.txt`. The only missing production image is `assets/cards/suspect-4.jpg` for Oda Nobunaga.
 
 Current runtime remains the legacy path: split suspect/evidence parts -> `card-image-runtime.js` -> `game.js` -> `suspect-ui.js` / `evidence-ui.js`.
 
+Production `index.html`, `game.js`, and the legacy runtime were not modified in this run.
+
 ## Changes in this run
 
-- Read the four persistent state files in the required order.
-- Confirmed `main` and `assets/cards/` matched the recorded handoff state before editing.
-- Revalidated local source JPEGs for `alibi-vertical.jpg`, `alibi-horizontal.jpg`, and `twist.jpg`.
-- Attempted to add all three through direct Git blobs in commit `93bb784fc333216b37bbc8ff49c3bd887a577ea8`.
-- Post-commit verification detected that GitHub blob sizes did not match the local source sizes, proving the long Base64 transport had been truncated/mixed before blob creation.
-- Immediately removed all three invalid files in recovery commit `7f54aad7e63795cccd1b725a31a0bc9efbe7823b`; production runtime was never switched to these files.
-- Began testing a safer small-chunk staging approach; no staging file has been attached to the repository tree yet.
+- Read the four persistent state files in the required order and resumed from the recorded handoff.
+- Introduced temporary migration workflow `.github/workflows/reconstruct-staged-card.yml` to reconstruct Base64 staging chunks into binary JPEGs and reject any result whose byte size, SHA-256, JPEG SOI, or JPEG EOI does not match the source.
+- Persisted source data under `.work/staging/` using small Base64 chunks.
+- Root-caused and corrected several migration-only failures instead of bypassing validation:
+  - long Base64 payloads could be truncated/mutated during transport;
+  - the first workflow used a staging filename prefix that did not match the actual files;
+  - the first commit step attempted to `git add` nonexistent outputs;
+  - some 3,000-character horizontal-alibi chunks could retain their length while their content changed, so the affected chunks were split into 1,500-character halves and retried.
+- Reconstructed and verified all three remaining evidence images.
+- Final successful workflow run: `32871193668`.
+- Final horizontal-alibi commit from the workflow: `b9b54bd` (`Add verified staged card images`).
+- Searched the repository for a correct Oda Nobunaga `suspect-4` source; none was found.
 
 ## Validation performed
 
-Local verified source facts:
-- `alibi-vertical.jpg`: JPEG, 7,154 bytes, SHA-256 `5e03cf0f4919414cdbc393a9f6afe3149f3e04527a64a300f7fb708c0333ae17`.
-- `alibi-horizontal.jpg`: JPEG, 20,408 bytes; confirmed left/right-arrow artwork.
-- `twist.jpg`: JPEG, 7,145 bytes, SHA-256 `85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb`.
-
-Invalid GitHub upload sizes that triggered rollback:
-- `alibi-vertical.jpg`: 7,151 bytes (invalid; expected 7,154).
-- `alibi-horizontal.jpg`: 7,308 bytes (invalid; expected 20,408).
-- `twist.jpg`: 10,247 bytes (invalid; expected 7,145).
-
-After rollback, `assets/cards/` is again at the safe ten-file verified state.
+Verified source/output facts:
+- `alibi-vertical.jpg`: 7,154 bytes; SHA-256 `5e03cf0f4919414cdbc393a9f6afe3149f3e04527a64a300f7fb708c0333ae17`.
+- `alibi-horizontal.jpg`: 20,408 bytes; SHA-256 `fadb23b8d690f307a970b628424953d6904d4610c87fae52b9577cf3055a9749`; confirmed left/right-arrow artwork.
+- `twist.jpg`: 7,145 bytes; SHA-256 `85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb`.
+- GitHub Actions verified all three against exact byte size and SHA-256 and checked JPEG start/end markers before committing.
+- Current `assets/cards/` metadata confirms `alibi-vertical.jpg` = 7,154 bytes, `alibi-horizontal.jpg` = 20,408 bytes, and `twist.jpg` = 7,145 bytes.
 
 ## Recent failures worth preserving
 
@@ -56,19 +58,24 @@ After rollback, `assets/cards/` is again at the safe ten-file verified state.
 2. Normalized legacy retry: Pillow could not decode a valid WebP.
 3. Temporary archive retrieval/decode was not gzip.
 4. Directly staged temporary archive blob was also not gzip.
-5. Large single-message Base64 transport for the three remaining JPEGs produced size-mismatched blobs; this path must not be retried without chunking and exact hash validation.
+5. Large single-message Base64 transport for remaining JPEGs produced size-mismatched blobs; this path must not be reused.
+6. A 6,000-character staging chunk was silently shortened.
+7. Two horizontal-alibi chunks were mutated despite near/identical expected length; exact Git-blob/hash comparison isolated them, and smaller replacement halves resolved the issue.
 
 ## Current active objective
 
-Finish Phase 1 without touching production loading:
-1. Persist exact source data for `alibi-vertical.jpg`, `alibi-horizontal.jpg`, and `twist.jpg` using a small-chunk transport that can be verified by source size/SHA-256 before activation.
-2. Commit reconstructed binary JPEGs only after exact verification.
-3. Obtain correct Oda Nobunaga artwork for `suspect-4.jpg`.
+Phase 1 is complete for all evidence artwork. The repository has 13 of the required 14 final JPGs.
 
-Do not activate `card-ui.js`, change `index.html`, or remove legacy files until all 14 final JPGs are verified on `main`.
+Remaining Phase 1 blocker:
+1. Obtain the correct Oda Nobunaga (`織田信長`) artwork for `assets/cards/suspect-4.jpg`.
+2. Verify the file before accepting it.
+
+Do not activate `card-ui.js`, change `index.html`, or remove legacy image files until all 14 final JPGs are verified on `main`.
+
+After `suspect-4.jpg` is verified, proceed to Phase 2: connect the direct-image UI, validate board/private/accusation rendering, then remove the legacy image system only after the replacement is proven working.
 
 ## Blockers / unresolved items
 
 - Missing correct `assets/cards/suspect-4.jpg` for Oda Nobunaga.
-- Three evidence JPEGs remain uncommitted because the first long Base64 transfer was invalid and rolled back.
 - Direct-image UI activation and legacy cleanup remain blocked until the full 14-file set is complete.
+- `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts; retain them until the image-transfer phase is fully closed, then remove them during cleanup.

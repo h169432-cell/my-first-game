@@ -1,21 +1,22 @@
 # Handoff
 
-Last updated: 2026-08-25 22:16 JST
+Last updated: 2026-08-25 22:20 JST
 
 ## Current position
 
-Persistent Git-based work memory has been initialized. The repository is still on the legacy card-image architecture. No destructive cleanup has been performed yet.
+Persistent Git-based work memory has been initialized and the recurring continuation task is enabled once per hour. The repository is still on the legacy card-image architecture. No destructive cleanup has been performed yet.
 
 ## Exact next start point
 
-At the start of the next run:
+At the start of the next scheduled run:
 
-1. Read all four `.work/` files in the mandatory order.
+1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Inspect current `main` and confirm no external changes invalidated this handoff.
 3. Begin `WORK_PLAN.md` Phase 1: put the 14 final individual JPG card images in `assets/cards/`.
 4. Verify the images before changing runtime references.
 5. In the same run, if safe, proceed into Phase 2 by creating `assets/card-ui.js` and switching board/private/accusation rendering to direct image URLs.
 6. Only after direct-image rendering is verified should legacy scripts be removed.
+7. Before ending, update `PROGRESS.md` and `HANDOFF.md`, and update `WORK_PLAN.md` if architecture/scope changed.
 
 ## Required final artwork set
 
@@ -55,9 +56,14 @@ Do not attempt to reconstruct them from the old split Base64/WebP pipeline again
 - perform other safe work that does not require those binaries, such as auditing `game.js` against the fixed deck specification or preparing `card-ui.js` with stable file-path mappings
 - update `HANDOFF.md` with the next exact step
 
+## Recurring execution
+
+Current cadence: once per hour.
+
+Each run must process as many safe adjacent tasks as practical rather than artificially stopping after one task.
+
 ## Unresolved items
 
-- Recurring execution cadence is not yet explicitly specified in Git state.
 - Final card binaries need to become repository-resident so future scheduled runs can operate from Git alone.
 
 ## Recovery

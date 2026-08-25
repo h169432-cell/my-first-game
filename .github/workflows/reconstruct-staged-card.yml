@@ -61,7 +61,11 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/cards/alibi-vertical.jpg assets/cards/alibi-horizontal.jpg assets/cards/twist.jpg 2>/dev/null || true
+          for p in assets/cards/alibi-vertical.jpg assets/cards/alibi-horizontal.jpg assets/cards/twist.jpg; do
+            if [ -f "$p" ]; then
+              git add "$p"
+            fi
+          done
           if git diff --cached --quiet; then
             echo "No verified image changes"
             exit 0

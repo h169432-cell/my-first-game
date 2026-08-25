@@ -26,9 +26,10 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
 - Reconfirmed `assets/cards/` has the same 13 production JPGs and no `suspect-4.jpg`.
-- Repository metadata confirms `has_wiki: true`.
-- Available GitHub connector paths do not expose Wiki page content/history, and public indexing/search did not surface any actual Wiki page or attachment containing the missing artwork.
-- Searched the GitHub account's public repositories as a new independent storage class. Only `h169432-cell/my-first-game` is exposed; there is no second public repository containing an older copy/source.
+- Investigated a new independent source class: GitHub Issues/PRs and their potential attachment references. This repository has no open/closed Issues and no PRs, so no attachment source exists there.
+- Searched repository code for `private-user-images.githubusercontent.com`, `user-images.githubusercontent.com`, `suspect-4`, Oda Nobunaga, and `織田信長`; no attachment/reference candidate surfaced.
+- Investigated public web-search/cache indexing for the repository, GitHub Pages URL, `suspect-4.jpg`, Oda Nobunaga, and historical WebP names; no usable cached binary or archived URL surfaced.
+- Checked the repository for Cloudflare Pages / `pages.dev` / `workers.dev` deployment references; none are recorded.
 - No candidate was accepted or committed. Production code was not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -44,6 +45,9 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Releases and fork/network clone checks; empty/zero.
 - Same-account public repository search; only this repository exists.
 - `has_wiki: true` alone is not evidence of a usable Wiki binary; no page/attachment was surfaced through accessible/indexed paths.
+- GitHub Issues/PR attachment path; repository has no Issues or PRs and no attachment URL references in code.
+- Public search-engine/cache/Wayback-index discovery for the repository/GitHub Pages and historical artwork names; no usable result.
+- Repository-recorded Cloudflare/Pages deployment URL search; no deployment URL reference exists.
 
 ## Active objective
 
@@ -54,5 +58,5 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - Exact Oda Nobunaga artwork remains unavailable.
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
-- No usable source has been found in File Library, Pages artifacts, Releases, forks, same-account public repositories, or accessible/indexed Wiki paths.
+- No usable source has been found in File Library, Pages artifacts, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, or repository-recorded external deployment URLs.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

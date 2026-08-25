@@ -1,6 +1,6 @@
 # Handoff
 
-Last updated: 2026-08-26 01:32 JST
+Last updated: 2026-08-26 01:59 JST
 
 ## Current position
 
@@ -28,6 +28,12 @@ The known candidate labeled Oda Nobutada (`織田信忠`) remains rejected and m
 
 `assets/card-ui.js` is still intentionally not loaded by `index.html`; the live game still uses the legacy image runtime. Production loading and game rules remain unchanged.
 
+Latest static verification confirmed:
+- `assets/card-ui.js` has the complete intended 14-path mapping and names suspect 4 as `織田信長`.
+- `assets/card-ui.js` separately maps `alibi-vertical` and `alibi-horizontal` and contains direct-image hooks for board/private/accusation rendering.
+- `game.js` still implements the fixed 15-card base plus exactly one special card = 16 cards.
+- `game.js` retains `up/down` for vertical alibi and `left/right` for horizontal alibi.
+
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
@@ -36,8 +42,7 @@ The known candidate labeled Oda Nobutada (`織田信忠`) remains rejected and m
 4. Do not use the known Oda Nobutada candidate and do not invent/substitute artwork without a verified source.
 5. Current searches already performed with no valid result:
    - repository search for `織田信長`, `Oda Nobunaga`, `suspect-4`;
-   - available File Library search for Oda Nobunaga / suspect 4.
-   The File Library results only surfaced Clueverge board screenshots with a different suspect-4 portrait, not the required source asset.
+   - previously available File Library search for Oda Nobunaga / suspect 4.
 6. When a valid source becomes available, verify the JPEG identity/integrity and commit it as `assets/cards/suspect-4.jpg`.
 7. Only when all 14 JPGs are verified, begin Phase 2 by connecting `assets/card-ui.js` to the existing UI with the minimum required changes.
 8. Validate direct-image rendering in board, private-card modal, and accusation selection before removing any legacy files.
@@ -70,7 +75,7 @@ No Phase 2 or destructive cleanup should be performed while `suspect-4.jpg` is u
 
 ## Unresolved items
 
-- Correct Oda Nobunaga `suspect-4.jpg` source is still unavailable after repository and File Library searches.
+- Correct Oda Nobunaga `suspect-4.jpg` source is still unavailable after repository and previously available source searches.
 - UI activation, `index.html` simplification, and legacy deletion are blocked until the 14th image is verified.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts and should be removed during later cleanup after they are no longer needed.
 
@@ -82,4 +87,4 @@ Invalid evidence upload attempt: `93bb784fc333216b37bbc8ff49c3bd887a577ea8`
 Recovery removal commit: `7f54aad7e63795cccd1b725a31a0bc9efbe7823b`
 Final safe-chunk workflow configuration commit: `7f66db256c522e8ad821c4298e8b0b94d9b2f33e`
 Verified horizontal-alibi image commit: `b9b54bd`
-Latest progress-state commit: `5e94f00add56e109d512835f159aa73f9c2a5bbb`
+Latest progress update commit: `669c1d858400b80a6f2321826577d7c62332c858`

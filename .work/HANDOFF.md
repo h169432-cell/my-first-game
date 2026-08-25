@@ -17,32 +17,32 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-3. Do not repeat exhausted Git blob repairs, File Library searches, checked Pages runs/artifact, Releases, forks, retained Oda Nobutada assets, or same-account public repository search unless new evidence appears.
-4. Repository metadata says `has_wiki: true`, but current connector/public-index paths did not expose an actual Wiki page or attachment. Only pursue Wiki again if a new direct Wiki page/attachment URL or another access path becomes available.
-5. Continue with a materially new independent source class that can contain the original Oda Nobunaga binary independently of the corrupted Git blobs and direct repository snapshots.
-6. If a candidate is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
-7. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
-8. Validate board reveal, private inspection, and accusation rendering before deleting any legacy image system.
-9. Update `PROGRESS.md` and `HANDOFF.md` before ending.
+3. Do not repeat exhausted Git blob repairs, File Library searches, checked Pages runs/artifact, Releases, forks, retained Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, or repository Cloudflare URL searches unless new evidence appears.
+4. Continue only with a materially new independent source class capable of containing the original Oda Nobunaga binary independently of corrupted Git blobs/direct repository snapshots.
+5. If a candidate is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
+6. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
+7. Validate board reveal, private inspection, and accusation rendering before deleting any legacy image system.
+8. Update `PROGRESS.md` and `HANDOFF.md` before ending.
 
 ## New findings from latest run
 
 - `assets/cards/` was reconfirmed at 13/14; `suspect-4.jpg` is absent.
-- GitHub repository metadata reports Wiki enabled (`has_wiki: true`).
-- No actual Wiki page/attachment containing the artwork was surfaced through the available GitHub connector or public indexing/search.
-- The account's public repository search returns only `h169432-cell/my-first-game`; there is no second public repository to inspect for an old copy.
+- Repository has no open or closed Issues and no PRs, so GitHub Issue/PR attachment storage provides no candidate.
+- Repository code contains no surfaced `private-user-images` / `user-images` attachment URL matching the missing artwork.
+- Public search/cache indexing for the repo, GitHub Pages URL, historical WebP names, `suspect-4.jpg`, Oda Nobunaga, and `織田信長` produced no usable archived binary/URL.
+- No Cloudflare Pages / `pages.dev` / `workers.dev` deployment URL is recorded in repository code.
 - No production changes were made.
 
 ## Next safe batch
 
-Source-resolution work only. Use only a genuinely new independent source or a newly surfaced direct attachment/page reference. Do not activate the new UI or perform destructive cleanup while the 14th image is unresolved.
+Source-resolution work only. Use a genuinely new independent source or a newly surfaced direct binary/attachment/deployment reference. Do not activate the new UI or perform destructive cleanup while the 14th image is unresolved.
 
 ## Unresolved items
 
 - Correct exact Oda Nobunaga `suspect-4.jpg` remains unavailable.
 - Historical intended image data is corrupted and tested repair paths failed.
 - Accessible retained suspect assets show Oda Nobutada and are unusable.
-- Existing File Library, Pages, Releases, forks/network, same-account public repositories, and accessible/indexed Wiki paths have not produced the required binary.
+- Existing File Library, Pages, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, and repository-recorded external deployment references have not produced the required binary.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
 ## Important references

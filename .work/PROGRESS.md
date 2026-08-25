@@ -21,17 +21,14 @@ Backup point: commit `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 
 The final simplified architecture is NOT active. Live production still uses the legacy split-data image runtime. `index.html`, `game.js`, and production image loading were not switched in this run.
 
-## Latest run: independent source verification
+## Latest run: independent File Library source search
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Checked a retained independent original suspect-sheet image outside the corrupted Git WebP path. The top-right suspect 4 card is visibly labeled `織田信忠`, not `織田信長`.
-- Checked the retained final-card montage; its `suspect-4.jpg` is the same `織田信忠` card. This independently confirms the known candidate is the wrong historical person and must remain rejected.
-- Re-read commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b`; code explicitly maps suspect 4 to `織田信長`, so the intended game identity remains Oda Nobunaga even though the retained independently viewable sheet is Oda Nobutada.
-- Inspected commit `382456d76f2e0dcb6e9bc4d89c76412944efa3e7` (`Import verified suspect card images`): it deliberately imported suspects 1,2,3,5,6,7 and no suspect 4, consistent with suspect 4 already being unresolved at direct-image import time.
-- Inspected commit `3c53030ca7e6ee6be7b346990c10b14c593e1841`: its artifact workflow only attempted to crop the already-known truncated commit `62d5515...`; it does not provide an independent intact source.
-- The GitHub connector does not expose repository-wide Actions artifact enumeration through the generic fetch endpoint; no new artifact source was recovered in this run.
-- Production runtime was not modified.
+- Confirmed `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
+- Searched the user's File Library as a genuinely independent source class using queries for `織田信長`, `Oda Nobunaga`, `suspect-4`, historical/fine-art suspect grids, and seven-suspect card sheets.
+- The only relevant retained assets found were an older `クルーバージュ：闇の推理盤.png` board image with a fictional/female suspect 4, `怪しい六人のゴシックカード一覧.png` containing only six gothic suspects, and unrelated evidence-card assets.
+- No independently retained Oda Nobunaga suspect-4 image or seven-person historical fine-art sheet was found in File Library.
+- No production runtime files were changed.
 
 ## Validation facts retained
 
@@ -52,6 +49,7 @@ The final simplified architecture is NOT active. Live production still uses the 
 8. Commit `1344806...` did not generate a valid replacement; its rebuild workflow failed.
 9. Do not use the retained visible suspect sheet or montage as suspect 4: both clearly show `織田信忠`, not the required `織田信長`.
 10. Commit `3c53030...` is not a new independent artifact source; it only crops the already-corrupted `62d5515...` blob.
+11. File Library searches for `織田信長`, `Oda Nobunaga`, `suspect-4`, historical/fine-art seven-suspect sheets, and equivalent Japanese queries found no valid independent Oda Nobunaga source. Do not repeat the same File Library search unless new uploads appear.
 
 ## Current active objective
 
@@ -67,6 +65,7 @@ After `suspect-4.jpg` is verified: proceed to Phase 2, connect direct-image UI, 
 
 - Missing exact verified `assets/cards/suspect-4.jpg` for Oda Nobunaga.
 - The independently retained suspect sheet and montage contain Oda Nobutada, proving those candidates are unusable.
+- File Library contains no valid independent Oda Nobunaga suspect-4 candidate from the searches performed in this run.
 - Historical intended grid is corrupted and not recoverable by the tested repair methods or by extracting commit `62d5515...`.
 - Direct-image UI activation and destructive legacy cleanup remain blocked by the 14th image.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts to remove during later cleanup after image transfer is fully closed.

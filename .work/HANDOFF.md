@@ -48,9 +48,16 @@ Independent retained source checks:
 - Commit `3c53030ca7e6ee6be7b346990c10b14c593e1841` is not an independent artifact source; its workflow only crops the known corrupted `62d5515...` blob.
 - Historical Pages run `32730372651` for `41a8257...` was cancelled and has no Actions artifacts.
 - Historical Pages run `32745948889` for `923a718c...` was cancelled and has no Actions artifacts.
+- Nearby Pages run `32745918921` for `374f98e...` was cancelled.
+- Nearby Pages run `32745977792` for `865b21c...` was cancelled.
+- Nearby Pages run `32746011152` for `70534df...` succeeded. Its build logs prove the Pages package was a direct archive of repository root `.` with no artwork transformation. It uploaded `github-pages` artifact ID `9527076730`, retention 1 day, size 312,104 bytes, SHA-256 `78324fcadfef387c42523c82551a3b7e2cbc2ce37987cac8b854b8a752e44fc2`. The artifact is now expired (404 / absent from artifact list).
+- Because successful Pages run `32746011152` merely archived repository files, it does not constitute an independent regenerated image source; its logged contents include the same historical `new-suspect-grid-part*.js` and `suspects-latest.webp` paths already known to be corrupt.
 - Public web search for the old GitHub Pages URL plus Oda Nobunaga / Clue Grid terms found no indexed archived copy containing the missing artwork.
+- Repository Releases list is empty.
+- Repository metadata reports `forks_count: 0` and `network_count: 0`; no fork/network clone exists to inspect for an independently retained binary.
 
-Recovery attempts already completed and NOT to repeat:
+## Recovery attempts already completed and NOT to repeat
+
 1. Appended every possible final byte value 0-255 to the one-byte-short decoded WebP: zero decodable results.
 2. Inserted each of the 64 Base64 alphabet characters at the part1/part2 boundary: zero decodable results.
 3. Investigated commit `62d55158365a1ee44f8af46651f4a46568464009` as a supposedly intact direct WebP source. Full-history `git show` proved the blob at that exact commit is already only 7,503 bytes; it was truncated when first committed.
@@ -61,14 +68,17 @@ Recovery attempts already completed and NOT to repeat:
 8. Do not repeat the same File Library searches unless new uploads appear; no valid Oda Nobunaga source was present in the current library.
 9. Do not retry artifacts from Pages runs `32730372651` or `32745948889`; both are cancelled and artifact lists are empty.
 10. Do not repeat the same public web search terms for the historical Pages URL unless a new archive/source lead appears.
+11. Do not retry nearby Pages runs `32745918921` or `32745977792`; both are cancelled.
+12. Do not retry Pages artifact `9527076730` / run `32746011152`; it is expired and the build log proves it was only a direct repository archive.
+13. Do not search Releases or forks again unless repository metadata changes; Releases are empty and fork/network counts are zero.
 
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
 3. Do NOT repeat generic repository searches already exhausted (`織田信長`, `Oda Nobunaga`, `suspect-4`) unless new files/commits have appeared.
-4. Do NOT repeat the final-byte brute force, part1-boundary Base64 insertion, commit `62d5515...` extraction, retained Oda Nobutada sheet/montage check, `3c53030...` artifact workflow inspection, current File Library searches, or Pages artifact checks for runs `32730372651` / `32745948889`.
-5. Continue only with a materially new independent source class that can contain the original Oda Nobunaga binary independently of the known corrupted Git blobs, current File Library, and the cancelled Pages runs already checked. Candidate classes: another historical successful deployment snapshot from a nearby commit that still used the Oda Nobunaga mapping, an old user attachment not indexed in current File Library results, or another independently retained original file.
+4. Do NOT repeat the brute-force repair attempts, corrupted Git blob extraction, retained Oda Nobutada assets, current File Library searches, checked Pages runs/artifact, Releases, or fork checks listed above.
+5. Continue only with a materially new independent source class that can contain the original Oda Nobunaga binary independently of the known corrupted Git blobs and direct repository snapshots. Highest-priority candidates now: GitHub Wiki history/attachments if any actually exist, an old user attachment not surfaced by current File Library indexing, or another independently retained original file/source reference.
 6. If a valid source is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
 7. Only after all 14 JPGs are verified, begin Phase 2: connect `assets/card-ui.js` with minimum changes.
 8. Validate direct-image rendering on board, private-card modal, and accusation selection.
@@ -77,9 +87,11 @@ Recovery attempts already completed and NOT to repeat:
 
 ## Next safe batch
 
-Source-resolution work only until the 14th image is verified. The next productive run should inspect a nearby historical successful deployment whose site snapshot may have preserved the intended Oda Nobunaga image despite the two checked target runs being cancelled, or another genuinely independent retained source.
+Source-resolution work only until the 14th image is verified.
 
-If no such source is accessible, preserve the blocker and do not alter production or accept a substitute image.
+Next productive batch: inspect whether the repository Wiki has any actual page history or image attachments that predate the corrupted Git image path. Treat it as useful only if it contains an independent binary or link/attachment to the intended Oda Nobunaga artwork. If Wiki is empty/unusable, move to another genuinely independent retained user attachment/source rather than retrying exhausted Git/Pages paths.
+
+If no independent source is accessible, preserve the blocker and do not alter production or accept a substitute image.
 
 ## Unresolved items
 
@@ -87,11 +99,12 @@ If no such source is accessible, preserve the blocker and do not alter productio
 - Historical project code confirms the intended identity, but all known corresponding Git image binaries are corrupted.
 - Independently retained visible suspect assets are Oda Nobutada and therefore unusable.
 - Current File Library searches found no valid Oda Nobunaga suspect-4 candidate.
-- The two directly relevant historical Pages runs checked so far are cancelled and have no artifacts.
+- Checked historical/nearby Pages paths do not provide an independent recoverable binary; the one successful package is expired and was only a direct repository archive.
+- Releases and forks/network clones provide no independent source.
 - UI activation, `index.html` simplification, and legacy deletion remain blocked until the 14th image is verified.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
-## Recovery / important commits
+## Recovery / important commits and runs
 
 Backup branch: `backup-before-persistent-workflow-20260825`
 Backup commit: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
@@ -108,4 +121,6 @@ Boundary recovery test setup: `f1cae7120e67cd13072c8d07b1d58803bb96f105`
 Verified horizontal-alibi image commit: `b9b54bd`
 Historical Pages run for mapping commit: `32730372651` (cancelled, no artifacts)
 Historical Pages run for alignment commit: `32745948889` (cancelled, no artifacts)
-Latest progress update commit: `4fc32595b6bc6d58a4935edeabf81d5293098be8`
+Nearby Pages run: `32745918921` / commit `374f98e...` (cancelled)
+Nearby Pages run: `32745977792` / commit `865b21c...` (cancelled)
+Successful nearby Pages run: `32746011152` / commit `70534df...` (direct repo archive; artifact `9527076730` expired)

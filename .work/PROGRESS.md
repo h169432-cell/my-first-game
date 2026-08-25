@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-08-25 22:20 JST
+Last updated: 2026-08-25 22:25 JST
 Repository: `h169432-cell/my-first-game`
 Primary branch: `main`
 Backup branch: `backup-before-persistent-workflow-20260825`
@@ -13,25 +13,16 @@ Backup point: commit `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 - Added `.work/WORK_PLAN.md` with target architecture, phases, and completion criteria.
 - Added `.work/PROGRESS.md` and `.work/HANDOFF.md` as the persistent Git work state.
 - Enabled recurring scheduled execution once per hour.
-- The recurring execution prompt requires every run to read the four `.work/` files first, resume from Git state, process multiple safe adjacent tasks, and write progress/handoff back to Git before ending.
 - Confirmed the current repository still contains the legacy image stack and temporary cleanup workflows.
-- Confirmed current `index.html` still loads split suspect/evidence image parts plus `card-image-runtime.js`, then `game.js`, `suspect-ui.js`, and `evidence-ui.js`.
+- First continuation run read all four persistent state files in the required order.
+- Audited `game.js` deck construction: it already builds the required 15-card base deck plus exactly one of the three special cards, for 16 cards total; the two alibi variants are vertical up/down and horizontal left/right.
+- Added `assets/card-ui.js` with the centralized 14-path `CARD_IMAGES` mapping, card-to-image key resolution, URL lookup, and image preloading helper.
 
 ## Current repository state
 
-The final simplified card architecture is NOT yet active.
+The final simplified card architecture is NOT yet active. The legacy runtime remains intact intentionally because the final JPG binaries are not repository-resident yet.
 
-Known legacy components still present include:
-
-- split suspect image JS parts
-- split evidence image JS parts
-- runtime image reconstruction
-- old suspect/evidence UI modules
-- multiple obsolete sprite/WebP/data experiments
-- old rule override module
-- two temporary GitHub Actions workflows used during failed image-reconstruction attempts
-
-`assets/cards/` is not yet the authoritative final artwork directory.
+`assets/card-ui.js` now prepares the direct-file architecture, but it is not loaded by `index.html` and runtime rendering has not been switched to it.
 
 ## Recent failures worth preserving
 
@@ -44,21 +35,20 @@ Conclusion: do NOT spend additional runs trying to repair the old split-WebP rec
 
 ## Current active objective
 
-Phase 1 from `WORK_PLAN.md`: establish the 14 final individual JPG card assets in `assets/cards/`, then switch runtime rendering to those files.
+Phase 1 remains blocked on the 14 final individual JPG card assets. Safe Phase 2 preparation has begun with `assets/card-ui.js`.
 
-## Changes in this setup run
+## Changes in this run
 
-- Created backup branch `backup-before-persistent-workflow-20260825`.
-- Added persistent work-state documentation under `.work/`.
-- Created and enabled the hourly recurring continuation task.
+- Added `assets/card-ui.js`.
+- Verified the fixed deck construction already matches the specified composition.
+- Did not alter `index.html`, legacy UI modules, or legacy image scripts because the replacement image binaries are not yet available in Git.
 
 ## Validation performed
 
-- Verified `main` existed and recorded its pre-setup commit SHA.
-- Verified no existing work-state files matching WORK_PLAN / PROGRESS / HANDOFF / EXECUTION_PROTOCOL existed before creation.
-- Re-opened `EXECUTION_PROTOCOL.md` and `HANDOFF.md` after creation to confirm their persisted contents.
+- Read execution protocol, plan, progress, and handoff in order.
+- Inspected `game.js` and verified base counts/special selection/alibi directions directly from source.
+- Confirmed `assets/card-ui.js` did not previously exist before creation.
 
 ## Blockers / unresolved items
 
-- The 14 final image files must be committed into the repository before scheduled executions can rely on Git alone for artwork migration.
-- Hourly cadence is the current default; it can be changed if a different frequency is desired.
+- The 14 final JPG image files must be committed into `assets/cards/` before direct-image rendering can be safely activated and legacy image systems removed.

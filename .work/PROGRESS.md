@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-08-26 01:32 JST
+Last updated: 2026-08-26 01:59 JST
 Repository: `h169432-cell/my-first-game`
 Primary branch: `main`
 Backup branch: `backup-before-persistent-workflow-20260825`
@@ -31,11 +31,14 @@ Production `index.html`, `game.js`, and the legacy runtime remain unchanged.
 ## Changes in the latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, and `.work/HANDOFF.md` in the required order.
-- Confirmed on current `main` that all 13 previously verified production JPGs remain present under `assets/cards/`; `suspect-4.jpg` remains absent.
-- Re-searched the repository for `織田信長`, `Oda Nobunaga`, and `suspect-4`; no correct source was found.
-- Searched the available File Library for prior uploads matching Oda Nobunaga / suspect 4. The returned Clueverge board screenshots show a different existing suspect-4 portrait and do not provide the required Oda Nobunaga artwork; no correct source file was found.
-- Did not substitute, generate, or accept an unverified artwork source.
+- Confirmed current `main` still contains the same 13 verified production JPGs under `assets/cards/`; `suspect-4.jpg` remains absent.
+- Performed safe static verification while Phase 1 remains blocked:
+  - `assets/card-ui.js` maps all 14 intended final image paths, including `suspect-4 -> assets/cards/suspect-4.jpg` and identifies suspect 4 as `織田信長`.
+  - `assets/card-ui.js` maps `alibi-vertical` and `alibi-horizontal` independently and has direct-image rendering hooks for board, private inspection, and accusation UI.
+  - `game.js` still builds six base suspects, two weapons, two clues, two motives, two distinct alibis, one base false testimony, then exactly one of extra false testimony / suspect 7 / twist, for 16 total cards.
+  - `game.js` keeps vertical alibi directions `up/down` and horizontal alibi directions `left/right`.
 - Did not activate `assets/card-ui.js`, edit `index.html`, or delete any legacy image-system file because the Phase 1 source-identity blocker remains unresolved.
+- No architecture or execution-order change was made; `WORK_PLAN.md` therefore did not require modification.
 
 ## Earlier migration work retained
 
@@ -54,6 +57,7 @@ Verified source/output facts:
 - `twist.jpg`: 7,145 bytes; SHA-256 `85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb`.
 - GitHub Actions verified all three against exact byte size and SHA-256 and checked JPEG start/end markers before committing.
 - Current `assets/cards/` listing confirms the 13 production JPGs remain present and `suspect-4.jpg` is still missing.
+- Static source validation confirms `card-ui.js` and `game.js` remain aligned with the target 14-image mapping and fixed 16-card deck specification.
 
 ## Recent failures worth preserving
 
@@ -79,6 +83,6 @@ After `suspect-4.jpg` is verified, proceed to Phase 2: connect the direct-image 
 
 ## Blockers / unresolved items
 
-- Missing correct `assets/cards/suspect-4.jpg` for Oda Nobunaga. Repository search and available File Library search both currently have no verified source.
+- Missing correct `assets/cards/suspect-4.jpg` for Oda Nobunaga. Repository and previously checked available sources contain no verified source.
 - Direct-image UI activation and legacy cleanup remain blocked until the full 14-file set is complete.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts; retain them until the image-transfer phase is fully closed, then remove them during cleanup.

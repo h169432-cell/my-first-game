@@ -1,4 +1,4 @@
-name: Extract historical suspect 4
+name: Diagnose historical suspect 4
 
 on:
   push:
@@ -10,64 +10,74 @@ permissions:
   contents: write
 
 jobs:
-  extract:
+  diagnose:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install Pillow
-        run: python -m pip install --quiet pillow
-
-      - name: Extract candidate from historical production sheet
+      - name: Diagnose historical WebP sources
         run: |
           python - <<'PY'
           from pathlib import Path
-          from PIL import Image
-          import io, subprocess, hashlib
+          import base64, hashlib, re, subprocess
 
           commit = '923a718c386dfebf9c3753bb6cf6e5d686eb7e18'
-          path = 'assets/suspects-latest.webp'
-          raw = subprocess.check_output(['git', 'show', f'{commit}:{path}'])
-          img = Image.open(io.BytesIO(raw)).convert('RGB')
-          w, h = img.size
-
-          # Historical UI used a 4x2 grid; suspect 4 occupied the top-right cell.
-          left = round(w * 3 / 4)
-          top = 0
-          right = w
-          bottom = round(h / 2)
-          candidate = img.crop((left, top, right, bottom))
-
           outdir = Path('.work/candidates')
           outdir.mkdir(parents=True, exist_ok=True)
-          out = outdir / 'suspect-4-history.jpg'
-          candidate.save(out, 'JPEG', quality=95, optimize=True)
-          data = out.read_bytes()
-          meta = outdir / 'suspect-4-history.txt'
-          meta.write_text(
-              f'source_commit={commit}\n'
-              f'source_path={path}\n'
-              f'source_blob_sha=d8aef91808ed6233df49e44f1f80c4888b08b62c\n'
-              f'source_dimensions={w}x{h}\n'
-              f'crop_box={left},{top},{right},{bottom}\n'
-              f'candidate_dimensions={candidate.width}x{candidate.height}\n'
-              f'candidate_bytes={len(data)}\n'
-              f'candidate_sha256={hashlib.sha256(data).hexdigest()}\n',
-              encoding='utf-8'
-          )
+          lines = []
+
+          blob_path = 'assets/suspects-latest.webp'
+          blob = subprocess.check_output(['git', 'show', f'{commit}:{blob_path}'])
+          lines += [
+              f'historical_blob_path={blob_path}',
+              f'historical_blob_bytes={len(blob)}',
+              f'historical_blob_sha256={hashlib.sha256(blob).hexdigest()}',
+              f'historical_blob_header={blob[:12].hex()}',
+          ]
+          if len(blob) >= 12 and blob[:4] == b'RIFF' and blob[8:12] == b'WEBP':
+              declared = int.from_bytes(blob[4:8], 'little') + 8
+              lines.append(f'historical_blob_declared_bytes={declared}')
+              lines.append(f'historical_blob_size_match={declared == len(blob)}')
+
+          parts = []
+          for i in range(1, 5):
+              path = f'assets/new-suspect-grid-part{i}.js'
+              text = subprocess.check_output(['git', 'show', f'{commit}:{path}']).decode('utf-8')
+              matches = re.findall(r"\.push\('([^']+)'\)", text)
+              lines.append(f'part{i}_push_count={len(matches)}')
+              lines.append(f'part{i}_payload_chars={sum(len(x) for x in matches)}')
+              parts.extend(matches)
+
+          payload = ''.join(parts)
+          payload += '=' * (-len(payload) % 4)
+          decoded = base64.b64decode(payload)
+          lines += [
+              f'parts_total_payload_chars={len(payload)}',
+              f'parts_decoded_bytes={len(decoded)}',
+              f'parts_decoded_sha256={hashlib.sha256(decoded).hexdigest()}',
+              f'parts_decoded_header={decoded[:12].hex()}',
+          ]
+          if len(decoded) >= 12 and decoded[:4] == b'RIFF' and decoded[8:12] == b'WEBP':
+              declared = int.from_bytes(decoded[4:8], 'little') + 8
+              lines.append(f'parts_declared_bytes={declared}')
+              lines.append(f'parts_size_match={declared == len(decoded)}')
+          lines.append(f'parts_equal_historical_blob={decoded == blob}')
+
+          meta = outdir / 'historical-suspect-grid-diagnostics.txt'
+          meta.write_text('\n'.join(lines) + '\n', encoding='utf-8')
           print(meta.read_text())
           PY
 
-      - name: Commit isolated candidate
+      - name: Commit diagnostics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .work/candidates/suspect-4-history.jpg .work/candidates/suspect-4-history.txt
+          git add .work/candidates/historical-suspect-grid-diagnostics.txt
           if git diff --cached --quiet; then
-            echo "No candidate changes"
+            echo "No diagnostics changes"
           else
-            git commit -m "Extract historical suspect-4 candidate"
+            git commit -m "Record historical suspect grid diagnostics"
             git push
           fi

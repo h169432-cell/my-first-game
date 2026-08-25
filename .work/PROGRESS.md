@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-08-26 01:19 JST
+Last updated: 2026-08-26 01:32 JST
 Repository: `h169432-cell/my-first-game`
 Primary branch: `main`
 Backup branch: `backup-before-persistent-workflow-20260825`
@@ -22,26 +22,29 @@ Backup point: commit `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 
 The final simplified card architecture is NOT yet active. `assets/card-ui.js` remains intentionally disconnected from `index.html` until all 14 required JPGs are present.
 
-`assets/cards/` now contains 13 verified production JPGs plus the old `README.txt`. The only missing production image is `assets/cards/suspect-4.jpg` for Oda Nobunaga.
+`assets/cards/` contains 13 verified production JPGs plus the old `README.txt`. The only missing production image is `assets/cards/suspect-4.jpg` for Oda Nobunaga.
 
 Current runtime remains the legacy path: split suspect/evidence parts -> `card-image-runtime.js` -> `game.js` -> `suspect-ui.js` / `evidence-ui.js`.
 
-Production `index.html`, `game.js`, and the legacy runtime were not modified in this run.
+Production `index.html`, `game.js`, and the legacy runtime remain unchanged.
 
-## Changes in this run
+## Changes in the latest run
 
-- Read the four persistent state files in the required order and resumed from the recorded handoff.
+- Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, and `.work/HANDOFF.md` in the required order.
+- Confirmed on current `main` that all 13 previously verified production JPGs remain present under `assets/cards/`; `suspect-4.jpg` remains absent.
+- Re-searched the repository for `織田信長`, `Oda Nobunaga`, and `suspect-4`; no correct source was found.
+- Searched the available File Library for prior uploads matching Oda Nobunaga / suspect 4. The returned Clueverge board screenshots show a different existing suspect-4 portrait and do not provide the required Oda Nobunaga artwork; no correct source file was found.
+- Did not substitute, generate, or accept an unverified artwork source.
+- Did not activate `assets/card-ui.js`, edit `index.html`, or delete any legacy image-system file because the Phase 1 source-identity blocker remains unresolved.
+
+## Earlier migration work retained
+
 - Introduced temporary migration workflow `.github/workflows/reconstruct-staged-card.yml` to reconstruct Base64 staging chunks into binary JPEGs and reject any result whose byte size, SHA-256, JPEG SOI, or JPEG EOI does not match the source.
 - Persisted source data under `.work/staging/` using small Base64 chunks.
-- Root-caused and corrected several migration-only failures instead of bypassing validation:
-  - long Base64 payloads could be truncated/mutated during transport;
-  - the first workflow used a staging filename prefix that did not match the actual files;
-  - the first commit step attempted to `git add` nonexistent outputs;
-  - some 3,000-character horizontal-alibi chunks could retain their length while their content changed, so the affected chunks were split into 1,500-character halves and retried.
-- Reconstructed and verified all three remaining evidence images.
+- Root-caused and corrected migration-only failures rather than bypassing validation.
+- Reconstructed and verified all three previously missing evidence images.
 - Final successful workflow run: `32871193668`.
 - Final horizontal-alibi commit from the workflow: `b9b54bd` (`Add verified staged card images`).
-- Searched the repository for a correct Oda Nobunaga `suspect-4` source; none was found.
 
 ## Validation performed
 
@@ -50,7 +53,7 @@ Verified source/output facts:
 - `alibi-horizontal.jpg`: 20,408 bytes; SHA-256 `fadb23b8d690f307a970b628424953d6904d4610c87fae52b9577cf3055a9749`; confirmed left/right-arrow artwork.
 - `twist.jpg`: 7,145 bytes; SHA-256 `85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb`.
 - GitHub Actions verified all three against exact byte size and SHA-256 and checked JPEG start/end markers before committing.
-- Current `assets/cards/` metadata confirms `alibi-vertical.jpg` = 7,154 bytes, `alibi-horizontal.jpg` = 20,408 bytes, and `twist.jpg` = 7,145 bytes.
+- Current `assets/cards/` listing confirms the 13 production JPGs remain present and `suspect-4.jpg` is still missing.
 
 ## Recent failures worth preserving
 
@@ -67,7 +70,7 @@ Verified source/output facts:
 Phase 1 is complete for all evidence artwork. The repository has 13 of the required 14 final JPGs.
 
 Remaining Phase 1 blocker:
-1. Obtain the correct Oda Nobunaga (`織田信長`) artwork for `assets/cards/suspect-4.jpg`.
+1. Obtain the exact intended Oda Nobunaga (`織田信長`) artwork for `assets/cards/suspect-4.jpg` from a verified source.
 2. Verify the file before accepting it.
 
 Do not activate `card-ui.js`, change `index.html`, or remove legacy image files until all 14 final JPGs are verified on `main`.
@@ -76,6 +79,6 @@ After `suspect-4.jpg` is verified, proceed to Phase 2: connect the direct-image 
 
 ## Blockers / unresolved items
 
-- Missing correct `assets/cards/suspect-4.jpg` for Oda Nobunaga.
+- Missing correct `assets/cards/suspect-4.jpg` for Oda Nobunaga. Repository search and available File Library search both currently have no verified source.
 - Direct-image UI activation and legacy cleanup remain blocked until the full 14-file set is complete.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts; retain them until the image-transfer phase is fully closed, then remove them during cleanup.

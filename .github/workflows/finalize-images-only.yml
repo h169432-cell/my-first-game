@@ -1,0 +1,57 @@
+name: Generate individual card images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/finalize-images-only.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python -m pip install --quiet pillow
+      - name: Generate JPG cards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import base64, io, re, shutil
+          assets=Path('assets'); cards=assets/'cards'
+          shutil.rmtree(cards, ignore_errors=True); cards.mkdir(parents=True)
+          def data(pattern):
+              parts=[]
+              for p in sorted(assets.glob(pattern)):
+                  m=re.search(r"\.push\('([^']+)'\)",p.read_text(encoding='utf-8'))
+                  if not m: raise RuntimeError(f'parse failed: {p}')
+                  parts.append(m.group(1))
+              s=''.join(parts).replace('\\n','').replace('\\r','').replace(' ','')
+              s += '=' * (-len(s) % 4)
+              return base64.b64decode(s)
+          sus=Image.open(io.BytesIO(data('new-suspect-grid-part*.js'))).convert('RGB')
+          ev=Image.open(io.BytesIO(data('new-evidence-grid-part*.js'))).convert('RGB')
+          def box(b,im):
+              sx,sy=im.width/540,im.height/405
+              return (round(b[0]*sx),round(b[1]*sy),round(b[2]*sx),round(b[3]*sy))
+          sb={1:(4,3,134,200),2:(137,3,267,200),3:(270,3,400,200),4:(403,3,537,200),5:(67,205,200,402),6:(203,205,334,402),7:(337,205,469,402)}
+          for n,b in sb.items(): sus.crop(box(b,sus)).save(cards/f'suspect-{n}.jpg','JPEG',quality=90,optimize=True)
+          eb={'motive':(9,3,184,217),'clue':(190,3,365,217),'weapon':(370,3,540,217),'false-testimony':(9,220,184,405),'alibi-vertical':(190,220,365,405),'twist':(370,220,540,405)}
+          for n,b in eb.items(): ev.crop(box(b,ev)).save(cards/f'{n}.jpg','JPEG',quality=90,optimize=True)
+          ui=(assets/'evidence-ui.js').read_text(encoding='utf-8')
+          m=re.search(r"HORIZONTAL_ALIBI\s*=\s*'data:image/jpeg;base64,([^']+)'",ui)
+          if not m: raise RuntimeError('horizontal alibi not found')
+          s=m.group(1); s += '=' * (-len(s)%4)
+          Image.open(io.BytesIO(base64.b64decode(s))).convert('RGB').save(cards/'alibi-horizontal.jpg','JPEG',quality=90,optimize=True)
+          for p in sorted(cards.glob('*.jpg')): print(p,p.stat().st_size)
+          PY
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/cards
+          git commit -m "Generate individual card image files"
+          git push

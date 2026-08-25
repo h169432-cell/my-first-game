@@ -1,0 +1,49 @@
+name: Import verified card assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-card-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download packed verified assets
+        run: |
+          mkdir -p assets/cards
+          curl -fsSL https://api.github.com/repos/h169432-cell/my-first-game/git/blobs/4ed5c667a5c7b9cd60dd688283996d0d721864c6 \
+            | jq -r '.content' \
+            | tr -d '\n' \
+            | base64 -d > /tmp/cards.tar.gz
+          tar -xzf /tmp/cards.tar.gz -C assets/cards
+      - name: Validate imported JPEGs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          expected = {
+              'suspect-1.jpg','suspect-2.jpg','suspect-3.jpg','suspect-5.jpg','suspect-6.jpg','suspect-7.jpg',
+              'motive.jpg','clue.jpg','weapon.jpg','false-testimony.jpg',
+              'alibi-vertical.jpg','alibi-horizontal.jpg','twist.jpg'
+          }
+          found = {p.name for p in Path('assets/cards').glob('*.jpg')}
+          if found != expected:
+              raise SystemExit(f'unexpected asset set: {sorted(found)}')
+          for p in Path('assets/cards').glob('*.jpg'):
+              data = p.read_bytes()
+              if len(data) == 0 or not data.startswith(b'\xff\xd8') or not data.endswith(b'\xff\xd9'):
+                  raise SystemExit(f'invalid JPEG: {p}')
+          print('validated', len(found), 'JPEG assets')
+          PY
+      - name: Commit imported assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/cards/*.jpg
+          git commit -m 'Import 13 verified individual card images'
+          git push

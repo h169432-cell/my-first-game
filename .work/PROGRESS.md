@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-08-25 22:16 JST
+Last updated: 2026-08-25 22:20 JST
 Repository: `h169432-cell/my-first-game`
 Primary branch: `main`
 Backup branch: `backup-before-persistent-workflow-20260825`
@@ -11,6 +11,9 @@ Backup point: commit `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 - Created a backup branch from the pre-persistence state.
 - Added `.work/EXECUTION_PROTOCOL.md` to define mandatory scheduled-run behavior.
 - Added `.work/WORK_PLAN.md` with target architecture, phases, and completion criteria.
+- Added `.work/PROGRESS.md` and `.work/HANDOFF.md` as the persistent Git work state.
+- Enabled recurring scheduled execution once per hour.
+- The recurring execution prompt requires every run to read the four `.work/` files first, resume from Git state, process multiple safe adjacent tasks, and write progress/handoff back to Git before ending.
 - Confirmed the current repository still contains the legacy image stack and temporary cleanup workflows.
 - Confirmed current `index.html` still loads split suspect/evidence image parts plus `card-image-runtime.js`, then `game.js`, `suspect-ui.js`, and `evidence-ui.js`.
 
@@ -47,13 +50,15 @@ Phase 1 from `WORK_PLAN.md`: establish the 14 final individual JPG card assets i
 
 - Created backup branch `backup-before-persistent-workflow-20260825`.
 - Added persistent work-state documentation under `.work/`.
+- Created and enabled the hourly recurring continuation task.
 
 ## Validation performed
 
 - Verified `main` existed and recorded its pre-setup commit SHA.
 - Verified no existing work-state files matching WORK_PLAN / PROGRESS / HANDOFF / EXECUTION_PROTOCOL existed before creation.
+- Re-opened `EXECUTION_PROTOCOL.md` and `HANDOFF.md` after creation to confirm their persisted contents.
 
 ## Blockers / unresolved items
 
 - The 14 final image files must be committed into the repository before scheduled executions can rely on Git alone for artwork migration.
-- Execution cadence for the recurring scheduled task was not explicitly specified by the user in the instruction text.
+- Hourly cadence is the current default; it can be changed if a different frequency is desired.

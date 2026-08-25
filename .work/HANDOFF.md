@@ -1,22 +1,20 @@
 # Handoff
 
-Last updated: 2026-08-25 22:20 JST
+Last updated: 2026-08-25 22:25 JST
 
 ## Current position
 
-Persistent Git-based work memory has been initialized and the recurring continuation task is enabled once per hour. The repository is still on the legacy card-image architecture. No destructive cleanup has been performed yet.
+First continuation run completed. Persistent Git state was read in the required order. `game.js` deck construction was audited and already matches the fixed 16-card composition. `assets/card-ui.js` now exists with centralized direct-JPG mappings, but the final image binaries are still absent, so the legacy runtime has deliberately not been disconnected.
 
 ## Exact next start point
 
-At the start of the next scheduled run:
-
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
-2. Inspect current `main` and confirm no external changes invalidated this handoff.
-3. Begin `WORK_PLAN.md` Phase 1: put the 14 final individual JPG card images in `assets/cards/`.
-4. Verify the images before changing runtime references.
-5. In the same run, if safe, proceed into Phase 2 by creating `assets/card-ui.js` and switching board/private/accusation rendering to direct image URLs.
-6. Only after direct-image rendering is verified should legacy scripts be removed.
-7. Before ending, update `PROGRESS.md` and `HANDOFF.md`, and update `WORK_PLAN.md` if architecture/scope changed.
+2. Inspect current `main` for external changes.
+3. Check whether the 14 required JPGs now exist under `assets/cards/`.
+4. If present, validate them, then wire `assets/card-ui.js` into board/private/accusation rendering and update `index.html`.
+5. If absent, do not reconstruct old Base64/WebP assets. Continue only safe source-level preparation/audit that does not require image binaries.
+6. Do not delete legacy image/runtime files until direct-image rendering is verified.
+7. Update `PROGRESS.md` and `HANDOFF.md` before ending.
 
 ## Required final artwork set
 
@@ -37,41 +35,15 @@ At the start of the next scheduled run:
 
 ## Next safe batch
 
-Preferred batch if image assets are available to the run:
+If image assets are available: validate all 14, integrate `card-ui.js`, switch board/private/accusation views, test fallback, then simplify `index.html` only after successful verification.
 
-- commit all 14 images
-- add centralized card image mapping/rendering
-- update `index.html` to load the new UI module
-- validate board/private/accusation rendering
-- record results in `PROGRESS.md`
-
-Do NOT delete legacy files in the same batch unless the direct-image path has been verified.
-
-## If image assets are not available to the run
-
-Do not attempt to reconstruct them from the old split Base64/WebP pipeline again. Instead:
-
-- leave legacy runtime intact
-- document the missing asset blocker in `PROGRESS.md`
-- perform other safe work that does not require those binaries, such as auditing `game.js` against the fixed deck specification or preparing `card-ui.js` with stable file-path mappings
-- update `HANDOFF.md` with the next exact step
-
-## Recurring execution
-
-Current cadence: once per hour.
-
-Each run must process as many safe adjacent tasks as practical rather than artificially stopping after one task.
+If image assets remain unavailable: audit the remaining rule override/UI modules and prepare migration details without activating missing image URLs.
 
 ## Unresolved items
 
-- Final card binaries need to become repository-resident so future scheduled runs can operate from Git alone.
+- Final card JPG binaries are still the blocking dependency for activation of the simplified runtime.
 
 ## Recovery
 
-If cleanup work breaks the project, the preserved pre-persistence branch is:
-
-`backup-before-persistent-workflow-20260825`
-
-at commit:
-
-`f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
+Backup branch: `backup-before-persistent-workflow-20260825`
+Backup commit: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`

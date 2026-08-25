@@ -22,66 +22,61 @@ Present:
 - `twist.jpg`
 
 Missing:
-- `suspect-4.jpg` — must be Oda Nobunaga (`織田信長`)
+- `suspect-4.jpg` — must be the exact intended Oda Nobunaga (`織田信長`) artwork.
 
-The known Oda Nobutada (`織田信忠`) candidate remains rejected and must not be used.
+Known Oda Nobutada (`織田信忠`) and old fictional/female suspect-4 candidates remain rejected.
 
-`assets/card-ui.js` is still intentionally not loaded by `index.html`; the live game still uses the legacy image runtime. Production loading and game rules remain unchanged.
+`assets/card-ui.js` is intentionally not loaded. Production still uses the legacy runtime and production `index.html` / game loading were not changed.
 
-Latest verification confirmed:
-- `main` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Repository search for `織田信長`, `Oda Nobunaga`, and `suspect-4` returned no verified source.
-- No production UI switch or destructive cleanup was performed.
+## New historical evidence
+
+Git history proves that the fine-art seven-person grid intended suspect 4 to be Oda Nobunaga:
+- `41a8257ceaf17b90f06cb57a9a330a285b9fd71b`: introduced the fine-art mapping with `4: '織田信長'`.
+- `923a718c386dfebf9c3753bb6cf6e5d686eb7e18`: retained that mapping and used suspect 4 as the top-right cell in the 4x2 grid.
+
+However, the corresponding historical image data is corrupted:
+- `assets/suspects-latest.webp`: 7,503 actual bytes vs 47,914 declared RIFF bytes.
+- historical four-part Base64 grid: 56,087 decoded bytes vs 56,088 declared RIFF bytes.
+- diagnostic record: `.work/candidates/historical-suspect-grid-diagnostics.txt`.
+
+Recovery attempts already completed and NOT to repeat:
+1. Appended every possible final byte value 0-255 to the one-byte-short decoded WebP: zero decodable results.
+2. Because part1 has 18,695 Base64 chars and parts2-4 each have 18,696, inserted each of the 64 Base64 alphabet characters at the part1/part2 boundary: zero decodable results.
+
+Therefore the historical source has corruption beyond those simple repairs. The temporary workflows used for these tests were removed.
 
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
-2. Inspect current `main` and confirm the 13 verified JPGs remain present.
-3. Resolve the exact correct Oda Nobunaga artwork intended for `assets/cards/suspect-4.jpg` from a verified source.
-4. Do not use the known Oda Nobutada candidate, the old fictional/female `容疑者4` screenshot, or any invented/substitute artwork.
-5. Repository searches already performed with no valid result: `織田信長`, `Oda Nobunaga`, `suspect-4`.
-6. When a valid source becomes available, verify JPEG identity/integrity and commit it as `assets/cards/suspect-4.jpg`.
-7. Only when all 14 JPGs are verified, begin Phase 2 by connecting `assets/card-ui.js` to the existing UI with the minimum required changes.
-8. Validate direct-image rendering in board, private-card modal, and accusation selection before removing any legacy files.
-9. Remove legacy image systems and temporary migration tooling only after the direct-image replacement is confirmed working.
-10. Update `PROGRESS.md` and `HANDOFF.md` before ending the next run.
-
-## Verified evidence transfer facts
-
-- `alibi-vertical.jpg`: 7,154 bytes; SHA-256 `5e03cf0f4919414cdbc393a9f6afe3149f3e04527a64a300f7fb708c0333ae17`.
-- `alibi-horizontal.jpg`: 20,408 bytes; SHA-256 `fadb23b8d690f307a970b628424953d6904d4610c87fae52b9577cf3055a9749`; left/right-arrow artwork.
-- `twist.jpg`: 7,145 bytes; SHA-256 `85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb`.
-
-GitHub Actions run `32871193668` verified all three by exact size, SHA-256, JPEG SOI and JPEG EOI. Horizontal alibi was newly committed as `b9b54bd` (`Add verified staged card images`); vertical alibi and twist were already present and matched exactly.
-
-## Migration lessons / do not repeat
-
-- Do not use one-shot long Base64 transfers for binary assets.
-- A large text payload can be silently truncated or mutated; file length alone is not sufficient validation.
-- Use small chunks and exact hashes when binary transfer through text is unavoidable.
-- Do not relax or bypass byte/hash validation to make a migration succeed.
+2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
+3. Do NOT repeat generic repository searches already exhausted (`織田信長`, `Oda Nobunaga`, `suspect-4`) unless new files/commits have appeared.
+4. Do NOT repeat the final-byte brute force or part1-boundary Base64 insertion recovery; both are conclusively recorded as failures.
+5. Prefer a new verified source path for the exact intended Oda Nobunaga artwork. If investigating Git history further, only pursue a materially different recovery angle (for example an earlier intact source blob/attachment or an independently verifiable original asset), not variants of the two failed repairs.
+6. If a valid source is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
+7. Only after all 14 JPGs are verified, begin Phase 2: connect `assets/card-ui.js` with minimum changes.
+8. Validate direct-image rendering on board, private-card modal, and accusation selection.
+9. Only after successful replacement validation remove legacy image systems and temporary migration tooling.
+10. Update `PROGRESS.md` and `HANDOFF.md` before ending.
 
 ## Next safe batch
 
-The next safe work batch remains limited by source identity:
-1. Resolve the verified Oda Nobunaga `suspect-4.jpg` source.
-2. Verify and commit it.
-3. If and only if the full 14-file set is then complete, proceed to the direct-image UI switch and validation.
-
-No Phase 2 or destructive cleanup should be performed while `suspect-4.jpg` is unresolved.
+The next safe batch is source-resolution work only until the 14th image is verified. A productive run should seek a genuinely new source/recovery route; if none exists, preserve the blocker rather than altering production or accepting a substitute image.
 
 ## Unresolved items
 
-- Correct Oda Nobunaga `suspect-4.jpg` source remains unavailable in the repository.
-- UI activation, `index.html` simplification, and legacy deletion are blocked until the 14th image is verified.
-- `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts and should be removed during later cleanup after they are no longer needed.
+- Correct exact Oda Nobunaga `suspect-4.jpg` source remains unavailable.
+- Historical project code confirms the intended identity, but its corresponding image binary is corrupted.
+- UI activation, `index.html` simplification, and legacy deletion remain blocked until the 14th image is verified.
+- `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
 ## Recovery / important commits
 
 Backup branch: `backup-before-persistent-workflow-20260825`
 Backup commit: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
-Invalid evidence upload attempt: `93bb784fc333216b37bbc8ff49c3bd887a577ea8`
-Recovery removal commit: `7f54aad7e63795cccd1b725a31a0bc9efbe7823b`
-Final safe-chunk workflow configuration commit: `7f66db256c522e8ad821c4298e8b0b94d9b2f33e`
+Historical fine-art mapping: `41a8257ceaf17b90f06cb57a9a330a285b9fd71b`
+Historical grid alignment: `923a718c386dfebf9c3753bb6cf6e5d686eb7e18`
+Historical diagnostics workflow setup: `8f975fdf0dd547dcfe3c5019a65a2ea0f9ea9897`
+Diagnostic record: `.work/candidates/historical-suspect-grid-diagnostics.txt`
+Final-byte recovery test setup: `7acb05289a457f50f4652b9a270760d53bbd05c8`
+Boundary recovery test setup: `f1cae7120e67cd13072c8d07b1d58803bb96f105`
 Verified horizontal-alibi image commit: `b9b54bd`
-Latest progress update commit: `157c4bff94962266cbbed2502f8facab4b3deea5`

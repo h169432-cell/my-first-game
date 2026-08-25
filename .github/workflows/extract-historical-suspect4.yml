@@ -1,0 +1,66 @@
+name: Extract historical suspect 4 candidate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/extract-historical-suspect4.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract intact historical sheet and suspect 4
+        run: |
+          python -m pip install --quiet pillow
+          git show 62d55158365a1ee44f8af46651f4a46568464009:assets/suspects-latest.webp > /tmp/suspects-62d.webp
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import hashlib
+
+          src = Path('/tmp/suspects-62d.webp')
+          data = src.read_bytes()
+          print('sheet_bytes', len(data))
+          print('sheet_sha256', hashlib.sha256(data).hexdigest())
+          print('riff', data[:4], 'webp', data[8:12])
+          declared = int.from_bytes(data[4:8], 'little') + 8
+          print('declared_bytes', declared)
+          if declared != len(data):
+              raise RuntimeError(f'historical sheet truncated: {len(data)} != {declared}')
+
+          im = Image.open(src)
+          im.load()
+          print('sheet_format', im.format)
+          print('sheet_size', im.size)
+          print('sheet_mode', im.mode)
+
+          if im.width % 4 or im.height % 2:
+              raise RuntimeError(f'unexpected 4x2 sheet dimensions: {im.size}')
+          cell_w = im.width // 4
+          cell_h = im.height // 2
+          # Historical suspect-ui mapping: suspect 4 = top-right cell.
+          crop = im.crop((3 * cell_w, 0, 4 * cell_w, cell_h)).convert('RGB')
+          out = Path('/tmp/suspect-4-candidate.jpg')
+          crop.save(out, 'JPEG', quality=95, optimize=True)
+          out_data = out.read_bytes()
+          print('candidate_size', crop.size)
+          print('candidate_bytes', len(out_data))
+          print('candidate_sha256', hashlib.sha256(out_data).hexdigest())
+          print('candidate_jpeg_soi', out_data[:2].hex())
+          print('candidate_jpeg_eoi', out_data[-2:].hex())
+          PY
+
+      - name: Upload candidate for identity verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: historical-suspect-4-candidate
+          path: /tmp/suspect-4-candidate.jpg
+          if-no-files-found: error

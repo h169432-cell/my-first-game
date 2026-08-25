@@ -1,0 +1,73 @@
+name: Extract historical suspect 4
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/extract-historical-suspect4.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Pillow
+        run: python -m pip install --quiet pillow
+
+      - name: Extract candidate from historical production sheet
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import io, subprocess, hashlib
+
+          commit = '923a718c386dfebf9c3753bb6cf6e5d686eb7e18'
+          path = 'assets/suspects-latest.webp'
+          raw = subprocess.check_output(['git', 'show', f'{commit}:{path}'])
+          img = Image.open(io.BytesIO(raw)).convert('RGB')
+          w, h = img.size
+
+          # Historical UI used a 4x2 grid; suspect 4 occupied the top-right cell.
+          left = round(w * 3 / 4)
+          top = 0
+          right = w
+          bottom = round(h / 2)
+          candidate = img.crop((left, top, right, bottom))
+
+          outdir = Path('.work/candidates')
+          outdir.mkdir(parents=True, exist_ok=True)
+          out = outdir / 'suspect-4-history.jpg'
+          candidate.save(out, 'JPEG', quality=95, optimize=True)
+          data = out.read_bytes()
+          meta = outdir / 'suspect-4-history.txt'
+          meta.write_text(
+              f'source_commit={commit}\n'
+              f'source_path={path}\n'
+              f'source_blob_sha=d8aef91808ed6233df49e44f1f80c4888b08b62c\n'
+              f'source_dimensions={w}x{h}\n'
+              f'crop_box={left},{top},{right},{bottom}\n'
+              f'candidate_dimensions={candidate.width}x{candidate.height}\n'
+              f'candidate_bytes={len(data)}\n'
+              f'candidate_sha256={hashlib.sha256(data).hexdigest()}\n',
+              encoding='utf-8'
+          )
+          print(meta.read_text())
+          PY
+
+      - name: Commit isolated candidate
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .work/candidates/suspect-4-history.jpg .work/candidates/suspect-4-history.txt
+          if git diff --cached --quiet; then
+            echo "No candidate changes"
+          else
+            git commit -m "Extract historical suspect-4 candidate"
+            git push
+          fi

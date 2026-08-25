@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-08-26 02:27 JST
+Last updated: 2026-08-26
 Repository: `h169432-cell/my-first-game`
 Primary branch: `main`
 Backup branch: `backup-before-persistent-workflow-20260825`
@@ -31,10 +31,8 @@ Production `index.html`, `game.js`, and the legacy runtime remain unchanged.
 ## Changes in the latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, and `.work/HANDOFF.md` in the required order.
-- Rechecked `main` and confirmed the same 13 production JPGs remain under `assets/cards/`; `suspect-4.jpg` is still absent.
-- Re-searched available uploaded files for `織田信長`, `Oda Nobunaga`, and `suspect-4`.
-- The only relevant board screenshot found still depicts the prior fictional/female `容疑者4`, not the required Oda Nobunaga artwork, so it was rejected.
-- No verified Oda Nobunaga source was found.
+- Inspected `main` and confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
+- Re-searched the repository for `織田信長`, `Oda Nobunaga`, and `suspect-4`; no verified source was found.
 - Did not activate `assets/card-ui.js`, edit `index.html`, modify production game logic, or delete legacy image-system files because Phase 1 remains blocked by source identity.
 - No architecture or execution-order change was made; `WORK_PLAN.md` did not require modification.
 
@@ -56,7 +54,7 @@ Verified source/output facts:
 - GitHub Actions verified all three against exact byte size and SHA-256 and checked JPEG start/end markers before committing.
 - Current `assets/cards/` listing confirms the 13 production JPGs remain present and `suspect-4.jpg` is still missing.
 - Static source validation confirms `card-ui.js` and `game.js` remain aligned with the target 14-image mapping and fixed 16-card deck specification.
-- Latest source search found no verified Oda Nobunaga artwork suitable for `suspect-4.jpg`.
+- Latest repository search found no verified Oda Nobunaga artwork suitable for `suspect-4.jpg`.
 
 ## Recent failures worth preserving
 
@@ -82,6 +80,6 @@ After `suspect-4.jpg` is verified, proceed to Phase 2: connect the direct-image 
 
 ## Blockers / unresolved items
 
-- Missing correct `assets/cards/suspect-4.jpg` for Oda Nobunaga. Repository and currently searchable uploaded-file sources contain no verified source.
+- Missing correct `assets/cards/suspect-4.jpg` for Oda Nobunaga. Repository contains no verified source.
 - Direct-image UI activation and legacy cleanup remain blocked until the full 14-file set is complete.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts; retain them until the image-transfer phase is fully closed, then remove them during cleanup.

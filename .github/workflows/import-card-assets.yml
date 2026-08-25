@@ -14,14 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Download packed verified assets
+      - name: Extract staged verified assets
         run: |
           mkdir -p assets/cards
-          curl -fsSL https://api.github.com/repos/h169432-cell/my-first-game/git/blobs/4ed5c667a5c7b9cd60dd688283996d0d721864c6 \
-            | jq -r '.content' \
-            | tr -d '\n' \
-            | base64 -d > /tmp/cards.tar.gz
-          tar -xzf /tmp/cards.tar.gz -C assets/cards
+          tar -xzf .work/cards-import.tar.gz -C assets/cards
       - name: Validate imported JPEGs
         run: |
           python - <<'PY'

@@ -18,6 +18,16 @@ const CARD_IMAGES = Object.freeze({
   twist: 'assets/cards/twist.jpg',
 });
 
+const SUSPECT_NAMES = Object.freeze({
+  1: 'ファン・ゴッホ',
+  2: 'レオナルド・ダ・ヴィンチ',
+  3: 'フェルメール',
+  4: '織田信長',
+  5: 'ラファエロ',
+  6: 'モネ',
+  7: 'ヤン・ファン・エイク',
+});
+
 function cardImageKey(card) {
   if (!card) return null;
   if (card.type === 'suspect') return `suspect-${card.suspectNumber}`;
@@ -30,6 +40,37 @@ function cardImageUrl(card) {
   return CARD_IMAGES[cardImageKey(card)] || null;
 }
 
+function cardImageAlt(card) {
+  if (!card) return '';
+  if (card.type === 'suspect') {
+    const name = SUSPECT_NAMES[card.suspectNumber];
+    return name ? `容疑者 ${card.suspectNumber} ${name}` : `容疑者 ${card.suspectNumber}`;
+  }
+  return typeof labelFor === 'function' ? labelFor(card) : cardImageKey(card) || '';
+}
+
+function createCardImage(card, className = '') {
+  const src = cardImageUrl(card);
+  if (!src) return null;
+
+  const image = document.createElement('img');
+  image.src = src;
+  image.alt = cardImageAlt(card);
+  if (className) image.className = className;
+  image.loading = 'eager';
+  image.decoding = 'async';
+  image.addEventListener('error', () => image.remove(), { once: true });
+  return image;
+}
+
+function prependCardImage(container, card, className = '') {
+  if (!container) return false;
+  const image = createCardImage(card, className);
+  if (!image) return false;
+  container.prepend(image);
+  return true;
+}
+
 function preloadCardImages() {
   Object.values(CARD_IMAGES).forEach((src) => {
     const image = new Image();
@@ -37,4 +78,13 @@ function preloadCardImages() {
   });
 }
 
-window.CardUI = Object.freeze({ CARD_IMAGES, cardImageKey, cardImageUrl, preloadCardImages });
+window.CardUI = Object.freeze({
+  CARD_IMAGES,
+  SUSPECT_NAMES,
+  cardImageKey,
+  cardImageUrl,
+  cardImageAlt,
+  createCardImage,
+  prependCardImage,
+  preloadCardImages,
+});

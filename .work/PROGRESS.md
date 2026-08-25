@@ -21,17 +21,17 @@ Backup point: commit `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 
 The final simplified architecture is NOT active. Live production still uses the legacy split-data image runtime. `index.html`, `game.js`, and production image loading were not switched in this run.
 
-## Latest run: historical source investigation
+## Latest run: independent source verification
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `assets/cards/` still has the same 13 production JPGs and no `suspect-4.jpg`.
-- Investigated commit `62d55158365a1ee44f8af46651f4a46568464009` (`Add reliable suspect artwork asset`) as a materially different recovery route.
-- GitHub metadata initially exposed the RIFF header declaring 47,914 bytes, but an actual `git show` from full repository history proved the Git object itself is only 7,503 bytes.
-- GitHub Actions run `32887168436` recorded: actual size `7503`, declared RIFF size `47914`, SHA-256 `34a8e44b90c7af70bd8d2f6a8b91ef63d546b4513a96cde0b63dbdbf76ce82d4`.
-- Therefore `assets/suspects-latest.webp` was already truncated at the moment commit `62d5515...` added it; there is no earlier intact version of that same Git blob to extract.
-- Checked commit `1344806fdd512a666012c41ed6ec80edbd4336e1` (`Fix WebP rebuild workflow and regenerate card images`). Its rebuild workflow run `32741907831` failed, so it did not create a valid committed replacement image.
-- Searched issue content for `織田信長`; no repository issue source was found.
-- Temporary extraction workflow `.github/workflows/extract-historical-suspect4.yml` was removed after diagnostics. Production runtime remained untouched.
+- Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
+- Checked a retained independent original suspect-sheet image outside the corrupted Git WebP path. The top-right suspect 4 card is visibly labeled `織田信忠`, not `織田信長`.
+- Checked the retained final-card montage; its `suspect-4.jpg` is the same `織田信忠` card. This independently confirms the known candidate is the wrong historical person and must remain rejected.
+- Re-read commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b`; code explicitly maps suspect 4 to `織田信長`, so the intended game identity remains Oda Nobunaga even though the retained independently viewable sheet is Oda Nobutada.
+- Inspected commit `382456d76f2e0dcb6e9bc4d89c76412944efa3e7` (`Import verified suspect card images`): it deliberately imported suspects 1,2,3,5,6,7 and no suspect 4, consistent with suspect 4 already being unresolved at direct-image import time.
+- Inspected commit `3c53030ca7e6ee6be7b346990c10b14c593e1841`: its artifact workflow only attempted to crop the already-known truncated commit `62d5515...`; it does not provide an independent intact source.
+- The GitHub connector does not expose repository-wide Actions artifact enumeration through the generic fetch endpoint; no new artifact source was recovered in this run.
+- Production runtime was not modified.
 
 ## Validation facts retained
 
@@ -50,6 +50,8 @@ The final simplified architecture is NOT active. Live production still uses the 
 6. Large single-message Base64 transport can silently truncate or mutate data; use small chunks plus exact hashes if text transfer is unavoidable.
 7. Do not retry commit `62d5515...` as an intact source: full-history `git show` proves that commit already contains the same 7,503-byte truncated WebP.
 8. Commit `1344806...` did not generate a valid replacement; its rebuild workflow failed.
+9. Do not use the retained visible suspect sheet or montage as suspect 4: both clearly show `織田信忠`, not the required `織田信長`.
+10. Commit `3c53030...` is not a new independent artifact source; it only crops the already-corrupted `62d5515...` blob.
 
 ## Current active objective
 
@@ -64,6 +66,7 @@ After `suspect-4.jpg` is verified: proceed to Phase 2, connect direct-image UI, 
 ## Blockers / unresolved items
 
 - Missing exact verified `assets/cards/suspect-4.jpg` for Oda Nobunaga.
+- The independently retained suspect sheet and montage contain Oda Nobutada, proving those candidates are unusable.
 - Historical intended grid is corrupted and not recoverable by the tested repair methods or by extracting commit `62d5515...`.
 - Direct-image UI activation and destructive legacy cleanup remain blocked by the 14th image.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts to remove during later cleanup after image transfer is fully closed.

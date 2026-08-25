@@ -25,12 +25,11 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Reconfirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Investigated a materially new source class: GitHub Pages build-job logs and the transient Pages artifact created for historical commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b`.
-- Corrected an earlier assumption: workflow run `32730372651` was cancelled at deployment, but its `build` job succeeded and completed `Upload artifact`.
-- Build log proves `github-pages.zip` was created as Artifact ID `9521143272`, size `287788` bytes, SHA-256 `4eb6d0972ec62ee648025fafb67307ba2bb83a0f5ad3683dd0df29b35a861afd`.
-- Artifact retention was explicitly `1` day. Current artifact listing is empty, and direct artifact download by ID returns 404; the binary is no longer retrievable through GitHub Actions.
-- The archived file list shows it was a direct repository snapshot containing the historical split-image files; no independent `suspect-4.jpg` existed in that archive.
+- Followed `HANDOFF.md` and avoided previously exhausted source classes.
+- Investigated a materially new source class: repository-external public GitHub Gists / indexed public code snippets associated with the same account identity.
+- Searched for combinations of `h169432-cell`, `織田信長`, `Oda Nobunaga`, and `suspect-4`.
+- No Gist, public snippet, or account-associated external GitHub artifact containing the required exact artwork or a source reference was found.
+- Also checked the historical commit trail around `Use new fine-art suspect cards`; the commit records only the seven-card grid mapping and names, with no original generation prompt, source URL, attachment URL, or external asset identifier.
 - No candidate image was accepted or committed. Production code was not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -50,6 +49,8 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - GitHub Issues/PR attachment path; repository has no Issues or PRs and no attachment URL references in code.
 - Public search-engine/cache/Wayback-index discovery for the repository/GitHub Pages and historical artwork names; no usable result.
 - Repository-recorded Cloudflare/Pages deployment URL search; no deployment URL reference exists.
+- Same-account GitHub Gist / indexed public code-snippet search for `h169432-cell` + Oda Nobunaga / suspect-4; no usable source or source identifier found.
+- Historical fine-art mapping commit inspection for original prompt/source metadata; none is recorded.
 
 ## Active objective
 
@@ -61,5 +62,5 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, or repository-recorded external deployment URLs.
+- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, or same-account GitHub Gists/public snippets.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

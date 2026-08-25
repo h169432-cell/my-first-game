@@ -25,11 +25,11 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Followed `HANDOFF.md` and avoided previously exhausted source classes.
-- Investigated a materially new source class: repository-external public GitHub Gists / indexed public code snippets associated with the same account identity.
-- Searched for combinations of `h169432-cell`, `織田信長`, `Oda Nobunaga`, and `suspect-4`.
-- No Gist, public snippet, or account-associated external GitHub artifact containing the required exact artwork or a source reference was found.
-- Also checked the historical commit trail around `Use new fine-art suspect cards`; the commit records only the seven-card grid mapping and names, with no original generation prompt, source URL, attachment URL, or external asset identifier.
+- Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
+- Investigated a materially new source class: transient repository staging / automation-created image commits that could have contained an independent verified binary before cleanup.
+- Inspected historical `Add verified staged card images` commits `ab051060...` and `b9b54bdf...`; they added only `alibi-vertical.jpg`, `twist.jpg`, and `alibi-horizontal.jpg` respectively. No suspect image was staged or committed there.
+- Inspected current `.work/staging/`; it contains staged Base64 parts for evidence migration such as `alibi-horizontal`, not a `suspect-4` source.
+- Reviewed the earlier generated-character-art commit `6d40ef0...`; it references only the older Resident Evil six-character suspect sheet and does not contain the later Oda Nobunaga fine-art binary.
 - No candidate image was accepted or committed. Production code was not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -51,6 +51,8 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Repository-recorded Cloudflare/Pages deployment URL search; no deployment URL reference exists.
 - Same-account GitHub Gist / indexed public code-snippet search for `h169432-cell` + Oda Nobunaga / suspect-4; no usable source or source identifier found.
 - Historical fine-art mapping commit inspection for original prompt/source metadata; none is recorded.
+- Transient `.work/staging/` and automation-created `Add verified staged card images` commits as a suspect-4 source; they contain evidence-card migration data only.
+- Earlier generated-character suspect sheet (`6d40ef0...`) as the intended fine-art source; it is the unrelated Resident Evil six-character artwork.
 
 ## Active objective
 
@@ -62,5 +64,5 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, or same-account GitHub Gists/public snippets.
+- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, or transient staging/automation commits.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

@@ -17,7 +17,7 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-3. Do not repeat exhausted Git blob repairs, File Library searches, checked Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, repository Cloudflare URL searches, or same-account GitHub Gist/public-snippet searches unless new evidence appears.
+3. Do not repeat exhausted Git blob repairs, File Library searches, checked Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, repository Cloudflare URL searches, same-account GitHub Gist/public-snippet searches, or transient staging/automation commit searches unless new evidence appears.
 4. Continue only with a materially new independent source class capable of containing the original Oda Nobunaga binary independently of corrupted Git blobs/direct repository snapshots.
 5. If a candidate is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
 6. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
@@ -26,9 +26,11 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 ## New findings from latest run
 
-- Investigated repository-external GitHub Gists and indexed public code snippets associated with the same account identity.
-- Searches combining `h169432-cell`, `織田信長`, `Oda Nobunaga`, and `suspect-4` produced no usable account-associated source or image reference.
-- Inspected the historical `41a8257...` fine-art mapping commit for source metadata. It contains the seven-card mapping and names but no generation prompt, external image URL, attachment identifier, or source asset key.
+- Confirmed current production card directory remains at 13 JPGs with `suspect-4.jpg` absent.
+- Investigated transient staging and automation-created image commits as a new potential source class.
+- `ab051060...` staged only `alibi-vertical.jpg` and `twist.jpg`; `b9b54bdf...` staged only `alibi-horizontal.jpg`.
+- Current `.work/staging/` contains evidence-card Base64 migration parts, not a suspect-4 image source.
+- Historical generated-character-art commit `6d40ef0...` is the older Resident Evil six-character sheet and is unrelated to the later Oda Nobunaga fine-art set.
 - No image was accepted and production code was not changed.
 
 ## Next safe batch
@@ -41,7 +43,7 @@ Source-resolution work only. Use a genuinely new independent source or newly sur
 - Historical intended image data is corrupted and tested repair paths failed.
 - Accessible retained suspect assets show Oda Nobutada and are unusable.
 - Exact-commit Pages artifact existed but expired after one day and was only a repository snapshot.
-- Existing File Library, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, repository-recorded external deployment references, and same-account GitHub Gists/public snippets have not produced the required binary.
+- Existing File Library, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, and transient staging/automation commits have not produced the required binary.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
 ## Important references
@@ -55,3 +57,5 @@ Historical rebuild attempt: `1344806fdd512a666012c41ed6ec80edbd4336e1` (failed)
 Direct image import: `382456d76f2e0dcb6e9bc4d89c76412944efa3e7` (suspect 4 absent)
 Exact-mapping Pages run: `32730372651` / artifact `9521143272` (expired; direct repo archive)
 Successful nearby Pages run: `32746011152` / artifact `9527076730` (expired; direct repo archive)
+Transient staged evidence commits: `ab05106069a571882564eed764f5128719313b95`, `b9b54bdfea88c6f8ee45fa2891f33b079c59e318`
+Older unrelated generated-character art: `6d40ef011ecade85305db904dd76de10c160c131`

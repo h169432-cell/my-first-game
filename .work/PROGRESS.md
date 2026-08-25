@@ -21,14 +21,15 @@ Backup point: commit `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 
 The final simplified architecture is NOT active. Live production still uses the legacy split-data image runtime. `index.html`, `game.js`, and production image loading were not switched in this run.
 
-## Latest run: independent File Library source search
+## Latest run: historical deployment / Actions artifact source search
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-- Searched the user's File Library as a genuinely independent source class using queries for `織田信長`, `Oda Nobunaga`, `suspect-4`, historical/fine-art suspect grids, and seven-suspect card sheets.
-- The only relevant retained assets found were an older `クルーバージュ：闇の推理盤.png` board image with a fictional/female suspect 4, `怪しい六人のゴシックカード一覧.png` containing only six gothic suspects, and unrelated evidence-card assets.
-- No independently retained Oda Nobunaga suspect-4 image or seven-person historical fine-art sheet was found in File Library.
-- No production runtime files were changed.
+- Kept production unchanged because Phase 1 remains blocked at 13/14 images.
+- Investigated a genuinely new source class: historical GitHub Pages / Actions deployment artifacts for commits that carried the intended Oda Nobunaga mapping.
+- Commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b` has Pages workflow run `32730372651`; the run concluded `cancelled` and its artifact list is empty.
+- Commit `923a718c386dfebf9c3753bb6cf6e5d686eb7e18` has Pages workflow run `32745948889`; the run concluded `cancelled` and its artifact list is empty.
+- Public web search for the historical GitHub Pages site plus `織田信長` / Clue Grid terms returned no archived/indexed copy containing the missing artwork.
+- No `suspect-4.jpg` candidate was accepted or committed.
 
 ## Validation facts retained
 
@@ -50,6 +51,8 @@ The final simplified architecture is NOT active. Live production still uses the 
 9. Do not use the retained visible suspect sheet or montage as suspect 4: both clearly show `織田信忠`, not the required `織田信長`.
 10. Commit `3c53030...` is not a new independent artifact source; it only crops the already-corrupted `62d5515...` blob.
 11. File Library searches for `織田信長`, `Oda Nobunaga`, `suspect-4`, historical/fine-art seven-suspect sheets, and equivalent Japanese queries found no valid independent Oda Nobunaga source. Do not repeat the same File Library search unless new uploads appear.
+12. Historical Pages runs for `41a8257...` and `923a718c...` are cancelled and expose no Actions artifacts; do not repeat artifact retrieval for runs `32730372651` or `32745948889`.
+13. Public web search for the historical GitHub Pages URL and Oda Nobunaga / Clue Grid terms produced no indexed missing-artwork source in this run.
 
 ## Current active objective
 
@@ -65,7 +68,8 @@ After `suspect-4.jpg` is verified: proceed to Phase 2, connect direct-image UI, 
 
 - Missing exact verified `assets/cards/suspect-4.jpg` for Oda Nobunaga.
 - The independently retained suspect sheet and montage contain Oda Nobutada, proving those candidates are unusable.
-- File Library contains no valid independent Oda Nobunaga suspect-4 candidate from the searches performed in this run.
+- File Library contains no valid independent Oda Nobunaga suspect-4 candidate from the searches already performed.
 - Historical intended grid is corrupted and not recoverable by the tested repair methods or by extracting commit `62d5515...`.
+- Historical Pages runs checked in this run contain no recoverable Actions artifact.
 - Direct-image UI activation and destructive legacy cleanup remain blocked by the 14th image.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` are temporary migration artifacts to remove during later cleanup after image transfer is fully closed.

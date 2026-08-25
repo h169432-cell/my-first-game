@@ -25,15 +25,16 @@ jobs:
           mkdir -p assets/cards
 
           rebuild_if_complete() {
-            name="$1"
-            count="$2"
-            expected_size="$3"
-            expected_sha="$4"
+            output_name="$1"
+            stage_prefix="$2"
+            count="$3"
+            expected_size="$4"
+            expected_sha="$5"
             parts=()
             for i in $(seq 1 "$count"); do
-              p=".work/staging/${name}.part${i}.b64"
+              p=".work/staging/${stage_prefix}.part${i}.b64"
               if [ ! -f "$p" ]; then
-                echo "$name: staging incomplete; skipping"
+                echo "$output_name: staging incomplete; skipping"
                 return 0
               fi
               parts+=("$p")
@@ -47,13 +48,13 @@ jobs:
             test "$actual_sha" = "$expected_sha"
             test "$(xxd -p -l 2 "$tmp")" = "ffd8"
             test "$(tail -c 2 "$tmp" | xxd -p)" = "ffd9"
-            mv "$tmp" "assets/cards/${name}"
-            echo "$name: verified size=$actual_size sha256=$actual_sha"
+            mv "$tmp" "assets/cards/${output_name}"
+            echo "$output_name: verified size=$actual_size sha256=$actual_sha"
           }
 
-          rebuild_if_complete 'alibi-vertical.jpg' 2 7154 '5e03cf0f4919414cdbc393a9f6afe3149f3e04527a64a300f7fb708c0333ae17'
-          rebuild_if_complete 'alibi-horizontal.jpg' 5 20408 'fadb23b8d690f307a970b628424953d6904d4610c87fae52b9577cf3055a9749'
-          rebuild_if_complete 'twist.jpg' 2 7145 '85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb'
+          rebuild_if_complete 'alibi-vertical.jpg' 'alibi-vertical' 2 7154 '5e03cf0f4919414cdbc393a9f6afe3149f3e04527a64a300f7fb708c0333ae17'
+          rebuild_if_complete 'alibi-horizontal.jpg' 'alibi-horizontal' 5 20408 'fadb23b8d690f307a970b628424953d6904d4610c87fae52b9577cf3055a9749'
+          rebuild_if_complete 'twist.jpg' 'twist' 2 7145 '85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb'
 
       - name: Commit verified images
         shell: bash

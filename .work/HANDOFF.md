@@ -17,7 +17,7 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation searches, Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repo/Wiki/Issue/PR/Discussion/Package searches, public cache/index searches, Gist/public-snippet searches, Actions-cache/deployment/CDN probing, Gmail, tag/ref probing, Git LFS probing, generic public-domain portrait substitution, repository-local source URL/hash residue searches, or per-file revision-history checks unless new evidence materially changes the result.
+3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation searches, Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repo/Wiki/Issue/PR/Discussion/Package searches, public cache/index searches, exact public search-index queries using `h169432-cell` / `my-first-game` + `Oda Nobunaga` / `織田信長`, Gist/public-snippet searches, Actions-cache/deployment/CDN probing, Gmail, tag/ref probing, Git LFS probing, generic public-domain portrait substitution, repository-local source URL/hash residue searches, or per-file revision-history checks unless new evidence materially changes the result.
 4. Continue only with a materially new independent source class capable of containing the original Oda Nobunaga binary or a verifiable source identifier independently of corrupted Git blobs/direct repository snapshots.
 5. If a candidate is found, verify identity and exact-source linkage first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
 6. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
@@ -27,11 +27,8 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 ## New findings from latest run
 
 - `assets/cards/` remains 13/14 and `suspect-4.jpg` is still absent.
-- Repository-local searches found no cache manifest, source URL, attachment URL, image hash, GitHub user-image reference, `oaidalle`, `imagegen`, or OpenAI-hosted source reference for the intended suspect 4 image.
-- Per-file history was checked for alternate intact revisions:
-  - `assets/new-suspect-grid-part1.js` has only its introducing commit `2b80b4e687029a037333ce9922179165aa552387`.
-  - `assets/suspects-latest.webp` has only its introducing commit `62d55158365a1ee44f8af46651f4a46568464009`.
-- Therefore no alternate historical revision of those known paths exists to recover a clean copy.
+- External public search-index queries combining the exact account/repository identifiers with `Oda Nobunaga` and `織田信長` returned no project-linked image URL, attachment URL, cache identifier, or source reference.
+- No candidate was accepted.
 - Production code and architecture remain unchanged.
 
 ## Next safe batch

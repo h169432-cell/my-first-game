@@ -45,10 +45,11 @@ Future execution should begin from a new explicit objective or a newly observed 
 
 ## Latest verification
 
-- Current completed state was re-read from Git in the mandatory order.
-- `main` had no new production-code change requiring follow-up.
-- Latest Pages deployment for the final handoff commit was `completed / success`.
-- No production files were changed in this run; only persistent execution-state records were refreshed.
+- Required `.work/` files were re-read in the mandatory order.
+- `main` head before this run's state updates was `2eed687c72e196dfac8d59b2829f13d1cfd01215`.
+- Latest Pages run `32963978774` for that head completed with `success`.
+- No new production-code objective or defect was present in Git state.
+- No production files were changed; only persistent execution-state records were refreshed.
 
 ## Important references
 
@@ -63,3 +64,5 @@ Successful post-cleanup Pages run: `32958992876`
 Final technical-design update: `adf337362a083f9fdaacb054da2674787af8fe5d`
 Final cleanup handoff commit: `1c3667c75ff48fa8dca71004be6e0bc0ddbce6f2`
 Final handoff Pages run: `32961265164`
+Latest verified pre-run main head: `2eed687c72e196dfac8d59b2829f13d1cfd01215`
+Latest verified Pages run: `32963978774`

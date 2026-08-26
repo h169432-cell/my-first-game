@@ -1,4 +1,5 @@
 {
+  "id": "./",
   "name": "Clue Grid 試作版",
   "short_name": "Clue Grid",
   "description": "4×4の16枚から真犯人を特定する推理ボードゲームの試作版",

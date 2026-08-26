@@ -13,12 +13,15 @@ Last updated: 2026-08-27
 - `games.html` supports the same category filters used by the TOP entry points and preserves direct links to all existing detail pages.
 - Removed the prior pattern of appending every published title to TOP.
 - Updated `WORK_PLAN.md` so future runs add new games to `games.html`, not to TOP.
+- Updated the stored automation prompt to follow the same catalog-based structure; its enabled/disabled state was not changed.
 - Existing repository-root game app was not changed.
 
 ## Verification performed
 - Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, current `index.html`, and the CATAN detail page before restructuring.
 - Confirmed existing detail pages use `../index.html` for back-navigation (CATAN checked directly).
 - Confirmed uncertain existing filenames for `the-crew-mission-deep-sea.html` and `the-quacks-of-quedlinburg.html` before linking them in the new catalog.
+- Re-fetched `games.html` after creation and confirmed all 30 catalog cards are present, including the final Ark Nova entry and the filter script.
+- Re-fetched `index.html` after replacement and confirmed the six featured cards, complete-catalog link, and category links are saved.
 - TOP category links use `games.html?filter=...`; the catalog reads the query parameter and applies the matching filter.
 - No files outside `boardgame-guide/` were intentionally modified.
 

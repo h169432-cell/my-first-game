@@ -18,45 +18,45 @@ Backup point: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 - Commit `c4e31433f55d2753e6a9e6421466e30c24e17ac6` removed legacy split-grid/runtime/old artwork UI files.
 - Commit `43fad683cc842859d5e07fbe415843deea3e10b9` removed remaining obsolete sprite/data/sheet assets, old rules override file, migration directories, diagnostic staging, and temporary image-rebuild workflows.
 - `assets/` now contains only `card-ui.js` and `cards/`.
-- GitHub Pages run `32958992876` for cleanup commit `43fad683cc842859d5e07fbe415843deea3e10b9` completed successfully.
 - `DESIGN.md` technical architecture was updated to match the current direct-file implementation.
 - `.work/WORK_PLAN.md` was updated to reflect completed migration phases.
 
 ## Current state
 
-The card-system cleanup is complete at repository/deployment level.
+The legacy image-system cleanup remains complete. A new live defect was reported on 2026-08-26: several cards still appeared completely black in the deployed game while other cards displayed correctly.
 
-Final runtime architecture:
+The direct-file architecture remains intact:
 
 - `game.js` — game rules and interaction logic.
 - `assets/card-ui.js` — artwork URL mapping, preload, fallback, and board/private/accusation rendering.
 - `assets/cards/` — final 14 individual JPG artwork files.
-- `index.html` — loads only the stable direct-file runtime; no legacy image reconstruction scripts.
-
-No legacy card-image runtime, split-image data, sprite system, migration directory, legacy rule override, or temporary image rebuild workflow remains in the current tree.
+- `index.html` — loads only the stable direct-file runtime.
 
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed current `main` head before this update was `0850bceef582636bb6677749b62dc100bf1f147c`.
-- Confirmed latest GitHub Pages run `32966097599` for that head completed with conclusion `success`.
-- `HANDOFF.md` still contains no remaining cleanup batch and no new gameplay/UI objective is recorded in Git state.
-- No production source files were changed in this run.
-- Persistent execution-state files are being refreshed so the next run can resume from Git alone.
+- Confirmed pre-fix `main` head was `ff528603737ac01c5e482cfee4303ef85e77ba58`.
+- Confirmed all 14 expected JPG filenames still exist under `assets/cards/`.
+- Identified that `assets/card-ui.js` used stable unversioned JPG URLs even though JS itself was cache-busted.
+- Updated `assets/card-ui.js` so every card image URL is versioned with `?v=20260826-2212` via `CARD_ASSET_VERSION`.
+- Updated `index.html` runtime/style query strings to `20260826-2212` so browsers fetch the new `card-ui.js` immediately.
+- Card image cache-bust commit: `d70a0a2ce3cb7867ca4fa0aa35843bc9ada575d2`.
+- Runtime cache refresh commit: `2a4a3e82a73a732e7e798aad66e0d8b5e42f339f`.
+- GitHub Pages run `32973957602` for `2a4a3e82a73a732e7e798aad66e0d8b5e42f339f` completed successfully.
 
 ## Validation performed
 
-- Current `main` remains consistent with the completed card-system cleanup state.
-- Latest Pages deployment for `0850bceef582636bb6677749b62dc100bf1f147c` is successful.
-- No new repository/deployment blocker was identified.
+- Current deployed source references only the direct-file card architecture.
+- All 14 card image paths are mapped through versioned URLs.
+- GitHub Pages successfully deployed the cache-bust fix.
+- The underlying image-error fallback remains in place: if an image fails to load, the `<img>` is removed so the card's text/icon fallback can remain visible rather than leaving an unusable image layer.
 
 ## Failures / unresolved
 
-- Live interactive click testing of revealed board cards, private inspection, accusation UI, and mobile/iPad Safari cannot be directly exercised in the current tool environment.
-- No repository or deployment blocker remains for the card-system cleanup.
+- Live interactive mobile/iPad/browser rendering cannot be directly exercised in the current tool environment.
+- User retest is still required to determine whether the remaining black cards were stale browser/CDN cache entries or whether specific JPG files themselves contain bad/black image content.
+- If black cards remain after this deployment, identify the exact affected card names/numbers and replace or regenerate only those JPG files.
 
 ## Active objective
 
-Card-system cleanup: COMPLETE.
-
-Future work should start only from a new explicit gameplay/UI objective or a newly observed defect, while preserving the direct-file image architecture unless requirements change.
+Resolve the newly reported intermittent black-card display defect while preserving the simplified direct-file architecture.

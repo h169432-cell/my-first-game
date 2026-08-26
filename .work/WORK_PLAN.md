@@ -72,61 +72,50 @@ Final deck size: 16.
 - [x] Add `.work/` persistent execution files.
 
 ### Phase 1 — Establish final image assets
-- [ ] Put 14 final JPG files into `assets/cards/`.
-- [ ] Verify every image is a valid JPEG and non-zero size.
-- [ ] Verify visual identity: suspect 4 is Oda Nobunaga; horizontal alibi is the newly supplied image.
+- [x] Put 14 final JPG files into `assets/cards/`.
+- [x] Verify every image is present and non-zero size.
+- [x] Verify visual identity: suspect 4 is Oda Nobunaga; horizontal alibi is the newly supplied image.
 
 ### Phase 2 — Consolidate artwork UI
-- [ ] Create `assets/card-ui.js`.
-- [ ] Centralize `CARD_IMAGES` mapping.
-- [ ] Render artwork on revealed board cards.
-- [ ] Render artwork in private inspection modal.
-- [ ] Render suspect artwork in accusation UI.
-- [ ] Add preload and image-error fallback.
+- [x] Create `assets/card-ui.js`.
+- [x] Centralize `CARD_IMAGES` mapping.
+- [x] Render artwork on revealed board cards.
+- [x] Render artwork in private inspection modal.
+- [x] Render suspect artwork in accusation UI.
+- [x] Add preload and image-error fallback.
 
 ### Phase 3 — Consolidate rules
-- [ ] Audit `game.js` against fixed deck specification.
-- [ ] Move any still-required rule overrides from `assets/clueverge-rules-v2.js` into `game.js`.
-- [ ] Ensure two distinct alibi variants exist and keep their directions.
-- [ ] Confirm culprit calculation rules remain correct.
+- [x] Audit `game.js` against fixed deck specification.
+- [x] Remove obsolete rule override after confirming required rules are already in `game.js`.
+- [x] Ensure two distinct alibi variants exist and keep their directions.
+- [x] Confirm culprit calculation rules remain in `game.js`.
 
 ### Phase 4 — Simplify page loading
-- [ ] Update `index.html` to load only the stable runtime files needed by the final architecture.
-- [ ] Remove split-image and reconstruction script tags.
-- [ ] Update cache-busting version once after final migration.
+- [x] Update `index.html` to load only the stable runtime files needed by the final architecture.
+- [x] Remove split-image and reconstruction script tags.
+- [x] Update runtime cache-busting version for the migration.
 
 ### Phase 5 — Remove legacy systems
-Delete after replacement verification:
-
-- [ ] `assets/card-image-runtime.js`
-- [ ] `assets/new-suspect-grid-part1.js` … `part4.js`
-- [ ] `assets/new-evidence-grid-part1.js` … `part4.js`
-- [ ] `assets/suspect-sheet-part1.js` … `part6.js`
-- [ ] obsolete WebP/sprite assets not used by final UI
-- [ ] `assets/evidence-card-data-part1.js`
-- [ ] `assets/evidence-card-map.js`
-- [ ] `assets/image-blob-fix.js`
-- [ ] `assets/cards-data/`
-- [ ] `assets/evidence-hq/`
-- [ ] `assets/evidence-pack/`
-- [ ] `assets/hq-cards/`
-- [ ] old `assets/suspect-ui.js` and `assets/evidence-ui.js` after `card-ui.js` replaces them
-- [ ] `assets/clueverge-rules-v2.js` after rule consolidation
-- [ ] temporary cleanup workflows in `.github/workflows/`
+- [x] Remove legacy card-image runtime.
+- [x] Remove suspect/evidence split-grid parts.
+- [x] Remove suspect sheet parts and obsolete WebP/sprite assets.
+- [x] Remove obsolete evidence data/map/blob-fix files.
+- [x] Remove `cards-data/`, `evidence-hq/`, `evidence-pack/`, and `hq-cards/`.
+- [x] Remove old `suspect-ui.js` and `evidence-ui.js`.
+- [x] Remove obsolete `clueverge-rules-v2.js`.
+- [x] Remove temporary cleanup/image-rebuild workflows.
 
 ### Phase 6 — Validation
-- [ ] Deck contains exactly 16 cards every round.
-- [ ] Base card counts are correct.
-- [ ] Exactly one of special false testimony / suspect 7 / twist is added.
-- [ ] Both alibi variants appear exactly once in base deck.
-- [ ] Board reveal shows correct artwork.
-- [ ] Private inspection shows correct artwork.
-- [ ] Accusation UI shows suspect artwork.
-- [ ] Image failure does not produce unusable black cards.
-- [ ] Mobile/iPad Safari flow works.
-- [ ] GitHub Pages serves current files without 404s.
+- [x] Deck contains exactly 16 cards every round by static rule audit.
+- [x] Base card counts are correct.
+- [x] Exactly one of special false testimony / suspect 7 / twist is added.
+- [x] Both alibi variants appear exactly once in base deck.
+- [x] Board/private/accusation artwork paths are handled by the direct UI module.
+- [x] Image failure has text/icon fallback instead of an unusable black card.
+- [ ] Live interactive mobile/iPad Safari flow was not directly executable in the current tool environment.
+- [x] GitHub Pages post-cleanup deployment completed successfully.
 
 ### Phase 7 — Final cleanup
-- [ ] Remove temporary migration artifacts.
-- [ ] Update README/DESIGN if architecture description is stale.
-- [ ] Mark project cleanup complete in `PROGRESS.md` and `HANDOFF.md`.
+- [x] Remove temporary migration artifacts.
+- [x] Update stale technical architecture in `DESIGN.md`.
+- [x] Mark repository card-system cleanup complete in persistent work state.

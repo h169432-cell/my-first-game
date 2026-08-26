@@ -64,17 +64,9 @@ jobs:
           verify_and_store 'twist.jpg' 7145 '85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb' \
             .work/staging/twist.part1.b64 .work/staging/twist.part2.b64
 
-          cat .work/staging/suspect-4.part1a.b64 .work/staging/suspect-4.part1b.b64 \
-            .work/staging/suspect-4.part1c.b64 .work/staging/suspect-4.part1d.b64 \
-            .work/staging/suspect-4.part1e.b64 .work/staging/suspect-4.part1f.b64 \
-            .work/staging/suspect-4.part1g.b64 > /tmp/suspect-4-part1.b64
-          echo "suspect-4 part1 text sha=$(sha256sum /tmp/suspect-4-part1.b64 | awk '{print $1}') expected=5b5488268bf622e6c9fe4622049c877ae05245ea8400c8080f6615ddf03b5349"
-          echo "suspect-4 part2 text sha=$(sha256sum .work/staging/suspect-4.part2.b64 | awk '{print $1}') expected=4cf598abce0650bb44c1c14d41e5ff498d56459922c7e69fb6f34cdb2fcf4598"
-          echo "suspect-4 part3 text sha=$(sha256sum .work/staging/suspect-4.part3.b64 | awk '{print $1}') expected=fef4bc8e5cfd08a827b9d15a678a12f4f192d942922ac1f7a6bb42cc82199e6a"
-          echo "suspect-4 part4 text sha=$(sha256sum .work/staging/suspect-4.part4.b64 | awk '{print $1}') expected=64424b2d5bea09f8edd8b5eb1c45418b7fe6af90b3898423d7b6e0f710ea84aa"
-
           verify_and_store 'suspect-4.jpg' 28572 'ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808' \
-            .work/staging/suspect-4.part1a.b64 .work/staging/suspect-4.part1b.b64 \
+            .work/staging/suspect-4.part1a1.b64 .work/staging/suspect-4.part1a2.b64 \
+            .work/staging/suspect-4.part1a3.b64 .work/staging/suspect-4.part1b.b64 \
             .work/staging/suspect-4.part1c.b64 .work/staging/suspect-4.part1d.b64 \
             .work/staging/suspect-4.part1e.b64 .work/staging/suspect-4.part1f.b64 \
             .work/staging/suspect-4.part1g.b64 .work/staging/suspect-4.part2.b64 \

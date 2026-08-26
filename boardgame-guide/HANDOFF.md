@@ -1,36 +1,38 @@
 # Board Game Guide — Handoff
 
 ## Start here next run
-1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file before doing any new work.
-2. Read `boardgame-guide/index.html` and at least one current game page to preserve the visual pattern.
+1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
+2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
 3. Continue with Agricola, then identify additional popular commercially available board games from reliable current sources and create as many complete, verified pages as can safely be finished in the run.
-4. Add every completed game to `boardgame-guide/index.html` in the same run.
-5. Keep using neutral visual placeholders or source links when image reuse permission is unclear.
-6. Check TOP → detail and detail → TOP relative links.
-7. Update `PROGRESS.md` and rewrite this file before ending.
+4. Add every completed game to `boardgame-guide/games.html` in the same run. Do not append every new title to TOP.
+5. Keep `boardgame-guide/index.html` compact: featured games + category entry points + link to the complete catalog.
+6. Add catalog filter tags only when appropriate; use editorial labels conservatively and do not invent factual specs.
+7. Keep using neutral visual placeholders or source links when image reuse permission is unclear.
+8. Check TOP → catalog, catalog → detail, and detail → TOP relative links.
+9. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
 - Next game: Agricola.
 - Continue selecting established popular titles with reliable official/current sources.
 
 ## Completed in previous run
-- Added Kingdomino, Everdell, Scythe, Viticulture Essential Edition, and Ark Nova guide pages.
-- Updated TOP with cards linking to all five pages.
-- Verified player count, age, play time, and core gameplay against official publisher/product/rules sources and BoardGameGeek where needed for published age information.
+- Reworked TOP from a growing 30-card catalog into a compact landing page.
+- Added a separate `games.html` complete catalog containing all 30 currently published games.
+- Added category filtering for: 2-player, 30 minutes or less, beginner-friendly, party, and strategy.
+- Updated the durable work plan so future expansion happens in `games.html` rather than continuously enlarging TOP.
 
 ## Files changed in previous run
-- `boardgame-guide/games/kingdomino.html`
-- `boardgame-guide/games/everdell.html`
-- `boardgame-guide/games/scythe.html`
-- `boardgame-guide/games/viticulture-essential-edition.html`
-- `boardgame-guide/games/ark-nova.html`
 - `boardgame-guide/index.html`
+- `boardgame-guide/games.html` (new)
+- `boardgame-guide/WORK_PLAN.md`
 - `boardgame-guide/PROGRESS.md`
 - `boardgame-guide/HANDOFF.md`
 
 ## Validation performed
-- Re-fetched the TOP tail after replacement and confirmed all five new cards are present with matching relative links.
-- All five new detail pages use `../index.html` back-navigation.
+- Read the required durable-state files before editing.
+- Confirmed CATAN detail navigation returns to `../index.html`.
+- Confirmed existing filenames for The Crew: Mission Deep Sea and The Quacks of Quedlinburg before linking them from the catalog.
+- TOP category URLs match the filter keys implemented by `games.html`.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Rules carried forward
@@ -38,9 +40,11 @@
 - Git files are the source of truth; do not depend on chat history.
 - Verify player count, play time, age, rules, publisher/title details from reliable sources; do not guess.
 - Paraphrase copyrighted descriptions/rules. Never reproduce rulebooks or long source passages.
-- Use images only where their use is reasonably permitted; otherwise use a source link or a neutral placeholder rather than copying the image.
+- Use images only where their use is reasonably permitted; otherwise use a source link or a neutral placeholder.
 - Keep pages Japanese, mobile-friendly, and consistent with the existing one-page presentation.
+- New game pages belong in the complete catalog. TOP should remain intentionally small.
 
 ## Unresolved
 - Image reuse rights remain game-specific and must be checked before adding publisher/product imagery.
-- Do not alter the existing Clueverge page unless a separate verified issue requires it.
+- Beginner/party/strategy labels are browsing aids rather than official publisher claims unless explicitly sourced.
+- Do not alter the existing Clueverge detail page unless a separate verified issue requires it.

@@ -63,13 +63,17 @@ jobs:
           verify_and_store 'twist.jpg' 7145 '85b2e191667320e4208f674b0930a71fe985a27b3c680a4dfc6cd7db2d60ebbb' \
             .work/staging/twist.part1.b64 .work/staging/twist.part2.b64
 
+          verify_and_store 'suspect-4.jpg' 28572 'ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808' \
+            .work/staging/suspect-4.part1.b64 .work/staging/suspect-4.part2.b64 \
+            .work/staging/suspect-4.part3.b64 .work/staging/suspect-4.part4.b64
+
       - name: Commit verified images
         shell: bash
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for p in assets/cards/alibi-vertical.jpg assets/cards/alibi-horizontal.jpg assets/cards/twist.jpg; do
+          for p in assets/cards/alibi-vertical.jpg assets/cards/alibi-horizontal.jpg assets/cards/twist.jpg assets/cards/suspect-4.jpg; do
             if [ -f "$p" ]; then
               git add "$p"
             fi

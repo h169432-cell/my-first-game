@@ -38,16 +38,16 @@ No legacy card-image runtime, split-image data, sprite system, migration directo
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed current `main` head before this update was `2eed687c72e196dfac8d59b2829f13d1cfd01215`.
-- Confirmed latest GitHub Pages run `32963978774` for that head completed with conclusion `success`.
-- `HANDOFF.md` contains no remaining cleanup batch and no new gameplay/UI objective is recorded in Git state.
+- Confirmed current `main` head before this update was `0850bceef582636bb6677749b62dc100bf1f147c`.
+- Confirmed latest GitHub Pages run `32966097599` for that head completed with conclusion `success`.
+- `HANDOFF.md` still contains no remaining cleanup batch and no new gameplay/UI objective is recorded in Git state.
 - No production source files were changed in this run.
 - Persistent execution-state files are being refreshed so the next run can resume from Git alone.
 
 ## Validation performed
 
 - Current `main` remains consistent with the completed card-system cleanup state.
-- Latest Pages deployment is successful.
+- Latest Pages deployment for `0850bceef582636bb6677749b62dc100bf1f147c` is successful.
 - No new repository/deployment blocker was identified.
 
 ## Failures / unresolved

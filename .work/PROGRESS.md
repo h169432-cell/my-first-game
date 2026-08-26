@@ -26,10 +26,8 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
 - Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Confirmed historical commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b` is the fine-art mapping that names suspect 4 as `織田信長`.
-- Investigated Internet Archive / Wayback Machine as a materially new independent source class for archived GitHub Pages or image assets.
-- Public search-index queries for archived `h169432-cell.github.io/my-first-game/` snapshots and project-linked Oda Nobunaga references returned no usable archived page, image URL, digest, or source identifier.
-- Direct CDX access was unavailable through the current web access path, so no candidate binary could be recovered.
+- Investigated image-search-engine result caches/thumbnails as a materially new independent source class, using project-linked queries for `h169432-cell`, `my-first-game`, `suspect-4`, `Oda Nobunaga`, and `織田信長`.
+- Returned images were unrelated Nobunaga game screenshots and did not contain the project artwork, project URL linkage, source digest, or recoverable original binary.
 - No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -47,6 +45,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Per-file revision-history search for `assets/new-suspect-grid-part1.js` and `assets/suspects-latest.webp`; each has only one introducing revision and no alternate intact historical revision.
 - Exact public search-index queries combining `h169432-cell` / `my-first-game` with `Oda Nobunaga` / `織田信長`; no project-linked source identifier found.
 - Internet Archive / Wayback Machine public index search for archived project pages/assets; no usable archived snapshot or source identifier found, and direct CDX retrieval was unavailable through the current access path.
+- Image-search-engine cache/thumbnail search for project-linked Oda Nobunaga artwork; returned only unrelated public images and no project-linked candidate.
 
 ## Active objective
 

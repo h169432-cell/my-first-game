@@ -16,20 +16,25 @@ Last updated: 2026-08-27
   - Pandemic (`games/pandemic.html`)
   - Codenames (`games/codenames.html`)
   - 7 Wonders (`games/7-wonders.html`)
-- Updated `boardgame-guide/index.html` with working cards/links for all nine added games plus Clueverge.
+  - Wingspan (`games/wingspan.html`)
+  - Terraforming Mars (`games/terraforming-mars.html`)
+  - Dixit (`games/dixit.html`)
+  - Love Letter (`games/love-letter.html`)
+  - The Crew: Mission Deep Sea (`games/the-crew-mission-deep-sea.html`)
+- Updated `boardgame-guide/index.html` with working cards/links for all fourteen added games plus Clueverge.
 - New pages use neutral text placeholders instead of copying product images without a clear reuse basis.
 - Existing repository-root game app was not changed.
 
 ## Verification performed
-- Confirmed the newly created detail pages use `../index.html` back-navigation.
-- Re-fetched `boardgame-guide/index.html` after update and confirmed the new relative links are saved.
-- Re-fetched `games/splendor.html` and `games/7-wonders.html` and confirmed UTF-8 Japanese content and back-navigation.
-- Facts verified against official/current sources:
-  - Splendor: Asmodee / Space Cowboys — 2–4 players, age 10+, about 30 min; gem collection, development-card engine and 15-prestige end trigger.
-  - Dominion Second Edition: Hobby Japan / Rio Grande Games — 2–4 players, age 14+, about 30 min; deck-building structure and victory-point scoring.
-  - Pandemic: Z-Man Games — 2–4 players, age 8+, 45 min; cooperative actions, infection phase and discovering cures for four diseases.
-  - Codenames: Czech Games Edition current edition — 4–8+ players, age 10+, 15 min; 25-word grid, one-word clues, team agents and assassin.
-  - 7 Wonders: Repos Production — 3–7 players, age 10+, 30 min; simultaneous card drafting across three Ages and multi-path civilization scoring.
+- Confirmed all five pages added in the latest run use `../index.html` back-navigation.
+- Re-fetched `boardgame-guide/index.html` after update and confirmed the updated file is saved as UTF-8.
+- Re-fetched `games/wingspan.html` and confirmed Japanese content and back-navigation.
+- Facts in the latest run were verified against current official sources:
+  - Wingspan: Stonemaier Games — 1–5 players, 40–70 min listing, age 10+ corroborated by current game reference; bird-driven engine building, food/eggs/cards and four-round scoring.
+  - Terraforming Mars: FryxGames official rules plus current BoardGameGeek reference — 1–5 players including solo variant, about 120 min, age 12+; projects, production, generations and three global parameters.
+  - Dixit (2021 Refresh): Libellud / Asmodee — 3–8 players, age 8+, about 30 min; storyteller clue, submitted image cards, voting and scoring based on partial recognition.
+  - Love Letter: Z-Man Games — 2–6 players, age 10+, about 20 min; draw one/play one, character effects and round win by last player or highest card.
+  - The Crew: Mission Deep Sea: Thames & Kosmos official rules/demo — 3–5 players, age 10+, about 20 min; cooperative mission-based trick-taking with task conditions and restricted communication.
 
 ## Current position
 Published guide pages in this project:
@@ -43,10 +48,15 @@ Published guide pages in this project:
 8. Pandemic
 9. Codenames
 10. 7 Wonders
+11. Wingspan
+12. Terraforming Mars
+13. Dixit
+14. Love Letter
+15. The Crew: Mission Deep Sea
 
 ## Planned next items
-1. Continue backlog with Wingspan.
-2. Then Terraforming Mars, Dixit, Love Letter, and The Crew as capacity permits.
+1. Continue backlog with Patchwork.
+2. Then King of Tokyo, Sushi Go Party!, Cascadia, and Heat: Pedal to the Metal as capacity permits.
 3. Add every completed page to TOP in the same run.
 4. Keep using placeholders/source links when image reuse permission is unclear.
 

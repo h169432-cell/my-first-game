@@ -17,7 +17,7 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation context searches, checked Pages artifacts/logs, Releases, forks, retained/current-runtime Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, repository Cloudflare URL searches, same-account GitHub Gist/public-snippet searches, transient staging/automation commit searches, exact-commit non-Pages Actions searches, Actions-cache probing, Deployments/Environments probing, public GitHub CDN-cache discovery, commit-message searches for Nobunaga, commit-level comment/index probing, Gmail probing, direct tag-list REST probing, Git LFS probing, or generic public-domain portrait searches unless new evidence materially changes the result.
+3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation context searches, checked Pages artifacts/logs, Releases, forks, retained/current-runtime Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, Discussions checks, Packages checks, public cache/index searches, repository Cloudflare URL searches, same-account GitHub Gist/public-snippet searches, transient staging/automation commit searches, exact-commit non-Pages Actions searches, Actions-cache probing, Deployments/Environments probing, public GitHub CDN-cache discovery, commit-message searches for Nobunaga, commit-level comment/index probing, Gmail probing, direct tag-list REST probing, Git LFS probing, or generic public-domain portrait searches unless new evidence materially changes the result.
 4. Continue only with a materially new independent source class capable of containing the original Oda Nobunaga binary or source identifier independently of corrupted Git blobs/direct repository snapshots.
 5. If a candidate is found, verify identity and exact-source linkage first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
 6. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
@@ -26,12 +26,13 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 ## New findings from latest run
 
-- Confirmed `assets/cards/` still has 13 production JPGs and no `suspect-4.jpg`.
-- Investigated Git LFS / large-file pointer storage as a materially new independent source class.
-- Repository search found no `filter=lfs` or `git-lfs` references.
-- Commit search found no LFS-related history.
-- No evidence indicates the intended Oda Nobunaga image was ever retained outside ordinary Git blobs through Git LFS.
-- No candidate was accepted; production code and architecture remain unchanged.
+- Investigated GitHub Discussions / Discussion attachments as a new independent source class.
+- Repository-scoped public searches for `織田信長`, `Oda Nobunaga`, and `suspect-4` under Discussions returned no relevant result.
+- Direct Discussions page retrieval was unavailable, and the connected GitHub tool has no repository Discussion search/retrieval action.
+- Investigated GitHub Packages / container/package storage as another new independent source class.
+- The connected GitHub tool has no package retrieval action, and public searches found no relevant package/`ghcr.io` reference for this repository/account.
+- No candidate image or source identifier was found.
+- Production code and architecture remain unchanged.
 
 ## Next safe batch
 
@@ -50,7 +51,9 @@ Source-resolution work only. Use a genuinely new independent source or newly sur
 - Gmail search remains blocked by the connector's interactive-input requirement in this execution mode.
 - Direct GitHub tag-list/reference REST probing is blocked by the connector allowlist.
 - Git LFS storage was investigated and no LFS configuration/history was found.
-- Existing File Library, prior-conversation context, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, exact-commit non-Pages Actions paths, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Git LFS, and public-domain portrait repositories have not produced the exact required binary/source linkage.
+- GitHub Discussions produced no indexed candidate and are not exposed by the current connector.
+- GitHub Packages/container storage produced no public reference and is not exposed by the current connector.
+- Existing File Library, prior-conversation context, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, Discussions, Packages, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, exact-commit non-Pages Actions paths, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Git LFS, and public-domain portrait repositories have not produced the exact required binary/source linkage.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
 ## Important references

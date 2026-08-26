@@ -25,9 +25,9 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Investigated image-search-engine result caches/thumbnails as a materially new independent source class, using project-linked queries for `h169432-cell`, `my-first-game`, `suspect-4`, `Oda Nobunaga`, and `織田信長`.
-- Returned images were unrelated Nobunaga game screenshots and did not contain the project artwork, project URL linkage, source digest, or recoverable original binary.
+- Followed `HANDOFF.md` and used a materially new independent source class: public source-origin / image-provider records outside the repository.
+- Searched project-linked combinations of `h169432-cell`, `my-first-game`, `Oda Nobunaga`, and `織田信長` for an original image-provider page, source identifier, or recoverable binary.
+- Results were unrelated public Nobunaga content and exposed no project-linked artwork, source URL, digest, or binary.
 - No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -46,6 +46,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Exact public search-index queries combining `h169432-cell` / `my-first-game` with `Oda Nobunaga` / `織田信長`; no project-linked source identifier found.
 - Internet Archive / Wayback Machine public index search for archived project pages/assets; no usable archived snapshot or source identifier found, and direct CDX retrieval was unavailable through the current access path.
 - Image-search-engine cache/thumbnail search for project-linked Oda Nobunaga artwork; returned only unrelated public images and no project-linked candidate.
+- Public external source-origin / image-provider search using project-linked Nobunaga terms; no project-linked source page, identifier, digest, or binary found.
 
 ## Active objective
 

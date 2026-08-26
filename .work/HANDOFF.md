@@ -17,21 +17,21 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-3. Do not repeat exhausted Git blob repairs, File Library searches, checked Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, repository Cloudflare URL searches, same-account GitHub Gist/public-snippet searches, transient staging/automation commit searches, exact-commit non-Pages Actions searches, Actions-cache probing, Deployments/Environments probing, public GitHub CDN-cache discovery, or commit-message searches for Nobunaga unless new evidence appears.
-4. Continue only with a materially new independent source class capable of containing the original Oda Nobunaga binary independently of corrupted Git blobs/direct repository snapshots.
-5. If a candidate is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
-6. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
-7. Validate board reveal, private inspection, and accusation rendering before deleting any legacy image system.
-8. Update `PROGRESS.md` and `HANDOFF.md` before ending.
+3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation context searches, checked Pages artifacts/logs, Releases, forks, retained/current-runtime Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, repository Cloudflare URL searches, same-account GitHub Gist/public-snippet searches, transient staging/automation commit searches, exact-commit non-Pages Actions searches, Actions-cache probing, Deployments/Environments probing, public GitHub CDN-cache discovery, or commit-message searches for Nobunaga unless new evidence appears.
+4. Do not retry Gmail automatically unless connector access changes; current non-interactive execution receives an interactive-user-input requirement before mailbox search.
+5. Continue only with a materially new independent source class capable of containing the original Oda Nobunaga binary independently of corrupted Git blobs/direct repository snapshots.
+6. If a candidate is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
+7. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
+8. Validate board reveal, private inspection, and accusation rendering before deleting any legacy image system.
+9. Update `PROGRESS.md` and `HANDOFF.md` before ending.
 
 ## New findings from latest run
 
-- Confirmed `assets/cards/` remains at 13/14 and `suspect-4.jpg` is still absent.
-- Investigated GitHub Deployments/Environments as a new independent storage path.
-- The connected GitHub tool exposes no deployment retrieval action and direct REST `/deployments` access is blocked by the connector allowlist.
-- Investigated external GitHub CDN caches/mirrors as another new independent storage class.
-- Public discovery found no indexed cached copy for the historical target repository/path.
-- Direct outbound CDN retrieval is unavailable in the execution environment, so no independent binary could be retrieved.
+- Confirmed `assets/cards/` remains at 13/14 and `suspect-4.jpg` is absent.
+- Prior-conversation/personal-context records produced no source clue for the original Oda Nobunaga image.
+- Connected Gmail was investigated as a possible attachment archive, but mailbox search cannot run in the current non-interactive execution because the connector requires user interaction.
+- Historical commit `41a8257...` reconfirms suspect 4 = `織田信長` in the top-right cell of the 4×2 fine-art grid, with no external source URL or original prompt metadata.
+- Current execution-environment image files were inspected as an independent retention path; available `suspect-4` variants/montages show `織田信忠` and remain rejected.
 - No image was accepted and production code was not changed.
 
 ## Next safe batch
@@ -42,12 +42,13 @@ Source-resolution work only. Use a genuinely new independent source or newly sur
 
 - Correct exact Oda Nobunaga `suspect-4.jpg` remains unavailable.
 - Historical intended image data is corrupted and tested repair paths failed.
-- Accessible retained suspect assets show Oda Nobutada and are unusable.
+- Accessible retained/current-runtime suspect assets show Oda Nobutada and are unusable.
 - Exact-commit Pages artifact existed but expired after one day and was only a repository snapshot.
 - Exact mapping commit has no non-Pages Actions run that could hold an independent artifact.
 - Actions cache storage and deployment storage are not inspectable through the currently available GitHub connector.
+- Connected Gmail search is blocked in this non-interactive execution by an interactive-user-input requirement.
 - Public CDN-cache discovery produced no usable retained copy; direct CDN network retrieval is unavailable in the current execution environment.
-- Existing File Library, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, exact-commit non-Pages Actions paths, commit metadata/diffs, Deployments/Environments, and public GitHub CDN-cache discovery have not produced the required binary.
+- Existing File Library, prior-conversation context, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, exact-commit non-Pages Actions paths, commit metadata/diffs, Deployments/Environments, public GitHub CDN-cache discovery, and current execution-environment temporary image storage have not produced the required binary.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
 ## Important references

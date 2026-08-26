@@ -17,7 +17,7 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-3. Do not repeat exhausted Git blob repairs, File Library searches, checked Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, repository Cloudflare URL searches, same-account GitHub Gist/public-snippet searches, or transient staging/automation commit searches unless new evidence appears.
+3. Do not repeat exhausted Git blob repairs, File Library searches, checked Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repository search, Wiki/index checks, Issue/PR attachment checks, public cache/index searches, repository Cloudflare URL searches, same-account GitHub Gist/public-snippet searches, transient staging/automation commit searches, or exact-commit non-Pages Actions searches unless new evidence appears.
 4. Continue only with a materially new independent source class capable of containing the original Oda Nobunaga binary independently of corrupted Git blobs/direct repository snapshots.
 5. If a candidate is found, verify identity first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
 6. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
@@ -27,10 +27,9 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 ## New findings from latest run
 
 - Confirmed current production card directory remains at 13 JPGs with `suspect-4.jpg` absent.
-- Investigated transient staging and automation-created image commits as a new potential source class.
-- `ab051060...` staged only `alibi-vertical.jpg` and `twist.jpg`; `b9b54bdf...` staged only `alibi-horizontal.jpg`.
-- Current `.work/staging/` contains evidence-card Base64 migration parts, not a suspect-4 image source.
-- Historical generated-character-art commit `6d40ef0...` is the older Resident Evil six-character sheet and is unrelated to the later Oda Nobunaga fine-art set.
+- Investigated GitHub Actions runs other than Pages as a new independent source class.
+- Exact fine-art mapping commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b` has exactly one Actions run: Pages run `32730372651`.
+- No custom/non-Pages workflow run or independent artifact path exists for that exact commit.
 - No image was accepted and production code was not changed.
 
 ## Next safe batch
@@ -43,7 +42,8 @@ Source-resolution work only. Use a genuinely new independent source or newly sur
 - Historical intended image data is corrupted and tested repair paths failed.
 - Accessible retained suspect assets show Oda Nobutada and are unusable.
 - Exact-commit Pages artifact existed but expired after one day and was only a repository snapshot.
-- Existing File Library, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, and transient staging/automation commits have not produced the required binary.
+- Exact mapping commit has no non-Pages Actions run that could hold an independent artifact.
+- Existing File Library, Pages artifacts/logs, Releases, forks/network, same-account repositories, accessible/indexed Wiki paths, Issues/PR attachments, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, and exact-commit non-Pages Actions paths have not produced the required binary.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 
 ## Important references

@@ -26,9 +26,9 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
 - Confirmed `main` still has the same 13 production JPGs and no `assets/cards/suspect-4.jpg`.
-- Used a materially new independent source class: user cloud-storage integration availability.
-- Found Google Drive as an available installable connector that could contain an independently retained original image/source file.
-- Google Drive is not currently installed/connected in this conversation, so its contents could not be searched.
+- Used a materially new independent source class: public external deployment/mirror discovery outside GitHub Pages.
+- Searched for project-linked Cloudflare Pages / `pages.dev` deployments and other public mirrors using `h169432-cell`, `my-first-game`, `Clue Grid`, `Oda Nobunaga`, and `織田信長` combinations.
+- No project-linked deployment, mirror, cached binary, source URL, or verifiable `suspect-4` candidate was found.
 - No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -48,6 +48,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Internet Archive / Wayback Machine public index search for archived project pages/assets; no usable archived snapshot or source identifier found, and direct CDX retrieval was unavailable through the current access path.
 - Image-search-engine cache/thumbnail search for project-linked Oda Nobunaga artwork; returned only unrelated public images and no project-linked candidate.
 - Public external source-origin / image-provider search using project-linked Nobunaga terms; no project-linked source page, identifier, digest, or binary found.
+- Public external deployment/mirror search, including Cloudflare Pages / `pages.dev` and project-title searches; no project-linked deployment or retained image source found.
 
 ## Active objective
 
@@ -61,5 +62,5 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - Authentic public-domain Oda Nobunaga portraits can be independently sourced, but the exact intended portrait cannot be determined from surviving metadata.
 - No alternate intact revision exists for the known suspect-grid split-data path or `suspects-latest.webp` path.
 - Public external source-origin/image-provider search produced no project-linked source record.
-- Google Drive is a newly identified independent source class but is not currently installed/connected, so it cannot yet be searched.
+- Google Drive remains a potentially useful independent source class but is not currently installed/connected, so it cannot yet be searched.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

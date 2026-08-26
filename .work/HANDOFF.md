@@ -21,7 +21,8 @@ Legacy split-image/runtime/UI files were removed in commit `c4e31433f55d2753e6a9
 Remaining obsolete sprite/data/sheet assets, legacy rules override, migration directories, diagnostic staging, and temporary image-rebuild workflows were removed in commit `43fad683cc842859d5e07fbe415843deea3e10b9`.
 
 GitHub Pages run `32958992876` for commit `43fad683cc842859d5e07fbe415843deea3e10b9` completed successfully.
-`DESIGN.md` was updated to describe the current direct-file architecture.
+Final handoff commit `1c3667c75ff48fa8dca71004be6e0bc0ddbce6f2` also deployed successfully in Pages run `32961265164`.
+`DESIGN.md` describes the current direct-file architecture.
 
 ## Exact next start point
 
@@ -42,6 +43,13 @@ Future execution should begin from a new explicit objective or a newly observed 
 - Live interactive click testing of board reveal/private inspection/accusation and mobile/iPad Safari was not directly executable in the current tool environment.
 - There is no known repository or deployment blocker.
 
+## Latest verification
+
+- Current completed state was re-read from Git in the mandatory order.
+- `main` had no new production-code change requiring follow-up.
+- Latest Pages deployment for the final handoff commit was `completed / success`.
+- No production files were changed in this run; only persistent execution-state records were refreshed.
+
 ## Important references
 
 Backup branch: `backup-before-persistent-workflow-20260825`
@@ -53,3 +61,5 @@ First legacy cleanup: `c4e31433f55d2753e6a9e6421466e30c24e17ac6`
 Full obsolete-asset cleanup: `43fad683cc842859d5e07fbe415843deea3e10b9`
 Successful post-cleanup Pages run: `32958992876`
 Final technical-design update: `adf337362a083f9fdaacb054da2674787af8fe5d`
+Final cleanup handoff commit: `1c3667c75ff48fa8dca71004be6e0bc0ddbce6f2`
+Final handoff Pages run: `32961265164`

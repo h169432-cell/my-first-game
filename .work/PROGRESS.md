@@ -25,12 +25,10 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `main` still contains 13 production JPGs and no `assets/cards/suspect-4.jpg`.
-- Investigated prior-conversation/personal-context records as a new independent source class for the original Oda Nobunaga artwork; no relevant retained record, filename, generated-image reference, or source clue was available.
-- Investigated connected Gmail as a possible independent attachment/source archive using `suspect-4`, `織田信長`, `Nobunaga`, and `織田信忠`; the connector required interactive user input in this execution context, so mailbox contents could not be searched.
-- Reconfirmed historical commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b` explicitly maps suspect 4 to `織田信長` and places it in the top-right cell of the 4×2 fine-art grid; the commit contains no independent image URL/source metadata.
-- Inspected current execution-environment temporary image storage as another independent retention path. Four local `suspect-4.jpg` variants and retained montages/sheets exist, but the visible artwork is `織田信忠`, so none was accepted.
-- No candidate image was committed. Production code was not changed.
+- Reconfirmed the only active blocker is the exact intended `assets/cards/suspect-4.jpg` for Oda Nobunaga.
+- Retried connected Gmail only because this run was user-initiated; the connector still reported `User input required but current turn is running in a non-interactive mode`, so mailbox/attachment search remains unavailable.
+- Probed GitHub tag/reference retrieval as a new reachable-ref source class; the connector rejected direct tag-list REST access, so no additional historical ref carrying an independent binary could be inspected through the available GitHub interface.
+- No candidate image was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
 
@@ -59,7 +57,8 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Commit-message searches for `織田信長` / `Nobunaga`; no additional source-bearing commit was found.
 - GitHub Deployments/Environments through the current connector; no deployment retrieval action is exposed and direct REST deployment access is blocked.
 - Public GitHub CDN-cache discovery (including jsDelivr-style mirrors) for the historical target asset; no indexed usable copy found, and direct CDN network retrieval is unavailable in the execution environment.
-- Connected Gmail attachment search is currently unavailable in non-interactive execution because the connector requests interactive user input; do not retry automatically unless connector access conditions change.
+- Connected Gmail attachment search remains unavailable in this execution context because the connector requires interactive user input even on a user-initiated run.
+- GitHub tag-list/reference probing through direct REST is blocked by the connector allowlist; do not retry unless the connector exposes tag/ref listing directly.
 
 ## Active objective
 
@@ -71,8 +70,6 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, prior-conversation context, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, commit metadata/diffs, Deployments/Environments, public GitHub CDN-cache discovery, or current execution-environment temporary image storage.
+- No usable source has been found in File Library, prior-conversation context, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, commit metadata/diffs, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Gmail, or accessible historical refs/tags.
 - Actions cache storage and deployment storage are not inspectable with the currently available GitHub connector.
-- Connected Gmail cannot be searched in the current non-interactive execution context because it requires user interaction.
-- Direct outbound CDN retrieval is unavailable in the current execution environment.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

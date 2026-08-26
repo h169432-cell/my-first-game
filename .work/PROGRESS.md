@@ -14,51 +14,55 @@ Backup point: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 - All 14 required production JPGs exist in `assets/cards/`.
 - `alibi-horizontal.jpg` is the required left/right artwork.
 - `assets/cards/suspect-4.jpg` is the user-confirmed 容疑者4 / 織田信長 / 肖像 card crop, verified at 28,572 bytes with SHA-256 `ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808`.
-- Legacy dependency audit completed for `assets/suspect-ui.js`, `assets/evidence-ui.js`, and `assets/card-image-runtime.js`; no required non-artwork game behavior was found in them.
-- Production `index.html` was simplified in commit `60d630550a85313c1a4e8839118aaed89e821de9` to load only `game.js` and `assets/card-ui.js`; all split-grid, reconstruction runtime, `suspect-ui.js`, and `evidence-ui.js` script tags were removed.
-- GitHub Pages run `32956113351` for the direct-only runtime completed successfully.
+- Production `index.html` loads only `game.js`, `assets/card-ui.js`, and `window.CardUI.installDirectCardUI()`.
+- Legacy reference searches returned no active references for the planned image-system cleanup paths.
+- Commit `c4e31433f55d2753e6a9e6421466e30c24e17ac6` removed the unreferenced split-grid/runtime/legacy artwork UI files.
+- Commit `43fad683cc842859d5e07fbe415843deea3e10b9` removed the remaining obsolete sprite/data/sheet assets, old rules override file, migration directories, diagnostic staging, and temporary image-rebuild workflows.
+- After cleanup, `assets/` contains only `card-ui.js` and `cards/`.
+- All 14 production JPGs remain present after cleanup.
 
 ## Current state
 
-`assets/cards/` is complete at 14/14 required JPGs. Production now uses the direct-file artwork runtime only, and that runtime has been successfully built and deployed by GitHub Pages.
+The repository now matches the intended direct-file artwork architecture:
 
-Legacy files still exist in the repository but are no longer referenced by `index.html`. They have intentionally not yet been deleted; the next cleanup batch must first perform a repository-wide reference check.
+- `game.js` — game rules and interaction logic.
+- `assets/card-ui.js` — artwork URL mapping and rendering.
+- `assets/cards/` — final individual artwork files.
+- `index.html` — no legacy split-image or reconstruction scripts.
+
+No legacy card-image runtime or migration workflow remains in the current tree.
 
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed all 14 production JPGs remain present, including `suspect-4.jpg`.
-- Confirmed `card-ui.js` maps all 14 image paths and decorates revealed board cards, private inspection cards, and accusation suspect buttons.
-- Compared legacy runtime/UI scripts against `game.js` and `card-ui.js`; found no required non-artwork game behavior in the legacy scripts.
-- Removed all legacy split-image/runtime/UI script references from `index.html` while leaving the legacy files themselves intact.
-- Bumped the production JS cache query to `v=20260826-2200`.
-- Confirmed Pages run `32956113351` completed with conclusion `success`.
+- Confirmed `main` still used the direct-only runtime and all 14 JPGs were present.
+- Performed repository reference searches for the legacy runtime/UI/sheet/sprite/data paths before deletion.
+- Removed the first legacy runtime batch: `card-image-runtime.js`, new suspect/evidence split-grid parts, `suspect-ui.js`, and `evidence-ui.js`.
+- Removed remaining obsolete image-system assets/directories and temporary migration/rebuild artifacts.
+- Revalidated the resulting `assets/` directory: only `card-ui.js` and `cards/` remain.
+- Revalidated `assets/cards/`: all 14 required JPGs, including `suspect-4.jpg`, remain.
+- GitHub Pages run `32958992876` was triggered for cleanup commit `43fad683cc842859d5e07fbe415843deea3e10b9`; last observed state was `in_progress`.
 
 ## Validation performed
 
-- `assets/cards/` directory contains all 14 required JPGs.
-- `game.js` independently creates pawn markers and owns board/modal/accusation game behavior.
-- `card-ui.js` leaves the existing game DOM and pawn markers intact and prepends direct `<img>` artwork with image-error removal fallback.
-- `suspect-ui.js` and `evidence-ui.js` are artwork decorators rather than rule providers.
-- `card-image-runtime.js` is reconstruction-only.
-- Direct-only runtime commit: `60d630550a85313c1a4e8839118aaed89e821de9`.
-- Pages run `32956113351`: completed / success.
+- Production `index.html` contains no legacy script tags.
+- Repository-wide code searches found no active references to the removed legacy files/directories checked in this run.
+- `assets/` now contains exactly the direct UI module plus final card directory.
+- Final card directory still contains the complete 14-image set.
+- Cleanup commits were fast-forwarded to `main` successfully.
 
 ## Failures / unresolved
 
-- Live interaction rendering cannot be directly clicked/exercised in the current tool environment.
-- Legacy asset files and temporary migration staging/workflow files remain.
-- Before deletion, repository-wide references to each legacy asset must be checked.
-- Do not repeat large Base64 staging transfers; the previous large-chunk path truncated data.
+- Direct HTTP fetch of the live GitHub Pages site was unavailable from the execution container because DNS resolution failed; this did not affect GitHub API access.
+- Live interactive click testing of board reveal, private inspection, and accusation UI is still unavailable in the current tool environment.
+- Pages run `32958992876` had not yet reached a final conclusion at the last check.
 
 ## Active objective
 
-Verify the live served page and direct card image URLs, then remove obsolete legacy image-system files and temporary migration artifacts in a controlled cleanup batch.
+Confirm the post-cleanup GitHub Pages deployment succeeds, then perform final documentation/state verification. If deployment succeeds and no stale architecture documentation remains, mark the card-system cleanup complete.
 
 ## Remaining items
 
-- Verify live served `index.html` contains only the simplified runtime references and required card JPG URLs resolve.
-- Perform repository-wide reference checks for every planned legacy deletion.
-- Remove obsolete split-grid/reconstruction/legacy artwork UI files that are proven unreferenced.
-- Remove `.work/staging/` and `.github/workflows/reconstruct-staged-card.yml` after confirming reconstruction is no longer needed.
-- Update README/DESIGN only if their architecture description is stale.
+- Recheck Pages run `32958992876` (or the newest main-branch Pages run after state-file commits) for `completed / success`.
+- Verify README/DESIGN only if they still describe the removed legacy image architecture.
+- Record final completion in `PROGRESS.md` and `HANDOFF.md` once deployment verification is complete.

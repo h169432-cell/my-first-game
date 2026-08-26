@@ -25,11 +25,12 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Investigated a materially new source class: GitHub Actions runs other than Pages and their possible independent artifacts around the exact fine-art mapping commit.
-- Queried Actions runs for historical fine-art mapping commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b`.
-- The commit has exactly one associated run: Pages run `32730372651`; no non-Pages workflow run exists for that commit.
-- Therefore there is no hidden custom-workflow artifact/cached image path tied to the exact mapping commit through GitHub Actions.
+- Continued only from `HANDOFF.md` and did not use chat history as the source of truth.
+- Investigated a materially new source class: GitHub Actions cache/storage outside normal workflow artifacts.
+- The available GitHub connector exposes no Actions-cache retrieval function, and direct `actions/caches` REST access is rejected by the connector allowlist, so this source cannot currently be inspected through the connected tool.
+- Re-inspected historical fine-art mapping commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b` and its diff.
+- The commit confirms suspect 4 was explicitly mapped to `織田信長`, but the change only switches rendering to `__newSuspectGridParts`; it contains no external source URL, attachment reference, generator output URL, or independent binary reference that could recover the original image.
+- Commit-message search for `織田信長` and `Nobunaga` returned no additional commits.
 - No candidate image was accepted or committed. Production code was not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -54,6 +55,8 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Transient `.work/staging/` and automation-created `Add verified staged card images` commits as a suspect-4 source; they contain evidence-card migration data only.
 - Earlier generated-character suspect sheet (`6d40ef0...`) as the intended fine-art source; it is the unrelated Resident Evil six-character artwork.
 - Non-Pages GitHub Actions / custom workflow artifact path for exact mapping commit `41a8257...`; the commit has only the already-known Pages run and no other Actions run.
+- GitHub Actions cache/storage path through the current connector; no cache API is exposed and direct `actions/caches` REST access is blocked by the connector allowlist.
+- Commit-message searches for `織田信長` / `Nobunaga`; no additional source-bearing commit was found.
 
 ## Active objective
 
@@ -65,5 +68,6 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, or non-Pages Actions/custom workflow artifacts for the exact mapping commit.
+- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, or commit metadata/diffs for the exact mapping commit.
+- Actions cache storage is not inspectable with the currently available GitHub connector.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

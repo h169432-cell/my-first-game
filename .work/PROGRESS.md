@@ -26,10 +26,10 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
 - Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Investigated a materially new source class: transient repository staging / automation-created image commits that could have contained an independent verified binary before cleanup.
-- Inspected historical `Add verified staged card images` commits `ab051060...` and `b9b54bdf...`; they added only `alibi-vertical.jpg`, `twist.jpg`, and `alibi-horizontal.jpg` respectively. No suspect image was staged or committed there.
-- Inspected current `.work/staging/`; it contains staged Base64 parts for evidence migration such as `alibi-horizontal`, not a `suspect-4` source.
-- Reviewed the earlier generated-character-art commit `6d40ef0...`; it references only the older Resident Evil six-character suspect sheet and does not contain the later Oda Nobunaga fine-art binary.
+- Investigated a materially new source class: GitHub Actions runs other than Pages and their possible independent artifacts around the exact fine-art mapping commit.
+- Queried Actions runs for historical fine-art mapping commit `41a8257ceaf17b90f06cb57a9a330a285b9fd71b`.
+- The commit has exactly one associated run: Pages run `32730372651`; no non-Pages workflow run exists for that commit.
+- Therefore there is no hidden custom-workflow artifact/cached image path tied to the exact mapping commit through GitHub Actions.
 - No candidate image was accepted or committed. Production code was not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -53,6 +53,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Historical fine-art mapping commit inspection for original prompt/source metadata; none is recorded.
 - Transient `.work/staging/` and automation-created `Add verified staged card images` commits as a suspect-4 source; they contain evidence-card migration data only.
 - Earlier generated-character suspect sheet (`6d40ef0...`) as the intended fine-art source; it is the unrelated Resident Evil six-character artwork.
+- Non-Pages GitHub Actions / custom workflow artifact path for exact mapping commit `41a8257...`; the commit has only the already-known Pages run and no other Actions run.
 
 ## Active objective
 
@@ -64,5 +65,5 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, or transient staging/automation commits.
+- No usable source has been found in File Library, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, or non-Pages Actions/custom workflow artifacts for the exact mapping commit.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

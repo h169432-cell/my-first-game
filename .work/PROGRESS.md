@@ -25,12 +25,17 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
-- Investigated a materially new independent storage class: Git LFS / large-file pointer history.
-- Repository code search found no `filter=lfs` or `git-lfs` references.
-- Commit-message search found no LFS-related commit.
-- No evidence was found that the intended Oda Nobunaga artwork was ever stored outside ordinary Git blobs through Git LFS.
-- No candidate image was accepted. Production code and architecture were not changed.
+- Followed `HANDOFF.md` and continued source-resolution work only; production code and architecture were not changed.
+- Investigated GitHub Discussions / Discussion attachments as a materially new independent storage class.
+  - Repository-scoped public searches for `織田信長`, `Oda Nobunaga`, and `suspect-4` under the Discussions path returned no relevant result.
+  - Direct Discussions page retrieval was unavailable from the web fetch path.
+  - The connected GitHub tool exposes PR discussion comments only and no repository Discussion retrieval/search action.
+  - No candidate image or source identifier was found.
+- Investigated GitHub Packages / container/package storage as another materially new independent storage class.
+  - The connected GitHub tool exposes no package/container retrieval action.
+  - Public searches for this repository/account plus package/`ghcr.io` references produced no relevant result.
+  - No candidate image or source identifier was found.
+- No candidate was accepted. `assets/cards/suspect-4.jpg` remains unresolved.
 
 ## Exhausted / do not repeat without new evidence
 
@@ -64,6 +69,8 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - GitHub tag-list/reference probing through direct REST is blocked by the connector allowlist; do not retry unless the connector exposes tag/ref listing directly.
 - Generic/public-domain Oda Nobunaga portrait repositories as an exact-source substitute: authentic portraits exist, but no surviving evidence ties any one of them to the intended historical grid, so they cannot be used as the exact artwork without changing the requirement.
 - Git LFS / large-file storage as an independent source: no LFS pointer configuration, code reference, or LFS-related commit was found.
+- GitHub Discussions / Discussion attachments: no relevant repository-scoped indexed result; direct page retrieval unavailable and current connector exposes no repository Discussion action.
+- GitHub Packages / container/package storage: no relevant public reference found and current connector exposes no package retrieval action.
 
 ## Active objective
 
@@ -76,6 +83,6 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - Authentic public-domain Oda Nobunaga portraits can be independently sourced, but the exact intended portrait cannot be determined from surviving metadata.
 - The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, prior-conversation context, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Gmail, accessible historical refs/tags, Git LFS, or public-domain portrait repositories with exact-source proof.
+- No usable source has been found in File Library, prior-conversation context, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, Discussions, Packages, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Gmail, accessible historical refs/tags, Git LFS, or public-domain portrait repositories with exact-source proof.
 - Actions cache storage and deployment storage are not inspectable with the currently available GitHub connector.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

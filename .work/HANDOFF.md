@@ -4,52 +4,43 @@ Last updated: 2026-08-26
 
 ## Current position
 
-`assets/cards/` has all 14 verified production JPGs.
+The direct-file card artwork migration is functionally complete in the repository.
 
-Production `index.html` now loads only:
+Production `index.html` loads only:
 - `game.js?v=20260826-2200`
 - `assets/card-ui.js?v=20260826-2200`
 - `window.CardUI.installDirectCardUI()`
 
-The legacy split suspect/evidence scripts, `assets/card-image-runtime.js`, `assets/suspect-ui.js`, and `assets/evidence-ui.js` are no longer referenced by production HTML. Runtime-switch commit: `60d630550a85313c1a4e8839118aaed89e821de9`.
+`assets/` now contains only:
+- `assets/card-ui.js`
+- `assets/cards/`
 
-Dependency audit result:
-- `suspect-ui.js`: legacy suspect sheet-crop artwork decorator only.
-- `evidence-ui.js`: legacy evidence sheet / horizontal-alibi artwork decorator only.
-- `card-image-runtime.js`: split Base64 to WebP data-URL reconstruction only.
-- Game rules, pawn markers, modal behavior, accusation submission, and turn flow remain in `game.js`.
-- Direct board/private/accusation artwork mapping is in `assets/card-ui.js`.
+All 14 required JPGs remain in `assets/cards/`, including the verified `suspect-4.jpg` for 織田信長.
 
-GitHub Pages run `32956113351` for the runtime-switch commit completed successfully.
+Legacy split-image/runtime/UI files were removed in commit `c4e31433f55d2753e6a9e6421466e30c24e17ac6`.
+Remaining obsolete sprite/data/sheet assets, legacy rules override, migration directories, diagnostic staging, and temporary image-rebuild workflows were removed in commit `43fad683cc842859d5e07fbe415843deea3e10b9`.
 
-The legacy files themselves remain in the repository for rollback until the next repository-wide reference check confirms they are safe to delete.
+GitHub Pages run `32958992876` was triggered for `43fad683cc842859d5e07fbe415843deea3e10b9`; the last observed state during this run was `in_progress`.
 
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
-2. Confirm `main` still has the direct-only `index.html` and all 14 JPGs.
-3. Fetch the live GitHub Pages `index.html` and confirm no legacy script tags are served; confirm direct card image URLs resolve.
-4. Perform repository-wide reference searches for every legacy file/directory listed for deletion in `WORK_PLAN.md`.
-5. Delete only files proven unreferenced, beginning with:
-   - `assets/card-image-runtime.js`
-   - `assets/new-suspect-grid-part1.js` … `part4.js`
-   - `assets/new-evidence-grid-part1.js` … `part4.js`
-   - `assets/suspect-ui.js`
-   - `assets/evidence-ui.js`
-6. Continue with obsolete suspect/evidence sheet/sprite/data/map assets and directories only after checking references.
-7. Revalidate `index.html`, `game.js`, and `card-ui.js`; confirm the subsequent Pages deployment succeeds.
-8. Remove temporary `.work/staging/` files and `.github/workflows/reconstruct-staged-card.yml` only after no reconstruction path is needed.
-9. Update `.work/PROGRESS.md` and `.work/HANDOFF.md` before ending.
+2. Confirm `main` still has direct-only `index.html`, `assets/card-ui.js`, and all 14 JPGs.
+3. Check the newest GitHub Pages run for `main`; require `completed / success` before declaring the cleanup complete.
+4. If Pages succeeds, inspect README/DESIGN only if present and only update them if they still describe the removed legacy image architecture.
+5. Keep the fixed 16-card deck composition and two alibi variants unchanged.
+6. Update `PROGRESS.md` and `HANDOFF.md` with final verification.
+7. Mark the card-system cleanup complete once repository state and deployment are both verified.
 
 ## Next safe batch
 
-Live served-source validation → repository-wide reference check → delete only proven-unreferenced legacy artwork/reconstruction files → deploy and verify again.
+Pages deployment verification → stale documentation check if applicable → final completion-state update.
 
 ## Unresolved items
 
-- Live interactive click testing of revealed board/private inspection/accusation cannot be directly performed in the current tool environment.
-- Legacy files are unreferenced by `index.html` but still physically present.
-- Temporary migration staging/workflow artifacts remain.
+- Post-cleanup Pages deployment had not yet completed at the last check.
+- Live interactive click testing of revealed board/private inspection/accusation cannot be directly exercised in the current tool environment.
+- Direct live-site HTTP fetch from the execution container failed because of DNS resolution; GitHub API validation remained available.
 
 ## Important references
 
@@ -57,7 +48,7 @@ Backup branch: `backup-before-persistent-workflow-20260825`
 Backup commit: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 Verified suspect-4 image commit: `60aa248efe05cea2184bf2c970dcb4080002486e`
 Suspect-4 SHA-256: `ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808`
-Initial direct UI activation: `fd82a784e26f869c75037d7281f16d4201a802fc`
 Direct-only runtime switch: `60d630550a85313c1a4e8839118aaed89e821de9`
-Successful Pages run for runtime switch: `32956113351`
-Progress-state commit after deployment verification: `aad7df175539ffe1525b67861e022a10a1511d5c`
+First legacy cleanup: `c4e31433f55d2753e6a9e6421466e30c24e17ac6`
+Full obsolete-asset cleanup: `43fad683cc842859d5e07fbe415843deea3e10b9`
+Post-cleanup Pages run: `32958992876`

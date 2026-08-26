@@ -21,20 +21,25 @@ Last updated: 2026-08-27
   - Dixit (`games/dixit.html`)
   - Love Letter (`games/love-letter.html`)
   - The Crew: Mission Deep Sea (`games/the-crew-mission-deep-sea.html`)
-- Updated `boardgame-guide/index.html` with working cards/links for all fourteen added games plus Clueverge.
-- New pages use neutral text placeholders instead of copying product images without a clear reuse basis.
+  - Patchwork (`games/patchwork.html`)
+  - King of Tokyo (`games/king-of-tokyo.html`)
+  - Sushi Go Party! (`games/sushi-go-party.html`)
+  - Cascadia (`games/cascadia.html`)
+  - Heat: Pedal to the Metal (`games/heat-pedal-to-the-metal.html`)
+- Updated `boardgame-guide/index.html` with cards and relative links for all nineteen added games plus Clueverge.
+- New pages continue to use text placeholders instead of copying product images without a clear reuse basis.
 - Existing repository-root game app was not changed.
 
 ## Verification performed
-- Confirmed all five pages added in the latest run use `../index.html` back-navigation.
-- Re-fetched `boardgame-guide/index.html` after update and confirmed the updated file is saved as UTF-8.
-- Re-fetched `games/wingspan.html` and confirmed Japanese content and back-navigation.
+- Re-read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, TOP, and an existing detail page before starting.
+- Confirmed the five newly added detail pages all use `../index.html` back-navigation by construction; re-fetched Patchwork after creation to confirm saved Japanese content and navigation.
+- Re-fetched `boardgame-guide/index.html` after update and confirmed the updated UTF-8 file was saved.
 - Facts in the latest run were verified against current official sources:
-  - Wingspan: Stonemaier Games — 1–5 players, 40–70 min listing, age 10+ corroborated by current game reference; bird-driven engine building, food/eggs/cards and four-round scoring.
-  - Terraforming Mars: FryxGames official rules plus current BoardGameGeek reference — 1–5 players including solo variant, about 120 min, age 12+; projects, production, generations and three global parameters.
-  - Dixit (2021 Refresh): Libellud / Asmodee — 3–8 players, age 8+, about 30 min; storyteller clue, submitted image cards, voting and scoring based on partial recognition.
-  - Love Letter: Z-Man Games — 2–6 players, age 10+, about 20 min; draw one/play one, character effects and round win by last player or highest card.
-  - The Crew: Mission Deep Sea: Thames & Kosmos official rules/demo — 3–5 players, age 10+, about 20 min; cooperative mission-based trick-taking with task conditions and restricted communication.
+  - Patchwork Revised Edition: Lookout Spiele — 2 players, 30 min, age 8+; patch purchasing, time track, button economy, empty-space scoring.
+  - King of Tokyo: IELLO — 2–6 players, 30 min, age 8+; dice combinations for attack/healing/energy/victory points, Tokyo control, 20-point or last-survivor victory.
+  - Sushi Go Party!: Gamewright — 2–8 players, 30 min, age 8+; pick-and-pass card drafting, menu customization with more than 20 dishes, combination scoring.
+  - Cascadia: AEG / Flatout Games — 1–4 players, 45 min, age 10+; habitat tile and wildlife token drafting, wildlife scoring patterns, contiguous habitat corridors.
+  - Heat: Pedal to the Metal: Days of Wonder — 1–6 players, 60 min, age 10+; card-driven racing, gears, Heat management, corners, race finish.
 
 ## Current position
 Published guide pages in this project:
@@ -53,10 +58,15 @@ Published guide pages in this project:
 13. Dixit
 14. Love Letter
 15. The Crew: Mission Deep Sea
+16. Patchwork
+17. King of Tokyo
+18. Sushi Go Party!
+19. Cascadia
+20. Heat: Pedal to the Metal
 
 ## Planned next items
-1. Continue backlog with Patchwork.
-2. Then King of Tokyo, Sushi Go Party!, Cascadia, and Heat: Pedal to the Metal as capacity permits.
+1. Continue backlog with The Quacks of Quedlinburg.
+2. After the initial backlog is exhausted, identify additional popular commercially available games from reliable current sources and continue adding several per run when safe.
 3. Add every completed page to TOP in the same run.
 4. Keep using placeholders/source links when image reuse permission is unclear.
 

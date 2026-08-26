@@ -25,14 +25,9 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `assets/cards/` still contains 13 production JPGs and no `suspect-4.jpg`.
-- Investigated repository-local cache/source metadata residue as a new source class:
-  - searched for `suspect-4`, cache/manifest/source URL/hash markers, GitHub user-image URLs, `oaidalle`, `imagegen`, and OpenAI-hosted image references;
-  - no source URL, image hash, attachment URL, or hidden manifest reference was found.
-- Investigated per-file Git history as a new route to an alternate intact revision:
-  - `assets/new-suspect-grid-part1.js` has only one introducing revision, commit `2b80b4e687029a037333ce9922179165aa552387`;
-  - `assets/suspects-latest.webp` has only one introducing revision, commit `62d55158365a1ee44f8af46651f4a46568464009`;
-  - no alternate historical revision of those paths exists that could contain an intact copy.
+- Confirmed `assets/cards/` still contains the same 13 production JPGs and no `suspect-4.jpg`.
+- Investigated an external public search-index route using exact repository/account identifiers combined with `Oda Nobunaga` and `織田信長`.
+- Searches for `h169432-cell`, `my-first-game`, `Oda Nobunaga`, and `織田信長` produced no indexed project page, image URL, attachment URL, cached binary identifier, or source reference linked to the intended suspect-4 artwork.
 - No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -48,6 +43,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Releases, forks/network, same-account public repositories, Wiki/index paths, Issues/PR attachments, Discussions, Packages, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, exact-commit non-Pages Actions paths, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, Gmail, historical refs/tags, Git LFS, and generic public-domain portrait substitution without exact-source proof.
 - Repository-local cache/manifest/source-URL/hash residue search; no source identifier found.
 - Per-file revision-history search for `assets/new-suspect-grid-part1.js` and `assets/suspects-latest.webp`; each has only one introducing revision and no alternate intact historical revision.
+- Exact public search-index queries combining `h169432-cell` / `my-first-game` with `Oda Nobunaga` / `織田信長`; no project-linked source identifier found.
 
 ## Active objective
 

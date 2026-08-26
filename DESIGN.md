@@ -253,26 +253,25 @@
 ```
 
 ## 17. Technical Design
-初期版:
+現在の実装:
 
 - HTML
 - CSS
 - Vanilla JavaScript
-- GitHub Pagesで公開可能な構成
+- GitHub Pagesで公開
+- カード画像は `assets/cards/` の個別JPGを直接参照
+- Base64分割、Blob再構築、CSSスプライト切り出しは使用しない
 
-予定ファイル:
+主要ファイル:
 
-- `index.html`
-- `style.css`
-- `game.js`
-- `cards.js`
-- `culprit.js`
-- `DESIGN.md`
+- `index.html` : 画面構造と安定したランタイム読み込み
+- `style.css` : レイアウトと見た目
+- `game.js` : カード定義、16枚デッキ生成、方向・隣接・真犯人判定、手番、画面遷移、得点
+- `assets/card-ui.js` : カードIDから画像URLへの対応、画像プリロード、盤面・秘密確認・犯人選択の画像表示、画像失敗時のフォールバック
+- `assets/cards/` : 14枚の本番カード画像
+- `DESIGN.md` : ゲーム設計
 
-### responsibilities
-- `cards.js` : カード定義・デッキ生成
-- `culprit.js` : 方向・隣接・真犯人判定
-- `game.js` : 手番、プレイヤー、画面遷移
+カード画像の差し替えは原則として `assets/cards/` 内の該当画像ファイルだけを変更し、ゲームルール側は変更しない。
 
 ## 18. MVP
 最初の実装ではオンライン通信を入れず、1端末で完結させる。

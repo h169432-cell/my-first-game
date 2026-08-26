@@ -3,37 +3,35 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file before doing any new work.
 2. Read `boardgame-guide/index.html` and at least one current game page to preserve the visual pattern.
-3. Continue the backlog beginning with Patchwork. Research several games and create as many complete, verified pages as can safely be finished in the run.
+3. Continue the backlog beginning with The Quacks of Quedlinburg. After that, identify additional popular commercially available board games from reliable current sources and create as many complete, verified pages as can safely be finished in the run.
 4. Add every completed game to `boardgame-guide/index.html` in the same run.
 5. Keep using neutral visual placeholders or source links when image reuse permission is unclear.
 6. Check TOP → detail and detail → TOP relative links.
 7. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
-- Next game: Patchwork.
-- After Patchwork: King of Tokyo, Sushi Go Party!, Cascadia, Heat: Pedal to the Metal, then continue `WORK_PLAN.md`.
+- Next game: The Quacks of Quedlinburg.
+- The initial `WORK_PLAN.md` backlog will be complete after Quacks; then extend the catalog with additional well-established popular games based on reliable official/current sources.
 
 ## Completed in previous run
-- Added Wingspan, Terraforming Mars, Dixit, Love Letter, and The Crew: Mission Deep Sea guide pages.
+- Added Patchwork, King of Tokyo, Sushi Go Party!, Cascadia, and Heat: Pedal to the Metal guide pages.
 - Updated TOP with cards linking to all five pages.
 - Verified player count, age, play time, and core gameplay against current official publisher/product pages and official rules where available.
-- Re-fetched TOP and Wingspan after creation/update to confirm saved UTF-8 content and navigation.
 
 ## Files changed in previous run
-- `boardgame-guide/games/wingspan.html`
-- `boardgame-guide/games/terraforming-mars.html`
-- `boardgame-guide/games/dixit.html`
-- `boardgame-guide/games/love-letter.html`
-- `boardgame-guide/games/the-crew-mission-deep-sea.html`
+- `boardgame-guide/games/patchwork.html`
+- `boardgame-guide/games/king-of-tokyo.html`
+- `boardgame-guide/games/sushi-go-party.html`
+- `boardgame-guide/games/cascadia.html`
+- `boardgame-guide/games/heat-pedal-to-the-metal.html`
 - `boardgame-guide/index.html`
 - `boardgame-guide/PROGRESS.md`
 - `boardgame-guide/HANDOFF.md`
 
 ## Validation performed
-- All five new detail pages include `../index.html` back-navigation.
-- TOP was updated with relative links to all five new paths.
-- Wingspan was re-fetched after creation and confirmed readable in Japanese.
+- Patchwork detail page was re-fetched after creation and confirmed readable in Japanese with `../index.html` back-navigation.
 - TOP was re-fetched after replacement and confirmed saved as UTF-8.
+- All five new TOP cards use relative `games/*.html` links matching the created filenames.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Rules carried forward

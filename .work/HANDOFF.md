@@ -17,8 +17,8 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
-3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation searches, Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repo/Wiki/Issue/PR/Discussion/Package searches, public cache/index searches, exact public search-index queries using `h169432-cell` / `my-first-game` + `Oda Nobunaga` / `織田信長`, Gist/public-snippet searches, Actions-cache/deployment/CDN probing, Gmail, tag/ref probing, Git LFS probing, generic public-domain portrait substitution, repository-local source URL/hash residue searches, per-file revision-history checks, Internet Archive / Wayback public-index searches, image-search-engine cache/thumbnail searches, or public external source-origin/image-provider searches unless new evidence materially changes the result.
-4. A newly identified independent source class is Google Drive. Search it only if/when the connector becomes installed/connected; do not assume access before then.
+3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation searches, Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repo/Wiki/Issue/PR/Discussion/Package searches, public cache/index searches, exact public search-index queries using `h169432-cell` / `my-first-game` + `Oda Nobunaga` / `織田信長`, Gist/public-snippet searches, Actions-cache/deployment/CDN probing, Gmail, tag/ref probing, Git LFS probing, generic public-domain portrait substitution, repository-local source URL/hash residue searches, per-file revision-history checks, Internet Archive / Wayback public-index searches, image-search-engine cache/thumbnail searches, public external source-origin/image-provider searches, or Cloudflare Pages / `pages.dev` / public deployment-mirror searches unless new evidence materially changes the result.
+4. Google Drive remains a potentially useful independent source class. Search it only if/when the connector becomes installed/connected; do not assume access before then.
 5. Otherwise continue only with another materially new independent source class capable of containing the original Oda Nobunaga binary or a verifiable source identifier independently of corrupted Git blobs/direct repository snapshots.
 6. If a candidate is found, verify identity and exact-source linkage first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
 7. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
@@ -28,14 +28,14 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 ## New findings from latest run
 
 - Confirmed the repository still has 13/14 production JPGs and no `suspect-4.jpg`.
-- Checked user cloud-storage integration availability as a new independent source class.
-- Google Drive is available as an installable connector, but it is not currently installed/connected in this conversation.
-- Its contents therefore could not be searched and no image candidate was accepted.
+- Checked public external deployment/mirror discovery as a new independent source class.
+- Searches targeting Cloudflare Pages / `pages.dev` and public mirrors with project/repository/title/Nobunaga identifiers returned no project-linked source.
+- No retained binary, source URL, or verifiable candidate was found.
 - Production code remains unchanged.
 
 ## Next safe batch
 
-Source-resolution work only. If Google Drive becomes available, search it for the original fine-art suspect grid / Oda Nobunaga card / suspect-4 source. Otherwise use another genuinely new independent source. Do not activate `card-ui.js` or perform destructive cleanup while the 14th image is unresolved.
+Source-resolution work only. If Google Drive becomes available, search it for the original fine-art suspect grid / Oda Nobunaga card / suspect-4 source. Otherwise use another genuinely new independent source class. Do not activate `card-ui.js` or perform destructive cleanup while the 14th image is unresolved.
 
 ## Unresolved items
 
@@ -45,6 +45,7 @@ Source-resolution work only. If Google Drive becomes available, search it for th
 - Authentic public-domain Oda Nobunaga portraits exist, but exact-source identity cannot be established from surviving project metadata.
 - No alternate intact revision exists for the known split suspect-grid data or `suspects-latest.webp` file paths.
 - Public external source-origin/image-provider search produced no project-linked source record.
+- Public Cloudflare Pages / `pages.dev` / deployment-mirror search produced no project-linked retained source.
 - Google Drive could contain an independent retained source but is not currently installed/connected.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
 

@@ -38,23 +38,16 @@ No legacy card-image runtime, split-image data, sprite system, migration directo
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed production `index.html` remains direct-only.
-- Confirmed `assets/` contains only `card-ui.js` and `cards/`.
-- Confirmed post-cleanup GitHub Pages run `32958992876` is `completed / success`.
-- Inspected `README.md`; it contains only the repository title and required no architecture update.
-- Inspected `DESIGN.md`; its technical file-layout section was stale and was updated to the current architecture.
-- Updated `.work/WORK_PLAN.md` completion statuses.
-- Final persistent state now records the repository/deployment cleanup as complete.
+- Confirmed current `main` head was `1c3667c75ff48fa8dca71004be6e0bc0ddbce6f2` before this progress-state update.
+- Confirmed the latest GitHub Pages run for that head, `32961265164`, completed successfully.
+- No new gameplay/UI objective or defect was present in Git state, so no production source files were changed.
+- Card-system cleanup remains complete; only persistent execution-state files are updated for this run.
 
 ## Validation performed
 
-- `index.html` contains no legacy script tags and loads `game.js` plus `assets/card-ui.js`.
-- `assets/` contains exactly `card-ui.js` and `cards/`.
-- All 14 production card images were previously verified present after cleanup.
-- Fixed 16-card deck composition and distinct vertical/horizontal alibi variants were previously statically audited and remain unchanged.
-- GitHub Pages deployment for the full obsolete-asset cleanup completed with conclusion `success`.
-- README does not contain stale architecture documentation.
-- DESIGN technical architecture now matches the repository.
+- Current `main` matched the completed handoff state before this run.
+- Latest Pages deployment for the final cleanup handoff commit completed with conclusion `success`.
+- No new repository/deployment blocker was identified.
 
 ## Failures / unresolved
 

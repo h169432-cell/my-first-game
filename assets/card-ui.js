@@ -1,21 +1,24 @@
 // Centralized card artwork mapping for the direct-file card UI migration.
-// The image files themselves will live under assets/cards/.
+// The image files themselves live under assets/cards/.
+
+const CARD_ASSET_VERSION = '20260826-2212';
+const versionedCardAsset = (path) => `${path}?v=${CARD_ASSET_VERSION}`;
 
 const CARD_IMAGES = Object.freeze({
-  'suspect-1': 'assets/cards/suspect-1.jpg',
-  'suspect-2': 'assets/cards/suspect-2.jpg',
-  'suspect-3': 'assets/cards/suspect-3.jpg',
-  'suspect-4': 'assets/cards/suspect-4.jpg',
-  'suspect-5': 'assets/cards/suspect-5.jpg',
-  'suspect-6': 'assets/cards/suspect-6.jpg',
-  'suspect-7': 'assets/cards/suspect-7.jpg',
-  motive: 'assets/cards/motive.jpg',
-  clue: 'assets/cards/clue.jpg',
-  weapon: 'assets/cards/weapon.jpg',
-  'false-testimony': 'assets/cards/false-testimony.jpg',
-  'alibi-vertical': 'assets/cards/alibi-vertical.jpg',
-  'alibi-horizontal': 'assets/cards/alibi-horizontal.jpg',
-  twist: 'assets/cards/twist.jpg',
+  'suspect-1': versionedCardAsset('assets/cards/suspect-1.jpg'),
+  'suspect-2': versionedCardAsset('assets/cards/suspect-2.jpg'),
+  'suspect-3': versionedCardAsset('assets/cards/suspect-3.jpg'),
+  'suspect-4': versionedCardAsset('assets/cards/suspect-4.jpg'),
+  'suspect-5': versionedCardAsset('assets/cards/suspect-5.jpg'),
+  'suspect-6': versionedCardAsset('assets/cards/suspect-6.jpg'),
+  'suspect-7': versionedCardAsset('assets/cards/suspect-7.jpg'),
+  motive: versionedCardAsset('assets/cards/motive.jpg'),
+  clue: versionedCardAsset('assets/cards/clue.jpg'),
+  weapon: versionedCardAsset('assets/cards/weapon.jpg'),
+  'false-testimony': versionedCardAsset('assets/cards/false-testimony.jpg'),
+  'alibi-vertical': versionedCardAsset('assets/cards/alibi-vertical.jpg'),
+  'alibi-horizontal': versionedCardAsset('assets/cards/alibi-horizontal.jpg'),
+  twist: versionedCardAsset('assets/cards/twist.jpg'),
 });
 
 const SUSPECT_NAMES = Object.freeze({
@@ -161,6 +164,7 @@ function installDirectCardUI() {
 }
 
 window.CardUI = Object.freeze({
+  CARD_ASSET_VERSION,
   CARD_IMAGES,
   SUSPECT_NAMES,
   cardImageKey,

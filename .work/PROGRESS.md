@@ -25,9 +25,10 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Followed `HANDOFF.md` and used a materially new independent source class: public source-origin / image-provider records outside the repository.
-- Searched project-linked combinations of `h169432-cell`, `my-first-game`, `Oda Nobunaga`, and `織田信長` for an original image-provider page, source identifier, or recoverable binary.
-- Results were unrelated public Nobunaga content and exposed no project-linked artwork, source URL, digest, or binary.
+- Confirmed `main` still has the same 13 production JPGs and no `assets/cards/suspect-4.jpg`.
+- Used a materially new independent source class: user cloud-storage integration availability.
+- Found Google Drive as an available installable connector that could contain an independently retained original image/source file.
+- Google Drive is not currently installed/connected in this conversation, so its contents could not be searched.
 - No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -59,4 +60,6 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - Authentic public-domain Oda Nobunaga portraits can be independently sourced, but the exact intended portrait cannot be determined from surviving metadata.
 - No alternate intact revision exists for the known suspect-grid split-data path or `suspects-latest.webp` path.
+- Public external source-origin/image-provider search produced no project-linked source record.
+- Google Drive is a newly identified independent source class but is not currently installed/connected, so it cannot yet be searched.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

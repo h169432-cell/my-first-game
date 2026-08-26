@@ -4,14 +4,14 @@ Last updated: 2026-08-26
 
 ## Current position
 
-The direct-file card artwork migration is functionally complete in the repository.
+The direct-file card artwork migration and legacy image-system cleanup are complete.
 
 Production `index.html` loads only:
 - `game.js?v=20260826-2200`
 - `assets/card-ui.js?v=20260826-2200`
 - `window.CardUI.installDirectCardUI()`
 
-`assets/` now contains only:
+`assets/` contains only:
 - `assets/card-ui.js`
 - `assets/cards/`
 
@@ -20,27 +20,27 @@ All 14 required JPGs remain in `assets/cards/`, including the verified `suspect-
 Legacy split-image/runtime/UI files were removed in commit `c4e31433f55d2753e6a9e6421466e30c24e17ac6`.
 Remaining obsolete sprite/data/sheet assets, legacy rules override, migration directories, diagnostic staging, and temporary image-rebuild workflows were removed in commit `43fad683cc842859d5e07fbe415843deea3e10b9`.
 
-GitHub Pages run `32958992876` was triggered for `43fad683cc842859d5e07fbe415843deea3e10b9`; the last observed state during this run was `in_progress`.
+GitHub Pages run `32958992876` for commit `43fad683cc842859d5e07fbe415843deea3e10b9` completed successfully.
+`DESIGN.md` was updated to describe the current direct-file architecture.
 
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
-2. Confirm `main` still has direct-only `index.html`, `assets/card-ui.js`, and all 14 JPGs.
-3. Check the newest GitHub Pages run for `main`; require `completed / success` before declaring the cleanup complete.
-4. If Pages succeeds, inspect README/DESIGN only if present and only update them if they still describe the removed legacy image architecture.
-5. Keep the fixed 16-card deck composition and two alibi variants unchanged.
-6. Update `PROGRESS.md` and `HANDOFF.md` with final verification.
-7. Mark the card-system cleanup complete once repository state and deployment are both verified.
+2. Treat the card-system cleanup as complete unless a new defect is reported.
+3. For future work, inspect the newest explicit gameplay/UI objective and current `main` before editing.
+4. Preserve the fixed 16-card deck composition, two alibi variants, and direct-file artwork architecture unless requirements explicitly change.
+5. Continue updating `PROGRESS.md` and `HANDOFF.md` after each future run.
 
 ## Next safe batch
 
-Pages deployment verification → stale documentation check if applicable → final completion-state update.
+No remaining card-system cleanup batch.
+
+Future execution should begin from a new explicit objective or a newly observed defect.
 
 ## Unresolved items
 
-- Post-cleanup Pages deployment had not yet completed at the last check.
-- Live interactive click testing of revealed board/private inspection/accusation cannot be directly exercised in the current tool environment.
-- Direct live-site HTTP fetch from the execution container failed because of DNS resolution; GitHub API validation remained available.
+- Live interactive click testing of board reveal/private inspection/accusation and mobile/iPad Safari was not directly executable in the current tool environment.
+- There is no known repository or deployment blocker.
 
 ## Important references
 
@@ -51,4 +51,5 @@ Suspect-4 SHA-256: `ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116d
 Direct-only runtime switch: `60d630550a85313c1a4e8839118aaed89e821de9`
 First legacy cleanup: `c4e31433f55d2753e6a9e6421466e30c24e17ac6`
 Full obsolete-asset cleanup: `43fad683cc842859d5e07fbe415843deea3e10b9`
-Post-cleanup Pages run: `32958992876`
+Successful post-cleanup Pages run: `32958992876`
+Final technical-design update: `adf337362a083f9fdaacb054da2674787af8fe5d`

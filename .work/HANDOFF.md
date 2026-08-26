@@ -4,56 +4,61 @@ Last updated: 2026-08-26
 
 ## Current position
 
-`assets/cards/` now has all 14 verified production JPGs.
+`assets/cards/` has all 14 verified production JPGs.
 
-`assets/cards/suspect-4.jpg` is the user-confirmed 容疑者4 / 織田信長 / 肖像 card crop. Verification:
-- size: 28,572 bytes
-- SHA-256: `ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808`
-- Git blob: `bf10332312cbd708954de6f67ff4690e033c5be5`
-- image commit: `60aa248efe05cea2184bf2c970dcb4080002486e`
+Production `index.html` now loads only:
+- `game.js?v=20260826-2200`
+- `assets/card-ui.js?v=20260826-2200`
+- `window.CardUI.installDirectCardUI()`
 
-`assets/card-ui.js` is now loaded by `index.html` and installed after the existing game/legacy UI scripts. Direct-UI commit: `fd82a784e26f869c75037d7281f16d4201a802fc`.
+The legacy split suspect/evidence scripts, `assets/card-image-runtime.js`, `assets/suspect-ui.js`, and `assets/evidence-ui.js` are no longer referenced by production HTML. Runtime-switch commit: `60d630550a85313c1a4e8839118aaed89e821de9`.
 
-GitHub Pages build/deploy for that commit succeeded in run `32954561423`.
+The legacy files themselves remain in the repository for rollback until simplified-runtime deployment validation is complete.
 
-Legacy image reconstruction scripts remain loaded intentionally until direct artwork rendering is validated through the live interaction paths.
+Dependency audit result:
+- `suspect-ui.js`: legacy suspect sheet-crop artwork decorator only.
+- `evidence-ui.js`: legacy evidence sheet / horizontal-alibi artwork decorator only.
+- `card-image-runtime.js`: split Base64 to WebP data-URL reconstruction only.
+- Game rules, pawn markers, modal behavior, accusation submission, and turn flow remain in `game.js`.
+- Direct board/private/accusation artwork mapping is in `assets/card-ui.js`.
+
+Pages run for the runtime-switch commit: `32956113351`; it was still in progress at the end of the runtime-switch validation window.
 
 ## Exact next start point
 
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
-2. Confirm `main` still contains all 14 JPGs and `index.html` still loads `assets/card-ui.js` and calls `window.CardUI.installDirectCardUI()`.
-3. Validate the live game interaction paths in this order: revealed board card artwork, private inspection artwork, accusation suspect artwork.
-4. Inspect `assets/suspect-ui.js`, `assets/evidence-ui.js`, and `assets/card-image-runtime.js` together with `game.js`/`index.html` before deleting anything. Determine whether they provide any still-required behavior beyond legacy artwork rendering.
-5. Once direct UI is proven sufficient, remove the legacy split suspect/evidence grid scripts and image runtime references from `index.html` in one cohesive change, then validate again.
-6. Remove obsolete legacy asset files only after the simplified runtime is confirmed working.
-7. Remove temporary `.work/staging/` Base64 files and `.github/workflows/reconstruct-staged-card.yml` after no reconstruction path is needed.
-8. Update `PROGRESS.md` and `HANDOFF.md` before ending.
-
-## New findings from latest run
-
-- The previous suspect-4 blocker is resolved by new user-confirmed source evidence.
-- All 14 final JPG files are present.
-- Direct-file artwork UI has been activated with minimum changes.
-- Pages deployment succeeded.
-- A large Base64 staging chunk was repeatedly truncated by 4 characters; smaller verified chunks fixed the transfer. Do not repeat the large-chunk method.
-- `suspect-ui.js` is clearly a legacy sheet-crop decorator that wraps `renderBoard` and decorates private/accusation UI.
-- `evidence-ui.js` is also tied to the reconstructed evidence sheet and contains legacy artwork decoration. Do not remove either until required behavior has been compared with `card-ui.js`.
+2. Confirm `main` still has the direct-only `index.html` and all 14 JPGs.
+3. Check Pages run `32956113351` and/or the latest Pages deployment containing commit `60d630550a85313c1a4e8839118aaed89e821de9` for successful completion.
+4. Fetch the live GitHub Pages `index.html` and confirm no legacy script tags are served; confirm direct card image URLs resolve.
+5. If deployment is healthy, delete the now-unreferenced legacy image stack in a cohesive cleanup batch:
+   - `assets/card-image-runtime.js`
+   - `assets/new-suspect-grid-part1.js` … `part4.js`
+   - `assets/new-evidence-grid-part1.js` … `part4.js`
+   - `assets/suspect-ui.js`
+   - `assets/evidence-ui.js`
+   - old suspect/evidence sheet/sprite/data/map assets and directories listed in `WORK_PLAN.md`, but only after checking they are not referenced anywhere else.
+6. Revalidate `index.html`, `game.js`, and `card-ui.js` after deletions; confirm Pages deployment again.
+7. Remove temporary `.work/staging/` files and `.github/workflows/reconstruct-staged-card.yml` only after no reconstruction path is needed.
+8. Update `.work/PROGRESS.md` and `.work/HANDOFF.md` before ending.
 
 ## Next safe batch
 
-Live direct-UI validation plus dependency audit of the three legacy runtime/UI scripts. If validation passes and no non-artwork dependency remains, simplify `index.html` by removing the legacy image reconstruction stack, then revalidate before deleting files.
+Pages/deployed-source validation → repository-wide reference check for every legacy asset → delete only unreferenced legacy artwork/reconstruction files → deploy and verify again.
 
 ## Unresolved items
 
-- Live interaction rendering has not yet been directly exercised in this tool environment.
-- Need to prove that removing `suspect-ui.js`, `evidence-ui.js`, `card-image-runtime.js`, and split-grid loaders does not remove any required non-artwork behavior.
-- Temporary migration staging/workflow artifacts remain for later cleanup.
+- Live interactive click testing of revealed board/private inspection/accusation cannot be directly performed in the current tool environment.
+- Pages run `32956113351` was not yet completed at the last check.
+- Legacy files are unreferenced by `index.html` but still physically present pending deployment confirmation.
+- Temporary migration staging/workflow artifacts remain.
 
 ## Important references
 
 Backup branch: `backup-before-persistent-workflow-20260825`
 Backup commit: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 Verified suspect-4 image commit: `60aa248efe05cea2184bf2c970dcb4080002486e`
-Direct UI activation commit: `fd82a784e26f869c75037d7281f16d4201a802fc`
-Pages deployment run: `32954561423`
 Suspect-4 SHA-256: `ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808`
+Initial direct UI activation: `fd82a784e26f869c75037d7281f16d4201a802fc`
+Direct-only runtime switch: `60d630550a85313c1a4e8839118aaed89e821de9`
+Pages run for runtime switch: `32956113351`
+Progress-state commit after switch: `638d0385b0fcf9ae50b1fa1ac3c3e522225c37e6`

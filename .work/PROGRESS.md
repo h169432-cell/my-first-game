@@ -25,11 +25,9 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed the current blocker remains the missing exact intended `assets/cards/suspect-4.jpg`.
-- Checked materially new independent retained-source access through installable cloud-storage integrations instead of repeating exhausted repository/public-web searches.
-- Google Drive plugin is available but not installed/connected for this user, so Drive contents cannot be searched in this run.
-- Dropbox plugin is also available but not installed/connected, so Dropbox contents cannot be searched in this run.
-- No other photo-storage plugin was available from the searched plugin catalog.
+- Confirmed `main` still has the same 13 production JPGs and no `assets/cards/suspect-4.jpg`.
+- Checked a materially new repository-history angle: alternate filenames / alternate placement references for the intended Oda Nobunaga artwork using repository code search terms in English and Japanese.
+- Searches for `Nobunaga portrait suspect grid Oda` and `織田信長 容疑者4 画像` returned no repository file matches or source references.
 - No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -50,6 +48,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Image-search-engine cache/thumbnail search for project-linked Oda Nobunaga artwork; returned only unrelated public images and no project-linked candidate.
 - Public external source-origin / image-provider search using project-linked Nobunaga terms; no project-linked source page, identifier, digest, or binary found.
 - Public external deployment/mirror search, including Cloudflare Pages / `pages.dev` and project-title searches; no project-linked deployment or retained image source found.
+- Repository code-index searches for alternate filenames / placement references using English and Japanese Oda Nobunaga suspect-grid terms; no matches found.
 
 ## Active objective
 

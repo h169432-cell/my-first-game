@@ -3,27 +3,27 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file before doing any new work.
 2. Read `boardgame-guide/index.html` and at least one current game page to preserve the visual pattern.
-3. Continue with Kingdomino, then identify additional popular commercially available board games from reliable current sources and create as many complete, verified pages as can safely be finished in the run.
+3. Continue with Agricola, then identify additional popular commercially available board games from reliable current sources and create as many complete, verified pages as can safely be finished in the run.
 4. Add every completed game to `boardgame-guide/index.html` in the same run.
 5. Keep using neutral visual placeholders or source links when image reuse permission is unclear.
 6. Check TOP → detail and detail → TOP relative links.
 7. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
-- Next game: Kingdomino.
-- The original backlog is complete; future titles should be selected from well-established popular games using reliable official/current sources.
+- Next game: Agricola.
+- Continue selecting established popular titles with reliable official/current sources.
 
 ## Completed in previous run
-- Added The Quacks of Quedlinburg, Root, The Mind, Jaipur, and 7 Wonders Duel guide pages.
+- Added Kingdomino, Everdell, Scythe, Viticulture Essential Edition, and Ark Nova guide pages.
 - Updated TOP with cards linking to all five pages.
-- Verified player count, age, play time, and core gameplay against official publisher/product pages and official rules where available.
+- Verified player count, age, play time, and core gameplay against official publisher/product/rules sources and BoardGameGeek where needed for published age information.
 
 ## Files changed in previous run
-- `boardgame-guide/games/the-quacks-of-quedlinburg.html`
-- `boardgame-guide/games/root.html`
-- `boardgame-guide/games/the-mind.html`
-- `boardgame-guide/games/jaipur.html`
-- `boardgame-guide/games/7-wonders-duel.html`
+- `boardgame-guide/games/kingdomino.html`
+- `boardgame-guide/games/everdell.html`
+- `boardgame-guide/games/scythe.html`
+- `boardgame-guide/games/viticulture-essential-edition.html`
+- `boardgame-guide/games/ark-nova.html`
 - `boardgame-guide/index.html`
 - `boardgame-guide/PROGRESS.md`
 - `boardgame-guide/HANDOFF.md`

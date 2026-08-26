@@ -18,19 +18,19 @@ Known Oda Nobutada (`織田信忠`) candidates remain rejected.
 1. Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in that order.
 2. Confirm `main` still has the same 13 production JPGs and no `suspect-4.jpg`.
 3. Do not repeat exhausted Git blob repairs, File Library searches, prior-conversation searches, Pages artifacts/logs, Releases, forks, retained Oda Nobutada assets, same-account repo/Wiki/Issue/PR/Discussion/Package searches, public cache/index searches, exact public search-index queries using `h169432-cell` / `my-first-game` + `Oda Nobunaga` / `織田信長`, Gist/public-snippet searches, Actions-cache/deployment/CDN probing, Gmail, tag/ref probing, Git LFS probing, generic public-domain portrait substitution, repository-local source URL/hash residue searches, per-file revision-history checks, Internet Archive / Wayback public-index searches, image-search-engine cache/thumbnail searches, public external source-origin/image-provider searches, Cloudflare Pages / `pages.dev` / public deployment-mirror searches, or repository code-index searches for alternate Oda Nobunaga filenames/placement references unless new evidence materially changes the result.
-4. Google Drive and Dropbox are both known potentially useful independent source classes, but as of this run neither plugin is installed/connected. Search either only after it becomes installed/connected; do not assume access.
-5. Otherwise continue only with another materially new independent source class capable of containing the original Oda Nobunaga binary or a verifiable source identifier independently of corrupted Git blobs/direct repository snapshots.
-6. If a candidate is found, verify identity and exact-source linkage first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
-7. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
-8. Validate board reveal, private inspection, and accusation rendering before deleting any legacy image system.
-9. Update `PROGRESS.md` and `HANDOFF.md` before ending.
+4. Google Drive and Dropbox remain known potentially useful independent source classes, but neither is installed/connected. Search either only after it becomes installed/connected; do not assume access.
+5. OneDrive, iCloud, and Google Photos were checked as plugin/source candidates in the latest run and were not available in the current environment; do not repeat that availability check unless the plugin catalog changes.
+6. Otherwise continue only with another materially new independent source class capable of containing the original Oda Nobunaga binary or a verifiable source identifier independently of corrupted Git blobs/direct repository snapshots.
+7. If a candidate is found, verify identity and exact-source linkage first, then JPEG integrity/hash, and commit exactly as `assets/cards/suspect-4.jpg`.
+8. Only after all 14 JPGs are verified, begin Phase 2 and connect `assets/card-ui.js` with minimum changes.
+9. Validate board reveal, private inspection, and accusation rendering before deleting any legacy image system.
+10. Update `PROGRESS.md` and `HANDOFF.md` before ending.
 
 ## New findings from latest run
 
 - Confirmed `main` still contains 13 verified production JPGs and no `suspect-4.jpg`.
-- Checked repository code-index searches for alternate filenames / alternate placement references for the intended Oda Nobunaga image.
-- English search `Nobunaga portrait suspect grid Oda` returned no matches.
-- Japanese search `織田信長 容疑者4 画像` returned no matches.
+- Google Drive and Dropbox are installable external-storage candidates but remain unconnected, so no search was possible.
+- OneDrive, iCloud, and Google Photos were not returned as available source/plugin classes in the current environment.
 - No candidate was accepted and production code remains unchanged.
 
 ## Next safe batch

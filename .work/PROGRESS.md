@@ -25,10 +25,11 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `main` still has the same 13 production JPGs and no `assets/cards/suspect-4.jpg`.
-- Checked a materially new repository-history angle: alternate filenames / alternate placement references for the intended Oda Nobunaga artwork using repository code search terms in English and Japanese.
-- Searches for `Nobunaga portrait suspect grid Oda` and `織田信長 容疑者4 画像` returned no repository file matches or source references.
-- No candidate was accepted. Production code and architecture were not changed.
+- Reconfirmed `main` has the same 13 production JPGs and no `assets/cards/suspect-4.jpg`.
+- Checked currently available external-storage plugin classes without repeating prior binary/cache searches.
+- Google Drive and Dropbox are installable candidates but remain not installed/connected, so they could not be searched.
+- OneDrive, iCloud, and Google Photos were not returned as available plugin/source classes in the current environment.
+- No candidate image or exact-source identifier was found. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
 
@@ -49,6 +50,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Public external source-origin / image-provider search using project-linked Nobunaga terms; no project-linked source page, identifier, digest, or binary found.
 - Public external deployment/mirror search, including Cloudflare Pages / `pages.dev` and project-title searches; no project-linked deployment or retained image source found.
 - Repository code-index searches for alternate filenames / placement references using English and Japanese Oda Nobunaga suspect-grid terms; no matches found.
+- External-storage availability check: Google Drive and Dropbox are installable but unconnected; OneDrive/iCloud/Google Photos were not available as current source classes.
 
 ## Active objective
 

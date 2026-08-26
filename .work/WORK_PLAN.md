@@ -2,7 +2,7 @@
 
 ## Objective
 
-Replace the unstable legacy card-image stack with a simple, durable architecture based on individual image files, while preserving the agreed game rules and artwork variants.
+Maintain the simplified direct-file card architecture and evolve the existing web game into an installable smartphone app prototype without changing the unfinished game rules unnecessarily.
 
 ## Target architecture
 
@@ -11,12 +11,14 @@ my-first-game/
 ├─ index.html
 ├─ style.css
 ├─ game.js
+├─ manifest.webmanifest
 ├─ .work/
 │  ├─ EXECUTION_PROTOCOL.md
 │  ├─ WORK_PLAN.md
 │  ├─ PROGRESS.md
 │  └─ HANDOFF.md
 └─ assets/
+   ├─ app-icon.svg
    ├─ card-ui.js
    └─ cards/
       ├─ suspect-1.jpg
@@ -37,12 +39,13 @@ my-first-game/
 
 ## Design principles
 
-1. **Images are files.** No Base64-part JS, no Blob reconstruction, no sprite-position dependency.
-2. **Rules live in one place.** `game.js` owns deck generation, effects, turns, accusation logic, scoring.
-3. **Artwork rendering lives in one place.** `assets/card-ui.js` maps card data to image URLs and handles board/private/accusation rendering.
-4. **Artwork replacement should not require logic edits.** Replacing `assets/cards/suspect-4.jpg` should be enough to change suspect 4 artwork.
-5. **Fallback rendering must remain usable.** If an image fails, text/icon fallback must appear instead of a black card.
-6. **Delete old systems only after replacement is verified.**
+1. Images are ordinary files. No Base64 split images, Blob reconstruction, or sprite-position dependency.
+2. Rules live in `game.js`.
+3. Artwork rendering lives in `assets/card-ui.js`.
+4. Artwork replacement should not require logic edits.
+5. Image failure must fall back to usable text/icon rendering.
+6. App-prototype work must not silently change unfinished game rules.
+7. Prefer a lightweight installable web-app shell before native Android/iOS packaging.
 
 ## Fixed deck specification
 
@@ -54,7 +57,7 @@ Base 15 cards:
 - Weapon: 2
 - Alibi: 2
   - `alibi-vertical`: one card, up/down
-  - `alibi-horizontal`: one card, left/right and uses the newly supplied artwork
+  - `alibi-horizontal`: one card, left/right
 - False testimony: 1
 
 Add exactly one random special card:
@@ -74,48 +77,38 @@ Final deck size: 16.
 ### Phase 1 — Establish final image assets
 - [x] Put 14 final JPG files into `assets/cards/`.
 - [x] Verify every image is present and non-zero size.
-- [x] Verify visual identity: suspect 4 is Oda Nobunaga; horizontal alibi is the newly supplied image.
+- [x] Verify suspect 4 and horizontal alibi artwork.
 
 ### Phase 2 — Consolidate artwork UI
 - [x] Create `assets/card-ui.js`.
-- [x] Centralize `CARD_IMAGES` mapping.
-- [x] Render artwork on revealed board cards.
-- [x] Render artwork in private inspection modal.
-- [x] Render suspect artwork in accusation UI.
-- [x] Add preload and image-error fallback.
+- [x] Centralize image mapping and rendering.
+- [x] Add preload and fallback.
 
 ### Phase 3 — Consolidate rules
 - [x] Audit `game.js` against fixed deck specification.
-- [x] Remove obsolete rule override after confirming required rules are already in `game.js`.
-- [x] Ensure two distinct alibi variants exist and keep their directions.
-- [x] Confirm culprit calculation rules remain in `game.js`.
+- [x] Preserve two distinct alibi variants.
+- [x] Keep culprit calculation in `game.js`.
 
 ### Phase 4 — Simplify page loading
-- [x] Update `index.html` to load only the stable runtime files needed by the final architecture.
-- [x] Remove split-image and reconstruction script tags.
-- [x] Update runtime cache-busting version for the migration.
+- [x] Load only stable runtime files.
+- [x] Remove split-image/reconstruction scripts.
 
 ### Phase 5 — Remove legacy systems
-- [x] Remove legacy card-image runtime.
-- [x] Remove suspect/evidence split-grid parts.
-- [x] Remove suspect sheet parts and obsolete WebP/sprite assets.
-- [x] Remove obsolete evidence data/map/blob-fix files.
-- [x] Remove `cards-data/`, `evidence-hq/`, `evidence-pack/`, and `hq-cards/`.
-- [x] Remove old `suspect-ui.js` and `evidence-ui.js`.
-- [x] Remove obsolete `clueverge-rules-v2.js`.
-- [x] Remove temporary cleanup/image-rebuild workflows.
+- [x] Remove obsolete image runtime, sprite/data assets, old overrides, and temporary workflows.
 
 ### Phase 6 — Validation
-- [x] Deck contains exactly 16 cards every round by static rule audit.
-- [x] Base card counts are correct.
-- [x] Exactly one of special false testimony / suspect 7 / twist is added.
-- [x] Both alibi variants appear exactly once in base deck.
-- [x] Board/private/accusation artwork paths are handled by the direct UI module.
-- [x] Image failure has text/icon fallback instead of an unusable black card.
-- [ ] Live interactive mobile/iPad Safari flow was not directly executable in the current tool environment.
+- [x] Static deck-rule audit passed.
+- [x] Direct-file artwork paths are wired for board/private/accusation views.
 - [x] GitHub Pages post-cleanup deployment completed successfully.
+- [ ] Live mobile/browser verification of the previously reported black-card defect remains pending user confirmation.
 
 ### Phase 7 — Final cleanup
 - [x] Remove temporary migration artifacts.
-- [x] Update stale technical architecture in `DESIGN.md`.
-- [x] Mark repository card-system cleanup complete in persistent work state.
+- [x] Update technical architecture documentation.
+
+### Phase 8 — Installable app prototype
+- [x] Add `manifest.webmanifest` with standalone display mode.
+- [x] Add `assets/app-icon.svg`.
+- [x] Link the manifest/icon and mobile app metadata from `index.html`.
+- [x] Preserve existing game logic and card rules unchanged.
+- [ ] Verify the newest Pages deployment and home-screen installation on the user's phone.

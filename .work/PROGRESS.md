@@ -25,10 +25,13 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Reconfirmed the only active blocker is the exact intended `assets/cards/suspect-4.jpg` for Oda Nobunaga.
-- Retried connected Gmail only because this run was user-initiated; the connector still reported `User input required but current turn is running in a non-interactive mode`, so mailbox/attachment search remains unavailable.
-- Probed GitHub tag/reference retrieval as a new reachable-ref source class; the connector rejected direct tag-list REST access, so no additional historical ref carrying an independent binary could be inspected through the available GitHub interface.
-- No candidate image was accepted. Production code and architecture were not changed.
+- Confirmed `assets/cards/` still has 13 production JPGs and no `suspect-4.jpg`.
+- Confirmed `assets/card-ui.js` maps suspect 4 to `織田信長`; production remains intentionally disconnected from this module.
+- Investigated a materially new independent source class: established/public-domain Oda Nobunaga portrait repositories rather than repository caches or corrupted Git data.
+- Located multiple authentic Oda Nobunaga portraits on Wikimedia Commons, including the Kanō Sōshū/Chōkō-ji portrait, Kanō Eitoku/Daitokuji portrait, Sanpōji portrait, and Hideyoshi Kiyomasa Memorial Hall portrait.
+- None can be verified as the exact artwork embedded in the historical fine-art suspect grid because the intended grid binary is corrupted and there is no surviving source URL/hash/prompt tying it to one of these works. No substitute was accepted.
+- Rechecked the historical mapping commit `41a8257...`; it confirms the 4×2 fine-art grid mapping and `suspect 4 = 織田信長` but contains no independent source metadata.
+- Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
 
@@ -59,6 +62,7 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Public GitHub CDN-cache discovery (including jsDelivr-style mirrors) for the historical target asset; no indexed usable copy found, and direct CDN network retrieval is unavailable in the execution environment.
 - Connected Gmail attachment search remains unavailable in this execution context because the connector requires interactive user input even on a user-initiated run.
 - GitHub tag-list/reference probing through direct REST is blocked by the connector allowlist; do not retry unless the connector exposes tag/ref listing directly.
+- Generic/public-domain Oda Nobunaga portrait repositories as an exact-source substitute: authentic portraits exist, but no surviving evidence ties any one of them to the intended historical grid, so they cannot be used as the exact artwork without changing the requirement.
 
 ## Active objective
 
@@ -69,7 +73,8 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - Exact Oda Nobunaga artwork remains unavailable.
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
+- Authentic public-domain Oda Nobunaga portraits can be independently sourced, but the exact intended portrait cannot be determined from surviving metadata.
 - The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, prior-conversation context, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, commit metadata/diffs, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Gmail, or accessible historical refs/tags.
+- No usable source has been found in File Library, prior-conversation context, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, commit metadata/diffs, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Gmail, accessible historical refs/tags, or public-domain portrait repositories with exact-source proof.
 - Actions cache storage and deployment storage are not inspectable with the currently available GitHub connector.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

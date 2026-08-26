@@ -10,60 +10,54 @@ Backup point: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
 
 - Persistent `.work/` execution state and backup branch created.
 - `game.js` deck rules audited: base 15 + exactly one special = 16; vertical/horizontal alibi variants are correct.
-- `assets/card-ui.js` prepared with direct image URL mapping, preload, fallback, and board/private/accusation decorators; intentionally not connected yet.
-- 13 verified production JPGs are present: suspects 1,2,3,5,6,7 and all seven evidence images.
+- `assets/card-ui.js` provides centralized direct image URL mapping, preload, fallback, and board/private/accusation decorators.
+- All 14 required production JPGs now exist in `assets/cards/`.
 - `alibi-horizontal.jpg` is the required left/right artwork.
-- Available suspect-4 images showing `織田信忠` were rejected; required identity is `織田信長`.
+- `assets/cards/suspect-4.jpg` was created from the user-confirmed reference card for 容疑者4 / 織田信長 / 肖像.
+- `suspect-4.jpg` was reconstructed and verified by GitHub Actions at 28,572 bytes, SHA-256 `ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808`, with valid JPEG SOI/EOI markers. Commit: `60aa248efe05cea2184bf2c970dcb4080002486e`.
+- `index.html` now loads `assets/card-ui.js?v=20260826-1844` and calls `window.CardUI.installDirectCardUI()`. Commit: `fd82a784e26f869c75037d7281f16d4201a802fc`.
+- GitHub Pages build and deployment for commit `fd82a784e26f869c75037d7281f16d4201a802fc` completed successfully (run `32954561423`).
 
 ## Current state
 
-`assets/cards/` remains at 13/14 required JPGs. Missing only:
-- `assets/cards/suspect-4.jpg` — exact intended Oda Nobunaga (`織田信長`) artwork.
+`assets/cards/` is complete at 14/14 required JPGs. Direct-file artwork UI is enabled in production.
 
-Production remains unchanged and still uses the legacy image runtime. Do not connect `card-ui.js`, simplify `index.html`, or delete legacy assets until the 14th image is verified.
+Legacy split-image/runtime scripts remain loaded temporarily as a fallback until live interaction validation confirms board reveal, private inspection, and accusation rendering with the direct-file UI. No destructive cleanup has been performed yet.
 
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Reconfirmed `main` has the same 13 production JPGs and no `assets/cards/suspect-4.jpg`.
-- Checked currently available external-storage plugin classes without repeating prior binary/cache searches.
-- Google Drive and Dropbox are installable candidates but remain not installed/connected, so they could not be searched.
-- OneDrive, iCloud, and Google Photos were not returned as available plugin/source classes in the current environment.
-- No candidate image or exact-source identifier was found. Production code and architecture were not changed.
+- Accepted the new user-provided suspect grid as authoritative new evidence for suspect 4 identity.
+- Built the exact suspect-4 crop and transferred it through verified Base64 staging.
+- Diagnosed repeated truncation of a larger first Base64 staging chunk; split that section into smaller chunks and verified the final reconstructed JPEG by exact size, SHA-256, and JPEG markers before commit.
+- Confirmed `assets/cards/suspect-4.jpg` exists on `main` at 28,572 bytes (Git blob `bf10332312cbd708954de6f67ff4690e033c5be5`).
+- Enabled `assets/card-ui.js` in `index.html` without removing the legacy image stack.
+- Confirmed GitHub Pages build and deploy succeeded.
+- Inspected `assets/suspect-ui.js` and `assets/evidence-ui.js`; they are legacy artwork decorators tied to reconstructed sheets, so they must not be removed until direct UI behavior is validated and any non-artwork dependency is ruled out.
 
-## Exhausted / do not repeat without new evidence
+## Validation performed
 
-- Corrupted historical WebP and split Base64 repair attempts.
-- Commit `62d5515...` as an intact source; it is already truncated.
-- Rebuild attempt `1344806...`; failed.
-- Artifact-crop path `3c53030...`; depends on corrupted source.
-- Retained suspect sheet/montage and current execution-environment local `suspect-4` variants; all show Oda Nobutada.
-- Existing File Library searches for Oda Nobunaga / suspect-4 / fine-art suspect grids.
-- Prior-conversation/personal-context search for Oda Nobunaga / suspect-4 / fine-art grid source clues; no retained source information found.
-- Historical Pages runs and expired Pages artifacts already recorded in prior runs.
-- Releases, forks/network, same-account public repositories, Wiki/index paths, Issues/PR attachments, Discussions, Packages, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, exact-commit non-Pages Actions paths, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, Gmail, historical refs/tags, Git LFS, and generic public-domain portrait substitution without exact-source proof.
-- Repository-local cache/manifest/source-URL/hash residue search; no source identifier found.
-- Per-file revision-history search for `assets/new-suspect-grid-part1.js` and `assets/suspects-latest.webp`; each has only one introducing revision and no alternate intact historical revision.
-- Exact public search-index queries combining `h169432-cell` / `my-first-game` with `Oda Nobunaga` / `織田信長`; no project-linked source identifier found.
-- Internet Archive / Wayback Machine public index search for archived project pages/assets; no usable archived snapshot or source identifier found, and direct CDX retrieval was unavailable through the current access path.
-- Image-search-engine cache/thumbnail search for project-linked Oda Nobunaga artwork; returned only unrelated public images and no project-linked candidate.
-- Public external source-origin / image-provider search using project-linked Nobunaga terms; no project-linked source page, identifier, digest, or binary found.
-- Public external deployment/mirror search, including Cloudflare Pages / `pages.dev` and project-title searches; no project-linked deployment or retained image source found.
-- Repository code-index searches for alternate filenames / placement references using English and Japanese Oda Nobunaga suspect-grid terms; no matches found.
-- External-storage availability check: Google Drive and Dropbox are installable but unconnected; OneDrive/iCloud/Google Photos were not available as current source classes.
+- 14th image exact size: 28,572 bytes.
+- 14th image SHA-256: `ca91f54930b75071432c21844b3fb7353d2527322d89279559abf01a116de808`.
+- JPEG start/end markers checked by workflow.
+- `assets/cards/` directory confirms `suspect-4.jpg` plus the other 13 production JPGs.
+- `card-ui.js` maps all 14 image files and includes board/private/accusation decorators plus preload/error fallback.
+- GitHub Pages build, status report, and deploy jobs all completed successfully for the direct-UI commit.
+
+## Failures / do not repeat
+
+- Large Base64 staging chunks can lose characters through this connector path. The first suspect-4 chunk repeatedly arrived 4 characters short. Small verified chunks solved it; do not use the failed large-chunk transfer method again.
+- Historical corrupted WebP/split Base64 repair and prior source-search routes remain exhausted; they are no longer relevant because the user supplied and confirmed the intended suspect-4 reference.
 
 ## Active objective
 
-Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely independent, identity-verifiable source. Only after all 14 JPGs are verified should Phase 2 begin.
+Validate the direct-file UI on the live game for board reveal, private inspection, and accusation. After that validation, remove only the legacy artwork reconstruction paths proven unnecessary, then clean temporary staging/workflow artifacts.
 
-## Blockers
+## Remaining items
 
-- Exact Oda Nobunaga artwork remains unavailable.
-- All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
-- Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
-- Authentic public-domain Oda Nobunaga portraits can be independently sourced, but the exact intended portrait cannot be determined from surviving metadata.
-- No alternate intact revision exists for the known suspect-grid split-data path or `suspects-latest.webp` path.
-- Public external source-origin/image-provider search produced no project-linked source record.
-- Google Drive is a potentially useful independent source class but is not installed/connected.
-- Dropbox is a potentially useful independent source class but is not installed/connected.
-- `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.
+- Live interaction validation of board reveal artwork.
+- Live interaction validation of private inspection artwork.
+- Live interaction validation of accusation artwork.
+- Confirm legacy `suspect-ui.js`, `evidence-ui.js`, `card-image-runtime.js`, and split-grid scripts contain no still-required behavior before removal.
+- Remove obsolete image-system files only after replacement validation.
+- Remove `.work/staging/` and `.github/workflows/reconstruct-staged-card.yml` after migration is stable.

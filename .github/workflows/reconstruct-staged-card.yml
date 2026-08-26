@@ -40,6 +40,7 @@ jobs:
             cat "${parts[@]}" | base64 --decode > "$tmp"
             actual_size="$(wc -c < "$tmp" | tr -d ' ')"
             actual_sha="$(sha256sum "$tmp" | awk '{print $1}')"
+            echo "$output_name: candidate size=$actual_size sha256=$actual_sha expected_size=$expected_size expected_sha=$expected_sha"
             test "$actual_size" = "$expected_size"
             test "$actual_sha" = "$expected_sha"
             test "$(xxd -p -l 2 "$tmp")" = "ffd8"

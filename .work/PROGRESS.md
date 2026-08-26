@@ -25,17 +25,15 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Followed `HANDOFF.md` and continued source-resolution work only; production code and architecture were not changed.
-- Investigated GitHub Discussions / Discussion attachments as a materially new independent storage class.
-  - Repository-scoped public searches for `織田信長`, `Oda Nobunaga`, and `suspect-4` under the Discussions path returned no relevant result.
-  - Direct Discussions page retrieval was unavailable from the web fetch path.
-  - The connected GitHub tool exposes PR discussion comments only and no repository Discussion retrieval/search action.
-  - No candidate image or source identifier was found.
-- Investigated GitHub Packages / container/package storage as another materially new independent storage class.
-  - The connected GitHub tool exposes no package/container retrieval action.
-  - Public searches for this repository/account plus package/`ghcr.io` references produced no relevant result.
-  - No candidate image or source identifier was found.
-- No candidate was accepted. `assets/cards/suspect-4.jpg` remains unresolved.
+- Confirmed `assets/cards/` still contains 13 production JPGs and no `suspect-4.jpg`.
+- Investigated repository-local cache/source metadata residue as a new source class:
+  - searched for `suspect-4`, cache/manifest/source URL/hash markers, GitHub user-image URLs, `oaidalle`, `imagegen`, and OpenAI-hosted image references;
+  - no source URL, image hash, attachment URL, or hidden manifest reference was found.
+- Investigated per-file Git history as a new route to an alternate intact revision:
+  - `assets/new-suspect-grid-part1.js` has only one introducing revision, commit `2b80b4e687029a037333ce9922179165aa552387`;
+  - `assets/suspects-latest.webp` has only one introducing revision, commit `62d55158365a1ee44f8af46651f4a46568464009`;
+  - no alternate historical revision of those paths exists that could contain an intact copy.
+- No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
 
@@ -46,31 +44,10 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 - Retained suspect sheet/montage and current execution-environment local `suspect-4` variants; all show Oda Nobutada.
 - Existing File Library searches for Oda Nobunaga / suspect-4 / fine-art suspect grids.
 - Prior-conversation/personal-context search for Oda Nobunaga / suspect-4 / fine-art grid source clues; no retained source information found.
-- Historical Pages runs `32745948889`, `32745918921`, `32745977792`.
-- Pages run `32730372651`: build artifact did exist (`9521143272`) but had 1-day retention and is now deleted/404; archived contents were a direct repository snapshot, not an independent image source.
-- Pages artifact `9527076730` from run `32746011152`; expired and was only a direct repository archive.
-- Releases and fork/network clone checks; empty/zero.
-- Same-account public repository search; only this repository exists.
-- `has_wiki: true` alone is not evidence of a usable Wiki binary; no page/attachment was surfaced through accessible/indexed paths.
-- GitHub Issues/PR attachment path; repository has no Issues or PRs and no attachment URL references in code.
-- Public search-engine/cache/Wayback-index discovery for the repository/GitHub Pages and historical artwork names; no usable result.
-- Repository-recorded Cloudflare/Pages deployment URL search; no deployment URL reference exists.
-- Same-account GitHub Gist / indexed public code-snippet search for `h169432-cell` + Oda Nobunaga / suspect-4; no usable source or source identifier found.
-- Historical fine-art mapping commit inspection for original prompt/source metadata; none is recorded.
-- Commit-level comments/metadata and exact-commit public indexing: no accessible source identifier or mirrored image was found; direct commit-comments REST is blocked by the connector.
-- Transient `.work/staging/` and automation-created `Add verified staged card images` commits as a suspect-4 source; they contain evidence-card migration data only.
-- Earlier generated-character suspect sheet (`6d40ef0...`) as the intended fine-art source; it is the unrelated Resident Evil six-character artwork.
-- Non-Pages GitHub Actions / custom workflow artifact path for exact mapping commit `41a8257...`; the commit has only the already-known Pages run and no other Actions run.
-- GitHub Actions cache/storage path through the current connector; no cache API is exposed and direct `actions/caches` REST access is blocked by the connector allowlist.
-- Commit-message searches for `織田信長` / `Nobunaga`; no additional source-bearing commit was found.
-- GitHub Deployments/Environments through the current connector; no deployment retrieval action is exposed and direct REST deployment access is blocked.
-- Public GitHub CDN-cache discovery (including jsDelivr-style mirrors) for the historical target asset; no indexed usable copy found, and direct CDN network retrieval is unavailable in the execution environment.
-- Connected Gmail attachment search remains unavailable in this execution context because the connector requires interactive user input even on a user-initiated run.
-- GitHub tag-list/reference probing through direct REST is blocked by the connector allowlist; do not retry unless the connector exposes tag/ref listing directly.
-- Generic/public-domain Oda Nobunaga portrait repositories as an exact-source substitute: authentic portraits exist, but no surviving evidence ties any one of them to the intended historical grid, so they cannot be used as the exact artwork without changing the requirement.
-- Git LFS / large-file storage as an independent source: no LFS pointer configuration, code reference, or LFS-related commit was found.
-- GitHub Discussions / Discussion attachments: no relevant repository-scoped indexed result; direct page retrieval unavailable and current connector exposes no repository Discussion action.
-- GitHub Packages / container/package storage: no relevant public reference found and current connector exposes no package retrieval action.
+- Historical Pages runs and expired Pages artifacts already recorded in prior runs.
+- Releases, forks/network, same-account public repositories, Wiki/index paths, Issues/PR attachments, Discussions, Packages, public cache/index paths, repository-recorded external deployment references, same-account GitHub Gists/public snippets, transient staging/automation commits, exact-commit non-Pages Actions paths, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, Gmail, historical refs/tags, Git LFS, and generic public-domain portrait substitution without exact-source proof.
+- Repository-local cache/manifest/source-URL/hash residue search; no source identifier found.
+- Per-file revision-history search for `assets/new-suspect-grid-part1.js` and `assets/suspects-latest.webp`; each has only one introducing revision and no alternate intact historical revision.
 
 ## Active objective
 
@@ -82,7 +59,5 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - All known historical Git binaries corresponding to the intended fine-art grid are corrupted.
 - Accessible independent retained images are Oda Nobutada, not Oda Nobunaga.
 - Authentic public-domain Oda Nobunaga portraits can be independently sourced, but the exact intended portrait cannot be determined from surviving metadata.
-- The historical Pages artifact for the exact Oda Nobunaga mapping commit was ephemeral, is now deleted, and only mirrored repository contents.
-- No usable source has been found in File Library, prior-conversation context, Pages artifacts/logs, Releases, forks, same-account public repositories, accessible/indexed Wiki paths, Issues/PR attachments, Discussions, Packages, public web caches, repository-recorded external deployment URLs, same-account GitHub Gists/public snippets, transient staging/automation commits, non-Pages Actions/custom workflow artifacts, commit metadata/diffs, commit-level comment/index paths, Deployments/Environments, public GitHub CDN-cache discovery, current execution-environment temporary image storage, Gmail, accessible historical refs/tags, Git LFS, or public-domain portrait repositories with exact-source proof.
-- Actions cache storage and deployment storage are not inspectable with the currently available GitHub connector.
+- No alternate intact revision exists for the known suspect-grid split-data path or `suspects-latest.webp` path.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

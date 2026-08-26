@@ -25,10 +25,11 @@ Production remains unchanged and still uses the legacy image runtime. Do not con
 ## Latest run
 
 - Read `.work/EXECUTION_PROTOCOL.md`, `.work/WORK_PLAN.md`, `.work/PROGRESS.md`, `.work/HANDOFF.md` in the required order.
-- Confirmed `main` still has the same 13 production JPGs and no `assets/cards/suspect-4.jpg`.
-- Used a materially new independent source class: public external deployment/mirror discovery outside GitHub Pages.
-- Searched for project-linked Cloudflare Pages / `pages.dev` deployments and other public mirrors using `h169432-cell`, `my-first-game`, `Clue Grid`, `Oda Nobunaga`, and `織田信長` combinations.
-- No project-linked deployment, mirror, cached binary, source URL, or verifiable `suspect-4` candidate was found.
+- Confirmed the current blocker remains the missing exact intended `assets/cards/suspect-4.jpg`.
+- Checked materially new independent retained-source access through installable cloud-storage integrations instead of repeating exhausted repository/public-web searches.
+- Google Drive plugin is available but not installed/connected for this user, so Drive contents cannot be searched in this run.
+- Dropbox plugin is also available but not installed/connected, so Dropbox contents cannot be searched in this run.
+- No other photo-storage plugin was available from the searched plugin catalog.
 - No candidate was accepted. Production code and architecture were not changed.
 
 ## Exhausted / do not repeat without new evidence
@@ -62,5 +63,6 @@ Resolve the exact intended Oda Nobunaga `suspect-4.jpg` from a genuinely indepen
 - Authentic public-domain Oda Nobunaga portraits can be independently sourced, but the exact intended portrait cannot be determined from surviving metadata.
 - No alternate intact revision exists for the known suspect-grid split-data path or `suspects-latest.webp` path.
 - Public external source-origin/image-provider search produced no project-linked source record.
-- Google Drive remains a potentially useful independent source class but is not currently installed/connected, so it cannot yet be searched.
+- Google Drive is a potentially useful independent source class but is not installed/connected.
+- Dropbox is a potentially useful independent source class but is not installed/connected.
 - `.github/workflows/reconstruct-staged-card.yml` and `.work/staging/` remain temporary migration artifacts for later cleanup.

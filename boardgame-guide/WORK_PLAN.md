@@ -23,7 +23,7 @@ Build a Japanese introduction page for many popular commercially available board
 - First preference: images whose reuse terms are explicit and compatible with the site, such as CC0, Public Domain, CC BY, CC BY-SA, or clearly reusable publisher/press assets.
 - Second preference: official publisher/product images that are provided for product or media presentation, with a direct source link and visible attribution.
 - When no clearly reusable image is practical, a published product/component/gameplay image may be used as a quotation only when it is genuinely necessary to identify or explain the game in the surrounding article.
-- Quoted images must be clearly separated from the site's own content, placed next to relevant explanatory text, kept subordinate to the article text, and limited to the minimum necessary amount (normally one image).
+- Quoted images must be clearly separated from the article, placed next to relevant explanatory text, kept subordinate to the article text, and limited to the minimum necessary amount (normally one image).
 - Put `引用画像` and the source name/link directly beneath a quoted image. Make the image itself link to the source page when practical.
 - For catalog thumbnails, use one box-visible image per game, keep it subordinate to the title/metadata, and display a visible source link beneath the card content.
 - Do not treat “no prohibition is written” as a grant of permission. The publication basis must instead be an explicit reusable license/permission or a defensible quotation context.
@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-First catalog-link the staged Marco Polo II and Troyes pages recorded in `HANDOFF.md`; after that, continue with Teotihuacan: City of Gods.
+Continue with Teotihuacan: City of Gods. Before publishing, resolve the current age-specification discrepancy between Board&Dice pages by selecting and citing the exact edition/source used; do not guess.

@@ -3,33 +3,34 @@
 Last updated: 2026-08-28
 
 ## Completed
-- Published catalog guide pages: 57 total, including Clueverge.
-- Published the previously staged `games/marco-polo-ii-in-the-service-of-the-khan.html` by adding it to `games.html`.
-- Published the previously staged `games/troyes.html` by adding it to `games.html`.
-- Both new catalog cards use box-visible thumbnails with visible source links and retain `object-fit: contain` through the existing catalog styling.
-- Both new catalog cards use only verified browsing tags: `two strategy`.
-- Updated `games.html` count from 55 to 57.
-- Updated the TOP catalog button from `全55作品を見る` to `全57作品を見る`; the six featured TOP cards were not expanded.
+- Published catalog guide pages: 59 total, including Clueverge.
+- Added and published `games/teotihuacan-city-of-gods.html`.
+- Resolved the Teotihuacan age discrepancy by using the current Board&Dice base-game Web Store listing for the presented specification: 1–4 players, 90–120 minutes, age 12+. The separate Deluxe Master Set page's 14+ listing was not used as the base-game age specification.
+- Added and published `games/barrage.html` using current Cranio Creations product information for 1–4 players, about 120 minutes, and age 14+.
+- Both new `games.html` cards use box-visible thumbnails with visible source links and retain `object-fit: contain` through the existing catalog styling.
+- Both new catalog cards use only the verified browsing tag `strategy`.
+- Updated `games.html` count from 57 to 59.
+- Updated the TOP catalog button from `全57作品を見る` to `全59作品を見る`; the six featured TOP cards were not expanded.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and the staged Marco Polo II / Troyes detail pages were read before editing.
-- The current 55-card `games.html` was recovered safely from its Git blob before replacement, resolving the prior long-file truncation concern.
-- Re-fetched the tail of `games.html` after writing and confirmed links/cards for both Marco Polo II and Troyes, including box-visible image URLs and source links.
-- Re-fetched `index.html` after writing and confirmed the `全57作品を見る` count while preserving the compact featured grid.
-- Existing detail pages continue to link back to `../index.html`.
-- Preliminary research for the next title, Teotihuacan: City of Gods, was performed against Board&Dice and BoardGameGeek. Current Board&Dice product information lists 1–4 players and 90–120 minutes. Age information differs across current Board&Dice pages (12+ on the store product page, 14+ on the legacy/our-games page), so the detail page should explicitly resolve which edition/specification is being presented before publication.
+- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/troyes.html` before editing.
+- Re-fetched `games.html` after writing and confirmed the 59-work count plus the new Teotihuacan and Barrage detail links, box-visible image URLs, source links, and unchanged `object-fit: contain` catalog styling.
+- Re-fetched `index.html` after writing and confirmed the TOP remains compact with the existing six featured games and the catalog count updated to 59.
+- Re-fetched both new detail pages and confirmed each contains a relevant box image, required game information, source links, and a `../index.html` navigation link back to TOP.
+- Teotihuacan is explicitly documented against the current base-game Board&Dice store listing rather than mixing specifications from the separate Deluxe Master Set.
+- Barrage specifications were checked against the current Cranio Creations product page.
 
 ## Current position
-- Published catalog count: 57.
+- Published catalog count: 59.
 - Staged but not catalog-linked pages: 0.
-- Detail-image coverage: 57 / 57 published pages have at least one relevant visual.
-- Catalog box-thumbnail coverage: 57 / 57 published cards.
+- Detail-image coverage: 59 / 59 published pages have at least one relevant visual.
+- Catalog box-thumbnail coverage: 59 / 59 published cards.
 
 ## Planned next items
-1. Continue normal catalog expansion with Teotihuacan: City of Gods.
-2. Resolve the current 12+ vs 14+ age discrepancy by choosing and citing a specific current edition/source rather than guessing.
-3. Create the Teotihuacan detail page with at least one relevant visual and publish its box-visible catalog card in the same run.
+1. Continue normal catalog expansion with Underwater Cities.
+2. Verify current publisher/product specifications before creating the page; do not guess missing values.
+3. Create the Underwater Cities detail page with at least one relevant visual and publish its box-visible catalog card in the same run.
 4. Every future `games.html` card must include a thumbnail where the physical box is clearly visible, with a visible source link.
 5. Continue adding new titles to `games.html`, not the TOP featured grid.
 

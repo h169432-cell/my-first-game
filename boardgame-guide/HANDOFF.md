@@ -3,7 +3,7 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. Continue normal catalog expansion with Great Western Trail: Second Edition.
+3. Continue normal catalog expansion with A Feast for Odin.
 4. Add every completed new game to `boardgame-guide/games.html` in the same run. Do not append every new title to TOP.
 5. Keep `boardgame-guide/index.html` compact: featured games + category entry points + link to the complete catalog.
 6. For every image, follow the image/copyright policy in `WORK_PLAN.md`: use only rights-explicit reusable material, visibly attribute where required, and leave the image out if reuse terms are unclear.
@@ -11,20 +11,20 @@
 8. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
-- Next game for catalog expansion: Great Western Trail: Second Edition.
-- Current published guide count: 39 total, including Clueverge.
+- Next game for catalog expansion: A Feast for Odin.
+- Current published guide count: 41 total, including Clueverge.
 
 ## Completed in this run
-- Added `games/spirit-island.html` using Greater Than Games official product information plus BoardGameGeek as a secondary specification check.
-- Added `games/dune-imperium-uprising.html` using Dire Wolf Digital official rules/resources and Asmodee UK product information.
-- Added both titles to `games.html` and raised the catalog count to 39.
+- Added `games/great-western-trail-second-edition.html` using Asmodee USA official product information, BoardGameGeek as a secondary specification check, and RulesPal as a secondary rule-structure check.
+- Added `games/tzolkin-the-mayan-calendar.html` using Czech Games Edition official game/product information.
+- Added both titles to `games.html` and raised the catalog count to 41.
 - Applied `strategy` to both new titles; no unsupported beginner/party/quick/two-player tags were added.
-- Updated the compact TOP count link from 37 to 39 without adding featured cards.
-- Used no new product images because explicit reusable rights were not established.
+- Updated the compact TOP count link from 39 to 41 without adding featured cards.
+- Used no new product images because explicit broadly reusable rights were not established.
 
 ## Files changed in this run
-- `boardgame-guide/games/spirit-island.html` (new)
-- `boardgame-guide/games/dune-imperium-uprising.html` (new)
+- `boardgame-guide/games/great-western-trail-second-edition.html` (new)
+- `boardgame-guide/games/tzolkin-the-mayan-calendar.html` (new)
 - `boardgame-guide/games.html`
 - `boardgame-guide/index.html`
 - `boardgame-guide/PROGRESS.md`
@@ -32,12 +32,14 @@
 - `boardgame-guide/WORK_PLAN.md` (next-start pointer only)
 
 ## Verification performed
-- Required durable-state files and existing site pages were read before editing.
+- Required durable-state files, TOP, catalog, and a current detail page were read before editing.
 - Both new pages link back to `../index.html`.
 - Catalog entries point to the two new files.
-- Catalog initial count and TOP count are both 39.
+- Catalog initial count and TOP count are both 41.
 - Existing category/filter keys are unchanged.
 - TOP still contains only the existing six featured games.
+- Great Western Trail official current product info supports 1–4 players, about 2 hours, and ages 12+; the broader 75–150 minute range is only presented through the cited secondary reference.
+- Tzolk'in official CGE information supports 2–4 players, 60–90 minutes, ages 12+, and the place-or-retrieve worker structure.
 - No intended edits outside `boardgame-guide/`.
 
 ## Image-rights unresolved list carried forward
@@ -62,5 +64,5 @@
 - Verify player count, play time, age, rules, publisher/title details from reliable sources; do not guess.
 - Paraphrase copyrighted descriptions/rules. Never reproduce rulebooks or long source passages.
 - Prefer CC0/Public Domain/CC BY/CC BY-SA images with a clear source page and attribution trail.
-- A publicly visible official/retailer/review image is not automatically reusable.
+- A publicly visible official/retailer/review/press image is not automatically reusable.
 - New game pages belong in the complete catalog. TOP should remain intentionally small.

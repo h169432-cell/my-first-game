@@ -47,4 +47,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Continue from the game recorded in `HANDOFF.md` (currently Race for the Galaxy).
+Continue from the game recorded in `HANDOFF.md` (currently Spirit Island).

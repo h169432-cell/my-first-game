@@ -4,37 +4,42 @@ Last updated: 2026-08-28
 
 ## Completed
 - Published catalog guide pages: 59 total, including Clueverge.
-- Added and published `games/teotihuacan-city-of-gods.html`.
-- Resolved the Teotihuacan age discrepancy by using the current Board&Dice base-game Web Store listing for the presented specification: 1–4 players, 90–120 minutes, age 12+. The separate Deluxe Master Set page's 14+ listing was not used as the base-game age specification.
-- Added and published `games/barrage.html` using current Cranio Creations product information for 1–4 players, about 120 minutes, and age 14+.
-- Both new `games.html` cards use box-visible thumbnails with visible source links and retain `object-fit: contain` through the existing catalog styling.
-- Both new catalog cards use only the verified browsing tag `strategy`.
-- Updated `games.html` count from 57 to 59.
-- Updated the TOP catalog button from `全57作品を見る` to `全59作品を見る`; the six featured TOP cards were not expanded.
+- Added staged detail page `games/underwater-cities.html`.
+- Underwater Cities specifications were verified against Delicious Games: 1–4 players, 40 minutes per player, age 12+.
+- Underwater Cities flow was checked against the official English rulebook: action-slot + card play, color matching, 10 rounds, and 3 Production phases.
+- Added staged detail page `games/carnegie.html`.
+- Carnegie specifications were verified against Pegasus Spiele: 1–4 players, 90–120 minutes, age 12+.
+- Carnegie structure was checked against Quined Games: 20 rounds, one of four actions chosen by the active player, employee/company development, transport/business investment, and philanthropy.
+- Both staged detail pages contain a box-visible quoted product image with a visible source link and use `object-fit: contain`.
+- Corrected the Underwater Cities image URL after verifying the exact Morat Games CDN image.
+- Corrected the Carnegie image URL after verifying the exact Lelekan image resource.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/troyes.html` before editing.
-- Re-fetched `games.html` after writing and confirmed the 59-work count plus the new Teotihuacan and Barrage detail links, box-visible image URLs, source links, and unchanged `object-fit: contain` catalog styling.
-- Re-fetched `index.html` after writing and confirmed the TOP remains compact with the existing six featured games and the catalog count updated to 59.
-- Re-fetched both new detail pages and confirmed each contains a relevant box image, required game information, source links, and a `../index.html` navigation link back to TOP.
-- Teotihuacan is explicitly documented against the current base-game Board&Dice store listing rather than mixing specifications from the separate Deluxe Master Set.
-- Barrage specifications were checked against the current Cranio Creations product page.
+- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/barrage.html` before editing.
+- Verified Underwater Cities facts against Delicious Games and its official rulebook.
+- Verified Carnegie facts against Pegasus Spiele and Quined Games.
+- Opened the Morat Games product page and followed its image link to confirm the exact Underwater Cities box-image URL.
+- Opened the Lelekan Carnegie product page and followed its product image to confirm the exact box-image URL.
+- Both new detail pages link back to `../index.html`.
 
 ## Current position
 - Published catalog count: 59.
-- Staged but not catalog-linked pages: 0.
-- Detail-image coverage: 59 / 59 published pages have at least one relevant visual.
+- Staged but not catalog-linked pages: 2 (`Underwater Cities`, `Carnegie`).
+- Detail-image coverage for published pages: 59 / 59.
 - Catalog box-thumbnail coverage: 59 / 59 published cards.
+- `games.html` and TOP count remain 59 because the two new pages are not yet catalog-linked.
 
 ## Planned next items
-1. Continue normal catalog expansion with Underwater Cities.
-2. Verify current publisher/product specifications before creating the page; do not guess missing values.
-3. Create the Underwater Cities detail page with at least one relevant visual and publish its box-visible catalog card in the same run.
-4. Every future `games.html` card must include a thumbnail where the physical box is clearly visible, with a visible source link.
-5. Continue adding new titles to `games.html`, not the TOP featured grid.
+1. Publish Underwater Cities and Carnegie into `games.html` with box-visible thumbnails and visible source links, then update the catalog/TOP count from 59 to 61.
+2. Use only verified filter tags; both staged titles are appropriate for `strategy`, and do not add other tags without support.
+3. Re-check catalog → detail, detail → TOP, thumbnail image URLs, source links, and count after the catalog write.
+4. Resume normal catalog expansion only after the two staged pages are linked.
+5. Every future `games.html` card must include a thumbnail where the physical box is clearly visible, with a visible source link.
 
 ## Unresolved general items
+- `games.html` is large and the connector response is truncated when fetched in broad ranges. Do not reconstruct or overwrite it from incomplete output. Fetch sufficiently small line ranges so the full current file can be reconstructed safely before the next catalog write.
+- Carnegie's currently verified direct image is a small thumbnail resource. It is valid and box-visible, but replace it with a larger verifiably sourced image if one is found before catalog publication.
 - `games/clueverge.html` still has the previously observed encoding/mojibake issue when fetched and an older Medium-hosted detail image. Treat that as a separate cleanup task.
 - Remote image hosts can change URLs or block hotlinking; replace broken thumbnails/images with another properly sourced image when discovered.
 - Image/copyright assessment remains source- and context-specific; follow `WORK_PLAN.md` for every future thumbnail and detail image.

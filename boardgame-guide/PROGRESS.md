@@ -1,36 +1,36 @@
 # Board Game Guide — Progress
 
-Last updated: 2026-08-27
+Last updated: 2026-08-28
 
 ## Completed
-- Published guide pages: 51 total, including Clueverge.
-- Latest catalog additions are `games/el-grande.html` and `games/five-tribes.html`; both remain linked from `games.html`, and the TOP/catalog count remains 51.
-- Detail-page image coverage remains 51 / 51.
-- Reworked the complete `games.html` catalog so all 51 game cards now include a thumbnail where the physical game box is visibly present.
-- Catalog thumbnails use either a box-only image or an image containing the box plus game contents; component/gameplay-only images are not used as list thumbnails.
-- Each catalog card now shows the image source directly beneath the card content.
-- Added responsive thumbnail styling with a light image stage and `object-fit: contain` to avoid cropping the box out of the image.
-- Preserved all existing category/filter tags, detail links, 51-item count, and compact TOP structure.
-- Updated `WORK_PLAN.md` so future catalog additions require a box-visible thumbnail independently from the detail-page image.
+- Published guide pages: 52 total, including Clueverge.
+- Added `games/grand-austria-hotel.html` with Japanese overview, player count, play time, age, basic rules, appeal, relevant visual, and source links.
+- Verified Grand Austria Hotel against Lookout Games official product information: 2–4 players, about 90 minutes, age 12+, seven rounds, six dice-driven action choices, and reverse-order second turns.
+- Grand Austria Hotel detail page uses the official Lookout Games cover image as a clearly sourced quoted visual.
+- Added Grand Austria Hotel to `games.html` with `two strategy` tags.
+- Added a separate catalog thumbnail in which the physical Grand Austria Hotel box is visibly present; source is shown directly beneath the card.
+- Updated catalog count and TOP count from 51 to 52.
+- Existing 51 catalog cards, filters, detail links, and box-thumbnail structure were preserved.
+- Detail-page image coverage: 52 / 52.
+- Catalog box-thumbnail coverage: 52 / 52.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Re-fetched `games.html` after the thumbnail update and confirmed the new thumbnail/source structure is present at both the beginning and end of the 51-game catalog.
-- Confirmed the catalog still displays `51作品` and retains the existing filter script/category keys.
-- Confirmed each new thumbnail has descriptive alt text identifying it as an image where the game's box is visible.
-- Confirmed each catalog card keeps its existing relative detail-page link.
-- Confirmed the final entries, including El Grande and Five Tribes, also have box-visible thumbnails and source links.
+- Re-fetched `games.html` after the update and confirmed the Grand Austria Hotel card, detail link, `two strategy` tags, box-visible thumbnail, and source link are present at the end of the catalog.
+- Re-fetched `games/grand-austria-hotel.html` and confirmed the `../index.html` navigation, official detail image, specs, rules summary, and source links are present.
+- TOP featured grid remains the same six titles; only the catalog count changed to 52.
+- Grand Austria Hotel facts were checked against Lookout Games and Asmodee USA rather than inferred.
 
 ## Current position
-- Published guide pages: 51 total, including Clueverge.
-- Detail image coverage: 51 / 51.
-- Catalog box-thumbnail coverage: 51 / 51.
-- Latest catalog additions: El Grande and Five Tribes.
+- Published guide pages: 52 total, including Clueverge.
+- Detail image coverage: 52 / 52.
+- Catalog box-thumbnail coverage: 52 / 52.
+- Latest catalog addition: Grand Austria Hotel.
 
 ## Planned next items
-1. Continue normal catalog expansion with Grand Austria Hotel.
+1. Continue catalog expansion with Lorenzo il Magnifico.
 2. Every future new game page must include at least one relevant detail-page visual.
-3. Every future `games.html` card must also include a separate or reusable thumbnail where the game's physical box is clearly visible, with a visible source link.
+3. Every future `games.html` card must include a thumbnail where the physical box is clearly visible, with a visible source link.
 4. Continue adding new titles to `games.html`, not the TOP featured grid.
 5. Keep TOP compact and preserve current filters/navigation.
 

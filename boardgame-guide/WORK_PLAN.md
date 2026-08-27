@@ -52,4 +52,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Continue from the game recorded in `HANDOFF.md` (currently El Grande).
+Continue from the game recorded in `HANDOFF.md` (currently Grand Austria Hotel).

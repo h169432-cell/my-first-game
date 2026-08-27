@@ -3,9 +3,9 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. First finish publishing Lorenzo il Magnifico: `games/lorenzo-il-magnifico.html` already exists, but it is not yet linked from `games.html`.
-4. Add Lorenzo to `boardgame-guide/games.html` with `two strategy` tags, a thumbnail where the physical box is clearly visible, and a visible source link; update catalog/TOP count from 52 to 53.
-5. Only after Lorenzo is fully linked and verified, continue normal catalog expansion with Coimbra.
+3. First finish publishing Coimbra: `games/coimbra.html` already exists, but it is not yet linked from `games.html`.
+4. Add Coimbra to `boardgame-guide/games.html` with `strategy` tags, a thumbnail where the physical box is clearly visible, and a visible source link; update catalog/TOP count from 53 to 54.
+5. Only after Coimbra is fully linked and verified, continue normal catalog expansion with The Voyages of Marco Polo.
 6. Keep `boardgame-guide/index.html` compact: featured games + category entry points + link to the complete catalog.
 7. Every new detail page must include at least one relevant image/visual before it is considered complete.
 8. Every new catalog card must include a thumbnail where the target game's physical box is clearly visible. Box alone or box plus components/gameplay is acceptable; do not use a thumbnail showing only board/components/cards without the box.
@@ -14,18 +14,19 @@
 11. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
-- Immediate task: add the already-created Lorenzo il Magnifico detail page to the catalog and change counts to 53.
-- Next game after that: Coimbra.
-- Current published catalog count: 52 total, including Clueverge.
-- Staged but not catalog-linked: Lorenzo il Magnifico.
-- Current detail-image coverage for published catalog: 52 / 52.
-- Current box-thumbnail coverage in `games.html`: 52 / 52.
+- Immediate task: add the already-created Coimbra detail page to the catalog and change counts to 54.
+- Next game after that: The Voyages of Marco Polo.
+- Current published catalog count: 53 total, including Clueverge.
+- Staged but not catalog-linked: Coimbra.
+- Current detail-image coverage for published catalog: 53 / 53.
+- Current box-thumbnail coverage in `games.html`: 53 / 53.
 
 ## Completed in latest run
-- Created `games/lorenzo-il-magnifico.html`.
-- Verified Lorenzo il Magnifico as 2–4 players, 60–120 minutes, age 12+, six rounds over three periods, with shared dice determining family-member action values.
-- Added a sourced box visual, Japanese overview, basic rules, appeal, and source links to the detail page.
-- Did not partially rewrite `games.html`; the existing 52-card catalog was preserved intact.
+- Finished publishing Lorenzo il Magnifico in `games.html` with `two strategy` tags.
+- Lorenzo's catalog card uses a physical-box image and visible Shopville source link; shared CSS keeps the image contained rather than cropped.
+- Updated `games.html` count and TOP count from 52 to 53 without expanding the TOP featured grid.
+- Created `games/coimbra.html` with a sourced box visual, Japanese overview, 2–4 players / 75–120 minutes / age 14+ specifications, basic rules, appeal, and source links.
+- Coimbra detail facts were checked against Eggertspiele product information surfaced by Miniature Market and the published rulebook structure surfaced by RulesPal.
 - No intended edits outside `boardgame-guide/`.
 
 ## Current image rules
@@ -37,9 +38,9 @@
 - Prefer clearly reusable/official assets; otherwise follow the quotation-aware sourcing policy in `WORK_PLAN.md`.
 
 ## Validation / notes
-- Current catalog remains 52 because Lorenzo has not yet been inserted into `games.html`.
-- Lorenzo detail navigation points to `../index.html`.
-- `games.html` was fetched in full before deciding not to risk a partial replacement.
+- Current catalog is 53 and the end of `games.html` was re-fetched after the Lorenzo write.
+- Lorenzo detail navigation and Coimbra detail navigation both point to `../index.html`.
+- Coimbra's current detail image visibly shows the game box and can also be used as a catalog thumbnail if still reachable next run; verify the remote URL before publishing.
 - Remote image URLs may later change or reject hotlinking; replace broken thumbnails with another sourced box-visible image if discovered.
 
 ## Remaining cleanup

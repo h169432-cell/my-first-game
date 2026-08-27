@@ -6,64 +6,44 @@
 3. Continue normal catalog expansion with Grand Austria Hotel.
 4. Add every completed new game to `boardgame-guide/games.html` in the same run. Do not append every new title to TOP.
 5. Keep `boardgame-guide/index.html` compact: featured games + category entry points + link to the complete catalog.
-6. For every image, follow the image/copyright policy in `WORK_PLAN.md`: use only rights-explicit reusable material, visibly attribute where required, and leave the image out if reuse terms are unclear.
-7. Check TOP → catalog, catalog → detail, and detail → TOP relative links.
+6. Every new detail page must include at least one relevant image/visual before it is considered complete. Follow the image policy in `WORK_PLAN.md`: prefer explicitly reusable assets; otherwise use a clearly separated, directly relevant quoted product/component/gameplay image with an immediate source caption/link.
+7. Check TOP → catalog, catalog → detail, detail → TOP, and image/source links.
 8. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
 - Next game for catalog expansion: Grand Austria Hotel.
 - Current published guide count: 51 total, including Clueverge.
+- Current image coverage: 51 / 51 detail pages have at least one image/visual.
 
-## Completed in this run
-- Added `games/el-grande.html` using Hans im Glück and Asmodee USA official information for specifications and core flow.
-- Added `games/five-tribes.html` using the Days of Wonder official product page and official rulebook access for specifications and core flow.
-- Added both titles to `games.html` and raised the catalog count to 51.
-- Applied `strategy` to both titles and `two` to Five Tribes; no unsupported quick/beginner/party tags were added.
-- Updated the compact TOP count link from 49 to 51 without adding featured cards.
-- Used no new product images because explicit broadly reusable rights were not established.
-
-## Files changed in this run
-- `boardgame-guide/games/el-grande.html` (new)
-- `boardgame-guide/games/five-tribes.html` (new)
-- `boardgame-guide/games.html`
-- `boardgame-guide/index.html`
-- `boardgame-guide/PROGRESS.md`
-- `boardgame-guide/HANDOFF.md`
-- `boardgame-guide/WORK_PLAN.md` (next-start pointer only)
-
-## Verification performed
-- Required durable-state files, TOP, catalog, and a current detail page were read before editing.
-- Both new pages link back to `../index.html`.
-- Catalog entries point to the two new files.
-- Catalog initial count and TOP count are both 51.
-- Existing category/filter keys are unchanged.
-- TOP still contains only the existing six featured games.
-- El Grande specifications and core flow were checked against Hans im Glück and Asmodee USA official information.
-- Five Tribes specifications and core flow were checked against Days of Wonder official information.
-- Concurrent repository activity was noticed during the run; shared files were re-fetched before writing where needed.
+## Completed in latest image pass
+- Completed image coverage for the full catalog that existed at the start of the pass.
+- Added image sections to the previously image-less newer strategy titles from Agricola through Orléans.
+- Added images to Ark Nova, The Quacks of Quedlinburg, Jaipur, The Crew: Mission Deep Sea, and Heat: Pedal to the Metal.
+- Concurrent catalog expansion created El Grande and Five Tribes during the pass; both were re-fetched and given image sections too.
+- Existing CC/Public Domain images were preserved where already present.
+- Source information is displayed directly beneath newly quoted images.
 - No intended edits outside `boardgame-guide/`.
 
-## Image-rights unresolved list carried forward
-1. `games/the-quacks-of-quedlinburg.html`
-   - Verified Wikimedia Commons candidate: `The Quacks of Quedlinburg.jpg`, author Honza F., CC0 1.0.
-   - Prior GitHub update attempt was blocked by the tool safety check. Do not bypass that block with lower-level write methods.
-2. `games/clueverge.html`
-   - Existing Medium-hosted image remains but reuse terms are unverified under the current policy.
-   - GitHub fetch has shown mojibake/encoding corruption. Do not broadly rewrite it during an unrelated pass without reconstruction/validation.
-3. `games/ark-nova.html`
-   - No stable direct embeddable image URL plus complete verified attribution chain has been established.
-4. `games/jaipur.html`
-   - Official product imagery exists but explicit reuse permission has not been verified.
-5. `games/the-crew-mission-deep-sea.html`
-   - Official/demo imagery exists but explicit reusable rights have not been verified.
-6. `games/heat-pedal-to-the-metal.html`
-   - Wikimedia Commons candidates exist, but individual file licenses must be verified before use.
+## Current image rule
+- Maintain at least one relevant visual per game detail page.
+- Prefer CC0/Public Domain/CC BY/CC BY-SA or clearly provided publisher/press assets.
+- If no practical rights-explicit image is available, use a published product/component/gameplay image only as a clearly identified quotation supporting the article's explanation, not as decorative background art.
+- Put the source link directly beneath the quoted image.
+- Do not use an image if the relevant source explicitly prohibits that use or the source cannot be identified reliably.
+
+## Validation / notes
+- Current catalog count is 51 after El Grande and Five Tribes were added by concurrent catalog work.
+- El Grande and Five Tribes were fetched after creation before their image edits, avoiding overwriting their new content.
+- `PROGRESS.md` records 51 / 51 image coverage.
+- `WORK_PLAN.md` already contains the quotation-aware image policy. Its final parenthetical next-start hint may still mention an older title if a later pointer-only sync was blocked; use this file's Exact next start point as the current source: Grand Austria Hotel.
+
+## Remaining cleanup
+- `games/clueverge.html` still has a previously observed mojibake/encoding issue when fetched and uses an older Medium-hosted image. It does have an image, so it meets the current minimum coverage target, but source/encoding cleanup should be handled in a dedicated pass.
+- Remote image URLs may later change or reject hotlinking; replace broken images with another sourced image when discovered.
 
 ## Rules carried forward
 - Work only under `boardgame-guide/`; never modify the unrelated game app at repository root.
 - Git files are the source of truth; do not depend on chat history.
-- Verify player count, play time, age, rules, publisher/title details from reliable sources; do not guess.
-- Paraphrase copyrighted descriptions/rules. Never reproduce rulebooks or long source passages.
-- Prefer CC0/Public Domain/CC BY/CC BY-SA images with a clear source page and attribution trail.
-- A publicly visible official/retailer/review/press image is not automatically reusable.
+- Verify game facts from reliable sources; do not guess.
+- Paraphrase copyrighted descriptions/rules; never reproduce long rulebook text.
 - New game pages belong in the complete catalog. TOP should remain intentionally small.

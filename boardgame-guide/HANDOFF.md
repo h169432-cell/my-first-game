@@ -3,7 +3,7 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. Continue normal catalog expansion with A Feast for Odin.
+3. Continue normal catalog expansion with Gaia Project.
 4. Add every completed new game to `boardgame-guide/games.html` in the same run. Do not append every new title to TOP.
 5. Keep `boardgame-guide/index.html` compact: featured games + category entry points + link to the complete catalog.
 6. For every image, follow the image/copyright policy in `WORK_PLAN.md`: use only rights-explicit reusable material, visibly attribute where required, and leave the image out if reuse terms are unclear.
@@ -11,20 +11,20 @@
 8. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
-- Next game for catalog expansion: A Feast for Odin.
-- Current published guide count: 41 total, including Clueverge.
+- Next game for catalog expansion: Gaia Project.
+- Current published guide count: 43 total, including Clueverge.
 
 ## Completed in this run
-- Added `games/great-western-trail-second-edition.html` using Asmodee USA official product information, BoardGameGeek as a secondary specification check, and RulesPal as a secondary rule-structure check.
-- Added `games/tzolkin-the-mayan-calendar.html` using Czech Games Edition official game/product information.
-- Added both titles to `games.html` and raised the catalog count to 41.
+- Added `games/a-feast-for-odin.html` using Asmodee USA official product information and an English rulebook source for rule-flow verification.
+- Added `games/puerto-rico-1897.html` using Ravensburger official product information and the official rulebook.
+- Added both titles to `games.html` and raised the catalog count to 43.
 - Applied `strategy` to both new titles; no unsupported beginner/party/quick/two-player tags were added.
-- Updated the compact TOP count link from 39 to 41 without adding featured cards.
+- Updated the compact TOP count link from 41 to 43 without adding featured cards.
 - Used no new product images because explicit broadly reusable rights were not established.
 
 ## Files changed in this run
-- `boardgame-guide/games/great-western-trail-second-edition.html` (new)
-- `boardgame-guide/games/tzolkin-the-mayan-calendar.html` (new)
+- `boardgame-guide/games/a-feast-for-odin.html` (new)
+- `boardgame-guide/games/puerto-rico-1897.html` (new)
 - `boardgame-guide/games.html`
 - `boardgame-guide/index.html`
 - `boardgame-guide/PROGRESS.md`
@@ -35,11 +35,11 @@
 - Required durable-state files, TOP, catalog, and a current detail page were read before editing.
 - Both new pages link back to `../index.html`.
 - Catalog entries point to the two new files.
-- Catalog initial count and TOP count are both 41.
+- Catalog initial count and TOP count are both 43.
 - Existing category/filter keys are unchanged.
 - TOP still contains only the existing six featured games.
-- Great Western Trail official current product info supports 1–4 players, about 2 hours, and ages 12+; the broader 75–150 minute range is only presented through the cited secondary reference.
-- Tzolk'in official CGE information supports 2–4 players, 60–90 minutes, ages 12+, and the place-or-retrieve worker structure.
+- A Feast for Odin official current product info supports 1–4 players, approximately 90 minutes, and ages 14+; rule flow was checked against an English rulebook source.
+- Puerto Rico 1897 official Ravensburger information supports 2–5 players, 90–120 minutes, ages 12+, and the role-selection structure; the official rulebook was also checked.
 - No intended edits outside `boardgame-guide/`.
 
 ## Image-rights unresolved list carried forward

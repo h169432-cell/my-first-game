@@ -3,29 +3,29 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. Continue normal catalog expansion with Lorenzo il Magnifico.
-4. Add every completed new game to `boardgame-guide/games.html` in the same run. Do not append every new title to TOP.
-5. Keep `boardgame-guide/index.html` compact: featured games + category entry points + link to the complete catalog.
-6. Every new detail page must include at least one relevant image/visual before it is considered complete.
-7. Every new catalog card must include a thumbnail where the target game's physical box is clearly visible. Box alone or box plus components/gameplay is acceptable; do not use a thumbnail showing only board/components/cards without the box. The catalog thumbnail may differ from the detail-page image.
-8. Put a visible source link directly beneath each catalog thumbnail/card, and follow the image/copyright policy in `WORK_PLAN.md`.
-9. Check TOP → catalog, catalog → detail, detail → TOP, thumbnails, detail images, and source links.
-10. Update `PROGRESS.md` and rewrite this file before ending.
+3. First finish publishing Lorenzo il Magnifico: `games/lorenzo-il-magnifico.html` already exists, but it is not yet linked from `games.html`.
+4. Add Lorenzo to `boardgame-guide/games.html` with `two strategy` tags, a thumbnail where the physical box is clearly visible, and a visible source link; update catalog/TOP count from 52 to 53.
+5. Only after Lorenzo is fully linked and verified, continue normal catalog expansion with Coimbra.
+6. Keep `boardgame-guide/index.html` compact: featured games + category entry points + link to the complete catalog.
+7. Every new detail page must include at least one relevant image/visual before it is considered complete.
+8. Every new catalog card must include a thumbnail where the target game's physical box is clearly visible. Box alone or box plus components/gameplay is acceptable; do not use a thumbnail showing only board/components/cards without the box.
+9. Put a visible source link directly beneath each catalog thumbnail/card, and follow the image/copyright policy in `WORK_PLAN.md`.
+10. Check TOP → catalog, catalog → detail, detail → TOP, thumbnails, detail images, and source links.
+11. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
-- Next game for catalog expansion: Lorenzo il Magnifico.
-- Current published guide count: 52 total, including Clueverge.
-- Current detail-image coverage: 52 / 52.
+- Immediate task: add the already-created Lorenzo il Magnifico detail page to the catalog and change counts to 53.
+- Next game after that: Coimbra.
+- Current published catalog count: 52 total, including Clueverge.
+- Staged but not catalog-linked: Lorenzo il Magnifico.
+- Current detail-image coverage for published catalog: 52 / 52.
 - Current box-thumbnail coverage in `games.html`: 52 / 52.
 
 ## Completed in latest run
-- Added `games/grand-austria-hotel.html`.
-- Verified Grand Austria Hotel specs and core flow against Lookout Games official information, with Asmodee USA as a secondary product-spec source.
-- Added a sourced official Lookout Games visual to the detail page.
-- Added Grand Austria Hotel to `games.html` with `two strategy` tags.
-- Added a separate catalog thumbnail that visibly contains the physical game box, with a visible DieHard BoardGames source link.
-- Updated catalog/TOP count from 51 to 52 while keeping the TOP featured grid unchanged.
-- Re-fetched the new detail page and catalog tail after writing to confirm navigation, thumbnail, source link, tags, and content.
+- Created `games/lorenzo-il-magnifico.html`.
+- Verified Lorenzo il Magnifico as 2–4 players, 60–120 minutes, age 12+, six rounds over three periods, with shared dice determining family-member action values.
+- Added a sourced box visual, Japanese overview, basic rules, appeal, and source links to the detail page.
+- Did not partially rewrite `games.html`; the existing 52-card catalog was preserved intact.
 - No intended edits outside `boardgame-guide/`.
 
 ## Current image rules
@@ -37,10 +37,9 @@
 - Prefer clearly reusable/official assets; otherwise follow the quotation-aware sourcing policy in `WORK_PLAN.md`.
 
 ## Validation / notes
-- Current catalog count is 52.
-- Grand Austria Hotel detail navigation points to `../index.html`.
-- Grand Austria Hotel catalog card points to `games/grand-austria-hotel.html`.
-- Grand Austria Hotel catalog thumbnail is a 3D product-box image rather than cover art alone.
+- Current catalog remains 52 because Lorenzo has not yet been inserted into `games.html`.
+- Lorenzo detail navigation points to `../index.html`.
+- `games.html` was fetched in full before deciding not to risk a partial replacement.
 - Remote image URLs may later change or reject hotlinking; replace broken thumbnails with another sourced box-visible image if discovered.
 
 ## Remaining cleanup

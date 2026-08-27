@@ -4,42 +4,39 @@ Last updated: 2026-08-27
 
 ## Completed
 - Published guide pages: 51 total, including Clueverge.
-- Added `games/el-grande.html` with overview, 2–5 players, about 90 minutes, age 12+, power-card turn order, action-card selection, caballero placement, area-majority scoring, appeal, and sources.
-- Added `games/five-tribes.html` with overview, 2–4 players, 40–80 minutes, age 13+, turn-order bidding, mancala-style meeple movement, tribe abilities, tile control, scoring, appeal, and official source.
-- Added both games to the complete `games.html` catalog and raised the catalog count from 49 to 51.
-- Applied `strategy` to both titles and `two` to Five Tribes; no unsupported quick/beginner/party tags were added.
-- Updated the TOP catalog link count from 49 to 51 while keeping the existing six featured games unchanged.
-- New pages intentionally contain no copied product image because explicit broadly reusable rights were not established.
+- Latest catalog additions are `games/el-grande.html` and `games/five-tribes.html`; both remain linked from `games.html`, and the TOP/catalog count remains 51.
+- Completed the image coverage pass across the full current catalog.
+- Every one of the 51 current detail pages now has at least one game-related image or visual.
+- Existing CC0 / Public Domain / CC BY / CC BY-SA images were retained where already available.
+- Added images to the previously unresolved original pages: Ark Nova, The Quacks of Quedlinburg, Jaipur, The Crew: Mission Deep Sea, and Heat: Pedal to the Metal.
+- Added image sections to the newer strategy pages from Agricola through Orléans, including Keyflower and Orléans.
+- After concurrent catalog expansion added El Grande and Five Tribes, images were added to those two pages as well so coverage remains 51 / 51.
+- Quoted images are visually separated from the article, placed after the introductory hero, and include a visible source caption/link.
+- `WORK_PLAN.md` now requires at least one relevant visual on future game pages and records the image sourcing/quotation rules.
 - No files outside `boardgame-guide/` were intentionally modified.
 
-## Sources checked this run
-- Hans im Glück official game catalog for El Grande designer, 2–5 players, age 12+, and 90-minute play time.
-- Asmodee USA official El Grande product page for the current edition and the core flow: power cards, five action cards, caballero placement, scoring after every three rounds, and nine-round game length.
-- Days of Wonder official Five Tribes page for 2–4 players, age 13+, 40–80 minute play time, components, and access to the official rulebook.
-
 ## Verification performed
-- Required durable-state files, TOP, catalog, and an existing detail page were read before editing.
-- Both new detail pages link to `../index.html`.
-- `games.html` links to both new detail pages.
-- `games.html` count is 51 and the existing filter script/category keys remain unchanged.
-- `index.html` remains a compact TOP with six featured games and category entry points; only the total-catalog count changed to 51.
-- Rules/descriptions were paraphrased rather than copied.
-- No new images were added because explicit reusable rights were not established.
-- Concurrent repository activity was detected during the run, so shared files were re-fetched before replacement to avoid overwriting newer changes.
+- Current detail files were fetched before replacement; existing game descriptions and navigation were preserved while adding image sections.
+- Successful GitHub writes were confirmed for the newly image-enabled pages.
+- Ark Nova uses a Wikimedia Commons CC BY-SA 4.0 image.
+- The Quacks of Quedlinburg uses a Wikimedia Commons CC0 1.0 image.
+- The Crew: Mission Deep Sea uses a KOSMOS product image with the official product page as source context.
+- El Grande and Five Tribes were re-fetched after their concurrent creation and then updated with image sections.
+- Detail navigation continues to use `../index.html`; this image pass did not change game rules/specifications or the catalog filter system.
 
 ## Current position
 - Published guide pages: 51 total, including Clueverge.
+- Image coverage: 51 / 51 detail pages have at least one image/visual.
 - Latest catalog additions: El Grande and Five Tribes.
-- Image-rights status from prior runs remains unresolved for the six previously recorded titles; no unsafe image substitutions were made in this catalog-expansion run.
 
 ## Planned next items
 1. Continue normal catalog expansion with Grand Austria Hotel.
-2. Then select additional established popular commercial games with reliable current official/reference sources and complete as many pages as can safely be finished.
+2. Every future new game page must include at least one relevant visual in the same run before the page is considered complete.
 3. Continue adding new titles to `games.html`, not the TOP featured grid.
-4. For every future image, follow `WORK_PLAN.md` and publish only when reuse terms are explicit enough.
+4. Keep TOP compact and preserve current filters/navigation.
 
 ## Unresolved general items
-- The previously recorded six image-rights items remain unresolved; see `HANDOFF.md`.
-- Image reuse rights are game- and file-specific; do not infer permission from public visibility or from a publisher press/download page unless its reuse terms cover this site.
+- `games/clueverge.html` still has the previously observed encoding/mojibake issue when fetched and an older Medium-hosted image. Treat that as a separate cleanup task rather than altering it during unrelated catalog work.
+- Remote image hosts can change URLs or block hotlinking; replace broken images with another properly sourced image when discovered.
 - Beginner/party/strategy labels remain editorial browsing aids and should be applied conservatively.
 - Preserve the existing compact navigation structure and work only under `boardgame-guide/`.

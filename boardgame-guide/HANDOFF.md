@@ -3,35 +3,31 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. First publish the two staged detail pages by adding them to `boardgame-guide/games.html`:
-   - `games/marco-polo-ii-in-the-service-of-the-khan.html`
-   - `games/troyes.html`
-4. Add both catalog cards with verified filter tags only and with box-visible thumbnails plus visible source links.
-5. Update the catalog/TOP count from 55 to 57 without expanding the TOP featured grid.
-6. After those two staged pages are catalog-linked, continue normal catalog expansion with Teotihuacan: City of Gods.
-7. Every new detail page must include at least one relevant image/visual before it is considered complete.
+3. Continue normal catalog expansion with Teotihuacan: City of Gods.
+4. Verify the exact edition/specification before publishing. Current Board&Dice pages disagree on age: the current store product page lists 12+, while the legacy/our-games page lists 14+. Do not guess; choose and cite the specific edition/source used.
+5. Create the Teotihuacan detail page with overview, players, time, age, basic flow, appeal, reliable sources, and at least one relevant image/visual.
+6. Add the completed game to `boardgame-guide/games.html` in the same run with verified filter tags only and a box-visible thumbnail plus visible source link.
+7. Update the catalog/TOP count without expanding the TOP featured grid.
 8. Every new catalog card must include a thumbnail where the target game's physical box is clearly visible. Box alone or box plus components/gameplay is acceptable; do not use a thumbnail showing only board/components/cards without the box.
-9. Put a visible source link directly beneath each catalog thumbnail/card, and follow the image/copyright policy in `WORK_PLAN.md`.
-10. Check TOP → catalog, catalog → detail, detail → TOP, thumbnails, detail images, and source links.
-11. Update `PROGRESS.md` and rewrite this file before ending.
+9. Check TOP → catalog, catalog → detail, detail → TOP, thumbnails, detail images, and source links.
+10. Update `PROGRESS.md` and rewrite this file before ending.
 
 ## Exact next start point
-- Immediate task: catalog-link Marco Polo II and Troyes.
-- Current published catalog count: 55 total, including Clueverge.
-- Staged but not catalog-linked: 2 pages.
-- Current detail-image coverage for published catalog: 55 / 55; both staged pages also have visuals.
-- Current box-thumbnail coverage in `games.html`: 55 / 55 published cards.
-- Next new game after staging is resolved: Teotihuacan: City of Gods.
+- Next game: Teotihuacan: City of Gods.
+- Current published catalog count: 57 total, including Clueverge.
+- Staged but not catalog-linked pages: 0.
+- Current detail-image coverage: 57 / 57.
+- Current box-thumbnail coverage in `games.html`: 57 / 57.
 
 ## Completed in latest run
-- Created `games/marco-polo-ii-in-the-service-of-the-khan.html`.
-- Verified Marco Polo II against Z-Man Games' official rulebook plus current supporting sources: 2–4 players, 60–120 minutes, age 12+, five rounds, dice placement, travel, contracts, jade, guild seals, trading posts, and standalone status.
-- Added a box-visible quoted product image and source link to the Marco Polo II detail page.
-- Created `games/troyes.html`.
-- Verified Troyes against Pearl Games' official page and rules references: 2–4 players, about 90 minutes, age 12+, military/religious/civil workforce dice, events, activity cards, cathedral construction, and character scoring.
-- Added a box-visible quoted product image and source link to the Troyes detail page.
-- Both pages link back to `../index.html`.
-- Existing `games.html` and `index.html` were intentionally left unchanged to avoid accidentally truncating the 55-card catalog when the execution interface returned the long source content in truncated form.
+- Published Marco Polo II: In the Service of the Khan into `games.html`.
+- Published Troyes into `games.html`.
+- Added `two strategy` tags to both based on their verified player counts and strategy-heavy design.
+- Used box-visible images for both catalog cards and displayed visible source links.
+- Updated `games.html` from 55 to 57 works.
+- Updated TOP from `全55作品を見る` to `全57作品を見る` without changing the six featured games.
+- Re-fetched both modified files and confirmed the new cards/count.
+- Preliminary Teotihuacan research found current official Board&Dice information for 1–4 players and 90–120 minutes, plus the age discrepancy noted above.
 - No intended edits outside `boardgame-guide/`.
 
 ## Current image rules
@@ -43,10 +39,11 @@
 - Prefer clearly reusable/official assets; otherwise follow the quotation-aware sourcing policy in `WORK_PLAN.md`.
 
 ## Validation / notes
-- The two staged pages exist on the default branch and were created successfully.
-- Marco Polo II detail navigation points to `../index.html`.
-- Troyes detail navigation points to `../index.html`.
-- `games.html` still contains the existing 55 published cards and `object-fit: contain` thumbnail styling.
+- `games.html` safely contains 57 published cards after the latest write.
+- Marco Polo II catalog link points to `games/marco-polo-ii-in-the-service-of-the-khan.html`.
+- Troyes catalog link points to `games/troyes.html`.
+- TOP still contains six featured games only.
+- Teotihuacan official references already identified: Board&Dice store product page and Board&Dice `our-games` page; re-check them when creating the page.
 - Remote image URLs may later change or reject hotlinking; replace broken thumbnails with another sourced box-visible image if discovered.
 
 ## Remaining cleanup

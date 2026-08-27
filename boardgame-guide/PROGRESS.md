@@ -5,38 +5,37 @@ Last updated: 2026-08-27
 ## Completed
 - Published guide pages: 51 total, including Clueverge.
 - Latest catalog additions are `games/el-grande.html` and `games/five-tribes.html`; both remain linked from `games.html`, and the TOP/catalog count remains 51.
-- Completed the image coverage pass across the full current catalog.
-- Every one of the 51 current detail pages now has at least one game-related image or visual.
-- Existing CC0 / Public Domain / CC BY / CC BY-SA images were retained where already available.
-- Added images to the previously unresolved original pages: Ark Nova, The Quacks of Quedlinburg, Jaipur, The Crew: Mission Deep Sea, and Heat: Pedal to the Metal.
-- Added image sections to the newer strategy pages from Agricola through Orléans, including Keyflower and Orléans.
-- After concurrent catalog expansion added El Grande and Five Tribes, images were added to those two pages as well so coverage remains 51 / 51.
-- Quoted images are visually separated from the article, placed after the introductory hero, and include a visible source caption/link.
-- `WORK_PLAN.md` now requires at least one relevant visual on future game pages and records the image sourcing/quotation rules.
+- Detail-page image coverage remains 51 / 51.
+- Reworked the complete `games.html` catalog so all 51 game cards now include a thumbnail where the physical game box is visibly present.
+- Catalog thumbnails use either a box-only image or an image containing the box plus game contents; component/gameplay-only images are not used as list thumbnails.
+- Each catalog card now shows the image source directly beneath the card content.
+- Added responsive thumbnail styling with a light image stage and `object-fit: contain` to avoid cropping the box out of the image.
+- Preserved all existing category/filter tags, detail links, 51-item count, and compact TOP structure.
+- Updated `WORK_PLAN.md` so future catalog additions require a box-visible thumbnail independently from the detail-page image.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Current detail files were fetched before replacement; existing game descriptions and navigation were preserved while adding image sections.
-- Successful GitHub writes were confirmed for the newly image-enabled pages.
-- Ark Nova uses a Wikimedia Commons CC BY-SA 4.0 image.
-- The Quacks of Quedlinburg uses a Wikimedia Commons CC0 1.0 image.
-- The Crew: Mission Deep Sea uses a KOSMOS product image with the official product page as source context.
-- El Grande and Five Tribes were re-fetched after their concurrent creation and then updated with image sections.
-- Detail navigation continues to use `../index.html`; this image pass did not change game rules/specifications or the catalog filter system.
+- Re-fetched `games.html` after the thumbnail update and confirmed the new thumbnail/source structure is present at both the beginning and end of the 51-game catalog.
+- Confirmed the catalog still displays `51作品` and retains the existing filter script/category keys.
+- Confirmed each new thumbnail has descriptive alt text identifying it as an image where the game's box is visible.
+- Confirmed each catalog card keeps its existing relative detail-page link.
+- Confirmed the final entries, including El Grande and Five Tribes, also have box-visible thumbnails and source links.
 
 ## Current position
 - Published guide pages: 51 total, including Clueverge.
-- Image coverage: 51 / 51 detail pages have at least one image/visual.
+- Detail image coverage: 51 / 51.
+- Catalog box-thumbnail coverage: 51 / 51.
 - Latest catalog additions: El Grande and Five Tribes.
 
 ## Planned next items
 1. Continue normal catalog expansion with Grand Austria Hotel.
-2. Every future new game page must include at least one relevant visual in the same run before the page is considered complete.
-3. Continue adding new titles to `games.html`, not the TOP featured grid.
-4. Keep TOP compact and preserve current filters/navigation.
+2. Every future new game page must include at least one relevant detail-page visual.
+3. Every future `games.html` card must also include a separate or reusable thumbnail where the game's physical box is clearly visible, with a visible source link.
+4. Continue adding new titles to `games.html`, not the TOP featured grid.
+5. Keep TOP compact and preserve current filters/navigation.
 
 ## Unresolved general items
-- `games/clueverge.html` still has the previously observed encoding/mojibake issue when fetched and an older Medium-hosted image. Treat that as a separate cleanup task rather than altering it during unrelated catalog work.
-- Remote image hosts can change URLs or block hotlinking; replace broken images with another properly sourced image when discovered.
-- Beginner/party/strategy labels remain editorial browsing aids and should be applied conservatively.
+- `games/clueverge.html` still has the previously observed encoding/mojibake issue when fetched and an older Medium-hosted detail image. Treat that as a separate cleanup task.
+- Remote image hosts can change URLs or block hotlinking; replace broken thumbnails/images with another properly sourced image when discovered.
+- Image/copyright assessment remains source- and context-specific; follow `WORK_PLAN.md` for every future thumbnail and detail image.
 - Preserve the existing compact navigation structure and work only under `boardgame-guide/`.

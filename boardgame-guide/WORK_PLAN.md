@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Continue from the game recorded in `HANDOFF.md` (currently Coimbra catalog publication).
+Continue from the game recorded in `HANDOFF.md` (currently Marco Polo II: In the Service of the Khan).

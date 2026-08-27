@@ -11,6 +11,9 @@ Build a Japanese introduction page for many popular commercially available board
 ## Site structure
 - `index.html`: compact TOP/landing page only. Keep a small curated set of featured games and entry points for browsing. Do not append every new game here.
 - `games.html`: complete catalog. Every published game must be added here.
+- Every game card in `games.html` must include a thumbnail in which that game's physical box is visibly present. Box-only images and box-plus-components/gameplay images are acceptable; an image that shows only components, board, cards, or gameplay without the box is not acceptable as the catalog thumbnail.
+- The catalog thumbnail is independent of the image used inside the detail page. Do not automatically reuse a detail-page image unless the box is clearly visible in it.
+- Show the thumbnail's source directly on the card and keep the image fitted with `object-fit: contain` so the box is not cropped out.
 - `games/*.html`: one detailed introduction page per game.
 - TOP category entry points currently cover: 2-player, 30 minutes or less, beginner-friendly, party, strategy, and all games.
 - `games.html` filters use the corresponding category tags. Add tags only when the classification is supportable from verified game information; do not guess.
@@ -22,7 +25,7 @@ Build a Japanese introduction page for many popular commercially available board
 - When no clearly reusable image is practical, a published product/component/gameplay image may be used as a quotation only when it is genuinely necessary to identify or explain the game in the surrounding article.
 - Quoted images must be clearly separated from the site's own content, placed next to relevant explanatory text, kept subordinate to the article text, and limited to the minimum necessary amount (normally one image).
 - Put `引用画像` and the source name/link directly beneath a quoted image. Make the image itself link to the source page when practical.
-- Do not use quoted third-party images merely as decorative backgrounds, banners, or unrelated visual filler.
+- For catalog thumbnails, use one box-visible image per game, keep it subordinate to the title/metadata, and display a visible source link beneath the card content.
 - Do not treat “no prohibition is written” as a grant of permission. The publication basis must instead be an explicit reusable license/permission or a defensible quotation context.
 - If the source explicitly forbids the relevant use, requires bypassing access controls, or cannot be sourced reliably, do not use that image; find another source.
 - For CC BY / CC BY-SA material, display creator, source/file page, license name/link, and whether the image was modified.
@@ -38,9 +41,9 @@ Build a Japanese introduction page for many popular commercially available board
 4. For each game, create a Japanese introduction page under `boardgame-guide/games/` with at least: title, at least one relevant image/visual under the image policy above, overview, player count, play time, age, core rules/how to play, and appeal/characteristics.
 5. Verify facts before publishing. Do not guess missing rules or specs.
 6. Avoid copying long copyrighted text. Paraphrase rules and descriptions. Do not copy rulebooks verbatim.
-7. Add every completed game to `games.html`, including only verified/appropriate filter tags.
+7. Add every completed game to `games.html`, including only verified/appropriate filter tags and a box-visible thumbnail with visible source attribution.
 8. Keep `index.html` compact. Do not add each new title to TOP. Change featured titles only when intentionally curating the landing page.
-9. Check TOP → catalog, catalog → detail, detail → TOP, image display/source links, and basic HTML validity.
+9. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, and basic HTML validity.
 10. Update `PROGRESS.md` and `HANDOFF.md` with completed items, current position, files changed, next start point, and unresolved issues.
 11. Commit all changes.
 

@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Continue with Teotihuacan: City of Gods. Before publishing, resolve the current age-specification discrepancy between Board&Dice pages by selecting and citing the exact edition/source used; do not guess.
+Continue with Underwater Cities.

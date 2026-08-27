@@ -3,33 +3,33 @@
 Last updated: 2026-08-28
 
 ## Completed
-- Published catalog guide pages remain 55 total, including Clueverge.
-- Created `games/marco-polo-ii-in-the-service-of-the-khan.html` as a complete staged detail page.
-- Created `games/troyes.html` as a complete staged detail page.
-- Marco Polo II detail page includes a sourced box visual, Japanese overview, 2–4 players / 60–120 minutes / age 12+ specifications, five-round dice-placement flow, travel, contracts, jade, guild seals, appeal, and source links.
-- Troyes detail page includes a sourced box visual, Japanese overview, 2–4 players / about 90 minutes / age 12+ specifications, workforce dice, events, main actions, cathedral construction, hidden character scoring, appeal, and source links.
+- Published catalog guide pages: 57 total, including Clueverge.
+- Published the previously staged `games/marco-polo-ii-in-the-service-of-the-khan.html` by adding it to `games.html`.
+- Published the previously staged `games/troyes.html` by adding it to `games.html`.
+- Both new catalog cards use box-visible thumbnails with visible source links and retain `object-fit: contain` through the existing catalog styling.
+- Both new catalog cards use only verified browsing tags: `two strategy`.
+- Updated `games.html` count from 55 to 57.
+- Updated the TOP catalog button from `全55作品を見る` to `全57作品を見る`; the six featured TOP cards were not expanded.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/the-voyages-of-marco-polo.html` were read before editing.
-- Marco Polo II facts were checked against the Z-Man Games official rulebook plus current BoardGameGeek/product references: 2–4 players, 60–120 minutes, age 12+, standalone sequel, five rounds, jade, guild seals, contracts, travel, and trading posts.
-- Troyes facts were checked against the current Pearl Games official page and rulebook references: 2–4 players, about 90 minutes, age 12+, military/religious/civil dice, events, activity cards, cathedral construction, and character scoring.
-- Both new detail pages use `../index.html` for navigation back to TOP.
-- Both new detail images visibly show the physical game box and include a source/context link immediately beneath the image.
-- Existing `games.html` was not rewritten in this run because the available GitHub contents-write operation requires replacing the whole long file and the retrieved content was truncated in the execution interface. Avoiding accidental loss of any existing catalog cards took priority over forcing a partial rewrite.
+- `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and the staged Marco Polo II / Troyes detail pages were read before editing.
+- The current 55-card `games.html` was recovered safely from its Git blob before replacement, resolving the prior long-file truncation concern.
+- Re-fetched the tail of `games.html` after writing and confirmed links/cards for both Marco Polo II and Troyes, including box-visible image URLs and source links.
+- Re-fetched `index.html` after writing and confirmed the `全57作品を見る` count while preserving the compact featured grid.
+- Existing detail pages continue to link back to `../index.html`.
+- Preliminary research for the next title, Teotihuacan: City of Gods, was performed against Board&Dice and BoardGameGeek. Current Board&Dice product information lists 1–4 players and 90–120 minutes. Age information differs across current Board&Dice pages (12+ on the store product page, 14+ on the legacy/our-games page), so the detail page should explicitly resolve which edition/specification is being presented before publication.
 
 ## Current position
-- Published catalog count: 55.
-- Staged detail pages not yet linked from `games.html`: 2.
-  - `games/marco-polo-ii-in-the-service-of-the-khan.html`
-  - `games/troyes.html`
-- Detail image coverage for published catalog: 55 / 55; staged pages also each have a visual.
-- Catalog box-thumbnail coverage: 55 / 55 published cards.
+- Published catalog count: 57.
+- Staged but not catalog-linked pages: 0.
+- Detail-image coverage: 57 / 57 published pages have at least one relevant visual.
+- Catalog box-thumbnail coverage: 57 / 57 published cards.
 
 ## Planned next items
-1. First, add Marco Polo II and Troyes to `games.html` with verified tags and box-visible thumbnails/source links, then update catalog/TOP count from 55 to 57.
-2. After both staged pages are catalog-linked, continue normal catalog expansion with Teotihuacan: City of Gods.
-3. Every future new game page must include at least one relevant detail-page visual.
+1. Continue normal catalog expansion with Teotihuacan: City of Gods.
+2. Resolve the current 12+ vs 14+ age discrepancy by choosing and citing a specific current edition/source rather than guessing.
+3. Create the Teotihuacan detail page with at least one relevant visual and publish its box-visible catalog card in the same run.
 4. Every future `games.html` card must include a thumbnail where the physical box is clearly visible, with a visible source link.
 5. Continue adding new titles to `games.html`, not the TOP featured grid.
 

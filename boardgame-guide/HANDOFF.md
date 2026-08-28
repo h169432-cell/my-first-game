@@ -3,28 +3,29 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. First publish the already-created staged pages `games/underwater-cities.html` and `games/carnegie.html` into `games.html`.
-4. Do not overwrite `games.html` from a truncated connector response. Fetch the file in small enough line ranges to reconstruct the complete current content before replacing it.
-5. Add both catalog cards with a physical box clearly visible, visible source links, and only verified filter tags (`strategy`).
-6. Update catalog/TOP count from 59 to 61 without expanding the six-card TOP featured grid.
-7. Check TOP → catalog, catalog → both new details, both details → TOP, thumbnails, detail images, and source links.
-8. Only after the staged pages are fully published, resume normal catalog expansion with another verified popular commercial title.
-9. Update `PROGRESS.md` and rewrite this file before ending.
+3. Current published catalog count is 61; there are no staged-but-unlinked detail pages.
+4. Resume normal catalog expansion by researching Nucleum first.
+5. Verify player count, play time, age, core rules, and image/source information from reliable current sources before creating the page.
+6. Create the detail page and add its `games.html` card in the same run when all required information is verified.
+7. Every catalog card must show the physical game box, display the thumbnail source, use `object-fit: contain`, and carry only verified filter tags.
+8. Keep `index.html` compact: do not expand the six-card featured grid; update only the total catalog count when needed.
+9. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, and counts.
+10. Update `PROGRESS.md`, this file, and the current next-start point in `WORK_PLAN.md` before ending.
 
 ## Exact next start point
-- First task: publish Underwater Cities and Carnegie into the catalog.
-- Current published catalog count: 59 total, including Clueverge.
-- Staged but not catalog-linked pages: 2 (`Underwater Cities`, `Carnegie`).
-- Current detail-image coverage for published pages: 59 / 59.
-- Current box-thumbnail coverage in `games.html`: 59 / 59 published cards.
+- Next research target: Nucleum.
+- Current published catalog count: 61 total, including Clueverge.
+- Staged but not catalog-linked pages: 0.
+- Current detail-image coverage: 61 / 61.
+- Current box-thumbnail coverage in `games.html`: 61 / 61.
 
 ## Completed in latest run
-- Created `games/underwater-cities.html` with overview, 1–4 players, 40 min/player, age 12+, core flow, appeal, sources, and a verified box-visible image.
-- Verified Underwater Cities against Delicious Games and its official English rulebook, including 10 rounds and 3 Production phases.
-- Created `games/carnegie.html` with overview, 1–4 players, 90–120 minutes, age 12+, 20-round action-selection structure, appeal, sources, and a verified box-visible image.
-- Verified Carnegie against Pegasus Spiele and Quined Games.
-- Followed the image links on Morat Games and Lelekan so both staged detail pages now use direct image URLs that were actually resolved rather than guessed.
-- Did not change `games.html` or `index.html` because the broad connector fetch of the large catalog was truncated and a full replacement from incomplete content would risk deleting existing cards.
+- Read the required planning/state files, TOP, full catalog in safe small ranges, and an existing detail page before editing.
+- Published Underwater Cities into `games.html` with `strategy`, a box-visible Morat Games thumbnail, visible source attribution, and a working detail link.
+- Published Carnegie into `games.html` with `strategy`, a box-visible Lelekan thumbnail, visible source attribution, and a working detail link.
+- Updated `games.html` from 59 to 61 works.
+- Updated TOP from `全59作品を見る` to `全61作品を見る` without changing the six featured titles.
+- Re-fetched the catalog head and tail after writing and confirmed both new cards and the 61-count state.
 - No intended edits outside `boardgame-guide/`.
 
 ## Current image rules
@@ -36,11 +37,11 @@
 - Prefer clearly reusable/official assets; otherwise follow the quotation-aware sourcing policy in `WORK_PLAN.md`.
 
 ## Validation / notes
-- Underwater Cities detail image resolves to Morat Games' box image and links to the Morat product page.
-- Carnegie detail image resolves to a Lelekan box thumbnail and links to the Lelekan product page.
-- Carnegie's verified direct image is small; a larger verifiably sourced box image is preferable for the future catalog card if available.
-- Both staged detail pages link back to `../index.html`.
-- TOP remains at 59 and still contains six featured games only.
+- Underwater Cities catalog thumbnail and detail image use the verified Morat Games box image and source page.
+- Carnegie catalog thumbnail and detail image use the verified Lelekan box thumbnail and source page.
+- Carnegie's image is small but clearly box-visible; a larger verifiably sourced replacement remains desirable when practical.
+- Both new detail pages link back to `../index.html`.
+- TOP remains intentionally compact at six featured games.
 
 ## Remaining cleanup
 - `games/clueverge.html` still has a previously observed mojibake/encoding issue when fetched and uses an older Medium-hosted detail image. Handle that in a dedicated cleanup pass.

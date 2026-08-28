@@ -3,34 +3,32 @@
 Last updated: 2026-08-28
 
 ## Completed
-- Published catalog guide pages are now 69 total, including Clueverge.
-- Published the previously staged detail pages `games/the-gallerist.html` and `games/vinhos-deluxe.html` into `games.html`.
-- Added a catalog card for The Gallerist using the official Eagle-Gryphon Games box-visible product image and visible source link.
-- Added a catalog card for Vinhos Deluxe using the official Eagle-Gryphon Games box-visible product image and visible source link.
-- Applied only the `strategy` filter tag to both new catalog cards.
-- Updated `index.html` total-count button from 67 to 69 while keeping the TOP at six featured titles.
+- Published catalog guide pages remain 69 total, including Clueverge.
+- Created `games/on-mars.html` with verified official specifications, Japanese rules overview, appeal, sources, and an official Eagle-Gryphon Games box image.
+- Created `games/weather-machine.html` with verified official specifications, Japanese rules overview, appeal, sources, and an official Eagle-Gryphon Games box image.
+- On Mars specifications use the current Eagle-Gryphon Games product page: 1–4 players, 60–120 minutes, age 14+.
+- Weather Machine specifications use the current Eagle-Gryphon Games product page: 2–4 players, 60–150 minutes, age 14+.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and current detail pages before editing.
-- Reconstructed `games.html` from complete line-range reads before replacing it, avoiding the prior truncation risk.
-- Verified `games.html` now displays `69作品` and contains both new catalog cards.
-- Verified both new cards use box-visible official Eagle-Gryphon Games images, visible source links, and existing `object-fit: contain` thumbnail styling.
-- Verified both catalog cards link to `games/the-gallerist.html` and `games/vinhos-deluxe.html` respectively.
-- Verified both detail pages link back to `../index.html`.
-- Verified `index.html` displays `全69作品を見る` and retains six featured titles.
+- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and a current detail page before editing.
+- Verified On Mars and Weather Machine official product pages and their box-visible product images.
+- Verified both new detail pages link back to `../index.html` and contain image source attribution beneath the image.
+- Verified the catalog is still at 69 works and TOP still displays `全69作品を見る`.
+- Did not replace `games.html` in this run because a complete safe reconstruction was not finished; this avoids accidental loss of existing catalog cards.
 
 ## Current position
 - Published catalog count: 69.
-- Staged-but-unlinked detail pages: 0.
-- Published detail-image coverage: 69 / 69.
+- Staged-but-unlinked detail pages: 2 (`games/on-mars.html`, `games/weather-machine.html`).
+- Published detail-image coverage: 69 / 69, plus 2 staged pages with images.
 - Published catalog box-thumbnail coverage: 69 / 69.
 
 ## Planned next items
-1. Continue normal expansion with `On Mars`.
-2. Verify current official publisher/product specifications, rules overview, and a legally supportable image source before publishing.
-3. Add the completed page to `games.html` with a box-visible thumbnail and only supportable filter tags.
-4. Keep TOP at six featured titles; update only the total-count button when the catalog count changes.
+1. Publish the already-created On Mars and Weather Machine pages into `games.html` first.
+2. Use the official Eagle-Gryphon Games box-visible images already used on the detail pages for the catalog thumbnails, with visible source links.
+3. Apply only the `strategy` filter tag to both cards; do not apply unsupported quick/beginner/party/two tags.
+4. Update catalog count from 69 to 71 and TOP button from `全69作品を見る` to `全71作品を見る`.
+5. After those two pages are linked and verified, continue research with another not-yet-published popular game.
 
 ## Unresolved general items
 - `games.html` is large enough that direct full-file reads can be truncated. Continue using complete line-range retrieval before any whole-file update.

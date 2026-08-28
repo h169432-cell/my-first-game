@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Continue normal catalog expansion with `The Gallerist`. Verify player count, play time, age, and core gallery-management rules from reliable current sources before publication, then create the detail page and add a box-visible sourced catalog thumbnail before incrementing the current total of 67.
+Two staged detail pages now exist: `The Gallerist` and `Vinhos Deluxe`. First add both to `games.html` using their official Eagle-Gryphon Games box-visible images and visible source links, then update catalog/TOP counts from 67 to 69. After catalog synchronization is verified, continue normal expansion with `On Mars`.

@@ -3,9 +3,9 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. Current published catalog count is 65.
+3. Current published catalog count is 67.
 4. No staged-but-unlinked detail pages remain.
-5. Continue normal catalog expansion with `Kanban EV`.
+5. Continue normal catalog expansion with `The Gallerist`.
 6. Verify player count, play time, age, and core rules from reliable current sources before publication; do not infer missing specifications.
 7. Create the Japanese detail page with at least one relevant sourced image.
 8. Add the completed game to `games.html` with a thumbnail where the physical box is clearly visible, `object-fit: contain`, and a visible thumbnail source link.
@@ -14,17 +14,17 @@
 11. Update `PROGRESS.md`, this file, and `WORK_PLAN.md` before ending.
 
 ## Exact next start point
-- Next game: Kanban EV.
-- Current published catalog count: 65 total, including Clueverge.
-- Current detail-image coverage: 65 / 65.
-- Current box-thumbnail coverage in `games.html`: 65 / 65.
+- Next game: The Gallerist.
+- Current published catalog count: 67 total, including Clueverge.
+- Current detail-image coverage: 67 / 67.
+- Current box-thumbnail coverage in `games.html`: 67 / 67.
 
 ## Completed in latest run
-- Added and published `Anachrony: Essential Edition`.
-- Added and published `Trickerion: Legends of Illusion`.
-- Both catalog cards use box-visible thumbnails with visible source links and `strategy` tags.
-- Updated `games.html` from 63 to 65 works.
-- Updated TOP from `全63作品を見る` to `全65作品を見る` while retaining the same six featured games.
+- Added and published `Kanban EV`.
+- Added and published `Lisboa Deluxe Edition`.
+- Both catalog cards use official Eagle-Gryphon Games box-visible thumbnails with visible source links and `strategy` tags.
+- Updated `games.html` from 65 to 67 works.
+- Updated TOP from `全65作品を見る` to `全67作品を見る` while retaining the same six featured games.
 - Re-fetched catalog head/tail after editing to verify the new count and cards.
 - No intended edits outside `boardgame-guide/`.
 
@@ -36,8 +36,8 @@
 - A visible source link must accompany each catalog thumbnail.
 
 ## Validation / notes
-- Anachrony detail: Mindclash Games official product/rule information plus BoardGameGeek for play time/age; box image sourced from Lanlalen.
-- Trickerion detail: Mindclash Games official rulebook plus BoardGameGeek for player count/play time/age; box image sourced from Mindclash Games' Gamefound project update.
+- Kanban EV: Arclight confirmed 1–4 players, 60–150 minutes, age 14+; Eagle-Gryphon Games supplied current product context and the box image.
+- Lisboa Deluxe Edition: Eagle-Gryphon Games confirmed 1–4 players, about 120 minutes, age 14+, core theme, and box image; BoardGameGeek was used as a secondary cross-check.
 - Both new detail pages link back to `../index.html`.
 - TOP remains intentionally compact at six featured games.
 

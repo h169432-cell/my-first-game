@@ -3,46 +3,47 @@
 Last updated: 2026-08-28
 
 ## Completed
-- Published catalog guide pages: 73 total, including Clueverge.
-- Published the four previously staged titles into `games.html`: On Mars, Weather Machine, Food Chain Magnate, and Horseless Carriage.
-- Added a box-visible catalog thumbnail and visible source link for all four new cards.
-- Applied only the `strategy` filter tag to the four new cards.
-- Updated `games.html` count from 69 to 73.
-- Updated the compact TOP button from `全69作品を見る` to `全73作品を見る`; the six featured titles remain unchanged.
+- Published catalog guide pages: 74 total, including Clueverge.
+- Added `SETI: Search for Extraterrestrial Intelligence` as a complete Japanese detail page.
+- Added SETI to `games.html` with a clearly box-visible Czech Games Edition official-store thumbnail and visible source link.
+- Applied only the verified `strategy` filter tag to SETI.
+- Updated `games.html` count from 73 to 74.
+- Updated the compact TOP button from `全73作品を見る` to `全74作品を見る`; the six featured titles remain unchanged.
 - Re-read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and an existing detail page before editing.
-- Obtained `games.html` safely by line-range reads before replacing it, preserving all 69 existing cards and appending four new cards.
+- Reconstructed `games.html` from bounded line-range reads before replacement and preserved the existing catalog cards, footer, and filter script.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Confirmed the current tail of `games.html` contains links to `games/on-mars.html`, `games/weather-machine.html`, `games/food-chain-magnate.html`, and `games/horseless-carriage.html`.
-- Confirmed all four cards use `data-tags="strategy"` only.
-- Confirmed all four cards include `.thumb-shell` + `.thumb` and retain the shared `object-fit: contain` rule.
-- Confirmed all four cards have visible image-source links.
-- Confirmed `games.html` retains the closing catalog markup, footer, and filter script after the additions.
-- Confirmed TOP remains compact with six featured games and now shows `全73作品を見る`.
-- Current official sources checked on 2026-08-28:
-  - On Mars: `https://www.eagle-gryphon.com/products/on-mars`
-  - Weather Machine: `https://www.eagle-gryphon.com/products/weather-machine`
-  - Food Chain Magnate: `https://www.splottershop.com/products/food-chain-magnate`
-  - Splotter product catalog containing Horseless Carriage 2nd Edition: `https://www.splottershop.com/collections/all`
-- Confirmed CGE currently lists SETI: Search for Extraterrestrial Intelligence as a 1–4 player, age 14+, 40 min/player strategy game and that it is not yet present in this repository.
+- Confirmed `games.html` contains `games/seti-search-for-extraterrestrial-intelligence.html`.
+- Confirmed the SETI catalog card uses `data-tags="strategy"` only.
+- Confirmed the SETI card contains `.thumb-shell` + `.thumb`, with the shared `object-fit: contain` rule preserved.
+- Confirmed the thumbnail visibly shows the physical SETI box and has a visible Czech Games Edition source link.
+- Confirmed the SETI detail page links back to `../index.html` and includes overview, player count, play time, age, basic rules, appeal, image attribution, and reliable sources.
+- Confirmed `games.html` retains the closing catalog markup, footer, and filter script after the addition.
+- Confirmed TOP remains compact with six featured games and now shows `全74作品を見る`.
+- Current SETI sources checked on 2026-08-28:
+  - CGE game page: `https://www.czechgames.com/games/seti-search-for-extraterrestrial-intelligence`
+  - CGE press page: `https://www.czechgames.com/for-press-games/seti-search-for-extraterrestrial-intelligence`
+  - CGE store/image source: `https://store.czechgames.com/products/seti`
+- CGE states SETI is a 1–4 player, age 14+, 40 min/player strategy game.
 
 ## Current position
-- Published catalog count: 73.
+- Published catalog count: 74.
 - Staged-but-unlinked detail pages: 0.
-- Published detail-image coverage: 73 / 73.
-- Published catalog box-thumbnail coverage: 73 / 73.
+- Published detail-image coverage: 74 / 74.
+- Published catalog box-thumbnail coverage: 74 / 74.
 
 ## Planned next items
-1. Start with `SETI: Search for Extraterrestrial Intelligence` as the next unpublished popular title.
-2. Use Czech Games Edition official game and press pages as primary factual sources.
-3. Confirm and use a clearly box-visible image under the image/copyright policy before adding the catalog card.
-4. Create `games/seti-search-for-extraterrestrial-intelligence.html`, then add its card to `games.html` in the same run.
-5. Apply only supportable filter tags; `strategy` is supported by CGE, while no other category tag should be added without separate verification.
-6. After publication, update count from 73 to 74 and TOP count only after the catalog card is actually linked.
+1. Start with `Arcs` as the next unpublished popular title.
+2. Use Leder Games / official distribution information as primary factual sources and BoardGameGeek only as a secondary cross-check where useful.
+3. Current verified public information supports 2–4 players, 60–120 minutes, age 14+, and strategy classification.
+4. Confirm a box-visible image that satisfies the image/copyright policy before publication.
+5. Create `games/arcs.html`, then add its card to `games.html` in the same run.
+6. Apply only supportable filter tags; `strategy` is supportable. Do not add `two` solely because the game supports two players unless the existing category convention and source support justify it.
+7. After publication, update count from 74 to 75 and TOP count only after the catalog card is actually linked.
 
 ## Unresolved general items
-- `games.html` is large, but safe line-range retrieval through the GitHub connector now works. Continue using bounded line reads before full-file replacement to avoid losing existing cards.
+- `games.html` is large, but safe line-range retrieval through the GitHub connector works. Continue using bounded line reads before full-file replacement to avoid losing existing cards.
 - Carnegie's current box image is a small verified thumbnail resource. Replace only if a larger verifiably sourced image is found in a dedicated maintenance pass.
 - `games/clueverge.html` still has the previously observed encoding/mojibake issue when fetched and an older Medium-hosted detail image. Treat that as a separate cleanup task.
 - Remote image hosts can change URLs or block hotlinking; replace broken thumbnails/images with another properly sourced image when discovered.

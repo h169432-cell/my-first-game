@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-The Gallerist and Vinhos Deluxe are now fully published in the catalog, bringing the total to 69. Continue normal expansion with `On Mars` next. Verify current official specifications, rules overview, and a supportable image source before creating and publishing the page.
+`games/on-mars.html` and `games/weather-machine.html` are created and verified but are not yet linked from the catalog. At the next run, publish both into `games.html` first using their official Eagle-Gryphon Games box-visible images and `strategy` tags, update the catalog from 69 to 71 and the TOP total-count button accordingly, then continue normal expansion with another not-yet-published popular title.

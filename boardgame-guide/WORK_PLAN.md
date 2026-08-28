@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Publish the staged Nucleum and Tekhenu: Obelisk of the Sun detail pages into `games.html` first, update the catalog/TOP count from 61 to 63, then continue normal catalog expansion.
+Continue normal catalog expansion with `Anachrony: Essential Edition`. Use current Mindclash Games official product/rule information, verify player count, play time, and age before publication, then create the detail page and add a box-visible sourced catalog thumbnail before incrementing the current total of 63.

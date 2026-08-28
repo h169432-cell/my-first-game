@@ -1,27 +1,32 @@
 # Board Game Guide — Progress
 
-Last updated: 2026-08-28
+Last updated: 2026-08-29
 
 ## Completed
-- Published catalog guide pages: 78 total, including Clueverge.
-- Added staged Japanese detail pages for `Earth` and `Harmonies` with verified specifications, rules summaries, image attribution, and reliable sources.
-- `Earth` uses an official Inside Up Games box-visible image. Current specifications were verified from Inside Up Games and Asmodee USA: 1–5 players, 45–90 minutes, age 14+.
-- `Harmonies` uses an official Asmodee USA / Libellud box-visible image. Current specifications were verified from Asmodee USA: 1–4 players, about 30 minutes, age 10+; core gameplay was cross-checked against Libellud's official game page.
-- Re-read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and an existing detail page before editing.
+- Published catalog guide pages remain 78 total, including Clueverge.
+- `Earth` and `Harmonies` detail pages remain staged and verified but are not yet linked from the catalog.
+- Re-read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, `games/earth.html`, `games/harmonies.html`, and an existing published detail page (`games/catan.html`) before editing.
+- Retrieved the complete current `games.html` blob and confirmed the catalog still contains 78 published cards before attempting publication.
+- A catalog replacement attempt did not preserve all existing cards. It was immediately reverted at Git level by restoring the exact prior `games.html` blob (`807eac0ca1d393a2b03b76e8e31e785cf272ec19`). Current HEAD again contains the complete 78-card catalog.
+- Verified after restoration that `games.html` again shows `78作品` and begins with the original published cards.
+- Researched `Wyrmspan` as a future candidate from current Stonemaier Games and BoardGameGeek data: 1–5 players, 90 minutes, age 14+, with an official box-visible product image available. No Wyrmspan page was created in this run because catalog publication must be solved first.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Confirmed `Earth` and `Harmonies` were absent before creating their detail pages.
-- Confirmed both new pages link back to `../index.html` and include overview, player count, play time, age, basic rules, appeal, image attribution, and sources.
-- Confirmed both detail-page images clearly show the physical game box and link to the cited source page.
-- Confirmed current TOP remains compact at six featured titles and still shows `全78作品を見る` because the two staged pages are not yet linked from `games.html`.
-- Current Earth sources checked on 2026-08-28:
-  - Inside Up Games official game page: `https://insideupgames.com/our-games/earth-board-game/`
-  - Inside Up Games official product page: `https://insideupgames.com/product/earth-board-game/`
-  - Asmodee USA product page: `https://store.asmodee.com/products/earth`
-- Current Harmonies sources checked on 2026-08-28:
-  - Libellud official game page: `https://www.libellud.com/en/our-games/harmonies/`
-  - Asmodee USA product page: `https://store.asmodee.com/products/harmonies-1`
+- Confirmed current restored `games.html` blob SHA is `807eac0ca1d393a2b03b76e8e31e785cf272ec19`.
+- Confirmed current catalog count remains 78.
+- Confirmed `Earth` and `Harmonies` detail pages still link back to `../index.html` and contain verified box-visible official images and source links.
+- Confirmed TOP remains compact at six featured titles and still shows `全78作品を見る`.
+- Current Earth sources:
+  - `https://insideupgames.com/our-games/earth-board-game/`
+  - `https://insideupgames.com/product/earth-board-game/`
+  - `https://store.asmodee.com/products/earth`
+- Current Harmonies sources:
+  - `https://www.libellud.com/en/our-games/harmonies/`
+  - `https://store.asmodee.com/products/harmonies-1`
+- Wyrmspan sources checked 2026-08-29:
+  - `https://store.stonemaiergames.com/products/wyrmspan`
+  - `https://boardgamegeek.com/boardgame/410201/wyrmspan`
 
 ## Current position
 - Published catalog count: 78.
@@ -30,14 +35,15 @@ Last updated: 2026-08-28
 - Published catalog box-thumbnail coverage: 78 / 78.
 
 ## Planned next items
-1. Start by adding `Earth` and `Harmonies` to `games.html` with their verified box-visible official images and visible source links.
-2. Apply only supportable filters. Planned supportable tags: Earth = `strategy`; Harmonies = `quick beginner strategy`. Do not add `two` solely because Harmonies supports two players.
-3. After both cards are actually linked, update catalog/TOP counts from 78 to 80 while keeping the same six featured TOP titles.
-4. Validate catalog → detail, detail → TOP, image/source links, filter behavior, and closing catalog markup.
-5. Only after the two staged pages are fully published, research the next unpublished popular title.
+1. Do not create further staged detail pages until `Earth` and `Harmonies` can be published safely in the complete catalog.
+2. Add `Earth` and `Harmonies` to `games.html` only using a method that preserves the full existing file byte-for-byte except for the intended count/card additions.
+3. Filters: Earth = `strategy`; Harmonies = `quick beginner strategy`; do not add `two` to Harmonies solely because two players are permitted.
+4. Only after both cards are linked, update catalog/TOP counts from 78 to 80 while keeping the same six featured TOP titles.
+5. Validate total card count, catalog → detail, detail → TOP, image/source links, filter behavior, and closing catalog markup before committing.
+6. After the catalog backlog is cleared, `Wyrmspan` is the next researched candidate.
 
 ## Unresolved general items
-- `games.html` is large. The GitHub connector can retrieve targeted line ranges safely, but a complete replacement requires preserving the full current file. Do not submit a partial reconstruction. This run therefore staged the two detail pages rather than risking loss of existing cards.
+- The available GitHub contents write action replaces an entire file. `games.html` is large, and an attempted manual full replacement proved unsafe because it dropped existing cards. Do not repeat that approach. Use an editing path that can apply a targeted patch or otherwise programmatically preserve and transform the complete blob.
 - Carnegie's current box image is a small verified thumbnail resource. Replace only if a larger verifiably sourced image is found in a dedicated maintenance pass.
 - `games/clueverge.html` still has the previously observed encoding/mojibake issue when fetched and an older Medium-hosted detail image. Treat that as a separate cleanup task.
 - Remote image hosts can change URLs or block hotlinking; replace broken thumbnails/images with another properly sourced image when discovered.

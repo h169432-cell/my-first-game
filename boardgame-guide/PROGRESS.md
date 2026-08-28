@@ -3,36 +3,36 @@
 Last updated: 2026-08-28
 
 ## Completed
-- Published catalog guide pages: 63 total, including Clueverge.
-- Published the previously staged `games/nucleum.html` and `games/tekhenu-obelisk-of-the-sun.html` into `games.html`.
-- Added `strategy` catalog tags to both titles.
-- Nucleum catalog card uses a box-visible Tanuki Games image with a visible source link.
-- Tekhenu: Obelisk of the Sun catalog card uses a box-visible Miniature Market image with a visible source link.
-- Updated the `games.html` visible count from 61 to 63.
-- Updated the TOP button from `全61作品を見る` to `全63作品を見る` without changing the six featured games.
+- Published catalog guide pages: 65 total, including Clueverge.
+- Added `games/anachrony-essential-edition.html` and `games/trickerion-legends-of-illusion.html`.
+- Added both titles to `games.html` with `strategy` tags.
+- Anachrony catalog card uses a box-visible Lanlalen image with a visible source link.
+- Trickerion catalog card uses a box-visible Mindclash Games / Gamefound image with a visible source link.
+- Updated the `games.html` visible count from 63 to 65.
+- Updated the TOP button from `全63作品を見る` to `全65作品を見る` without changing the six featured games.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/carnegie.html` before editing.
+- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/nucleum.html` before editing.
+- Confirmed Anachrony Essential Edition is the current 2–4 player base game via Mindclash Games; play time 30–120 minutes and age 15+ were cross-checked with BoardGameGeek.
+- Confirmed Trickerion: Legends of Illusion rules from the current Mindclash Games rulebook; 2–4 players, 60–180 minutes, age 14+ were cross-checked with BoardGameGeek.
 - Re-fetched the catalog head and tail after publication.
-- Confirmed `games.html` displays `63作品`.
-- Confirmed Nucleum and Tekhenu cards link to their detail pages and both cards include box-visible thumbnails, visible source links, and `strategy` tags.
-- Confirmed the catalog retains `object-fit: contain` for thumbnails.
-- Re-fetched TOP and confirmed `全63作品を見る` while the six featured cards remain unchanged.
-- Existing Nucleum and Tekhenu detail pages already link back to `../index.html` and contain relevant images/source attribution.
+- Confirmed `games.html` displays `65作品`.
+- Confirmed both new cards link to their detail pages, use box-visible thumbnails, show source links, and retain `object-fit: contain` through the existing catalog CSS.
+- Rebuilt TOP only to update the count; the six featured game cards remain unchanged.
+- Both new detail pages link back to `../index.html` and contain sourced relevant images.
 
 ## Current position
-- Published catalog count: 63.
-- Detail-image coverage: 63 / 63 published pages.
-- Catalog box-thumbnail coverage: 63 / 63 published cards.
+- Published catalog count: 65.
+- Detail-image coverage: 65 / 65 published pages.
+- Catalog box-thumbnail coverage: 65 / 65 published cards.
 - No staged-but-unlinked detail pages remain.
 
 ## Planned next items
-1. Continue expansion with `Anachrony: Essential Edition`.
-2. Use current Mindclash Games official product information as the primary source; the current official webshop confirms it is the 2–4 player base-game edition.
-3. Verify play time and age from official rules/product material before publishing; do not infer missing specs.
-4. Create the Japanese detail page with a relevant sourced image, then add a box-visible catalog thumbnail/source link and only supportable filter tags.
-5. Update catalog/TOP counts only after the new page and card are both complete.
+1. Continue expansion with `Kanban EV`.
+2. Use Eagle-Gryphon Games / current rule material where available as the primary factual source; cross-check 1–4 players, 60–180 minutes, and age 14+ before publication.
+3. Create the Japanese detail page with a relevant sourced image, then add a box-visible catalog thumbnail/source link and only supportable filter tags.
+4. Update catalog/TOP counts only after the new page and card are both complete.
 
 ## Unresolved general items
 - Carnegie's current box image is a small verified thumbnail resource. Replace only if a larger verifiably sourced image is found in a dedicated maintenance pass.

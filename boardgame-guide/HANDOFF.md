@@ -3,35 +3,38 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. Current published catalog count is 74.
+3. Current published catalog count is 76.
 4. There are no staged-but-unlinked detail pages.
-5. Start the next expansion with `Arcs`.
-6. Use Leder Games official information where available; Asmodee UK distribution information can be used as a reliable current source and BoardGameGeek only as a secondary cross-check.
+5. Start the next expansion with `The White Castle`.
+6. Use Devir's official current product information as the primary factual source.
 7. Add a clearly box-visible thumbnail and visible source link when publishing the catalog card.
-8. Apply only supportable filters; current reliable information supports `strategy`. Do not add other filter tags without separate verification.
-9. After Arcs is fully linked, update the catalog count from 74 to 75 and change only the TOP total-count button from `全74作品を見る` to `全75作品を見る`; keep the six featured titles unchanged.
+8. Apply only supportable filters; do not infer category tags from popularity or theme.
+9. After The White Castle is fully linked, update the catalog count from 76 to 77 and change only the TOP total-count button from `全76作品を見る` to `全77作品を見る`; keep the six featured titles unchanged.
 10. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, and counts.
 11. Update `PROGRESS.md`, this file, and `WORK_PLAN.md` before ending.
 
 ## Exact next start point
-- Immediate next title: `Arcs`.
-- Current published catalog count: 74 total, including Clueverge.
+- Immediate next title: `The White Castle`.
+- Current published catalog count: 76 total, including Clueverge.
 - Staged detail pages: 0.
-- Current published detail-image coverage: 74 / 74.
-- Current published box-thumbnail coverage in `games.html`: 74 / 74.
-- Repository search on 2026-08-28 returned no existing Arcs page/card.
+- Current published detail-image coverage: 76 / 76.
+- Current published box-thumbnail coverage in `games.html`: 76 / 76.
+- Repository search on 2026-08-28 returned no existing The White Castle page/card.
+- Current Devir product information supports 1–4 players, about 60 minutes, age 12+, with resource management, worker placement, and dice placement over three rounds. Reconfirm before publishing.
 
 ## Latest validation
-- `SETI: Search for Extraterrestrial Intelligence` is now fully linked from `games.html`.
-- The SETI card uses only `strategy`, includes a clearly box-visible Czech Games Edition official-store image, and has a visible source link.
-- `games.html` now displays 74 works and retains its closing catalog markup, footer, and filter script.
-- TOP still has six featured titles and now shows `全74作品を見る`.
-- Current official SETI sources:
-  - `https://www.czechgames.com/games/seti-search-for-extraterrestrial-intelligence`
-  - `https://www.czechgames.com/for-press-games/seti-search-for-extraterrestrial-intelligence`
-  - `https://store.czechgames.com/products/seti`
-- CGE states SETI is for 1–4 players, age 14+, with a length of 40 minutes per player, and classifies it as a strategy game.
-- Current reliable public information for Arcs supports 2–4 players, 60–120 minutes, age 14+, and strategy classification. Reconfirm these details from the best current official source before publishing.
+- `Arcs` and `Sky Team` are fully linked from `games.html`.
+- Arcs uses only `strategy`; Sky Team uses `two quick`.
+- Both new catalog cards contain clearly box-visible images and visible source links.
+- `games.html` now displays 76 works and retains its closing catalog markup, footer, filter script, and shared `object-fit: contain` thumbnail rule.
+- TOP still has six featured titles and now shows `全76作品を見る`.
+- Current Arcs sources:
+  - `https://www.asmodee.co.uk/products/led06000-arcs`
+  - `https://ledergames.com/blogs/news/arcs-the-official-development-kit`
+- Current Sky Team sources:
+  - `https://www.scorpionmasque.com/en/sky-team`
+  - `https://www.scorpionmasque.com/sites/scorpionmasque.com/files/st_rules01_en_06jun2023.pdf`
+  - `https://shop.scorpionmasque.com/products/sky-team`
 
 ## Catalog editing method
 - `games.html` can be fetched safely in bounded line ranges with the GitHub connector.

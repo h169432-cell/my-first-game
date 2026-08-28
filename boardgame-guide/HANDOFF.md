@@ -4,48 +4,51 @@
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
 3. Current published catalog count is 78.
-4. There are no staged-but-unlinked detail pages.
-5. Start the next expansion with `Earth`.
-6. First confirm current publisher specifications/rules and secure a box-visible image that satisfies the image policy.
-7. Add the detail page and catalog card in the same run.
-8. Apply only supportable filters; do not infer category tags from popularity or theme.
-9. After Earth is fully linked, update the catalog and TOP counts only after the card is actually published; keep the six featured TOP titles unchanged.
-10. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, and counts.
-11. Update `PROGRESS.md`, this file, and `WORK_PLAN.md` before ending.
+4. Two staged-but-unlinked detail pages now exist: `games/earth.html` and `games/harmonies.html`.
+5. Start by publishing those two staged pages into `games.html`; do not research another title first.
+6. Use the already verified box-visible official images and visible source links recorded below.
+7. Apply only supportable filters: Earth = `strategy`; Harmonies = `quick beginner strategy`. Do not add `two` solely because Harmonies permits two players.
+8. After both cards are linked, update `games.html` and TOP counts from 78 to 80; keep the six featured TOP titles unchanged.
+9. Check TOP → catalog, catalog → both new details, detail → TOP, thumbnail/detail image display, source links, filter behavior, and counts.
+10. Update `PROGRESS.md`, this file, and `WORK_PLAN.md` before ending.
 
 ## Exact next start point
-- Immediate next title: `Earth`.
+- Immediate task: add `Earth` and `Harmonies` cards to `games.html`.
 - Current published catalog count: 78 total, including Clueverge.
-- Staged detail pages: 0.
-- Current published detail-image coverage: 78 / 78.
+- Staged detail pages: 2.
+- `Earth`: `boardgame-guide/games/earth.html`.
+- `Harmonies`: `boardgame-guide/games/harmonies.html`.
+- Current published detail-image coverage: 78 / 78; both staged pages also have images.
 - Current published box-thumbnail coverage in `games.html`: 78 / 78.
-- Repository search on 2026-08-28 returned no `earth.html` result. Reconfirm before editing.
 
-## Latest validation
-- `The White Castle` and `Forest Shuffle` are fully linked from `games.html`.
-- The White Castle uses only `strategy`; Forest Shuffle has no unsupported current category filter.
-- Both new catalog cards contain clearly box-visible images and visible source links.
-- `games.html` now displays 78 works and retains its closing catalog markup, footer, filter script, and shared `object-fit: contain` thumbnail rule.
-- TOP still has six featured titles and now shows `全78作品を見る`.
-- Current The White Castle sources checked 2026-08-28:
-  - `https://devirgames.com/the-white-castle`
-  - `https://devirgames.com/presentation-the-white-castle`
-  - `https://zulusgames.com/collections/board-games-strategy/products/the-white-castle`
-- Current Forest Shuffle sources checked 2026-08-28:
-  - `https://store.asmodee.com/products/forest-shuffle`
-  - `https://boardgamegeek.com/boardgame/391163/forest-shuffle`
+## Verified publication data
+### Earth
+- Players: 1–5.
+- Time: 45–90 minutes.
+- Age: 14+ (Asmodee USA current product specification).
+- Filter: `strategy` is supportable from the official game's engine-building/strategic description.
+- Box image: `https://insideupgames.com/wp-content/uploads/2022/01/Earth-mockup2-900x788.png`
+- Image/source page: `https://insideupgames.com/our-games/earth-board-game/`
+- Official references:
+  - `https://insideupgames.com/our-games/earth-board-game/`
+  - `https://insideupgames.com/product/earth-board-game/`
+  - `https://store.asmodee.com/products/earth`
+
+### Harmonies
+- Players: 1–4.
+- Time: about 30 minutes.
+- Age: 10+.
+- Filters: `quick beginner strategy` are supportable from the current Asmodee USA specifications and product description; do not add `two` merely from the player range.
+- Box image: `https://store.asmodee.com/cdn/shop/files/LIBTL01ML1-image0_2000_535x.jpg?v=1732028567`
+- Image/source page: `https://store.asmodee.com/products/harmonies-1`
+- Official references:
+  - `https://www.libellud.com/en/our-games/harmonies/`
+  - `https://store.asmodee.com/products/harmonies-1`
 
 ## Catalog editing method
-- `games.html` can be fetched safely through the GitHub connector.
-- Before replacing the complete large file, retrieve enough current content to reconstruct it exactly and confirm the current base commit/tree.
-- Do not submit a partial reconstruction.
-
-## Current image rules
-- Detail page: at least one relevant image/visual following `WORK_PLAN.md`.
-- Catalog card: must show the game's physical box, independently of what image appears on the detail page.
-- Box-only or box + contents/gameplay is valid.
-- Components/gameplay-only without the box is invalid for the catalog thumbnail.
-- A visible source link must accompany each catalog thumbnail.
+- `games.html` is large and full-file replacement must preserve every existing card, footer, filter script, and responsive CSS.
+- Targeted line-range retrieval works through the GitHub connector. Reconstruct the complete current file before replacing it; never submit a partial reconstruction.
+- The two new cards should use `.thumb-shell` + `.thumb` so the existing `object-fit: contain` rule keeps the boxes uncropped.
 
 ## Remaining cleanup
 - `games/clueverge.html` still has a previously observed mojibake/encoding issue when fetched and uses an older Medium-hosted detail image. Handle that in a dedicated cleanup pass.

@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Continue normal catalog expansion with `Anachrony: Essential Edition`. Use current Mindclash Games official product/rule information, verify player count, play time, and age before publication, then create the detail page and add a box-visible sourced catalog thumbnail before incrementing the current total of 63.
+Continue normal catalog expansion with `Kanban EV`. Verify 1–4 players, 60–180 minutes, age 14+, and core factory-management rules from reliable current sources before publication, then create the detail page and add a box-visible sourced catalog thumbnail before incrementing the current total of 65.

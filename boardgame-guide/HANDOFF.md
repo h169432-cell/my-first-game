@@ -3,42 +3,41 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. Current published catalog count is 76.
+3. Current published catalog count is 78.
 4. There are no staged-but-unlinked detail pages.
-5. Start the next expansion with `The White Castle`.
-6. Use Devir's official current product information as the primary factual source.
-7. Add a clearly box-visible thumbnail and visible source link when publishing the catalog card.
+5. Start the next expansion with `Earth`.
+6. First confirm current publisher specifications/rules and secure a box-visible image that satisfies the image policy.
+7. Add the detail page and catalog card in the same run.
 8. Apply only supportable filters; do not infer category tags from popularity or theme.
-9. After The White Castle is fully linked, update the catalog count from 76 to 77 and change only the TOP total-count button from `全76作品を見る` to `全77作品を見る`; keep the six featured titles unchanged.
+9. After Earth is fully linked, update the catalog and TOP counts only after the card is actually published; keep the six featured TOP titles unchanged.
 10. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, and counts.
 11. Update `PROGRESS.md`, this file, and `WORK_PLAN.md` before ending.
 
 ## Exact next start point
-- Immediate next title: `The White Castle`.
-- Current published catalog count: 76 total, including Clueverge.
+- Immediate next title: `Earth`.
+- Current published catalog count: 78 total, including Clueverge.
 - Staged detail pages: 0.
-- Current published detail-image coverage: 76 / 76.
-- Current published box-thumbnail coverage in `games.html`: 76 / 76.
-- Repository search on 2026-08-28 returned no existing The White Castle page/card.
-- Current Devir product information supports 1–4 players, about 60 minutes, age 12+, with resource management, worker placement, and dice placement over three rounds. Reconfirm before publishing.
+- Current published detail-image coverage: 78 / 78.
+- Current published box-thumbnail coverage in `games.html`: 78 / 78.
+- Repository search on 2026-08-28 returned no `earth.html` result. Reconfirm before editing.
 
 ## Latest validation
-- `Arcs` and `Sky Team` are fully linked from `games.html`.
-- Arcs uses only `strategy`; Sky Team uses `two quick`.
+- `The White Castle` and `Forest Shuffle` are fully linked from `games.html`.
+- The White Castle uses only `strategy`; Forest Shuffle has no unsupported current category filter.
 - Both new catalog cards contain clearly box-visible images and visible source links.
-- `games.html` now displays 76 works and retains its closing catalog markup, footer, filter script, and shared `object-fit: contain` thumbnail rule.
-- TOP still has six featured titles and now shows `全76作品を見る`.
-- Current Arcs sources:
-  - `https://www.asmodee.co.uk/products/led06000-arcs`
-  - `https://ledergames.com/blogs/news/arcs-the-official-development-kit`
-- Current Sky Team sources:
-  - `https://www.scorpionmasque.com/en/sky-team`
-  - `https://www.scorpionmasque.com/sites/scorpionmasque.com/files/st_rules01_en_06jun2023.pdf`
-  - `https://shop.scorpionmasque.com/products/sky-team`
+- `games.html` now displays 78 works and retains its closing catalog markup, footer, filter script, and shared `object-fit: contain` thumbnail rule.
+- TOP still has six featured titles and now shows `全78作品を見る`.
+- Current The White Castle sources checked 2026-08-28:
+  - `https://devirgames.com/the-white-castle`
+  - `https://devirgames.com/presentation-the-white-castle`
+  - `https://zulusgames.com/collections/board-games-strategy/products/the-white-castle`
+- Current Forest Shuffle sources checked 2026-08-28:
+  - `https://store.asmodee.com/products/forest-shuffle`
+  - `https://boardgamegeek.com/boardgame/391163/forest-shuffle`
 
 ## Catalog editing method
-- `games.html` can be fetched safely in bounded line ranges with the GitHub connector.
-- Before replacing the complete large file, retrieve all ranges needed to reconstruct the exact current file and confirm the current blob SHA.
+- `games.html` can be fetched safely through the GitHub connector.
+- Before replacing the complete large file, retrieve enough current content to reconstruct it exactly and confirm the current base commit/tree.
 - Do not submit a partial reconstruction.
 
 ## Current image rules

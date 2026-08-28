@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Publish the staged Underwater Cities and Carnegie pages into `games.html` first, then continue normal catalog expansion.
+Research and publish Nucleum next, then continue normal catalog expansion.

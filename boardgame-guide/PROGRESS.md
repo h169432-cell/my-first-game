@@ -3,35 +3,38 @@
 Last updated: 2026-08-28
 
 ## Completed
-- Published catalog guide pages: 61 total, including Clueverge.
-- Added staged detail pages for `games/nucleum.html` and `games/tekhenu-obelisk-of-the-sun.html`.
-- Nucleum facts were verified from Board&Dice: 1–4 players, 60–150 minutes, age 14+, continuous turns using action tiles / railway placement / recharge, network development, contracts, and asymmetric technologies.
-- Tekhenu: Obelisk of the Sun facts were verified from Board&Dice: 1–4 players, 60–120 minutes, age 14+, dice drafting around the rotating obelisk, Pure/Tainted/Forbidden dice states, and Maat balance.
-- Both staged pages contain a box-visible image, visible image/source attribution, overview, specifications, core rules, appeal, and source links.
-- Both staged pages link back to `../index.html`.
+- Published catalog guide pages: 63 total, including Clueverge.
+- Published the previously staged `games/nucleum.html` and `games/tekhenu-obelisk-of-the-sun.html` into `games.html`.
+- Added `strategy` catalog tags to both titles.
+- Nucleum catalog card uses a box-visible Tanuki Games image with a visible source link.
+- Tekhenu: Obelisk of the Sun catalog card uses a box-visible Miniature Market image with a visible source link.
+- Updated the `games.html` visible count from 61 to 63.
+- Updated the TOP button from `全61作品を見る` to `全63作品を見る` without changing the six featured games.
 - No files outside `boardgame-guide/` were intentionally modified.
 
 ## Verification performed
-- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/barrage.html` before editing.
-- Re-fetched both new detail pages after creation.
-- Confirmed Nucleum uses a box-visible Tanuki Games image and Board&Dice official facts.
-- Confirmed Tekhenu uses a box-visible Miniature Market image and Board&Dice official facts.
-- Current `games.html` still displays `61作品`; the two new pages are staged but not yet catalog-linked.
+- Read `WORK_PLAN.md`, `PROGRESS.md`, `HANDOFF.md`, `index.html`, `games.html`, and `games/carnegie.html` before editing.
+- Re-fetched the catalog head and tail after publication.
+- Confirmed `games.html` displays `63作品`.
+- Confirmed Nucleum and Tekhenu cards link to their detail pages and both cards include box-visible thumbnails, visible source links, and `strategy` tags.
+- Confirmed the catalog retains `object-fit: contain` for thumbnails.
+- Re-fetched TOP and confirmed `全63作品を見る` while the six featured cards remain unchanged.
+- Existing Nucleum and Tekhenu detail pages already link back to `../index.html` and contain relevant images/source attribution.
 
 ## Current position
-- Published catalog count: 61.
-- Staged but not catalog-linked pages: 2 (`Nucleum`, `Tekhenu: Obelisk of the Sun`).
-- Detail-image coverage for published pages: 61 / 61; staged pages also have images.
-- Catalog box-thumbnail coverage: 61 / 61 published cards.
+- Published catalog count: 63.
+- Detail-image coverage: 63 / 63 published pages.
+- Catalog box-thumbnail coverage: 63 / 63 published cards.
+- No staged-but-unlinked detail pages remain.
 
 ## Planned next items
-1. Add Nucleum and Tekhenu to `games.html` with `strategy` tags and box-visible thumbnail/source links.
-2. Update the catalog count and TOP total from 61 to 63 while keeping the six featured games unchanged.
-3. Re-fetch catalog head/tail and both detail links after publication.
-4. Continue normal expansion with the next verified popular title after the two staged pages are published.
+1. Continue expansion with `Anachrony: Essential Edition`.
+2. Use current Mindclash Games official product information as the primary source; the current official webshop confirms it is the 2–4 player base-game edition.
+3. Verify play time and age from official rules/product material before publishing; do not infer missing specs.
+4. Create the Japanese detail page with a relevant sourced image, then add a box-visible catalog thumbnail/source link and only supportable filter tags.
+5. Update catalog/TOP counts only after the new page and card are both complete.
 
 ## Unresolved general items
-- The two newly created pages are not yet linked from `games.html`; this is the first priority next run.
 - Carnegie's current box image is a small verified thumbnail resource. Replace only if a larger verifiably sourced image is found in a dedicated maintenance pass.
 - `games/clueverge.html` still has the previously observed encoding/mojibake issue when fetched and an older Medium-hosted detail image. Treat that as a separate cleanup task.
 - Remote image hosts can change URLs or block hotlinking; replace broken thumbnails/images with another properly sourced image when discovered.

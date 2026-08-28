@@ -55,4 +55,4 @@ Build a Japanese introduction page for many popular commercially available board
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
 ## Current next-start point
-Research and publish Nucleum next, then continue normal catalog expansion.
+Publish the staged Nucleum and Tekhenu: Obelisk of the Sun detail pages into `games.html` first, update the catalog/TOP count from 61 to 63, then continue normal catalog expansion.

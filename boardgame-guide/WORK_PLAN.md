@@ -43,7 +43,7 @@ Build a Japanese introduction page for many popular commercially available board
 6. Avoid copying long copyrighted text. Paraphrase rules and descriptions. Do not copy rulebooks verbatim.
 7. Add every completed game to `games.html`, including only verified/appropriate filter tags and a box-visible thumbnail with visible source attribution.
 8. Keep `index.html` compact. Do not add each new title to TOP. Change featured titles only when intentionally curating the landing page.
-9. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, and basic HTML validity.
+9. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, filter behavior, total card count, and basic HTML validity.
 10. Update `PROGRESS.md` and `HANDOFF.md` with completed items, current position, files changed, next start point, and unresolved issues.
 11. Commit all changes.
 
@@ -54,5 +54,10 @@ Build a Japanese introduction page for many popular commercially available board
 - Prefer concise explanations useful to someone deciding whether to play/buy the game.
 - Do not invent ratings, rankings, prices, availability, or unsupported category labels.
 
+## Catalog editing safety
+- `games.html` must never be replaced from a partial reconstruction.
+- The currently exposed GitHub contents write action replaces the whole file. Before updating `games.html`, obtain and programmatically preserve the complete current blob, apply only the intended transformations, then verify the resulting number of `.card` entries and closing markup before leaving the change committed.
+- A 2026-08-29 manual reconstruction attempt dropped existing cards and was immediately reverted. Current good `games.html` blob is `807eac0ca1d393a2b03b76e8e31e785cf272ec19`.
+
 ## Current next-start point
-The published catalog still contains 78 works. Two verified detail pages are staged but not yet linked from the catalog: `Earth` and `Harmonies`. Both already contain box-visible official product images and reliable source links. At the next run, begin by reconstructing the complete current `games.html` safely and add both cards in the same update. Use `strategy` for Earth and `quick beginner strategy` for Harmonies; do not add `two` to Harmonies merely because two players are permitted. Only after both cards are linked should the catalog and TOP counts change from 78 to 80. Keep the same six featured TOP titles.
+The published catalog still contains 78 works. Two verified detail pages are staged but not yet linked from the catalog: `Earth` and `Harmonies`. Begin by safely adding both to the complete `games.html` using a targeted/programmatic transformation that preserves all 78 existing cards. Use `strategy` for Earth and `quick beginner strategy` for Harmonies; do not add `two` to Harmonies merely because two players are permitted. Only after both cards are linked should the catalog and TOP counts change from 78 to 80. Keep the same six featured TOP titles. Do not create another staged game page until this backlog is cleared. Afterward, the next researched candidate is `Wyrmspan`.

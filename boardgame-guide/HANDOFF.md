@@ -3,29 +3,29 @@
 ## Start here next run
 1. Read `WORK_PLAN.md`, `PROGRESS.md`, and this file.
 2. Read `boardgame-guide/index.html`, `boardgame-guide/games.html`, and at least one current detail page before editing.
-3. Current published catalog count is 67.
-4. Two staged detail pages already exist: `games/the-gallerist.html` and `games/vinhos-deluxe.html`.
-5. First publish those two staged pages into `games.html` with box-visible thumbnails and visible source links, then update catalog/TOP counts from 67 to 69.
-6. Use the existing official Eagle-Gryphon Games box images already embedded in the staged pages for their catalog cards; keep `object-fit: contain`.
-7. Apply only supportable filter tags. `strategy` is appropriate; do not infer other tags.
-8. After both staged pages are linked and counts are verified, continue normal expansion with `On Mars`.
+3. Current published catalog count is 69.
+4. There are no staged-but-unlinked detail pages.
+5. Continue normal expansion with `On Mars`.
+6. Verify current official publisher/product specifications, core rules overview, and a supportable image source before publishing.
+7. Add the completed game to `games.html` with a box-visible thumbnail, visible source link, and only supportable filter tags.
+8. Keep TOP compact at six featured titles; update only the total-count button when the catalog grows.
 9. Check TOP → catalog, catalog → detail, detail → TOP, thumbnail/detail image display, source links, and counts.
 10. Update `PROGRESS.md`, this file, and `WORK_PLAN.md` before ending.
 
 ## Exact next start point
-- Immediate task: add The Gallerist and Vinhos Deluxe to the catalog.
-- Current published catalog count: 67 total, including Clueverge.
-- Staged detail pages: 2.
-- Current published detail-image coverage: 67 / 67.
-- Current published box-thumbnail coverage in `games.html`: 67 / 67.
-- Next new research title after catalog sync: On Mars.
+- Immediate next research title: On Mars.
+- Current published catalog count: 69 total, including Clueverge.
+- Staged detail pages: 0.
+- Current published detail-image coverage: 69 / 69.
+- Current published box-thumbnail coverage in `games.html`: 69 / 69.
 
 ## Completed in latest run
-- Added `games/the-gallerist.html`.
-- Added `games/vinhos-deluxe.html`.
-- Both pages use official Eagle-Gryphon Games box-visible product imagery with visible source links.
-- The Gallerist specifications were checked against Eagle-Gryphon Games and BoardGameGeek.
-- Vinhos Deluxe specifications were checked against Eagle-Gryphon Games and BoardGameGeek.
+- Published The Gallerist into `games.html` with an official Eagle-Gryphon Games box-visible thumbnail and visible source link.
+- Published Vinhos Deluxe into `games.html` with an official Eagle-Gryphon Games box-visible thumbnail and visible source link.
+- Applied `strategy` to both cards and no unsupported extra filter tags.
+- Updated catalog count from 67 to 69.
+- Updated TOP button from `全67作品を見る` to `全69作品を見る` without changing the six featured games.
+- Re-read the updated catalog tail and count to verify both cards and the 69 total.
 - No intended edits outside `boardgame-guide/`.
 
 ## Current image rules
@@ -36,11 +36,11 @@
 - A visible source link must accompany each catalog thumbnail.
 
 ## Validation / notes
-- The Gallerist official product page lists age 12+ and 120 minutes and supplies the current official box image; BoardGameGeek confirms 1–4 players and 60–150 minutes.
-- Vinhos Deluxe official product page lists 1–4 players, 90–180 minutes, age 14+, and the six-year wine-estate structure.
-- Both staged pages link back to `../index.html`.
-- TOP remains intentionally compact at six featured games and still displays `全67作品を見る` until the staged pages are added to the catalog.
-- `games.html` is large and direct full-file responses may be truncated; never replace it from an incomplete payload.
+- The Gallerist catalog card links to `games/the-gallerist.html` and uses the Eagle-Gryphon Games Complete Bundle product image/source.
+- Vinhos Deluxe catalog card links to `games/vinhos-deluxe.html` and uses the Eagle-Gryphon Games product image/source.
+- Both detail pages link back to `../index.html`.
+- TOP remains intentionally compact at six featured games and now displays `全69作品を見る`.
+- `games.html` is large and direct full-file responses may be truncated; use complete line-range reads before replacing it.
 
 ## Remaining cleanup
 - `games/clueverge.html` still has a previously observed mojibake/encoding issue when fetched and uses an older Medium-hosted detail image. Handle that in a dedicated cleanup pass.

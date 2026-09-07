@@ -1,4 +1,4 @@
-import { CARDS, cardFace } from './assets/card-ui.js';
+import { CARDS, cardFace } from './assets/card-ui.js?v=20260907-suspect2';
 
 const BASE = [1, 2, 3, 4, 5, 6].map(n => `suspect-${n}`).concat(
   'motive', 'motive', 'clue', 'clue', 'weapon', 'weapon',

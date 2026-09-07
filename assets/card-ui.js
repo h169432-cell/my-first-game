@@ -16,7 +16,7 @@ export const CARDS = Object.freeze({
 });
 
 // The supplied suspect 2 artwork is a PNG; all other cards remain JPEG files.
-export const imagePath = key => `assets/cards/${key === 'suspect-2' ? 'suspect-2.png' : `${key}.jpg`}`;
+export const imagePath = key => `assets/cards/${key === 'suspect-2' ? 'suspect-2.png?v=20260907-suspect2' : `${key}.jpg`}`;
 
 export function cardFace(key) {
   const data = CARDS[key];

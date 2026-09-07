@@ -1,64 +1,35 @@
-# Progress
+# 進捗
 
-Last updated: 2026-08-27
-Repository: `h169432-cell/my-first-game`
-Primary branch: `main`
-Backup branch: `backup-before-persistent-workflow-20260825`
-Backup point: `f03124ae3aa5ddb3916cbe3fb6984d7ecec8b72e`
+## 完了したこと
 
-## Completed
+- 既存mainを `backup-before-clean-rebuild-20260908` に退避。
+- クリーン版をGitHub Pagesのリポジトリ直下で動く構成へ変換。
+- 容疑者2・手がかり・偽証を含む正常な14画像を配置。
+- 旧画像復元方式や不要な互換コードを含めず構成。
 
-- Persistent `.work/` execution state and backup branch created.
-- `game.js` deck rules audited: base 15 + exactly one special = 16; vertical/horizontal alibi variants are correct.
-- `assets/card-ui.js` provides centralized direct image URL mapping, preload, fallback, and board/private/accusation decorators.
-- All 14 required production JPGs exist in `assets/cards/`.
-- `alibi-horizontal.jpg` is the required left/right artwork.
-- `assets/cards/suspect-4.jpg` is the user-confirmed 容疑者4 / 織田信長 card crop.
-- Production `index.html` uses only the simplified direct-file runtime.
-- Legacy split-grid/runtime/sprite/data/image reconstruction systems have been removed.
-- Card image URLs use explicit cache-busting.
-- The existing web game already implements the 4×4 board, private inspection, public reveal, accusation, scoring, rounds, and 1–4 player selection.
-- Installable app prototype shell added without changing game rules:
-  - `manifest.webmanifest`
-  - `assets/app-icon.svg`
-  - PWA/mobile metadata and manifest/icon links in `index.html`
+## 現在の状態
 
-## Current state
+- GitHub Pages公開先: https://h169432-cell.github.io/my-first-game/
+- 公開元: `h169432-cell/my-first-game` の `main` ルート。
 
-The repository now contains an installable web-app prototype of the unfinished board game. It continues to use the existing game logic and artwork architecture.
+## 変更したファイル
 
-The previously reported black-card defect is not marked resolved because user-side retest has not yet confirmed it.
+- `index.html`、`style.css`、`game.js`
+- `assets/card-ui.js`、`assets/cards/` の14画像
+- `README.md`、`package.json`、`tests/game.test.js`、`.nojekyll`
+- `.work/WORK_PLAN.md`、`.work/PROGRESS.md`、`.work/HANDOFF.md`
 
-## Latest run
+## 検証結果
 
-- Read the persistent work-state files and inspected the current repository.
-- Confirmed the current implementation is already a playable browser prototype with setup, board interaction, private inspection, public reveal, accusation, result, and score flow.
-- Added `manifest.webmanifest` with `display: standalone` and app metadata.
-- Added `assets/app-icon.svg`.
-- Updated `index.html` with theme color, mobile web-app metadata, manifest link, and icon link.
-- Did not modify `game.js`, `style.css`, card artwork, deck composition, or deduction rules.
-- Updated `.work/WORK_PLAN.md` to add Phase 8 — Installable app prototype.
+- デッキ、方向効果、国外逃亡、どんでん返し、手番、得点のテストを実行。
+- 14画像すべてのJPEGデコードと配置を確認。
+- HTMLのローカル参照とJavaScript構文を確認。
 
-## Commits from this run
+## 未解決事項
 
-- `8a33d844562916a6376ce6c1d296bfe8128826c5` — add app manifest.
-- `78b08eccf4c74d5b7525541601166efabd25f0b1` — add app icon.
-- `78602ed40c7f28f7d1d0c3b1595ff9144ae6d02c` — link app metadata from `index.html`.
-- `4ad86bbd65519237449b45f687ef5e15f059fdd9` — update work plan.
+- 実ブラウザでの全操作・端末幅検証。
+- 同時に2勝した場合の単独勝者ルールは未確定。現状は達成者全員を表示。
 
-## Validation performed
+## 次にやること
 
-- Existing game logic was left untouched.
-- Manifest references an existing SVG icon path.
-- `index.html` references the new manifest and icon while retaining the existing game/runtime script references.
-- The app prototype uses the current GitHub Pages-compatible static architecture.
-
-## Failures / unresolved
-
-- The newest GitHub Pages deployment still needs to be checked after the final work-state commits.
-- Home-screen installation has not been tested on the user's actual Android device.
-- The earlier black-card display defect remains pending user-side confirmation.
-
-## Active objective
-
-Verify deployment of the app-prototype shell while preserving the current unfinished game rules and direct-file artwork architecture.
+- 今後の修正はこのmainを基準に行い、変更後に同じテストを実行する。

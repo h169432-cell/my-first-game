@@ -1,86 +1,72 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#111111" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Clue Grid" />
-  <title>Clue Grid</title>
-  <link rel="manifest" href="manifest.webmanifest?v=20260827-app-prototype" />
-  <link rel="icon" href="assets/app-icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="style.css?v=20260826-2212" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#11171d">
+  <meta name="description" content="16枚のカードから真犯人を推理する、1〜4人用のクルーバージュ。">
+  <title>クルーバージュ</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="game.js"></script>
 </head>
 <body>
-  <main class="app">
-    <section id="setupScreen" class="screen active">
-      <div class="hero">
-        <p class="eyebrow">DEDUCTION BOARD GAME</p>
-        <h1>Clue Grid</h1>
-        <p class="lead">4×4の16枚から、動機・アリバイ・凶器・偽証を読み解いて真犯人を特定する推理ゲーム。</p>
+<main>
+  <section id="title-screen" class="title-screen">
+    <div class="title-box">
+      <p class="eyebrow">推理カードゲーム</p>
+      <h1>クルーバージュ</h1>
+      <div class="title-portraits" aria-hidden="true">
       </div>
-      <div class="panel setup-panel">
-        <label for="playerCount">プレイヤー人数</label>
-        <select id="playerCount">
-          <option value="1">1人</option>
-          <option value="2">2人</option>
-          <option value="3">3人</option>
-          <option value="4">4人</option>
-        </select>
-        <button id="startGameBtn" class="primary">ゲーム開始</button>
-        <button id="showRulesBtn" class="secondary">ルールを見る</button>
-      </div>
-    </section>
-
-    <section id="gameScreen" class="screen">
-      <header class="game-header">
-        <div><p class="eyebrow">CASE FILE</p><h2>事件現場</h2></div>
-        <div class="status-box"><span id="roundLabel">Round 1</span><strong id="turnLabel">Player 1</strong></div>
-      </header>
-      <div class="notice" id="notice"></div>
-      <div class="layout">
-        <section><div id="board" class="board" aria-label="4×4の捜査カード"></div></section>
-        <aside class="side-panel">
-          <div class="panel">
-            <h3>手番アクション</h3>
-            <p id="actionHelp" class="muted">伏せカードを1枚選んで行動してください。</p>
-            <div class="action-grid">
-              <button id="inspectBtn" class="secondary" disabled>ポーンを置いて確認</button>
-              <button id="revealBtn" class="secondary" disabled>ポーンを動かさず公開</button>
-              <button id="accuseBtn" class="danger">犯人確保</button>
-            </div>
-          </div>
-          <div class="panel">
-            <h3>公開情報</h3>
-            <div class="legend">
-              <span>👤 容疑者</span><span>🔥 動機</span><span>🛡️ アリバイ</span><span>🔪 凶器</span>
-              <span>🔎 手掛かり</span><span>🎭 偽証</span><span>↩️ どんでん返し</span>
-            </div>
-          </div>
-          <div class="panel score-panel"><h3>勝利数</h3><div id="scores"></div></div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="resultScreen" class="screen">
-      <div class="panel result-panel">
-        <p class="eyebrow">CASE CLOSED</p>
-        <h2 id="resultTitle">捜査結果</h2>
-        <p id="resultText" class="result-text"></p>
-        <div id="answerBreakdown" class="breakdown"></div>
-        <button id="nextRoundBtn" class="primary">次の事件へ</button>
-        <button id="backToTitleBtn" class="secondary">タイトルへ戻る</button>
-      </div>
-    </section>
-  </main>
-
-  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
-    <div class="modal-card"><button id="closeModalBtn" class="icon-btn" aria-label="閉じる">×</button><div id="modalContent"></div></div>
+      <p>16枚の証言から、真犯人を見つけ出す。</p>
+      <label for="players">プレイヤー人数</label>
+      <select id="players"><option value="1">1人</option><option value="2">2人</option><option value="3">3人</option><option value="4">4人</option></select>
+      <p class="muted">1台の端末を交代で使用します。先に2勝でゲーム終了。</p>
+      <button id="start" class="primary">ゲーム開始</button>
+      <button data-rules>ルールを見る</button>
+    </div>
+  </section>
+  <section id="game-screen" hidden>
+    <header class="game-header"><span class="brand">クルーバージュ</span><button data-rules>ルール</button></header>
+    <div class="game-layout">
+      <section class="board-area" aria-label="捜査盤面">
+        <div class="board-heading"><h1 id="round"></h1><span id="reveal-count"></span></div>
+        <div id="board" class="board" aria-label="4×4のカード"></div>
+      </section>
+      <aside class="panel">
+        <p class="eyebrow">捜査記録</p><h2 id="turn" aria-live="polite"></h2>
+        <ul id="scores" class="scores"></ul>
+        <div id="actions">
+          <p id="selection" aria-live="polite"></p>
+          <button id="inspect" class="primary">ポーンを置いて確認</button>
+          <button id="reveal">ポーンを動かさず公開</button>
+          <p class="muted">別の伏せカードへ移動すると、元のカードが全員に公開されます。</p>
+          <hr><button id="accuse" class="accuse">犯人確保</button>
+        </div>
+        <section id="results" hidden aria-live="polite">
+          <h2 id="winner"></h2><p class="eyebrow">実際の犯人</p><h3 id="actual"></h3>
+          <div id="actual-card"></div><ul id="answers"></ul><p id="reason"></p>
+          <details><summary>犯人判定の理由を詳しく見る</summary><ul id="evidence"></ul><p id="disabled-evidence"></p></details>
+          <button id="next" class="primary">次の事件へ</button><button id="to-title">タイトルへ戻る</button>
+        </section>
+      </aside>
+    </div>
+  </section>
+</main>
+<dialog id="modal" aria-labelledby="dialog-title"><h2 id="dialog-title"></h2><div id="dialog-content"></div><button id="dialog-close">閉じる</button></dialog>
+<template id="rules-content">
+  <div class="rules">
+    <h3>捜査の進め方</h3>
+    <p>1台の端末を順番に使います。秘密確認中は、本人以外は画面を見ないでください。</p>
+    <p>伏せカードを選び「ポーンを置いて確認」で自分だけ確認します。次に別の伏せカードへ移動すると、元のカードが全員に公開されます。「ポーンを動かさず公開」なら選んだカードを直接公開できます。捜査を1回行うと次のプレイヤーの手番です。</p>
+    <p>初期公開は1人8枚、2人6枚、3人4枚、4人2枚。16枚は毎事件シャッフルされます。</p>
+    <h3>カードの効果</h3>
+    <dl><dt>動機 ×2</dt><dd>上下左右、盤面端まで。</dd><dt>アリバイ ×2</dt><dd>上下1枚・左右1枚。それぞれ盤面端まで。</dd><dt>手がかり ×2</dt><dd>周囲8マスの凶器を有効化。</dd><dt>凶器 ×2</dt><dd>有効な場合、縦・横・斜めの8方向、盤面端まで。</dd><dt>偽証 ×1</dt><dd>上下左右に隣接する動機・アリバイを無効化。</dd><dt>追加カード ×1</dt><dd>偽証・容疑者7・どんでん返しのどれか1枚。</dd></dl>
+    <h3>犯人の条件</h3>
+    <p>容疑者1〜6は必ず登場。「有効な動機あり」「有効なアリバイなし」「有効な凶器に狙われている」のすべてを満たす人物が候補です。伏せカードも判定に含み、途中のカードは効果を遮りません。</p>
+    <p>候補が1人ならその人。複数なら最大番号、どんでん返しがあれば最小番号。0人なら国外逃亡です。</p>
+    <h3>犯人確保・勝敗</h3>
+    <p>犯人確保で回答すると、その事件の捜査は終了。全員が回答したら答え合わせし、正解者全員に1勝。2勝に達するとゲーム終了です。同時に2勝した場合は達成者全員を表示します。</p>
   </div>
-
-  <script src="game.js?v=20260826-2212"></script>
-  <script src="assets/card-ui.js?v=20260826-2212"></script>
-  <script>window.CardUI.installDirectCardUI();</script>
+</template>
 </body>
 </html>

@@ -1,1 +1,0 @@
-Latest card artwork assets are stored in this directory.

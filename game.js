@@ -1,358 +1,222 @@
-const $ = (id) => document.getElementById(id);
+import { CARDS, cardFace } from './assets/card-ui.js';
 
-const DIRS = {
-  up: { dr: -1, dc: 0, mark: '↑' },
-  upRight: { dr: -1, dc: 1, mark: '↗' },
-  right: { dr: 0, dc: 1, mark: '→' },
-  downRight: { dr: 1, dc: 1, mark: '↘' },
-  down: { dr: 1, dc: 0, mark: '↓' },
-  downLeft: { dr: 1, dc: -1, mark: '↙' },
-  left: { dr: 0, dc: -1, mark: '←' },
-  upLeft: { dr: -1, dc: -1, mark: '↖' },
-};
-
-const ALL_8_DIRS = Object.keys(DIRS);
-const CARDINAL_DIRS = ['up', 'right', 'down', 'left'];
-
-const ICONS = {
-  suspect: '👤', motive: '🔥', alibi: '🛡️', weapon: '🔪',
-  clue: '🔎', falseTestimony: '🎭', twist: '↩️'
-};
-
-const state = {
-  playerCount: 1,
-  round: 1,
-  currentPlayer: 0,
-  scores: [],
-  answers: [],
-  board: [],
-  pawnIndex: [],
-  selectedIndex: null,
-  culprit: null,
-  culpritDetails: null,
-  closeAction: null,
-  gameWinner: -1,
-};
-
-function shuffle(items) {
-  const a = [...items];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
+const BASE = [1, 2, 3, 4, 5, 6].map(n => `suspect-${n}`).concat(
+  'motive', 'motive', 'clue', 'clue', 'weapon', 'weapon',
+  'alibi-vertical', 'alibi-horizontal', 'false-testimony');
+const EXTRAS = ['false-testimony', 'suspect-7', 'twist'];
+export function shuffle(items, random = Math.random) {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
   }
-  return a;
+  return copy;
 }
-
-function makeCard(type, directions = [], extra = {}) {
-  return { type, icon: ICONS[type], directions: [...directions], revealed: false, ...extra };
+export function makeDeck(random = Math.random) {
+  return shuffle([...BASE, EXTRAS[Math.floor(random() * 3)]], random);
 }
-
-function buildDeck() {
-  const deck = [];
-  for (let n = 1; n <= 6; n++) deck.push(makeCard('suspect', [], { suspectNumber: n }));
-  deck.push(
-    makeCard('weapon', ALL_8_DIRS, { variant: 'weapon-1' }),
-    makeCard('weapon', ALL_8_DIRS, { variant: 'weapon-2' }),
-    makeCard('clue', [], { variant: 'clue-1' }),
-    makeCard('clue', [], { variant: 'clue-2' }),
-    makeCard('motive', CARDINAL_DIRS, { variant: 'motive-1' }),
-    makeCard('motive', CARDINAL_DIRS, { variant: 'motive-2' }),
-    makeCard('alibi', ['up', 'down'], { variant: 'alibi-vertical' }),
-    makeCard('alibi', ['left', 'right'], { variant: 'alibi-horizontal' }),
-    makeCard('falseTestimony', [], { variant: 'false-base' }),
-  );
-  const specials = [
-    makeCard('falseTestimony', [], { special: true, variant: 'false-special' }),
-    makeCard('suspect', [], { suspectNumber: 7, special: true }),
-    makeCard('twist', [], { special: true }),
-  ];
-  deck.push(shuffle(specials)[0]);
-  return shuffle(deck).map((card, index) => ({ ...card, index, row: Math.floor(index / 4), col: index % 4 }));
+const row = i => Math.floor(i / 4);
+const col = i => i % 4;
+export function adjacent(a, b, diagonal = false) {
+  const dr = Math.abs(row(a) - row(b)), dc = Math.abs(col(a) - col(b));
+  return a !== b && (diagonal ? Math.max(dr, dc) === 1 : dr + dc === 1);
 }
-
-function isAdjacent8(a, b) {
-  return Math.max(Math.abs(a.row - b.row), Math.abs(a.col - b.col)) === 1;
+export function reaches(a, b, kind) {
+  if (a === b) return false;
+  const dr = Math.abs(row(a) - row(b)), dc = Math.abs(col(a) - col(b));
+  if (kind === 'alibi-vertical') return dc === 0;
+  if (kind === 'alibi-horizontal') return dr === 0;
+  return dr === 0 || dc === 0 || (kind === 'weapon' && dr === dc);
 }
-
-function isOrthogonallyAdjacent(a, b) {
-  return Math.abs(a.row - b.row) + Math.abs(a.col - b.col) === 1;
+export function solve(board) {
+  const positions = kind => board.flatMap((key, i) => key === kind ? [i] : []);
+  const falsehoods = positions('false-testimony');
+  const disabled = board.flatMap((key, i) =>
+    (key === 'motive' || key.startsWith('alibi-')) && falsehoods.some(j => adjacent(i, j)) ? [i] : []);
+  const motives = positions('motive').filter(i => !disabled.includes(i));
+  const alibis = [...positions('alibi-vertical'), ...positions('alibi-horizontal')].filter(i => !disabled.includes(i));
+  const clues = positions('clue');
+  const weapons = positions('weapon').filter(i => clues.some(j => adjacent(i, j, true)));
+  const suspects = board.flatMap((key, i) => {
+    if (!CARDS[key]?.number) return [];
+    const motive = motives.filter(j => reaches(j, i, 'motive'));
+    const alibi = alibis.filter(j => reaches(j, i, board[j]));
+    const weapon = weapons.filter(j => reaches(j, i, 'weapon'));
+    return [{ key, position: i, number: CARDS[key].number, motive, alibi, weapon,
+      candidate: !!motive.length && !alibi.length && !!weapon.length }];
+  }).sort((a, b) => a.number - b.number);
+  const candidates = suspects.filter(s => s.candidate);
+  const twist = board.includes('twist');
+  const culprit = candidates.length ? (twist ? candidates[0] : candidates.at(-1)).key : 'escape';
+  return { culprit, candidates, suspects, disabled, weapons, twist };
 }
-
-function rayHits(source, target, direction) {
-  const d = DIRS[direction];
-  let r = source.row + d.dr;
-  let c = source.col + d.dc;
-  while (r >= 0 && r < 4 && c >= 0 && c < 4) {
-    if (r === target.row && c === target.col) return true;
-    r += d.dr;
-    c += d.dc;
+export function newMatch(count, random = Math.random) {
+  if (!Number.isInteger(count) || count < 1 || count > 4) throw Error('人数は1〜4人です');
+  return newRound({ round: 0, players: Array.from({ length: count }, (_, i) => ({ id: i, wins: 0 })) }, random);
+}
+export function newRound(previous, random = Math.random) {
+  if (previous.players.some(p => p.wins >= 2)) throw Error('ゲームは終了しました');
+  return { round: previous.round + 1, board: makeDeck(random),
+    revealed: new Set(shuffle(Array.from({ length: 16 }, (_, i) => i), random).slice(0, 10 - previous.players.length * 2)),
+    players: previous.players.map(p => ({ id: p.id, wins: p.wins, pawn: null, accusation: null })),
+    current: 0, phase: 'investigation', result: null };
+}
+export function advance(state) {
+  for (let n = 1; n <= state.players.length; n++) {
+    const next = (state.current + n) % state.players.length;
+    if (state.players[next].accusation === null) { state.current = next; return; }
   }
-  return false;
+}
+function activePlayer(state) {
+  if (state.phase !== 'investigation') throw Error('捜査は終了しています');
+  const player = state.players[state.current];
+  if (player.accusation !== null) throw Error('確保済みです');
+  return player;
+}
+export function investigate(state, position, mode) {
+  const player = activePlayer(state);
+  if (!Number.isInteger(position) || position < 0 || position > 15 || state.revealed.has(position)) throw Error('伏せカードを選んでください');
+  if (mode === 'private') {
+    if (player.pawn === position) throw Error('別の伏せカードを選んでください');
+    if (player.pawn !== null) state.revealed.add(player.pawn);
+    player.pawn = position;
+    // The UI advances only after the secret card has been hidden.
+    return state.board[position];
+  }
+  if (mode !== 'public') throw Error('不明な操作です');
+  state.revealed.add(position); advance(state);
+}
+export function accuse(state, key) {
+  const player = activePlayer(state);
+  if (key !== 'escape' && !CARDS[key]?.number) throw Error('容疑者を選んでください');
+  player.accusation = key;
+  if (state.players.every(p => p.accusation !== null)) {
+    state.result = solve(state.board);
+    for (const p of state.players) if (p.accusation === state.result.culprit) p.wins++;
+    state.revealed = new Set(Array.from({ length: 16 }, (_, i) => i));
+    state.phase = state.players.some(p => p.wins >= 2) ? 'finished' : 'result';
+  } else advance(state);
 }
 
-function cardHitsSuspect(card, suspect) {
-  return card.directions.some((d) => rayHits(card, suspect, d));
-}
-
-function isDisabledByFalseTestimony(card, board) {
-  if (!['motive', 'alibi'].includes(card.type)) return false;
-  return board.some((other) => other.type === 'falseTestimony' && isOrthogonallyAdjacent(card, other));
-}
-
-function isWeaponActive(weapon, board) {
-  return board.some((card) => card.type === 'clue' && isAdjacent8(weapon, card));
-}
-
-function solveCase(board) {
-  const suspects = board.filter((c) => c.type === 'suspect');
-  const motives = board.filter((c) => c.type === 'motive' && !isDisabledByFalseTestimony(c, board));
-  const alibis = board.filter((c) => c.type === 'alibi' && !isDisabledByFalseTestimony(c, board));
-  const activeWeapons = board.filter((c) => c.type === 'weapon' && isWeaponActive(c, board));
-  const twist = board.some((c) => c.type === 'twist');
-  const evaluated = suspects.map((suspect) => {
-    const hasMotive = motives.some((card) => cardHitsSuspect(card, suspect));
-    const hasAlibi = alibis.some((card) => cardHitsSuspect(card, suspect));
-    const weaponPoints = activeWeapons.some((card) => cardHitsSuspect(card, suspect));
-    return { suspect: suspect.suspectNumber, hasMotive, hasAlibi, weaponPoints };
-  });
-  const candidates = evaluated.filter((x) => x.hasMotive && !x.hasAlibi && x.weaponPoints).map((x) => x.suspect);
-  const culprit = candidates.length === 0 ? 'escape' : twist ? Math.min(...candidates) : Math.max(...candidates);
-  return { culprit, candidates, evaluated, twist, activeWeapons };
-}
-
-function labelFor(card) {
-  if (card.type === 'suspect') return `容疑者 ${card.suspectNumber}`;
-  if (card.type === 'motive') return card.variant === 'motive-2' ? '動機 2' : '動機 1';
-  if (card.type === 'alibi') return card.variant === 'alibi-horizontal' ? 'アリバイ 2' : 'アリバイ 1';
-  if (card.type === 'weapon') return card.variant === 'weapon-2' ? '凶器 2' : '凶器 1';
-  if (card.type === 'clue') return card.variant === 'clue-2' ? '手掛かり 2' : '手掛かり 1';
-  if (card.type === 'falseTestimony') return '偽証';
-  if (card.type === 'twist') return 'どんでん返し';
-  return card.type;
-}
-
-function arrowsFor(card) { return card.directions.map((d) => DIRS[d].mark).join(' '); }
-
-function descriptionFor(card) {
-  if (card.type === 'suspect') return `真犯人候補（No.${card.suspectNumber}）`;
-  if (card.type === 'motive') return `${arrowsFor(card)} 方向にいる容疑者に動機を与える`;
-  if (card.type === 'alibi') return `${arrowsFor(card)} 方向にいる容疑者にアリバイを与える`;
-  if (card.type === 'weapon') return `手掛かりが周囲8マスにあれば有効。${arrowsFor(card)} 方向の容疑者を指す`;
-  if (card.type === 'clue') return '周囲8マスにある凶器を「犯行に使われた凶器」として有効にする';
-  if (card.type === 'falseTestimony') return '上下左右1マスの動機・アリバイを無効化する';
-  if (card.type === 'twist') return '犯人候補が複数なら、最も番号の小さい容疑者が真犯人になる';
-  return '';
-}
-
-function showScreen(id) {
-  document.querySelectorAll('.screen').forEach((el) => el.classList.remove('active'));
-  $(id).classList.add('active');
-}
-
-function pawnOwnersAt(index) {
-  const owners = [];
-  state.pawnIndex.forEach((pos, player) => { if (pos === index && state.answers[player] === null) owners.push(player); });
-  return owners;
-}
-
-function renderBoard() {
-  const board = $('board');
-  board.innerHTML = '';
-  state.board.forEach((card, index) => {
-    const btn = document.createElement('button');
-    const pawns = pawnOwnersAt(index);
-    btn.className = `card ${card.revealed ? 'revealed' : ''} ${state.selectedIndex === index ? 'selected' : ''}`;
-    btn.type = 'button';
-    btn.innerHTML = card.revealed
-      ? `<div><span class="icon">${card.icon}</span><span class="title">${labelFor(card)}</span><span class="small">${descriptionFor(card)}</span></div>`
-      : `<span class="face-down">?</span>`;
-    if (pawns.length) {
-      const marker = document.createElement('span');
-      marker.style.cssText = 'position:absolute;right:5px;top:5px;z-index:5;padding:3px 6px;border-radius:999px;background:#f1d58a;color:#111;font-size:11px;font-weight:800;box-shadow:0 2px 5px #0008';
-      marker.textContent = pawns.map((p) => `P${p + 1}`).join(' ');
-      btn.appendChild(marker);
+// Browser controller: the model above is DOM-free and is also used by the tests.
+if (typeof document !== 'undefined') {
+  const $ = id => document.getElementById(id);
+  const colors = ['#e6af55', '#66bce6', '#d686b7', '#87c99a'];
+  const labels = ['琥珀', '青', '紫', '緑'];
+  document.querySelector('.title-portraits').replaceChildren(...['suspect-1', 'suspect-4', 'suspect-3'].map(cardFace));
+  let state = null, selected = null, choice = null, onClose = null;
+  const playerName = p => `プレイヤー${p.id + 1}`;
+  const cardName = key => key === 'escape' ? '国外逃亡' : CARDS[key].name;
+  const cellName = i => `${row(i) + 1}行${col(i) + 1}列`;
+  function show(screen) {
+    for (const id of ['title-screen', 'game-screen']) $(id).hidden = id !== screen;
+  }
+  function dialog(title, content, closeText = '閉じる', callback = null) {
+    $('dialog-title').textContent = title; $('dialog-content').replaceChildren(content);
+    $('dialog-close').textContent = closeText; onClose = callback; $('modal').showModal();
+  }
+  function closeDialog() {
+    const callback = onClose; onClose = null;
+    $('modal').close(); $('dialog-content').replaceChildren();
+    if (callback) callback();
+  }
+  $('dialog-close').onclick = closeDialog;
+  $('modal').addEventListener('cancel', e => { e.preventDefault(); closeDialog(); });
+  function textNode(tag, text, className = '') {
+    const node = document.createElement(tag); node.textContent = text; node.className = className; return node;
+  }
+  function button(text, action, className = '') {
+    const node = textNode('button', text, className); node.type = 'button'; node.onclick = action; return node;
+  }
+  function render() {
+    const done = state.phase !== 'investigation';
+    $('round').textContent = `事件 ${String(state.round).padStart(2, '0')}`;
+    $('turn').textContent = done ? (state.phase === 'finished' ? 'ゲーム終了' : '事件解決') : `${playerName(state.players[state.current])}の捜査`;
+    $('turn').style.color = done ? '' : colors[state.current];
+    $('reveal-count').textContent = `公開 ${state.revealed.size} / 16`;
+    $('board').replaceChildren();
+    state.board.forEach((key, i) => {
+      const revealed = state.revealed.has(i);
+      const card = button('', () => { selected = i; render(); }, 'board-card');
+      card.setAttribute('aria-label', `${cellName(i)}・${revealed ? cardName(key) : '伏せカード'}`);
+      card.setAttribute('aria-pressed', String(selected === i));
+      card.classList.toggle('selected', selected === i); card.disabled = done;
+      if (revealed) card.append(cardFace(key));
+      else { card.classList.add('face-down'); card.append(textNode('span', '？', 'back-mark'), textNode('span', `${row(i) + 1}−${col(i) + 1}`, 'coordinate')); }
+      const pawns = document.createElement('span'); pawns.className = 'pawns';
+      for (const p of state.players.filter(p => p.pawn === i)) {
+        const pawn = textNode('span', `♟${p.id + 1}`, 'pawn'); pawn.style.background = colors[p.id];
+        pawn.setAttribute('aria-label', `${playerName(p)}のポーン`); pawns.append(pawn);
+      }
+      card.append(pawns); $('board').append(card);
+    });
+    $('scores').replaceChildren();
+    for (const p of state.players) {
+      const line = textNode('li', `${playerName(p)}（${labels[p.id]}）`, 'score');
+      line.style.borderLeftColor = colors[p.id];
+      line.append(textNode('span', `${p.wins}勝${p.accusation !== null && !done ? ' · 確保済み' : ''}`)); $('scores').append(line);
     }
-    btn.addEventListener('click', () => selectCard(index));
-    board.appendChild(btn);
-  });
-  updateActionButtons();
-}
-
-function renderScores() {
-  $('scores').innerHTML = state.scores.map((score, i) => {
-    const answered = state.answers[i] !== null ? ' ✓犯人確保済' : '';
-    const pawn = state.pawnIndex[i] !== null && state.answers[i] === null ? ` / ポーン:${state.pawnIndex[i] + 1}` : '';
-    return `<div class="score-row"><span>Player ${i + 1}${answered}${pawn}</span><strong>${score}勝</strong></div>`;
-  }).join('');
-}
-
-function updateHeader() {
-  $('roundLabel').textContent = `Round ${state.round}`;
-  $('turnLabel').textContent = `Player ${state.currentPlayer + 1}`;
-  const hasPawn = state.pawnIndex[state.currentPlayer] !== null;
-  $('notice').textContent = hasPawn
-    ? '伏せカードへポーンを移動して秘密裏に確認すると、元いたカードが全員に公開されます。ポーンを動かさず別カードを公開することもできます。'
-    : '最初の捜査では、伏せカードを選び「ポーンを置いて確認」してください。';
-  $('inspectBtn').textContent = hasPawn ? 'ポーン移動して確認' : 'ポーンを置いて確認';
-  $('revealBtn').textContent = 'ポーンを動かさず公開';
-  renderScores();
-}
-
-function selectCard(index) {
-  if (state.answers[state.currentPlayer] !== null) return;
-  const card = state.board[index];
-  if (card.revealed) state.selectedIndex = null;
-  else {
-    const occupiedByOther = state.pawnIndex.some((pos, p) => p !== state.currentPlayer && pos === index && state.answers[p] === null);
-    if (occupiedByOther) return;
-    state.selectedIndex = state.selectedIndex === index ? null : index;
+    $('actions').hidden = done; $('results').hidden = !done;
+    $('selection').textContent = selected === null ? '伏せカードを選んでください' : `${cellName(selected)}を選択中`;
+    const hidden = selected !== null && !state.revealed.has(selected);
+    $('inspect').disabled = !hidden || selected === state.players[state.current].pawn;
+    $('reveal').disabled = !hidden;
+    if (done) renderResult();
   }
-  renderBoard();
-}
-
-function updateActionButtons() {
-  const valid = state.selectedIndex !== null && !state.board[state.selectedIndex].revealed;
-  $('inspectBtn').disabled = !valid;
-  $('revealBtn').disabled = !valid;
-}
-
-function openModal(html, closeAction = null) {
-  $('modalContent').innerHTML = html;
-  $('modal').classList.remove('hidden');
-  state.closeAction = closeAction;
-}
-
-function closeModal() {
-  $('modal').classList.add('hidden');
-  const action = state.closeAction;
-  state.closeAction = null;
-  if (action) action();
-}
-
-function inspectSelected() {
-  if (state.selectedIndex === null) return;
-  const nextIndex = state.selectedIndex;
-  const oldIndex = state.pawnIndex[state.currentPlayer];
-  if (oldIndex === nextIndex) return;
-  if (oldIndex !== null) state.board[oldIndex].revealed = true;
-  state.pawnIndex[state.currentPlayer] = nextIndex;
-  state.selectedIndex = nextIndex;
-  renderBoard();
-  const card = state.board[nextIndex];
-  openModal(`
-    <h3>Player ${state.currentPlayer + 1} だけ確認</h3>
-    <p class="muted">他のプレイヤーに見えないようにしてください。</p>
-    <div class="private-card"><div class="icon">${card.icon}</div><h2>${labelFor(card)}</h2><p>${descriptionFor(card)}</p></div>
-    <p class="muted">確認したら閉じて次のプレイヤーへ渡してください。</p>
-  `, () => { state.selectedIndex = null; advanceTurn(); });
-}
-
-function revealSelected() {
-  if (state.selectedIndex === null) return;
-  const index = state.selectedIndex;
-  if (state.pawnIndex[state.currentPlayer] === index) return;
-  state.board[index].revealed = true;
-  state.selectedIndex = null;
-  renderBoard();
-  advanceTurn();
-}
-
-function showAccusation() {
-  if (state.answers[state.currentPlayer] !== null) return;
-  const choices = [1,2,3,4,5,6,7].map((n) => `<button data-accuse="${n}">容疑者 ${n}</button>`).join('');
-  openModal(`<h3>犯人確保</h3><p>一度確保すると、そのラウンドの捜査には戻れません。</p><div class="accuse-grid">${choices}<button data-accuse="escape">国外逃亡</button></div>`);
-  document.querySelectorAll('[data-accuse]').forEach((btn) => btn.addEventListener('click', () => submitAccusation(btn.dataset.accuse)));
-}
-
-function submitAccusation(value) {
-  state.answers[state.currentPlayer] = value === 'escape' ? 'escape' : Number(value);
-  state.pawnIndex[state.currentPlayer] = null;
-  $('modal').classList.add('hidden');
-  state.closeAction = null;
-  state.selectedIndex = null;
-  if (state.answers.every((a) => a !== null)) finishRound(); else advanceTurn();
-}
-
-function advanceTurn() {
-  let next = state.currentPlayer;
-  for (let i = 0; i < state.playerCount; i++) {
-    next = (next + 1) % state.playerCount;
-    if (state.answers[next] === null) break;
+  function startRound() { selected = null; show('game-screen'); render(); }
+  $('start').onclick = () => { state = newMatch(Number($('players').value)); startRound(); };
+  $('inspect').onclick = () => {
+    const who = playerName(state.players[state.current]);
+    const key = investigate(state, selected, 'private');
+    selected = null; render();
+    const content = document.createElement('div');
+    content.append(textNode('p', `${who}だけが画面を見てください。`));
+    const reveal = button('カードを見る', () => {
+      content.replaceChildren(cardFace(key)); content.className = 'secret-card';
+    }, 'primary');
+    content.append(reveal);
+    dialog(`${who}の秘密確認`, content, '閉じる・次の手番へ', () => { advance(state); render(); });
+  };
+  $('reveal').onclick = () => { investigate(state, selected, 'public'); selected = null; render(); };
+  $('accuse').onclick = () => {
+    choice = null;
+    const content = document.createElement('div');
+    const grid = document.createElement('div'); grid.className = 'suspect-grid';
+    const confirm = button('選択して確保', () => { if (choice === null) return; accuse(state, choice); closeDialog(); selected = null; render(); }, 'primary');
+    confirm.disabled = true;
+    // Fixed roster avoids leaking whether the hidden extra card is suspect 7.
+    for (const key of [...Object.keys(CARDS).filter(key => CARDS[key].number), 'escape']) {
+      const item = button('', () => {
+        choice = key; confirm.disabled = false;
+        for (const child of grid.children) { child.classList.toggle('selected', child === item); child.setAttribute('aria-pressed', String(child === item)); }
+      }, 'suspect-choice');
+      item.setAttribute('aria-label', cardName(key)); item.setAttribute('aria-pressed', 'false');
+      if (key !== 'escape') item.append(cardFace(key));
+      item.append(textNode('span', cardName(key))); grid.append(item);
+    }
+    content.append(textNode('p', '回答は全員が確保した後に発表します。この事件の捜査は終了します。'), grid, confirm);
+    dialog(`${playerName(state.players[state.current])}の犯人確保`, content, '捜査に戻る');
+  };
+  function renderResult() {
+    const result = state.result;
+    $('actual').textContent = cardName(result.culprit);
+    $('actual-card').replaceChildren();
+    if (result.culprit !== 'escape') $('actual-card').append(cardFace(result.culprit));
+    $('answers').replaceChildren(...state.players.map(p => textNode('li',
+      `${playerName(p)}：${p.accusation === result.culprit ? '正解 ＋1勝' : '不正解'}（${cardName(p.accusation)}）`)));
+    $('reason').textContent = !result.candidates.length ? '動機あり・アリバイなし・有効な凶器の3条件をすべて満たす容疑者がいないため、国外逃亡です。'
+      : result.candidates.length === 1 ? '3条件をすべて満たす容疑者は、この1人だけです。'
+      : `候補は${result.candidates.map(s => s.number).join('・')}番。${result.twist ? 'どんでん返しがあるため最小' : '通常ルールにより最大'}番号が犯人です。`;
+    $('evidence').replaceChildren(...result.suspects.map(s => textNode('li',
+      `${s.number}番：動機${s.motive.length ? 'あり' : 'なし'}／アリバイ${s.alibi.length ? 'あり' : 'なし'}／有効な凶器${s.weapon.length ? 'あり' : 'なし'}${s.candidate ? ' → 候補' : ''}`)));
+    $('disabled-evidence').textContent = `偽証で無効：${result.disabled.length ? result.disabled.map(i => `${cellName(i)}の${cardName(state.board[i])}`).join('、') : 'なし'}。有効な凶器：${result.weapons.length ? result.weapons.map(cellName).join('、') : 'なし'}。`;
+    const winners = state.players.filter(p => p.wins >= 2);
+    $('winner').textContent = winners.length === 1 ? `${playerName(winners[0])}の優勝` : winners.length > 1 ? `${winners.map(playerName).join('・')}が同時に2勝達成` : '';
+    $('next').hidden = state.phase === 'finished';
   }
-  state.currentPlayer = next;
-  renderBoard();
-  updateHeader();
+  $('next').onclick = () => { state = newRound(state); startRound(); };
+  $('to-title').onclick = () => { state = null; show('title-screen'); };
+  for (const control of document.querySelectorAll('[data-rules]')) control.onclick = () => {
+    dialog('捜査の手引き', $('rules-content').content.cloneNode(true));
+  };
 }
-
-function initialReveal() {
-  const revealCount = ({ 1: 8, 2: 6, 3: 4, 4: 2 })[state.playerCount];
-  shuffle(state.board.map((_, i) => i)).slice(0, revealCount).forEach((i) => { state.board[i].revealed = true; });
-}
-
-function startRound() {
-  state.currentPlayer = 0;
-  state.answers = Array(state.playerCount).fill(null);
-  state.pawnIndex = Array(state.playerCount).fill(null);
-  state.selectedIndex = null;
-  state.board = buildDeck();
-  state.culpritDetails = solveCase(state.board);
-  state.culprit = state.culpritDetails.culprit;
-  initialReveal();
-  showScreen('gameScreen');
-  renderBoard();
-  updateHeader();
-}
-
-function startGame() {
-  state.playerCount = Number($('playerCount').value);
-  state.round = 1;
-  state.scores = Array(state.playerCount).fill(0);
-  state.gameWinner = -1;
-  startRound();
-}
-
-function answerText(answer) { return answer === 'escape' ? '国外逃亡' : `容疑者 ${answer}`; }
-
-function finishRound() {
-  state.board.forEach((c) => c.revealed = true);
-  const correctPlayers = [];
-  state.answers.forEach((answer, i) => { if (answer === state.culprit) { state.scores[i] += 1; correctPlayers.push(i); } });
-  state.gameWinner = state.scores.findIndex((s) => s >= 2);
-  $('resultTitle').textContent = state.gameWinner >= 0 ? `Player ${state.gameWinner + 1} の勝利！` : '捜査結果';
-  $('resultText').innerHTML = `真犯人は <span class="winner">${answerText(state.culprit)}</span> でした。${correctPlayers.length ? ` 正解：${correctPlayers.map((i) => `Player ${i + 1}`).join('、')}` : ' 今回は正解者なしです。'}`;
-  const d = state.culpritDetails;
-  const candidateText = d.candidates.length ? d.candidates.map((n) => `容疑者${n}`).join('、') : 'なし';
-  const playerAnswers = state.answers.map((a, i) => `<div class="breakdown-item">Player ${i + 1}：${answerText(a)} ${a === state.culprit ? '✅' : '❌'}</div>`).join('');
-  $('answerBreakdown').innerHTML = `<div class="breakdown-item"><strong>犯人候補：</strong>${candidateText}</div><div class="breakdown-item"><strong>有効な凶器：</strong>${d.activeWeapons.length}枚</div><div class="breakdown-item"><strong>どんでん返し：</strong>${d.twist ? 'あり（最小番号）' : 'なし（最大番号）'}</div>${playerAnswers}`;
-  $('nextRoundBtn').textContent = state.gameWinner >= 0 ? '新しいゲーム' : '次の事件へ';
-  showScreen('resultScreen');
-}
-
-function nextRound() {
-  if (state.gameWinner >= 0) { showScreen('setupScreen'); return; }
-  state.round += 1;
-  startRound();
-}
-
-function showRules() {
-  openModal(`
-    <h3>ルール</h3>
-    <div style="text-align:left;line-height:1.7">
-      <p><strong>カード構成：</strong>基本15枚（容疑者6・凶器2・手掛かり2・動機2・アリバイ2・偽証1）に、偽証・容疑者7・どんでん返しの3枚からランダムで1枚を追加して16枚。</p>
-      <p><strong>秘密捜査：</strong>伏せカードへポーンを置き、自分だけ確認。次に別の伏せカードへ移動したとき、元いたカードを全員に公開。</p>
-      <p><strong>公開捜査：</strong>ポーンを動かさず、別の伏せカード1枚を全員に公開。</p>
-      <p><strong>真犯人：</strong>動機あり・アリバイなし・有効な凶器に指される、の3条件。複数なら通常は最大番号、どんでん返しがあれば最小番号。該当者なしなら国外逃亡。</p>
-      <p><strong>偽証：</strong>上下左右1マスの動機・アリバイを無効化。<strong>手掛かり：</strong>周囲8マスの凶器を有効化。</p>
-      <p><strong>勝利：</strong>正解で1勝、2勝したプレイヤーがゲーム全体の勝者。</p>
-    </div>`);
-}
-
-$('startGameBtn').addEventListener('click', startGame);
-$('showRulesBtn').addEventListener('click', showRules);
-$('inspectBtn').addEventListener('click', inspectSelected);
-$('revealBtn').addEventListener('click', revealSelected);
-$('accuseBtn').addEventListener('click', showAccusation);
-$('closeModalBtn').addEventListener('click', closeModal);
-$('nextRoundBtn').addEventListener('click', nextRound);
-$('backToTitleBtn').addEventListener('click', () => showScreen('setupScreen'));
-$('modal').addEventListener('click', (e) => { if (e.target === $('modal')) closeModal(); });

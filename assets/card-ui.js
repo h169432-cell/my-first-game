@@ -15,7 +15,8 @@ export const CARDS = Object.freeze({
   twist: { name: 'どんでん返し', icon: '↶', effect: '複数候補なら最小番号' },
 });
 
-export const imagePath = key => `assets/cards/${key}.jpg`;
+// The supplied suspect 2 artwork is a PNG; all other cards remain JPEG files.
+export const imagePath = key => `assets/cards/${key === 'suspect-2' ? 'suspect-2.png' : `${key}.jpg`}`;
 
 export function cardFace(key) {
   const data = CARDS[key];
